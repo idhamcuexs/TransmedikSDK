@@ -30,7 +30,7 @@ struct AppSettings {
     static let phone: String = "transmedikphone"
     static let deviceid: String = "transmedikdeviceid"
     
-    static let frameworkBundleID  = "id.netkrom.transmedik"
+    static let frameworkBundleID  = "org.cocoapods.Pods-TransmedikSDK-Example"
     static let bundleframework = Bundle(identifier: frameworkBundleID)
 
 

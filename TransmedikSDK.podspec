@@ -11,32 +11,54 @@ Pod::Spec.new do |s|
   s.version          = '1.0.0'
   s.summary          = 'TransmedikSDK for library WE+'
 
-# This description is used to generate tags and improve search results.
-#   * Think: What does it do? Why did you write it? What is the focus?
-#   * Try to keep it short, snappy and to the point.
-#   * Write the description between the DESC delimiters below.
-#   * Finally, don't worry about the indent, CocoaPods strips it!
+  s.description      ="TransmedikSDK for we plus"
 
-  s.description      = <<-DESC
-TODO: Add long description of the pod here.
-                       DESC
-
-  s.homepage         = 'https://github.com/idham290593@gmail.com/TransmedikSDK'
-  # s.screenshots     = 'www.example.com/screenshots_1', 'www.example.com/screenshots_2'
+  s.homepage         = 'https://github.com/idhamcuexs/TransmedikSDK'
   s.license          = { :type => 'MIT', :file => 'LICENSE' }
   s.author           = { 'idham290593@gmail.com' => 'idham290593@gmail.com' }
-  s.source           = { :git => 'https://github.com/idham290593@gmail.com/TransmedikSDK.git', :tag => s.version.to_s }
-  # s.social_media_url = 'https://twitter.com/<TWITTER_USERNAME>'
+  s.source           = { :git => 'https://github.com/idhamcuexs/TransmedikSDK.git', :tag => s.version.to_s }
 
   s.ios.deployment_target = '13.0'
-
+  s.swift_versions = "4.0 "
   s.source_files = 'TransmedikSDK/Classes/**/*'
   
-  # s.resource_bundles = {
-  #   'TransmedikSDK' => ['TransmedikSDK/Assets/*.png']
-  # }
+   s.resource_bundles = {
+     'Resource' => ['TransmedikSDK/Assets/Assets.xcassets']
+   }
 
   # s.public_header_files = 'Pod/Classes/**/*.h'
   # s.frameworks = 'UIKit', 'MapKit'
-  # s.dependency 'AFNetworking', '~> 2.3'
+#   s.dependency 'Alamofire'
+   
+   #s.dependency 'Alamofire'
+   #s.dependency 'Kingfisher'
+   #s.dependency 'FSPagerView'
+   #s.dependency 'SwiftyJSON'
+   #s.dependency 'IQKeyboardManagerSwift'
+   #s.dependency 'SwiftyCodeView'
+   #s.dependency 'DropDown'
+   #s.dependency 'MessageKit'
+   #s.dependency 'MessageInputBar'
+   #s.dependency 'URLEmbeddedView'
+   ##s.dependency 'SwipeCellKit'
+   #s.dependency 'Parse'
+   #s.dependency 'Lightbox'
+   #s.dependency 'CDAlertView'
+   #s.dependency 'Starscream', '~> 3.1.0'
+   #s.dependency 'ParseLiveQuery', '~> 2.7.0 '
+   #s.dependency 'GoogleMaps', '3.10.0'
+   #s.dependency 'GooglePlaces', '3.10.0'
+   #s.dependency "ESTabBarController-swift"
+   #s.dependency 'MSPeekCollectionViewDelegateImplementation'
+   #s.dependency 'CRRefresh'
+   ##s.dependency 'BubbleShowCase'
+   #s.dependency 'SVPinView', '~> 1.0'
+   #s.dependency 'ImagePickerWhatsApp'
+   #s.dependency 'DividerView', '3.0'
+   #s.dependency 'YPImagePicker'
+   #s.dependency 'FloatRatingView', '~> 4'
+   #s.dependency 'NVActivityIndicatorView'
+   #s.dependency 'lottie-ios', '2.5.0'
+   #s.dependency 'SkeletonView'
+   
 end

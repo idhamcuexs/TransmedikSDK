@@ -7,7 +7,8 @@
 //
 
 import UIKit
-
+import TransmedikSDK
+import Pods_TransmedikSDK_Example
 
 class ViewController: UIViewController {
 
@@ -21,5 +22,17 @@ class ViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
 
+    override func viewDidAppear(_ animated: Bool) {
+        navigationController?.setNavigationBarHidden(true, animated: animated)
+        
+        
+//        transmedik
+            
+//
+        Transmedik.Transmedik_Login(email: "duarcaur@gmail.com", gender: "L", device_id: "ddrsUz__QoOoNLnZ4vLdkz:APA91bGKsrxPY0IRBJ3PwXBoSLRqD-OAL9vaWGkXXv2Q9FLkMjcgwvImwD-X9pt6Ut0g2ZLfbfYirq2OGIaS-aY8ItdSmB_yn-Ab_CUNpH12T9P0EJ96fLLT2-QCKvcW6aYZmUFiYzA4", identification: "0209050203", name: "DEDI PRIYONO", nik: "7437541739567780", phone_number: "08118311001") { status, msg in
+            Transmedik.openmenu(self, present: .navigation)
+        }
+//
+    }
 }
 
