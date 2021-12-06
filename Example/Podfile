@@ -1,0 +1,45 @@
+use_frameworks!
+
+platform :ios, '13.0'
+
+target 'TransmedikSDK_Example' do
+  pod 'TransmedikSDK', :path => '../'
+  pod 'Alamofire'
+  pod 'Kingfisher'
+  pod 'FSPagerView'
+  pod 'SwiftyJSON'
+  pod 'IQKeyboardManagerSwift'
+  pod 'SwiftyCodeView'
+  pod 'DropDown'
+  pod 'MessageKit'
+  pod 'MessageInputBar'
+  pod 'URLEmbeddedView'
+  pod 'SwipeCellKit'
+  pod 'Parse'
+  pod 'Lightbox'
+  pod 'CDAlertView'
+  pod 'Starscream', '~> 3.1.0'
+  pod 'ParseLiveQuery', '~> 2.7.0 '
+  pod 'GoogleMaps', '3.10.0'
+  pod 'GooglePlaces', '3.10.0'
+  pod "ESTabBarController-swift"
+  pod 'MSPeekCollectionViewDelegateImplementation'
+  pod 'CRRefresh'
+  pod 'BubbleShowCase'
+  pod 'SVPinView', '~> 1.0'
+  pod 'ImagePickerWhatsApp'
+  pod 'DividerView', '3.0'
+  pod 'YPImagePicker'
+  pod 'FloatRatingView', '~> 4'
+  pod 'NVActivityIndicatorView'
+  pod 'lottie-ios', '2.5.0'
+  pod 'SkeletonView'
+  
+  
+
+  target 'TransmedikSDK_Tests' do
+    inherit! :search_paths
+
+    
+  end
+end
