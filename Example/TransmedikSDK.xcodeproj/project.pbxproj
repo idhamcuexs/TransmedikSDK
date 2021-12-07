@@ -191,7 +191,6 @@
 				607FACCE1AFB9204008FA782 /* Resources */,
 				01A15B7342303CD1141BEEA6 /* [CP] Embed Pods Frameworks */,
 				30815521275F092D0099317B /* Embed Frameworks */,
-				088B580A077C61754FC8BAD7 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -369,26 +368,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-TransmedikSDK_Example/Pods-TransmedikSDK_Example-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		088B580A077C61754FC8BAD7 /* [CP] Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-TransmedikSDK_Example/Pods-TransmedikSDK_Example-resources.sh",
-				"${PODS_ROOT}/GoogleMaps/Maps/Frameworks/GoogleMaps.framework/Resources/GoogleMaps.bundle",
-				"${PODS_ROOT}/GooglePlaces/Frameworks/GooglePlaces.framework/Resources/GooglePlaces.bundle",
-			);
-			name = "[CP] Copy Pods Resources";
-			outputPaths = (
-				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/GoogleMaps.bundle",
-				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/GooglePlaces.bundle",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-TransmedikSDK_Example/Pods-TransmedikSDK_Example-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		99C6B44AC515830A071B4DAD /* [CP] Check Pods Manifest.lock */ = {

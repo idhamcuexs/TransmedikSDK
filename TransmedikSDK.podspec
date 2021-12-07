@@ -39,7 +39,7 @@ Pod::Spec.new do |s|
     s.dependency 'IQKeyboardManagerSwift', '~> 6.5.6'
     s.dependency 'SwiftyCodeView', '~> 0.3.6'
     s.dependency 'DropDown', '~> 2.3.13'
-    s.dependency 'MessageInputBar', '~> 0.4.1'
+    s.dependency 'MessageInputBar', '~> 0.2.2'
     s.dependency 'URLEmbeddedView', '~> 0.18.0'
     s.dependency 'SwipeCellKit', '~> 2.7.1'
     s.dependency 'Parse', '~> 1.19.1'

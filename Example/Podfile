@@ -12,7 +12,7 @@ target 'TransmedikSDK_Example' do
   pod 'SwiftyCodeView', '~> 0.3.6'
   pod 'DropDown', '~> 2.3.13'
   pod 'MessageKit', '~> 3.4.2'
-  pod 'MessageInputBar', '~> 0.4.1'
+  pod 'MessageInputBar', '~> 0.2.2'
   pod 'URLEmbeddedView', '~> 0.18.0'
   pod 'SwipeCellKit', '~> 2.7.1'
   pod 'Parse', '~> 1.19.1'
@@ -20,8 +20,8 @@ target 'TransmedikSDK_Example' do
   pod 'CDAlertView','~> 0.10.0'
   pod 'Starscream', '~> 3.1.0'
   pod 'ParseLiveQuery', '~> 2.7.0 '
-  pod 'GoogleMaps', '3.10.0'
-  pod 'GooglePlaces', '3.10.0'
+#  pod 'GoogleMaps', '3.10.0'
+#  pod 'GooglePlaces', '3.10.0'
   pod "ESTabBarController-swift", '~> 2.8.0 '
   pod 'MSPeekCollectionViewDelegateImplementation', '~> 3.1.1 '
   pod 'CRRefresh', '~> 1.1.3 '
@@ -32,7 +32,7 @@ target 'TransmedikSDK_Example' do
   pod 'YPImagePicker', '4.4.0'
   pod 'FloatRatingView', '~> 4'
   pod 'NVActivityIndicatorView', '~> 5.1.1'
-  pod 'lottie-ios', '2.5.0'
+  pod 'lottie-ios'
   pod 'SkeletonView', '~> 1.11.0'
 
   
