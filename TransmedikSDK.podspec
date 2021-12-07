@@ -11,7 +11,7 @@ Pod::Spec.new do |s|
   s.version          = '1.0.0'
   s.summary          = 'TransmedikSDK for library WE+'
 
-  s.description      ="TransmedikSDK for we plus"
+  s.description      = "TransmedikSDK for we plus"
 
   s.homepage         = 'https://github.com/idhamcuexs/TransmedikSDK'
   s.license          = { :type => 'MIT', :file => 'LICENSE' }
@@ -23,12 +23,12 @@ Pod::Spec.new do |s|
   s.source_files = 'TransmedikSDK/Classes/**/*'
   
    s.resource_bundles = {
-     'Resource' => ['TransmedikSDK/Assets/Assets.xcassets']
+     'TransmedikSDK' => ['TransmedikSDK/Assets/Assets.xcassets']
    }
 
   # s.public_header_files = 'Pod/Classes/**/*.h'
-  # s.frameworks = 'UIKit', 'MapKit'
-#   s.dependency 'Alamofire'
+   s.frameworks = 'UIKit', 'MapKit','Alamofire'
+   s.dependency 'Alamofire', '~> 5.4'
    
    #s.dependency 'Alamofire'
    #s.dependency 'Kingfisher'

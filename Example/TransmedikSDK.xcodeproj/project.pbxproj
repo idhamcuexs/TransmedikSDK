@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		19D45230A413F0FACB0F41CE /* Pods_TransmedikSDK_Tests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A47369CFCFCB06773F5F903A /* Pods_TransmedikSDK_Tests.framework */; };
+		3081551F275F092D0099317B /* Alamofire.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3081551E275F092D0099317B /* Alamofire.framework */; };
+		30815520275F092D0099317B /* Alamofire.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 3081551E275F092D0099317B /* Alamofire.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		607FACD61AFB9204008FA782 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 607FACD51AFB9204008FA782 /* AppDelegate.swift */; };
 		607FACD81AFB9204008FA782 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 607FACD71AFB9204008FA782 /* ViewController.swift */; };
 		607FACDB1AFB9204008FA782 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 607FACD91AFB9204008FA782 /* Main.storyboard */; };
@@ -27,8 +29,23 @@
 		};
 /* End PBXContainerItemProxy section */
 
+/* Begin PBXCopyFilesBuildPhase section */
+		30815521275F092D0099317B /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				30815520275F092D0099317B /* Alamofire.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
 /* Begin PBXFileReference section */
 		2BBCB70686DBE71AF49678C9 /* TransmedikSDK.podspec */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = TransmedikSDK.podspec; path = ../TransmedikSDK.podspec; sourceTree = "<group>"; };
+		3081551E275F092D0099317B /* Alamofire.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Alamofire.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		312DE6F8193CE571CE4E4E0E /* Pods_TransmedikSDK_Example.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_TransmedikSDK_Example.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		607FACD01AFB9204008FA782 /* TransmedikSDK_Example.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TransmedikSDK_Example.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		607FACD41AFB9204008FA782 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -55,6 +72,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				FB68F07D1CCDFEEC7EC0CF42 /* Pods_TransmedikSDK_Example.framework in Frameworks */,
+				3081551F275F092D0099317B /* Alamofire.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -153,6 +171,7 @@
 		FC9AD0038CC42090918C6E48 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				3081551E275F092D0099317B /* Alamofire.framework */,
 				312DE6F8193CE571CE4E4E0E /* Pods_TransmedikSDK_Example.framework */,
 				A47369CFCFCB06773F5F903A /* Pods_TransmedikSDK_Tests.framework */,
 			);
@@ -171,7 +190,8 @@
 				607FACCD1AFB9204008FA782 /* Frameworks */,
 				607FACCE1AFB9204008FA782 /* Resources */,
 				01A15B7342303CD1141BEEA6 /* [CP] Embed Pods Frameworks */,
-				8C18BB479D64BC922EA9FAFD /* [CP] Copy Pods Resources */,
+				30815521275F092D0099317B /* Embed Frameworks */,
+				088B580A077C61754FC8BAD7 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -351,7 +371,7 @@
 			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-TransmedikSDK_Example/Pods-TransmedikSDK_Example-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
-		8C18BB479D64BC922EA9FAFD /* [CP] Copy Pods Resources */ = {
+		088B580A077C61754FC8BAD7 /* [CP] Copy Pods Resources */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
