@@ -11,7 +11,7 @@ target 'TransmedikSDK_Example' do
   pod 'IQKeyboardManagerSwift', '~> 6.5.6'
   pod 'SwiftyCodeView', '~> 0.3.6'
   pod 'DropDown', '~> 2.3.13'
-  pod 'MessageKit', '~> 3.4.2'
+  pod 'MessageKit', '~>  3.0.0'
   pod 'MessageInputBar', '~> 0.2.2'
   pod 'URLEmbeddedView', '~> 0.18.0'
   pod 'SwipeCellKit', '~> 2.7.1'
@@ -43,3 +43,15 @@ target 'TransmedikSDK_Example' do
     
   end
 end
+
+#pre_install do |installer|
+#  installer.pod_targets.each do |pod|
+#    if pod.name.eql?('NAME_OF_POD') || pod.name.start_with?('START_OF_NAME_OF_POD')
+#      def pod.build_type;
+#        # Uncomment one line depending on your CocoaPods version
+#        Pod::BuildType.static_library # >= 1.9
+#        # Pod::Target::BuildType.static_library # < 1.9
+#      end
+#    end
+#  end
+#end

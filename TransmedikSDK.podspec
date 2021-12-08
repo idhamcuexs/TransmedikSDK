@@ -19,7 +19,7 @@ Pod::Spec.new do |s|
   s.source           = { :git => 'https://github.com/idhamcuexs/TransmedikSDK.git', :tag => s.version.to_s }
 
   s.ios.deployment_target = '13.0'
-  s.swift_versions = "4.0 "
+  s.swift_versions = "4.2 "
   s.source_files = 'TransmedikSDK/Classes/*.swift'
   
    s.resource_bundles = {
@@ -33,7 +33,7 @@ Pod::Spec.new do |s|
    
     s.dependency 'Alamofire', '~> 5.4'
     s.dependency 'SwiftyJSON', '~> 5.0.0'
-    s.dependency 'MessageKit', '~> 3.4.2'
+    s.dependency 'MessageKit', '~> 3.0.0'
     s.dependency 'Kingfisher', '~> 5.15.8'
     s.dependency 'FSPagerView', '~> 0.8.3'
     s.dependency 'IQKeyboardManagerSwift', '~> 6.5.6'
@@ -47,8 +47,8 @@ Pod::Spec.new do |s|
     s.dependency 'CDAlertView','~> 0.10.0'
     s.dependency 'Starscream', '~> 3.1.0'
     s.dependency 'ParseLiveQuery', '~> 2.7.0 '
-   # s.dependency 'GoogleMaps'
-   # s.dependency 'GooglePlaces'
+#    s.dependency 'GoogleMaps', '~> 3.10.0'
+#    s.dependency 'GooglePlaces', '~> 3.10.0 '
     s.dependency 'ESTabBarController-swift', '~> 2.8.0 '
     s.dependency 'MSPeekCollectionViewDelegateImplementation', '~> 3.1.1 '
     s.dependency 'CRRefresh', '~> 1.1.3 '

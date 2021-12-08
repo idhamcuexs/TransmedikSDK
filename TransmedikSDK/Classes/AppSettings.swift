@@ -45,6 +45,9 @@ struct AppSettings {
     static let SESSION_ENDED: String = "SESI BERAKHIR"
     static let NOT_SEND:String = "not_send"
     static let Chat_ALLOWED:String = "ALLOWED"
+    static let STORYBOARDMAP:String = "Storyboardmaps"
+    static let CLASS_MAPS:String = "classmaps"
+
 
     
     

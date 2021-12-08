@@ -69,9 +69,14 @@ class listalamatViewController: UIViewController {
         
     }
     @objc func tambah(){
-        let vc = UIStoryboard(name: "Alamat", bundle: AppSettings.bundleframework).instantiateViewController(withIdentifier: "MapviewalamatViewController") as? MapviewalamatViewController
-        vc?.delegate = self
-        present(vc!, animated: true, completion: nil)
+//        let vc = UIStoryboard(name: "Alamat", bundle: AppSettings.bundleframework).instantiateViewController(withIdentifier: "MapviewalamatViewController") as? MapviewalamatViewController
+//        let nameboard = UserDefaults.standard.string(forKey: AppSettings.STORYBOARDMAP)!
+//        let nameIdentifier  = UserDefaults.standard.string(forKey: AppSettings.CLASS_MAPS)!
+//        let classMaps : UIViewController = UserDefaults.standard.
+//
+//
+//        let vc = UIStoryboard(name: nameboard, bundle: AppSettings.bundleframework).instantiateViewController(withIdentifier: nameIdentifier) as? classMaps
+//        present(vc!, animated: true, completion: nil)
     }
     
     @objc func kembali(){
@@ -83,7 +88,7 @@ class listalamatViewController: UIViewController {
 }
 
 
- extension listalamatViewController : NotificationcustomizeViewControllerdelegate, UITableViewDelegate,UITableViewDataSource,listalamatTableViewCelldelegate,MapviewalamatViewControllerdelegate{
+ extension listalamatViewController : NotificationcustomizeViewControllerdelegate, UITableViewDelegate,UITableViewDataSource,listalamatTableViewCelldelegate  {
     func next(foraction: String) {
         if rowhapus != nil{
             if  CheckInternet.Connection(){
@@ -116,13 +121,13 @@ class listalamatViewController: UIViewController {
     }
     
     func edit(row: Int) {
-        let vc = UIStoryboard(name: "Alamat", bundle: AppSettings.bundleframework).instantiateViewController(withIdentifier: "MapviewalamatViewController") as? MapviewalamatViewController
-        vc?.alamatmodel = data[row]
-        vc?.delegate = self
-        vc?.row = row
-        vc?.tambah = false
-        
-        present(vc!, animated: true, completion: nil)
+//        let vc = UIStoryboard(name: "Alamat", bundle: AppSettings.bundleframework).instantiateViewController(withIdentifier: "MapviewalamatViewController") as? MapviewalamatViewController
+//        vc?.alamatmodel = data[row]
+//        vc?.delegate = self
+//        vc?.row = row
+//        vc?.tambah = false
+//
+//        present(vc!, animated: true, completion: nil)
     }
     
     func delete(row: Int) {
