@@ -12,7 +12,7 @@ target 'TransmedikSDK_Example' do
   pod 'SwiftyCodeView', '~> 0.3.6'
   pod 'DropDown', '~> 2.3.13'
   pod 'MessageKit', '~>  3.0.0'
-  pod 'MessageInputBar', '~> 0.2.2'
+  pod 'MessageInputBar', '~>  0.4.0'
   pod 'URLEmbeddedView', '~> 0.18.0'
   pod 'SwipeCellKit', '~> 2.7.1'
   pod 'Parse', '~> 1.19.1'

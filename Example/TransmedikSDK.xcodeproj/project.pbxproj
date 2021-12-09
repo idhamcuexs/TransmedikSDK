@@ -8,8 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		19D45230A413F0FACB0F41CE /* Pods_TransmedikSDK_Tests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A47369CFCFCB06773F5F903A /* Pods_TransmedikSDK_Tests.framework */; };
-		3081551F275F092D0099317B /* Alamofire.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3081551E275F092D0099317B /* Alamofire.framework */; };
-		30815520275F092D0099317B /* Alamofire.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 3081551E275F092D0099317B /* Alamofire.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		607FACD61AFB9204008FA782 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 607FACD51AFB9204008FA782 /* AppDelegate.swift */; };
 		607FACD81AFB9204008FA782 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 607FACD71AFB9204008FA782 /* ViewController.swift */; };
 		607FACDB1AFB9204008FA782 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 607FACD91AFB9204008FA782 /* Main.storyboard */; };
@@ -28,20 +26,6 @@
 			remoteInfo = TransmedikSDK;
 		};
 /* End PBXContainerItemProxy section */
-
-/* Begin PBXCopyFilesBuildPhase section */
-		30815521275F092D0099317B /* Embed Frameworks */ = {
-			isa = PBXCopyFilesBuildPhase;
-			buildActionMask = 2147483647;
-			dstPath = "";
-			dstSubfolderSpec = 10;
-			files = (
-				30815520275F092D0099317B /* Alamofire.framework in Embed Frameworks */,
-			);
-			name = "Embed Frameworks";
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		2BBCB70686DBE71AF49678C9 /* TransmedikSDK.podspec */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = TransmedikSDK.podspec; path = ../TransmedikSDK.podspec; sourceTree = "<group>"; };
@@ -72,7 +56,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				FB68F07D1CCDFEEC7EC0CF42 /* Pods_TransmedikSDK_Example.framework in Frameworks */,
-				3081551F275F092D0099317B /* Alamofire.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -190,7 +173,6 @@
 				607FACCD1AFB9204008FA782 /* Frameworks */,
 				607FACCE1AFB9204008FA782 /* Resources */,
 				01A15B7342303CD1141BEEA6 /* [CP] Embed Pods Frameworks */,
-				30815521275F092D0099317B /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
@@ -608,6 +590,7 @@
 					"$(inherited)",
 				);
 				INFOPLIST_FILE = Tests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -626,6 +609,7 @@
 					"$(inherited)",
 				);
 				INFOPLIST_FILE = Tests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";

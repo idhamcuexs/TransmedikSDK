@@ -119,7 +119,7 @@ public class Transmedik {
     }
     
     public static func openmenu(_ view : UIViewController,present : PresentPage){
-        let vc = UIStoryboard(name: "Transmedik", bundle: AppSettings.bundleframework).instantiateViewController(withIdentifier: "HomeViewController") as? HomeViewController
+        let vc = UIStoryboard(name: "Transmedik", bundle: AppSettings.bundleframeworks()).instantiateViewController(withIdentifier: "HomeViewController") as? HomeViewController
         vc?.presentPage = present
         if present == .navigation{
             view.navigationController?.pushViewController(vc!, animated: true)

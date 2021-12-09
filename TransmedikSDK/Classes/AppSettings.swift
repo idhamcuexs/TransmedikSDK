@@ -30,9 +30,17 @@ struct AppSettings {
     static let phone: String = "transmedikphone"
     static let deviceid: String = "transmedikdeviceid"
     
-    static let frameworkBundleID  = "org.cocoapods.Pods-TransmedikSDK-Example"
+    static let frameworkBundleID  = "org.cocoapods.TransmedikSDK"
     static let bundleframework = Bundle(identifier: frameworkBundleID)
+    
+    public static func bundleframeworks()-> Bundle?{
 
+        let frameworkBundle = Bundle(for: Log.self)
+        let path = frameworkBundle.path(forResource: "TransmedikSDK", ofType: "bundle")
+        let resourcesbundle = Bundle(url: URL(fileURLWithPath: path!))
+        return resourcesbundle
+
+    }
 
     
     static let KEY_CURRENT_CONSULTATION: String = "current_consultation"

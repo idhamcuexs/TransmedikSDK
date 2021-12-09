@@ -22,9 +22,9 @@ PODS:
   - Lightbox (2.5.0):
     - Imaginary (~> 5.0.0)
   - lottie-ios (2.5.3)
-  - MessageInputBar (0.2.2):
-    - MessageInputBar/Core (= 0.2.2)
-  - MessageInputBar/Core (0.2.2)
+  - MessageInputBar (0.4.1):
+    - MessageInputBar/Core (= 0.4.1)
+  - MessageInputBar/Core (0.4.1)
   - MessageKit (3.0.0):
     - InputBarAccessoryView (~> 4.2.2)
   - MSPeekCollectionViewDelegateImplementation (3.1.1)
@@ -64,7 +64,7 @@ PODS:
     - Kingfisher (~> 5.15.8)
     - Lightbox (~> 2.5.0)
     - lottie-ios (~> 2.5.0)
-    - MessageInputBar (~> 0.2.2)
+    - MessageInputBar (~> 0.4.0)
     - MessageKit (~> 3.0.0)
     - MSPeekCollectionViewDelegateImplementation (~> 3.1.1)
     - NVActivityIndicatorView (~> 5.1.1)
@@ -98,7 +98,7 @@ DEPENDENCIES:
   - Kingfisher (~> 5.15.8)
   - Lightbox (~> 2.5.0)
   - lottie-ios
-  - MessageInputBar (~> 0.2.2)
+  - MessageInputBar (~> 0.4.0)
   - MessageKit (~> 3.0.0)
   - MSPeekCollectionViewDelegateImplementation (~> 3.1.1)
   - NVActivityIndicatorView (~> 5.1.1)
@@ -176,7 +176,7 @@ SPEC CHECKSUMS:
   Kingfisher: a3c03d702433fa6cfedabb2bddbe076fb8f2e902
   Lightbox: cc3d5124f024fa8197fd23f913160db1c61a1852
   lottie-ios: a50d5c0160425cd4b01b852bb9578963e6d92d31
-  MessageInputBar: abdb95e277b537332e4112c67e7706528fda2330
+  MessageInputBar: e81c7535347f1f7b923de7080409a535a004b6e4
   MessageKit: e892a9ca49ebe6d82684d3a93ad84021fa23e2c6
   MSPeekCollectionViewDelegateImplementation: f86fd6a6ce284723343e8697a013f5294c05e745
   NVActivityIndicatorView: 1f6c5687f1171810aa27a3296814dc2d7dec3667
@@ -190,10 +190,10 @@ SPEC CHECKSUMS:
   SwiftyCodeView: 0252e3520749a3fda1a9b141873401f8e6c570ad
   SwiftyJSON: 36413e04c44ee145039d332b4f4e2d3e8d6c4db7
   SwipeCellKit: 3972254a826da74609926daf59b08d6c72e619ea
-  TransmedikSDK: 8065a172f0ba64ba29a87d388b2132216b2c3a85
+  TransmedikSDK: 074fd42c8a789b4f43975cceb4e5746560d718d9
   URLEmbeddedView: 3fe17ae535d2b8d38c3b08ab8ba0aea5efe5d1cd
   YPImagePicker: 15aed8bcaa4dad976e11b6114126d731a2f9f3c9
 
-PODFILE CHECKSUM: 3ad359216dd298ba08c3a8a84b7a3d1a426ffa68
+PODFILE CHECKSUM: e8c84b275710959feee674fb765f81a49dd6f5a1
 
 COCOAPODS: 1.10.0
