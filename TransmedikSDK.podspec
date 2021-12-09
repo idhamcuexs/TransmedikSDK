@@ -54,7 +54,7 @@ Pod::Spec.new do |s|
     s.dependency 'CRRefresh', '~> 1.1.3 '
     s.dependency 'BubbleShowCase', '~> 1.2.0 '
     s.dependency 'SVPinView', '~> 1.0'
-    s.dependency 'ImagePickerWhatsApp', '~> 1.0.0'
+    s.dependency 'ImagePickerWhatsApp'
     s.dependency 'DividerView', '~>3.0'
     s.dependency 'YPImagePicker', '~>4.4.0'
     s.dependency 'FloatRatingView', '~> 4'
