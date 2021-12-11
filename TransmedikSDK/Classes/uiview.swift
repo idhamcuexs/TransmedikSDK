@@ -26,7 +26,7 @@ extension UIViewController  {
 
     
     func loading(_ UIViewController : UIViewController){
-        let vc = UIStoryboard(name: "Loading", bundle: AppSettings.bundleframework).instantiateViewController(withIdentifier: "lodingViewController") as? lodingViewController
+        let vc = UIStoryboard(name: "Loading", bundle: AppSettings.bundleframeworks()).instantiateViewController(withIdentifier: "lodingViewController") as? lodingViewController
         present(vc!, animated: false, completion: nil)
         
     }
@@ -59,7 +59,7 @@ open class Loading: UIView {
             
             /// Set view to full screen, aspectFill
 //            let animationView = LOTAnimationView(name: "loading_rainbow")
-            let animationView = LOTAnimationView(name: "loading_rainbow", bundle: AppSettings.bundleframework!)
+            let animationView = LOTAnimationView(name: "loading_rainbow", bundle: AppSettings.bundleframeworks()!)
             animationView.autoresizingMask = [.flexibleHeight, .flexibleWidth]
             animationView.contentMode = .scaleAspectFill
             animationView.frame = CGRect(x: 15, y: 15, width: 50, height: 50)

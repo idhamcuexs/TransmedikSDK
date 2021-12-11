@@ -260,7 +260,7 @@ class NewCheckConsulVC: UIViewController,UITextViewDelegate {
     }
     
     @objc func form() {
-        let vc = UIStoryboard(name: "Form", bundle: AppSettings.bundleframework).instantiateViewController(withIdentifier: "newformsViewController") as? newformsViewController
+        let vc = UIStoryboard(name: "Form", bundle: AppSettings.bundleframeworks()).instantiateViewController(withIdentifier: "newformsViewController") as? newformsViewController
         vc?.list = list
         vc?.delegates = self
         vc?.spesialis = id ?? ""
@@ -288,7 +288,7 @@ class NewCheckConsulVC: UIViewController,UITextViewDelegate {
             return Toast.show(message: "Anda belum melengkapi form", controller: self)
         }
         
-        let vc = UIStoryboard(name: "pinandpassword", bundle: AppSettings.bundleframework).instantiateViewController(withIdentifier: "insertpinViewController") as? insertpinViewController
+        let vc = UIStoryboard(name: "pinandpassword", bundle: AppSettings.bundleframeworks()).instantiateViewController(withIdentifier: "insertpinViewController") as? insertpinViewController
         vc?.delegate = self
         self.present(vc!, animated: true, completion: nil)
                  
@@ -297,7 +297,7 @@ class NewCheckConsulVC: UIViewController,UITextViewDelegate {
     
     func edit() {
   
-        let vc = UIStoryboard(name: "Edituser", bundle: AppSettings.bundleframework).instantiateViewController(withIdentifier: "edit_and_add_phrViewController") as? edit_and_add_phrViewController
+        let vc = UIStoryboard(name: "Edituser", bundle: AppSettings.bundleframeworks()).instantiateViewController(withIdentifier: "edit_and_add_phrViewController") as? edit_and_add_phrViewController
         vc?.delegate = self
         
         vc?.uuid = mdata[row].uuid
@@ -383,7 +383,7 @@ class NewCheckConsulVC: UIViewController,UITextViewDelegate {
                             
                             
                             print("kosong")
-                            let vc = UIStoryboard(name: "Chat", bundle: AppSettings.bundleframework).instantiateViewController(withIdentifier: "WaitingConsulVC") as? WaitingConsulVC
+                            let vc = UIStoryboard(name: "Chat", bundle: AppSettings.bundleframeworks()).instantiateViewController(withIdentifier: "WaitingConsulVC") as? WaitingConsulVC
                             
                             vc?.modalPresentationStyle = .fullScreen
                             vc?.modalTransitionStyle = .flipHorizontal

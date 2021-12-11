@@ -67,7 +67,7 @@ class extensionchatdetailViewController: UIViewController {
     }
     
     @objc func jawaban(){
-        let vc =  UIStoryboard(name: "Form", bundle: AppSettings.bundleframework).instantiateViewController(withIdentifier: "FormjawabViewController") as? FormjawabViewController
+        let vc =  UIStoryboard(name: "Form", bundle: AppSettings.bundleframeworks()).instantiateViewController(withIdentifier: "FormjawabViewController") as? FormjawabViewController
         vc?.id = String(currentConsultation?.consultation_id ?? 0)
         present(vc!, animated: true, completion: nil)
     }

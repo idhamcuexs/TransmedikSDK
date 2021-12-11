@@ -115,7 +115,7 @@ extension HomeViewController: UICollectionViewDataSource,UICollectionViewDelegat
                             Toast.show(message: "Konsultasi sudah berakhir", controller: self)
                             DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
 
-                                let vc = UIStoryboard(name: "Fasilitaskesehatan", bundle: AppSettings.bundleframework).instantiateViewController(withIdentifier: "fasilitaskesehatanViewController" ) as? fasilitaskesehatanViewController
+                                let vc = UIStoryboard(name: "Fasilitaskesehatan", bundle: AppSettings.bundleframeworks()).instantiateViewController(withIdentifier: "fasilitaskesehatanViewController" ) as? fasilitaskesehatanViewController
                             
                                 vc?.presentPage = self.presentPage
                                 self.openVC(vc!, self.presentPage)
@@ -180,17 +180,16 @@ extension HomeViewController: UICollectionViewDataSource,UICollectionViewDelegat
                 
            
             case 1:
-                let vc = UIStoryboard(name: "History", bundle: AppSettings.bundleframework).instantiateViewController(withIdentifier: "historypembelianViewController" ) as? historypembelianViewController
-                vc?.select = 2
+                let vc = UIStoryboard(name: "History", bundle: AppSettings.bundleframeworks()).instantiateViewController(withIdentifier: "NewHistoryViewController" ) as? NewHistoryViewController
+                vc?.selected = 2
                 vc?.presentPage = self.presentPage
                 openVC(vc!, self.presentPage)
-
 //                present(vc!, animated: false, completion: nil)
                 break
                 
                 
             case 2:
-                let vc = UIStoryboard(name: "History", bundle: AppSettings.bundleframework).instantiateViewController(withIdentifier: "historypembelianViewController" ) as? historypembelianViewController
+                let vc = UIStoryboard(name: "History", bundle: AppSettings.bundleframeworks()).instantiateViewController(withIdentifier: "historypembelianViewController" ) as? historypembelianViewController
                 vc?.select = 1
                 vc?.presentPage = self.presentPage
                 openVC(vc!, self.presentPage)

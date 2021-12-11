@@ -30,7 +30,7 @@ public class fasilitaskesehatanViewController: UIViewController,UITextFieldDeleg
     public override func viewDidLoad() {
         super.viewDidLoad()
         self.view.layoutIfNeeded()
-        collection.register(UINib(nibName: "FaskessCollectionViewCell", bundle: AppSettings.bundleframework), forCellWithReuseIdentifier: "FaskessCollectionViewCell")
+        collection.register(UINib(nibName: "FaskessCollectionViewCell", bundle: AppSettings.bundleframeworks()), forCellWithReuseIdentifier: "FaskessCollectionViewCell")
         
         top.dropShadow(shadowColor: UIColor.lightGray, fillColor: UIColor.white, opacity: 0.5, offset: CGSize(width: 2, height: 2), radius: 4)
         self.view.backgroundColor = Colors.backgroundmaster
@@ -195,7 +195,7 @@ extension fasilitaskesehatanViewController:UICollectionViewDelegate , UICollecti
             if let token = UserDefaults.standard.string(forKey: AppSettings.Tokentransmedik) {
                 self.funcspesial.getspesialisklinik(token: token ,id: self.data[indexPath.row].id) { (datadokter,msg) in
                     if msg == "Unauthenticated."{
-                        let vc = UIStoryboard(name: "Notification", bundle: AppSettings.bundleframework).instantiateViewController(withIdentifier: "loadingsuccessViewController") as? loadingsuccessViewController
+                        let vc = UIStoryboard(name: "Notification", bundle: AppSettings.bundleframeworks()).instantiateViewController(withIdentifier: "loadingsuccessViewController") as? loadingsuccessViewController
                         UserDefaults.standard.set(true, forKey: "logout")
                         vc?.status =  "gagal login"
                         vc?.delegate = self
@@ -205,7 +205,7 @@ extension fasilitaskesehatanViewController:UICollectionViewDelegate , UICollecti
                     
                     if datadokter != nil {
                         if datadokter!.count > 0{
-                            let vc = UIStoryboard(name: "Fasilitaskesehatan", bundle: AppSettings.bundleframework).instantiateViewController(withIdentifier: "detailklinikViewController") as? detailklinikViewController
+                            let vc = UIStoryboard(name: "Fasilitaskesehatan", bundle: AppSettings.bundleframeworks()).instantiateViewController(withIdentifier: "detailklinikViewController") as? detailklinikViewController
                             vc?.tanyadokter = datadokter!
                             vc?.alamat = self.data[indexPath.row].address
                             vc?.name = self.data[indexPath.row].name
@@ -223,7 +223,7 @@ extension fasilitaskesehatanViewController:UICollectionViewDelegate , UICollecti
                             let apifacility = FormObject()
                             apifacility.getform(token: token, id: self.data[indexPath.row].id , spesialist: "") { (data,msg) in
                                 if msg == "Unauthenticated."{
-                                    let vc = UIStoryboard(name: "Notification", bundle: AppSettings.bundleframework).instantiateViewController(withIdentifier: "loadingsuccessViewController") as? loadingsuccessViewController
+                                    let vc = UIStoryboard(name: "Notification", bundle: AppSettings.bundleframeworks()).instantiateViewController(withIdentifier: "loadingsuccessViewController") as? loadingsuccessViewController
                                     UserDefaults.standard.set(true, forKey: "logout")
                                     vc?.status =  "gagal login"
                                     vc?.delegate = self
@@ -239,7 +239,7 @@ extension fasilitaskesehatanViewController:UICollectionViewDelegate , UICollecti
                                 //                                    self.activityIndicatorView.stopAnimating()
                                 DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
                                     
-                                    let vc = UIStoryboard(name: "Tanyadokter", bundle: AppSettings.bundleframework).instantiateViewController(withIdentifier: "DetailtanyadokterViewController") as? DetailtanyadokterViewController
+                                    let vc = UIStoryboard(name: "Tanyadokter", bundle: AppSettings.bundleframeworks()).instantiateViewController(withIdentifier: "DetailtanyadokterViewController") as? DetailtanyadokterViewController
                                     vc?.id = ""
                                     vc?.isform = self.data[indexPath.row].medical_form
                                     vc?.header = self.data[indexPath.row].name

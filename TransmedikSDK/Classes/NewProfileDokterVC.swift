@@ -113,7 +113,7 @@ class NewProfileDokterVC: UIViewController {
 //        openVC(vc!, presentPage)
 ////        present(vc!, animated: true, completion: nil)
 //
-        let vc = UIStoryboard(name: "Chat", bundle: AppSettings.bundleframework).instantiateViewController(withIdentifier: "NewCheckConsulVC") as? NewCheckConsulVC
+        let vc = UIStoryboard(name: "Chat", bundle: AppSettings.bundleframeworks()).instantiateViewController(withIdentifier: "NewCheckConsulVC") as? NewCheckConsulVC
         vc?.header = header
         vc?.list = list
         vc?.isform = isform

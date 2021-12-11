@@ -380,7 +380,7 @@ class ResepDokterViewController: MYUIViewController {
 
         let yesAction = CDAlertViewAction(title: LocalizationHelper.getInstance().yes) { (CDAlertViewAction) -> Bool in
 
-            let vc = UIStoryboard(name: "Orderobat", bundle: AppSettings.bundleframework).instantiateViewController(withIdentifier: "OrderobatViewController") as? OrderobatViewController
+            let vc = UIStoryboard(name: "Orderobat", bundle: AppSettings.bundleframeworks()).instantiateViewController(withIdentifier: "OrderobatViewController") as? OrderobatViewController
             vc?.id = self.idconsul
             vc?.prescription_id = self.prescription_id
             self.present(vc!, animated: true, completion: nil)

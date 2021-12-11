@@ -324,7 +324,7 @@ class transaksichatchildViewController: UIViewController,UIScrollViewDelegate, O
     }
     
     @IBAction func change(_ sender: Any) {
-        let vc = UIStoryboard(name: "Categoryobat", bundle: AppSettings.bundleframework).instantiateViewController(withIdentifier: "includevoucherobatViewController") as? includevoucherobatViewController
+        let vc = UIStoryboard(name: "Categoryobat", bundle: AppSettings.bundleframeworks()).instantiateViewController(withIdentifier: "includevoucherobatViewController") as? includevoucherobatViewController
         vc?.code = kodepromo.text ?? ""
         vc?.delegate = self
         present(vc!, animated: false, completion: nil)
@@ -349,7 +349,7 @@ class transaksichatchildViewController: UIViewController,UIScrollViewDelegate, O
         if bayarvitrual{
             if mymoney?.accountbalance ?? 0 >= gettotal() {
 
-                let vc = UIStoryboard(name: "pinandpassword", bundle: AppSettings.bundleframework).instantiateViewController(withIdentifier: "insertpinViewController") as? insertpinViewController
+                let vc = UIStoryboard(name: "pinandpassword", bundle: AppSettings.bundleframeworks()).instantiateViewController(withIdentifier: "insertpinViewController") as? insertpinViewController
                 vc?.delegate = self
                 self.present(vc!, animated: true, completion: nil)
                          
@@ -561,7 +561,7 @@ extension transaksichatchildViewController : insertpinViewControllerdelegate,pem
                                 }
                             }else{
                                 print("ayaan")
-                                let vc = UIStoryboard(name: "PMR", bundle: AppSettings.bundleframework).instantiateViewController(withIdentifier: "OpenpdfViewController") as? OpenpdfViewController
+                                let vc = UIStoryboard(name: "PMR", bundle: AppSettings.bundleframeworks()).instantiateViewController(withIdentifier: "OpenpdfViewController") as? OpenpdfViewController
                                 vc?.headers = "DOKU pembayaran"
                                 vc?.delegate = self
                                 vc?.urlstring = url!
@@ -822,7 +822,7 @@ extension transaksichatchildViewController : metoderpembayaranViewControllerdele
         
     }
     @objc func selectpembayaran(){
-        let vc = UIStoryboard(name: "Pembayaran", bundle: AppSettings.bundleframework).instantiateViewController(withIdentifier: "metoderpembayaranViewController") as? metoderpembayaranViewController
+        let vc = UIStoryboard(name: "Pembayaran", bundle: AppSettings.bundleframeworks()).instantiateViewController(withIdentifier: "metoderpembayaranViewController") as? metoderpembayaranViewController
         vc?.delegate = self
         present(vc!, animated: false, completion: nil)
     }

@@ -88,7 +88,7 @@ public class Transmedik {
                 }
             }
         }else{
-            let vc = UIStoryboard(name: "Fasilitaskesehatan", bundle: AppSettings.bundleframework).instantiateViewController(withIdentifier: "fasilitaskesehatanViewController") as? fasilitaskesehatanViewController
+            let vc = UIStoryboard(name: "Fasilitaskesehatan", bundle: AppSettings.bundleframeworks()).instantiateViewController(withIdentifier: "fasilitaskesehatanViewController") as? fasilitaskesehatanViewController
             
             Viewcontroller.present(vc!, animated: false, completion: nil)
         }
@@ -107,7 +107,7 @@ public class Transmedik {
     }
     
     public static func Loading(UIViewController : UIViewController){
-        let vc = UIStoryboard(name: "Loading", bundle: AppSettings.bundleframework).instantiateViewController(withIdentifier: "lodingViewController") as? lodingViewController
+        let vc = UIStoryboard(name: "Loading", bundle: AppSettings.bundleframeworks()).instantiateViewController(withIdentifier: "lodingViewController") as? lodingViewController
         UIViewController.present(vc!, animated: false, completion: nil)
 
     }
@@ -122,6 +122,7 @@ public class Transmedik {
         let vc = UIStoryboard(name: "Transmedik", bundle: AppSettings.bundleframeworks()).instantiateViewController(withIdentifier: "HomeViewController") as? HomeViewController
         vc?.presentPage = present
         if present == .navigation{
+            
             view.navigationController?.pushViewController(vc!, animated: true)
         }else{
             view.present(vc!, animated: true, completion: nil)

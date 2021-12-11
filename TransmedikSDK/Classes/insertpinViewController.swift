@@ -76,7 +76,7 @@ class insertpinViewController: UIViewController, openchatfromdoku {
                 print(self.pintext)
                 Transmedik.checkpin(token: token, pin: self.pintext) { (status, msg) in
                     if msg == "Unauthenticated."{
-                        let vc = UIStoryboard(name: "Notification", bundle: AppSettings.bundleframework).instantiateViewController(withIdentifier: "loadingsuccessViewController") as? loadingsuccessViewController
+                        let vc = UIStoryboard(name: "Notification", bundle: AppSettings.bundleframeworks()).instantiateViewController(withIdentifier: "loadingsuccessViewController") as? loadingsuccessViewController
                         UserDefaults.standard.set(true, forKey: "logout")
                         vc?.status =  "gagal login"
                         vc?.delegate = self

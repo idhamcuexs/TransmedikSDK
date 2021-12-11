@@ -148,7 +148,7 @@ class PembayaranobatViewController: UIViewController {
         if let token = UserDefaults.standard.string(forKey: AppSettings.Tokentransmedik){
             self.getmoney.confirmConsult(token: token) { (msg, data, status) in
                 if msg == "Unauthenticated."{
-                    let vc = UIStoryboard(name: "Notification", bundle: AppSettings.bundleframework).instantiateViewController(withIdentifier: "loadingsuccessViewController") as? loadingsuccessViewController
+                    let vc = UIStoryboard(name: "Notification", bundle: AppSettings.bundleframeworks()).instantiateViewController(withIdentifier: "loadingsuccessViewController") as? loadingsuccessViewController
                     UserDefaults.standard.set(true, forKey: "logout")
                     vc?.status =  "gagal login"
                     vc?.delegate = self
@@ -179,14 +179,14 @@ class PembayaranobatViewController: UIViewController {
     
     @objc func getotherpay(){
         print("getotherpay")
-        let vc = UIStoryboard(name: "Orderobat", bundle: AppSettings.bundleframework).instantiateViewController(withIdentifier: "metoderpembayaranViewController") as? metoderpembayaranViewController
+        let vc = UIStoryboard(name: "Orderobat", bundle: AppSettings.bundleframeworks()).instantiateViewController(withIdentifier: "metoderpembayaranViewController") as? metoderpembayaranViewController
             vc?.delegate = self
         present(vc!, animated: false, completion: nil)
         
     }
     
     @IBAction func setcode(_ sender: Any) {
-        let vc = UIStoryboard(name: "Categoryobat", bundle: AppSettings.bundleframework).instantiateViewController(withIdentifier: "includevoucherobatViewController") as? includevoucherobatViewController
+        let vc = UIStoryboard(name: "Categoryobat", bundle: AppSettings.bundleframeworks()).instantiateViewController(withIdentifier: "includevoucherobatViewController") as? includevoucherobatViewController
         vc?.code = promo.text ?? ""
         vc?.delegate = self
         present(vc!, animated: false, completion: nil)
@@ -237,7 +237,7 @@ extension PembayaranobatViewController {
     @objc func konfirmasiaction(){
         
         if dompet{
-            let vc = UIStoryboard(name: "pinandpassword", bundle: AppSettings.bundleframework).instantiateViewController(withIdentifier: "insertpinViewController") as? insertpinViewController
+            let vc = UIStoryboard(name: "pinandpassword", bundle: AppSettings.bundleframeworks()).instantiateViewController(withIdentifier: "insertpinViewController") as? insertpinViewController
             vc?.delegate = self
             self.present(vc!, animated: true, completion: nil)
         }else{
@@ -274,7 +274,7 @@ extension PembayaranobatViewController {
                     
                     if msg == "success"{
                         
-                        let vc = UIStoryboard(name: "Webviews", bundle: AppSettings.bundleframework).instantiateViewController(withIdentifier: "OpenpdfViewController") as? OpenpdfViewController
+                        let vc = UIStoryboard(name: "Webviews", bundle: AppSettings.bundleframeworks()).instantiateViewController(withIdentifier: "OpenpdfViewController") as? OpenpdfViewController
                         vc?.headers = "Pembayaran"
                         vc?.delegate = self
                         vc?.urlstring = url!
@@ -329,7 +329,7 @@ extension PembayaranobatViewController :pembayaranrincianobatViewControllerdeleg
     
     
     func close(_ msg: String, status: Bool) {
-        let vc = UIStoryboard(name: "Notification", bundle: AppSettings.bundleframework).instantiateViewController(withIdentifier: "loadingsuccessViewController") as? loadingsuccessViewController
+        let vc = UIStoryboard(name: "Notification", bundle: AppSettings.bundleframeworks()).instantiateViewController(withIdentifier: "loadingsuccessViewController") as? loadingsuccessViewController
         vc?.texts = status ? "Transaksi berhasil" : "Transaksi gagal"
         vc?.status =  status ? "berhasil" : "gagal"
         vc?.delegate = self
@@ -366,7 +366,7 @@ extension PembayaranobatViewController :pembayaranrincianobatViewControllerdeleg
                     DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
                         
                         UserDefaults.standard.set(true, forKey: "transaksi")
-                        let vc = UIStoryboard(name: "Notification", bundle: AppSettings.bundleframework).instantiateViewController(withIdentifier: "loadingsuccessViewController") as? loadingsuccessViewController
+                        let vc = UIStoryboard(name: "Notification", bundle: AppSettings.bundleframeworks()).instantiateViewController(withIdentifier: "loadingsuccessViewController") as? loadingsuccessViewController
                         vc?.texts = "Selamat! Transaksi Anda Berhasil"
                         self.present(vc!, animated: false, completion: nil)
                         DispatchQueue.main.asyncAfter(deadline: .now() + 3 ) {
@@ -404,7 +404,7 @@ extension PembayaranobatViewController :pembayaranrincianobatViewControllerdeleg
                     self.Voucher.getvoucher(token: token, code: data, type: 2) { (status, msg, datatmp) in
                         //
                         if msg == "Unauthenticated."{
-                            let vc = UIStoryboard(name: "Notification", bundle: AppSettings.bundleframework).instantiateViewController(withIdentifier: "loadingsuccessViewController") as? loadingsuccessViewController
+                            let vc = UIStoryboard(name: "Notification", bundle: AppSettings.bundleframeworks()).instantiateViewController(withIdentifier: "loadingsuccessViewController") as? loadingsuccessViewController
                             UserDefaults.standard.set(true, forKey: "logout")
                             vc?.status =  "gagal login"
                             vc?.delegate = self

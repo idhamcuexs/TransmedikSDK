@@ -37,7 +37,7 @@ class detailklinikVc :UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        coll.register(UINib(nibName: "FaskessCollectionViewCell", bundle: AppSettings.bundleframework), forCellWithReuseIdentifier: "FaskessCollectionViewCell")
+        coll.register(UINib(nibName: "FaskessCollectionViewCell", bundle: AppSettings.bundleframeworks()), forCellWithReuseIdentifier: "FaskessCollectionViewCell")
         
         
         coll.delegate = self

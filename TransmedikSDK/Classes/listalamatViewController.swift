@@ -134,7 +134,7 @@ class listalamatViewController: UIViewController {
  
         
         
-        let vc = UIStoryboard(name: "Notification", bundle: AppSettings.bundleframework).instantiateViewController(withIdentifier: "NotificationcustomizeViewController") as? NotificationcustomizeViewController
+        let vc = UIStoryboard(name: "Notification", bundle: AppSettings.bundleframeworks()).instantiateViewController(withIdentifier: "NotificationcustomizeViewController") as? NotificationcustomizeViewController
         vc?.delegate = self
         rowhapus = row
         

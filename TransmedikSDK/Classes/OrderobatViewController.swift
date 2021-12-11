@@ -106,7 +106,7 @@ class OrderobatViewController: UIViewController,CLLocationManagerDelegate, lista
             return Toast.show(message: "Alamat pengiriman belum terisi.", controller: self)
         }
         
-        let vc = UIStoryboard(name: "Orderobat", bundle: AppSettings.bundleframework).instantiateViewController(withIdentifier: "PembayaranobatViewController") as? PembayaranobatViewController
+        let vc = UIStoryboard(name: "Orderobat", bundle: AppSettings.bundleframeworks()).instantiateViewController(withIdentifier: "PembayaranobatViewController") as? PembayaranobatViewController
         vc?.data = self.data
         vc?.selectCour = self.selectcour
         vc?.mylocation = self.location
@@ -182,7 +182,7 @@ class OrderobatViewController: UIViewController,CLLocationManagerDelegate, lista
     }
     
     @objc func setalamat(){
-        let vc = UIStoryboard(name: "Alamat", bundle: AppSettings.bundleframework).instantiateViewController(withIdentifier: "listalamatViewController") as? listalamatViewController
+        let vc = UIStoryboard(name: "Alamat", bundle: AppSettings.bundleframeworks()).instantiateViewController(withIdentifier: "listalamatViewController") as? listalamatViewController
         vc?.delegate = self
         vc?.tambahalamat = false
         present(vc!, animated: true, completion: nil)

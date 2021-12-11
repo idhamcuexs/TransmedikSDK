@@ -27,7 +27,7 @@ class fasilitaskesehatanVC: UIViewController,UITextFieldDelegate {
         self.view.layoutIfNeeded()
 //        let frameworkBundleID  = "id.netkrom.transmedik"
 //        let bundle = Bundle(identifier: AppSettings.frameworkBundleID)
-        collection.register(UINib(nibName: "FaskessCollectionViewCell", bundle: AppSettings.bundleframework), forCellWithReuseIdentifier: "FaskessCollectionViewCell")
+        collection.register(UINib(nibName: "FaskessCollectionViewCell", bundle: AppSettings.bundleframeworks()), forCellWithReuseIdentifier: "FaskessCollectionViewCell")
         
        
 

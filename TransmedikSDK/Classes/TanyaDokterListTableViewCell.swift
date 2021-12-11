@@ -16,7 +16,7 @@ class TanyaDokterListTableViewCell: UITableViewCell {
 
     static let identifier = "TanyaDokterListTableViewCell"
     static func nib() -> UINib {
-        return UINib(nibName: "TanyaDokterListTableViewCell", bundle: AppSettings.bundleframework)
+        return UINib(nibName: "TanyaDokterListTableViewCell", bundle: AppSettings.bundleframeworks())
     }
 
     

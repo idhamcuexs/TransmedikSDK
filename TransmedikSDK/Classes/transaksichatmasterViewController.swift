@@ -189,7 +189,7 @@ extension transaksichatmasterViewController : formsViewControllerdelegate,transa
 
     
     func form() {
-        let vc = UIStoryboard(name: "Form", bundle: AppSettings.bundleframework).instantiateViewController(withIdentifier: "newformsViewController") as? newformsViewController
+        let vc = UIStoryboard(name: "Form", bundle: AppSettings.bundleframeworks()).instantiateViewController(withIdentifier: "newformsViewController") as? newformsViewController
         vc?.list = list
         vc?.delegates = self
         vc?.spesialis = id ?? ""
@@ -210,7 +210,7 @@ extension transaksichatmasterViewController : formsViewControllerdelegate,transa
     
     func edit(data: ModelProfile , row: Int) {
   
-        let vc = UIStoryboard(name: "Edituser", bundle: AppSettings.bundleframework).instantiateViewController(withIdentifier: "edit_and_add_phrViewController") as? edit_and_add_phrViewController
+        let vc = UIStoryboard(name: "Edituser", bundle: AppSettings.bundleframeworks()).instantiateViewController(withIdentifier: "edit_and_add_phrViewController") as? edit_and_add_phrViewController
         vc?.delegate = self
         
         vc?.uuid = mdata[row].uuid

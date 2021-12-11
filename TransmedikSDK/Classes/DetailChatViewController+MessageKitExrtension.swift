@@ -107,7 +107,7 @@ extension DetailChatViewController: MessageCellDelegate {
                 }
                 else if msg.type == AppSettings.RESEP_DOKTER_TYPE {
                     
-                    let vcs = UIStoryboard(name: "Chat", bundle: AppSettings.bundleframework).instantiateViewController(withIdentifier: "ResepViewController") as? ResepViewController
+                    let vcs = UIStoryboard(name: "Chat", bundle: AppSettings.bundleframeworks()).instantiateViewController(withIdentifier: "ResepViewController") as? ResepViewController
                     vcs?.json = JSON(parseJSON: textItem)
                     vcs?.consultation = currentConsultation
                     self.present(vcs!, animated: true, completion: nil)
@@ -196,7 +196,7 @@ extension DetailChatViewController: MessageCellDelegate {
 
                 }
                 else if msg.type == AppSettings.IMAGE_TYPE {
-                    let vc = UIStoryboard(name: "Sizeimage", bundle: AppSettings.bundleframework).instantiateViewController(withIdentifier: "sizeimageViewController") as? sizeimageViewController
+                    let vc = UIStoryboard(name: "Sizeimage", bundle: AppSettings.bundleframeworks()).instantiateViewController(withIdentifier: "sizeimageViewController") as? sizeimageViewController
 
                     vc?.gambar = textItem.string
                    
@@ -205,7 +205,7 @@ extension DetailChatViewController: MessageCellDelegate {
                 
                 
                 else if msg.type == AppSettings.RESEP_DOKTER_TYPE {
-                    let vcs = UIStoryboard(name: "Chat", bundle: AppSettings.bundleframework).instantiateViewController(withIdentifier: "ResepViewController") as? ResepViewController
+                    let vcs = UIStoryboard(name: "Chat", bundle: AppSettings.bundleframeworks()).instantiateViewController(withIdentifier: "ResepViewController") as? ResepViewController
                     vcs?.json = JSON(parseJSON: textItem.string)
                     vcs?.consultation = currentConsultation
                     self.present(vcs!, animated: true, completion: nil)

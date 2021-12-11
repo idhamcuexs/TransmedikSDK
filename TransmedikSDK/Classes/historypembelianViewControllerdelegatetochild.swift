@@ -57,6 +57,7 @@ class historypembelianViewController: MYUIViewController,CLLocationManagerDelega
             delegate.lokasi(long: long ?? 0.0 , lat : lat ?? 0.0 ,alamat : alamat)
         }
     }
+    let log = Log()
     var data : [ModelHistories] = []
     var obat = Obat()
     var loading = false
@@ -99,7 +100,7 @@ class historypembelianViewController: MYUIViewController,CLLocationManagerDelega
     override func viewDidLoad() {
         super.viewDidLoad()
         self.view.backgroundColor = Colors.backgroundmaster
-
+        
         self.view.layoutIfNeeded()
         shadownavigation.shadownav(view: navi)
 

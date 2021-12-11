@@ -102,7 +102,7 @@ class DetailChatViewController: MessagesViewController, MessagesDataSource {
 //                appDelegate.setupParse()
 //                initializeMessages()
             }else{
-                let vc = UIStoryboard(name: "Chat", bundle: AppSettings.bundleframework).instantiateViewController(withIdentifier: "notifViewController") as? notifViewController
+                let vc = UIStoryboard(name: "Chat", bundle: AppSettings.bundleframeworks()).instantiateViewController(withIdentifier: "notifViewController") as? notifViewController
                 self.present(vc!, animated: false, completion: nil)
             }
            
@@ -267,7 +267,7 @@ class DetailChatViewController: MessagesViewController, MessagesDataSource {
     
     @objc
     func detail (){
-        let vc =  UIStoryboard(name: "Chat", bundle: AppSettings.bundleframework).instantiateViewController(withIdentifier: "extensionchatdetailViewController") as? extensionchatdetailViewController
+        let vc =  UIStoryboard(name: "Chat", bundle: AppSettings.bundleframeworks()).instantiateViewController(withIdentifier: "extensionchatdetailViewController") as? extensionchatdetailViewController
 //        vc?.consultationEnded = self.consultationEnded
         vc?.currentConsultation = self.currentConsultation
         vc?.delegate = self
@@ -391,7 +391,7 @@ class DetailChatViewController: MessagesViewController, MessagesDataSource {
     }
     
     @objc func getjawaban(){
-        let vc =  UIStoryboard(name: "Form", bundle: AppSettings.bundleframework).instantiateViewController(withIdentifier: "FormjawabViewController") as? FormjawabViewController
+        let vc =  UIStoryboard(name: "Form", bundle: AppSettings.bundleframeworks()).instantiateViewController(withIdentifier: "FormjawabViewController") as? FormjawabViewController
         vc?.id = String(currentConsultation?.consultation_id ?? 0)
         present(vc!, animated: true, completion: nil)
 

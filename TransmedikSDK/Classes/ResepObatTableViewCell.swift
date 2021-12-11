@@ -18,7 +18,7 @@ class ResepObatTableViewCell: UITableViewCell {
     static let identifier = "ResepObatTableViewCell"
     
     static func nib() -> UINib {
-        return UINib(nibName: "ResepObatTableViewCell", bundle: AppSettings.bundleframework)
+        return UINib(nibName: "ResepObatTableViewCell", bundle: AppSettings.bundleframeworks())
     }
     
     override func awakeFromNib() {

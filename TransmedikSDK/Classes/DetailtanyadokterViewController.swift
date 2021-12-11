@@ -327,7 +327,7 @@ extension DetailtanyadokterViewController : UITableViewDelegate,UITableViewDataS
         guard let indextPath = tables.indexPathForRow(at: cell.center) else {return}
 
         if  data![indextPath.row].status_docter == "Online"{
-            let vc = UIStoryboard(name: "Chat", bundle: AppSettings.bundleframework).instantiateViewController(withIdentifier: "NewCheckConsulVC") as? NewCheckConsulVC
+            let vc = UIStoryboard(name: "Chat", bundle: AppSettings.bundleframeworks()).instantiateViewController(withIdentifier: "NewCheckConsulVC") as? NewCheckConsulVC
             vc?.header = header
             vc?.list = list
             vc?.isform = isform
@@ -344,7 +344,7 @@ extension DetailtanyadokterViewController : UITableViewDelegate,UITableViewDataS
     func detail(cell: UITableViewCell) {
         guard let indextPath = tables.indexPathForRow(at: cell.center) else {return}
        
-        let vc = UIStoryboard(name: "Profiledokter", bundle: AppSettings.bundleframework).instantiateViewController(withIdentifier: "NewProfileDokterVC") as? NewProfileDokterVC
+        let vc = UIStoryboard(name: "Profiledokter", bundle: AppSettings.bundleframeworks()).instantiateViewController(withIdentifier: "NewProfileDokterVC") as? NewProfileDokterVC
         vc?.header = header
         vc?.uuid = data![indextPath.row].uuid
         vc?.list = list
@@ -424,7 +424,7 @@ extension DetailtanyadokterViewController : UITableViewDelegate,UITableViewDataS
     
     @objc func filteracc(){
         if datafilter != nil {
-            let vc = UIStoryboard(name: "Tanyadokter", bundle: AppSettings.bundleframework).instantiateViewController(withIdentifier: "filerdokterViewController") as? filerdokterViewController
+            let vc = UIStoryboard(name: "Tanyadokter", bundle: AppSettings.bundleframeworks()).instantiateViewController(withIdentifier: "filerdokterViewController") as? filerdokterViewController
             vc?.datafilter = datafilter
             vc?.delegate = self
             present(vc!, animated: false, completion: nil)

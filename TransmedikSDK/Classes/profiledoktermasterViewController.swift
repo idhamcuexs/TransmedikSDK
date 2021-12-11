@@ -122,7 +122,7 @@ extension profiledoktermasterViewController : profiledokterchildViewControllerde
     }
     
     func chat() {
-        let vc = UIStoryboard(name: "Chat", bundle: AppSettings.bundleframework).instantiateViewController(withIdentifier: "NewCheckConsulVC") as? NewCheckConsulVC
+        let vc = UIStoryboard(name: "Chat", bundle: AppSettings.bundleframeworks()).instantiateViewController(withIdentifier: "NewCheckConsulVC") as? NewCheckConsulVC
         vc?.list = list
         vc?.header = header
 //        vc?.valueform = valueform

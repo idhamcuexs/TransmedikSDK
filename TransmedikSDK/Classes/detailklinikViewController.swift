@@ -122,7 +122,7 @@ extension detailklinikViewController : UICollectionViewDelegate,UICollectionView
 
                         
                         if msg == "Unauthenticated."{
-                            let vc = UIStoryboard(name: "Notification", bundle: AppSettings.bundleframework).instantiateViewController(withIdentifier: "loadingsuccessViewController") as? loadingsuccessViewController
+                            let vc = UIStoryboard(name: "Notification", bundle: AppSettings.bundleframeworks()).instantiateViewController(withIdentifier: "loadingsuccessViewController") as? loadingsuccessViewController
                             UserDefaults.standard.set(true, forKey: "logout")
                             vc?.status =  "gagal login"
                             
@@ -134,7 +134,7 @@ extension detailklinikViewController : UICollectionViewDelegate,UICollectionView
                         
                         self.list = data
                         DispatchQueue.main.asyncAfter(deadline: .now() + 0.7) {
-                            let vc = UIStoryboard(name: "Tanyadokter", bundle: AppSettings.bundleframework).instantiateViewController(withIdentifier: "DetailtanyadokterViewController") as? DetailtanyadokterViewController
+                            let vc = UIStoryboard(name: "Tanyadokter", bundle: AppSettings.bundleframeworks()).instantiateViewController(withIdentifier: "DetailtanyadokterViewController") as? DetailtanyadokterViewController
                             vc?.id = self.tanyadokter[indexPath.row].slug
                             vc?.header = self.tanyadokter[indexPath.row].name
                             vc?.facilityid = self.id
@@ -148,7 +148,7 @@ extension detailklinikViewController : UICollectionViewDelegate,UICollectionView
                 }
             
         }else{
-            let vc = UIStoryboard(name: "Tanyadokter", bundle: AppSettings.bundleframework).instantiateViewController(withIdentifier: "DetailtanyadokterViewController") as? DetailtanyadokterViewController
+            let vc = UIStoryboard(name: "Tanyadokter", bundle: AppSettings.bundleframeworks()).instantiateViewController(withIdentifier: "DetailtanyadokterViewController") as? DetailtanyadokterViewController
             vc?.id = self.tanyadokter[indexPath.row].slug
             vc?.header = self.tanyadokter[indexPath.row].name
             vc?.facilityid = self.id

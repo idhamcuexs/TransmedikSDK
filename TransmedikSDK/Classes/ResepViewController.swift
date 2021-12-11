@@ -14,6 +14,7 @@ import CDAlertView
 class ResepViewController: UIViewController,UITextViewDelegate {
 
     
+    @IBOutlet weak var navi: UIView!
     @IBOutlet weak var header: UILabel!
     @IBOutlet weak var back: UIView!
     
@@ -32,6 +33,9 @@ class ResepViewController: UIViewController,UITextViewDelegate {
     @IBOutlet weak var tinggiTable: NSLayoutConstraint!
     @IBOutlet weak var tglExp: UILabel!
     
+    @IBOutlet weak var view1: UIView!
+    @IBOutlet weak var view2: UIView!
+    @IBOutlet weak var view3: UIView!
     
     @IBOutlet weak var viewAlamat: UIView!
     @IBOutlet weak var alamat: UITextView!
@@ -52,14 +56,27 @@ class ResepViewController: UIViewController,UITextViewDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.view.layoutIfNeeded()
+        self.view.backgroundColor = Colors.backgroundmaster
         pasienPhoto.layer.cornerRadius = 25
         doctorPhoto.layer.cornerRadius = 30
         alamat.delegate = self
         registerTableView()
         tables.dataSource = self
         tables.delegate = self
+        navi.dropShadow(shadowColor: UIColor.lightGray, fillColor: UIColor.white, opacity: 0.5, offset: CGSize(width: 2, height: 2), radius: 4)
         viewAlamat.layer.cornerRadius = 10
         viewAlamat.dropShadow(shadowColor: UIColor.lightGray, fillColor: UIColor.white, opacity: 0.5, offset: CGSize(width: 2, height: 2), radius: 4)
+        view1.layer.cornerRadius = 10
+        view1.dropShadow(shadowColor: UIColor.lightGray, fillColor: UIColor.white, opacity: 0.5, offset: CGSize(width: 2, height: 2), radius: 4)
+
+        view2.layer.cornerRadius = 10
+        view2.dropShadow(shadowColor: UIColor.lightGray, fillColor: UIColor.white, opacity: 0.5, offset: CGSize(width: 2, height: 2), radius: 4)
+
+        
+        view3.layer.cornerRadius = 10
+        view3.dropShadow(shadowColor: UIColor.lightGray, fillColor: UIColor.white, opacity: 0.5, offset: CGSize(width: 2, height: 2), radius: 4)
+
+        
         tinggiTable.constant = tables.contentSize.height
         beli.layer.cornerRadius = 10
         back.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(kembali)))

@@ -81,7 +81,7 @@ class OpenpdfViewController: UIViewController, UIWebViewDelegate, openchatfromdo
                 if let token = UserDefaults.standard.string(forKey: AppSettings.Tokentransmedik){
                     self.payment.checkpayment(token: token, self.merchant_id!) { (status) in
                         self.status = status
-                        let vc = UIStoryboard(name: "Notification", bundle: AppSettings.bundleframework).instantiateViewController(withIdentifier: "loadingsuccessViewController") as? loadingsuccessViewController
+                        let vc = UIStoryboard(name: "Notification", bundle: AppSettings.bundleframeworks()).instantiateViewController(withIdentifier: "loadingsuccessViewController") as? loadingsuccessViewController
                         vc?.texts = status ? "Transaksi berhasil" : "Transaksi gagal"
                         vc?.status =  status ? "berhasil" : "gagal"
                         vc?.delegate = self

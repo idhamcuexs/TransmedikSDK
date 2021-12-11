@@ -29,7 +29,6 @@ target 'TransmedikSDK_Example' do
   pod 'SVPinView', '~> 1.0'
 #  pod 'ImagePickerWhatsApp', '~> 1.0.0'
   pod 'ImagePickerWhatsApp'
-
   pod 'DividerView', '3.0'
   pod 'YPImagePicker', '4.4.0'
   pod 'FloatRatingView', '~> 4'
