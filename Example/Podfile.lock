@@ -14,7 +14,6 @@ PODS:
   - Imaginary (5.0.0):
     - Cache (~> 6.0.0)
   - InputBarAccessoryView (4.2.2)
-  - IQKeyboardManagerSwift (6.5.6)
   - Kingfisher (5.15.8):
     - Kingfisher/Core (= 5.15.8)
   - Kingfisher/Core (5.15.8)
@@ -58,7 +57,6 @@ PODS:
     - ESTabBarController-swift (~> 2.8.0)
     - FloatRatingView (~> 4)
     - FSPagerView (~> 0.8.3)
-    - IQKeyboardManagerSwift (~> 6.5.6)
     - Kingfisher (~> 5.15.8)
     - Lightbox (~> 2.5.0)
     - lottie-ios (~> 2.5.0)
@@ -91,7 +89,6 @@ DEPENDENCIES:
   - ESTabBarController-swift (~> 2.8.0)
   - FloatRatingView (~> 4)
   - FSPagerView (~> 0.8.3)
-  - IQKeyboardManagerSwift (~> 6.5.6)
   - Kingfisher (~> 5.15.8)
   - Lightbox (~> 2.5.0)
   - lottie-ios
@@ -127,7 +124,6 @@ SPEC REPOS:
     - FSPagerView
     - Imaginary
     - InputBarAccessoryView
-    - IQKeyboardManagerSwift
     - Kingfisher
     - Lightbox
     - lottie-ios
@@ -167,7 +163,6 @@ SPEC CHECKSUMS:
   FSPagerView: 670405b2f18e2a87fa37f20b00de783e562c25a8
   Imaginary: cf5e3a7dd6ab1dcbd47ba8ce5edf2307c4e99eb3
   InputBarAccessoryView: 2b937602598e2fab3149f37f51dd7ad795653812
-  IQKeyboardManagerSwift: c7df9d2deb356c04522f5c4b7b6e4ce4d8ed94fe
   Kingfisher: a3c03d702433fa6cfedabb2bddbe076fb8f2e902
   Lightbox: cc3d5124f024fa8197fd23f913160db1c61a1852
   lottie-ios: a50d5c0160425cd4b01b852bb9578963e6d92d31
@@ -185,10 +180,10 @@ SPEC CHECKSUMS:
   SwiftyCodeView: 0252e3520749a3fda1a9b141873401f8e6c570ad
   SwiftyJSON: 36413e04c44ee145039d332b4f4e2d3e8d6c4db7
   SwipeCellKit: 3972254a826da74609926daf59b08d6c72e619ea
-  TransmedikSDK: ccced809daeb0883e82ed7754ed6d3d9ea70964c
+  TransmedikSDK: fa936084a1a279d2bf139df326d964ede3d440e0
   URLEmbeddedView: 3fe17ae535d2b8d38c3b08ab8ba0aea5efe5d1cd
   YPImagePicker: 15aed8bcaa4dad976e11b6114126d731a2f9f3c9
 
-PODFILE CHECKSUM: 4a3cf799015d19f8aa081188833e01ca007007c6
+PODFILE CHECKSUM: 8fc223a9ccc020da6d63a792e10428677c641b64
 
 COCOAPODS: 1.10.0

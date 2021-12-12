@@ -36,7 +36,7 @@ Pod::Spec.new do |s|
     s.dependency 'MessageKit', '~> 3.0.0'
     s.dependency 'Kingfisher', '~> 5.15.8'
     s.dependency 'FSPagerView', '~> 0.8.3'
-    s.dependency 'IQKeyboardManagerSwift', '~> 6.5.6'
+#    s.dependency 'IQKeyboardManagerSwift', '~> 6.5.6'
     s.dependency 'SwiftyCodeView', '~> 0.3.6'
     s.dependency 'DropDown', '~> 2.3.13'
     s.dependency 'MessageInputBar', '~> 0.4.0'
