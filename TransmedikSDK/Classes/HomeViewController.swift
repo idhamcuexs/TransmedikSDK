@@ -189,8 +189,8 @@ extension HomeViewController: UICollectionViewDataSource,UICollectionViewDelegat
                 
                 
             case 2:
-                let vc = UIStoryboard(name: "History", bundle: AppSettings.bundleframeworks()).instantiateViewController(withIdentifier: "historypembelianViewController" ) as? historypembelianViewController
-                vc?.select = 1
+                let vc = UIStoryboard(name: "History", bundle: AppSettings.bundleframeworks()).instantiateViewController(withIdentifier: "NewHistoryViewController" ) as? NewHistoryViewController
+                vc?.selected = 1
                 vc?.presentPage = self.presentPage
                 openVC(vc!, self.presentPage)
 

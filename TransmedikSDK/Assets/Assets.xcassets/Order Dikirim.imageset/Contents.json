@@ -1,17 +1,17 @@
 {
   "images" : [
     {
-      "filename" : "Order Dikirim.png",
+      "filename" : "img_step_3.png",
       "idiom" : "universal",
       "scale" : "1x"
     },
     {
-      "filename" : "Order Dikirim@2x.png",
+      "filename" : "img_step_3@2x.png",
       "idiom" : "universal",
       "scale" : "2x"
     },
     {
-      "filename" : "Order Dikirim@3x.png",
+      "filename" : "img_step_3@3x.png",
       "idiom" : "universal",
       "scale" : "3x"
     }

@@ -11,8 +11,10 @@ import Kingfisher
 class NewProfileDokterVC: UIViewController {
 
     
+    @IBOutlet weak var navi: UIView!
     @IBOutlet weak var photo: UIImageView!
     
+    @IBOutlet weak var viewDetail: UIView!
     @IBOutlet weak var scroll: UIScrollView!
     @IBOutlet weak var nameDokter: UILabel!
     @IBOutlet weak var specialist: UILabel!
@@ -71,14 +73,18 @@ class NewProfileDokterVC: UIViewController {
      
     }
     func layout(){
+        navi.dropShadow(shadowColor: UIColor.lightGray, fillColor: UIColor.white, opacity: 0.5, offset: CGSize(width: 2, height: 2), radius: 4)
+        viewDetail.backgroundColor = Colors.backgroundmaster
         let url = URL(string: data.profile_picture ?? "")
+        self.view.backgroundColor = Colors.backgroundmaster
+        
         photo.kf.setImage(with: url)
         viewStatus.layer.cornerRadius = 6
         nameDokter.text = data.full_name
         specialist.text = header
         chatButton.layer.cornerRadius = 10
-        price.text = "Rp 0"
-        rate.text = "Rp \(Int(data!.rates)!.formattedWithSeparator)"
+        price.text = "Rp \(Int(data!.rates)!.formattedWithSeparator)"
+        rate.text = data!.rating
         pengalaman.text = data.experience
         viewInformation.layer.cornerRadius = 10
         viewInformation.dropShadow(shadowColor: UIColor.lightGray, fillColor: UIColor.white, opacity: 0.5, offset: CGSize(width: 2, height: 2), radius: 4)
@@ -102,17 +108,6 @@ class NewProfileDokterVC: UIViewController {
     
     @IBAction func chatOnClick(_ sender: Any) {
         
-//        let vc = UIStoryboard(name: "Chat", bundle: nil).instantiateViewController(withIdentifier: "NewCheckConsulVC") as? NewCheckConsulVC
-//        vc?.presentPage = presentPage
-//
-////        vc?.pageOrigin = .consulProfile
-////        vc?.fromprofile = true
-////        vc?.specialisttxt = data.specialist
-////        vc?.ratetxt = Int(data.rates)!
-////        vc?.uuiddoctor = data.uuid
-//        openVC(vc!, presentPage)
-////        present(vc!, animated: true, completion: nil)
-//
         let vc = UIStoryboard(name: "Chat", bundle: AppSettings.bundleframeworks()).instantiateViewController(withIdentifier: "NewCheckConsulVC") as? NewCheckConsulVC
         vc?.header = header
         vc?.list = list

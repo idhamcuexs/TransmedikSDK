@@ -1,17 +1,17 @@
 {
   "images" : [
     {
-      "filename" : "img_step_2.png",
+      "filename" : "E-mail.png",
       "idiom" : "universal",
       "scale" : "1x"
     },
     {
-      "filename" : "img_step_2@2x.png",
+      "filename" : "E-mail@2x.png",
       "idiom" : "universal",
       "scale" : "2x"
     },
     {
-      "filename" : "img_step_2@3x.png",
+      "filename" : "E-mail@3x.png",
       "idiom" : "universal",
       "scale" : "3x"
     }

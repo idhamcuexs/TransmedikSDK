@@ -39,7 +39,7 @@ class historiescellkonsulTableViewCell: UITableViewCell {
         super.awakeFromNib()
         views.layer.cornerRadius  = 13
         reChat.layer.cornerRadius = 10
-
+        reChat.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(ulang)))
         views.dropShadow(shadowColor: UIColor.lightGray, fillColor: UIColor.white, opacity: 0.5, offset: CGSize(width: 2, height: 2), radius: 4)
     }
 

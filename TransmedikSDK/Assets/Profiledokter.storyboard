@@ -24,7 +24,7 @@
         <!--Profiledokter View Controller-->
         <scene sceneID="UMl-oI-leZ">
             <objects>
-                <viewController storyboardIdentifier="ProfiledokterViewController" modalPresentationStyle="fullScreen" id="P92-I3-J4c" customClass="ProfiledokterViewController" customModule="transmedik" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="ProfiledokterViewController" modalPresentationStyle="fullScreen" id="P92-I3-J4c" customClass="ProfiledokterViewController" customModule="TransmedikSDK" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="fcF-0N-21j">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -375,7 +375,7 @@
         <!--Profiledoktermaster View Controller-->
         <scene sceneID="1cd-zo-5aI">
             <objects>
-                <viewController storyboardIdentifier="profiledoktermasterViewController" modalPresentationStyle="fullScreen" id="kEP-Fx-c43" customClass="profiledoktermasterViewController" customModule="transmedik" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="profiledoktermasterViewController" modalPresentationStyle="fullScreen" id="kEP-Fx-c43" customClass="profiledoktermasterViewController" customModule="TransmedikSDK" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="VuM-jH-LXt">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -488,7 +488,7 @@
         <!--Profiledokterchild View Controller-->
         <scene sceneID="yDn-dS-nTV">
             <objects>
-                <viewController id="ffV-6i-8ik" customClass="profiledokterchildViewController" customModule="transmedik" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="ffV-6i-8ik" customClass="profiledokterchildViewController" customModule="TransmedikSDK" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="d1b-Ah-nWe">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="700"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -930,7 +930,7 @@
         <!--New Profile DokterVC-->
         <scene sceneID="Pvs-6V-cjy">
             <objects>
-                <viewController storyboardIdentifier="NewProfileDokterVC" modalPresentationStyle="fullScreen" id="Mzg-EL-K20" customClass="NewProfileDokterVC" customModule="transmedik" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="NewProfileDokterVC" modalPresentationStyle="fullScreen" id="Mzg-EL-K20" customClass="NewProfileDokterVC" customModule="TransmedikSDK" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="aKe-Oa-Gac">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -1475,6 +1475,7 @@
                         <outlet property="alumni" destination="iPF-2a-uFl" id="uuK-ET-I8c"/>
                         <outlet property="chatButton" destination="AoJ-f2-ufZ" id="WTE-Cj-vC8"/>
                         <outlet property="nameDokter" destination="Rc8-x7-sGR" id="ICn-of-ygO"/>
+                        <outlet property="navi" destination="r5a-ng-h2u" id="shr-62-iYq"/>
                         <outlet property="nostr" destination="1Ls-nh-xca" id="J1h-To-bmC"/>
                         <outlet property="pengalaman" destination="dzF-dU-iD0" id="Hbl-8Q-odn"/>
                         <outlet property="photo" destination="iFK-WD-PUS" id="06V-05-VAr"/>
@@ -1484,6 +1485,7 @@
                         <outlet property="scroll" destination="lXS-v4-WDd" id="k26-Ax-rwE"/>
                         <outlet property="specialist" destination="6aa-2F-hZs" id="eGw-uZ-r5b"/>
                         <outlet property="status" destination="6KQ-8T-V1F" id="b2r-pc-mjT"/>
+                        <outlet property="viewDetail" destination="Z7O-hz-Bt7" id="NoH-lh-EPU"/>
                         <outlet property="viewInformation" destination="t7Q-nB-h2Y" id="TRm-ZM-Htx"/>
                         <outlet property="viewStatus" destination="fiH-cW-1w8" id="Ot9-Bp-XYt"/>
                     </connections>

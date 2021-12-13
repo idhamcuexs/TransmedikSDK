@@ -142,7 +142,7 @@
                                 <rect key="frame" x="0.0" y="44" width="414" height="756"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="konsultasi" rowHeight="218" id="Z47-Tp-Olr" customClass="historiescellkonsulTableViewCell" customModule="transmedik" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="konsultasi" rowHeight="218" id="Z47-Tp-Olr" customClass="historiescellkonsulTableViewCell" customModule="TransmedikSDK" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="24.5" width="414" height="218"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="Z47-Tp-Olr" id="25i-tJ-8sY">
@@ -591,7 +591,7 @@
         <!--New History View Controller-->
         <scene sceneID="0xu-qF-zPI">
             <objects>
-                <viewController storyboardIdentifier="NewHistoryViewController" modalPresentationStyle="fullScreen" id="qh4-5h-mGG" customClass="NewHistoryViewController" customModule="transmedik" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="NewHistoryViewController" modalPresentationStyle="fullScreen" id="qh4-5h-mGG" customClass="NewHistoryViewController" customModule="TransmedikSDK" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="3UE-uQ-mSf">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -676,7 +676,7 @@
                                 <rect key="frame" x="0.0" y="157" width="414" height="739"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="konsultasi" rowHeight="218" id="GMC-Kr-CeX" customClass="historiescellkonsulTableViewCell" customModule="transmedik" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="konsultasi" rowHeight="218" id="GMC-Kr-CeX" customClass="historiescellkonsulTableViewCell" customModule="TransmedikSDK" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="24.5" width="414" height="218"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="GMC-Kr-CeX" id="JPE-M0-VI5">
@@ -766,7 +766,7 @@
                                                                     </constraints>
                                                                     <preferredSymbolConfiguration key="preferredSymbolConfiguration" scale="medium" weight="semibold"/>
                                                                 </imageView>
-                                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="DR9-Et-feO">
+                                                                <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="DR9-Et-feO">
                                                                     <rect key="frame" x="264" y="2" width="120" height="36"/>
                                                                     <subviews>
                                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Chat ulang" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Swj-tk-5BX">
@@ -784,8 +784,9 @@
                                                                     <constraints>
                                                                         <constraint firstItem="Swj-tk-5BX" firstAttribute="centerY" secondItem="DR9-Et-feO" secondAttribute="centerY" id="0cF-ze-AiQ"/>
                                                                         <constraint firstAttribute="trailing" secondItem="Swj-tk-5BX" secondAttribute="trailing" constant="5" id="9ji-Er-11C"/>
+                                                                        <constraint firstAttribute="height" constant="36" id="KVa-Ny-CM7"/>
                                                                         <constraint firstItem="Swj-tk-5BX" firstAttribute="leading" secondItem="DR9-Et-feO" secondAttribute="leading" constant="5" id="Tpv-TW-9yw"/>
-                                                                        <constraint firstAttribute="width" secondItem="DR9-Et-feO" secondAttribute="height" multiplier="90:27" id="VAJ-sa-79W"/>
+                                                                        <constraint firstAttribute="width" constant="120" id="Xba-OH-afn"/>
                                                                     </constraints>
                                                                     <userDefinedRuntimeAttributes>
                                                                         <userDefinedRuntimeAttribute type="boolean" keyPath="isSkeletonable" value="YES"/>

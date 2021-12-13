@@ -510,10 +510,24 @@ extension NewHistoryViewController: historiescellkonsulTableViewCelldelegate,rat
     }
     
     func chatulang(row: Int) {
-        let vc = UIStoryboard(name: "Profiledokter", bundle: AppSettings.bundleframework).instantiateViewController(withIdentifier: "profiledoktermasterViewController") as? profiledoktermasterViewController
-        vc?.data = data[row].detail_consultation!.doctor
-        vc?.uuid = data[row].detail_consultation!.doctor.uuid
-        present(vc!, animated: true, completion: nil)
+//        let vc = UIStoryboard(name: "Profiledokter", bundle: AppSettings.bundleframework).instantiateViewController(withIdentifier: "NewProfileDokterVC") as? NewProfileDokterVC
+//        vc?.data = data[row].detail_consultation!.doctor
+//        vc?.uuid = data[row].detail_consultation!.doctor.uuid
+//        present(vc!, animated: true, completion: nil)
+//
+        
+//        let vc = UIStoryboard(name: "Profiledokter", bundle: AppSettings.bundleframeworks()).instantiateViewController(withIdentifier: "NewProfileDokterVC") as? NewProfileDokterVC
+//        vc?.header = data[row].detail_consultation!.doctor.
+//        vc?.uuid = data[row].detail_consultation!.doctor.uuid
+//        vc?.list = list
+//        vc?.isform = isform
+//        vc?.id = id
+//        vc?.data = self.data![indextPath.row]
+//        vc?.facilityid = facilityid!
+//        vc?.presentPage = self.presentPage
+//        openVC(vc!, presentPage)
+
+        
     }
     
     func nilai(row: Int) {

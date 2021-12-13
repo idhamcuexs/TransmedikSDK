@@ -21,6 +21,7 @@ class NewCheckConsulVC: UIViewController,UITextViewDelegate {
   
     @IBOutlet weak var navigation: UIView!
 
+    @IBOutlet weak var viewdetail: UIView!
     @IBOutlet weak var spesialis: UILabel!
     @IBOutlet weak var name: UILabel!
     @IBOutlet weak var photo: UIImageView!
@@ -164,6 +165,12 @@ class NewCheckConsulVC: UIViewController,UITextViewDelegate {
     func setDokter() {
         name.text = detaildokter.full_name
         spesialis.text = header
+        
+        if detaildokter.profile_picture != "" {
+            let url = URL(string: detaildokter.profile_picture)
+            photo.kf.setImage(with: url)
+        }
+        
         if statusDoctor {
             viewStatus.backgroundColor = Colors.buttonActive
             desStatus.text = "Available"
@@ -252,7 +259,7 @@ class NewCheckConsulVC: UIViewController,UITextViewDelegate {
         viewStatus.layer.cornerRadius = 8
         editProfileButton.layer.cornerRadius = 10
         self.view.backgroundColor = Colors.backgroundmaster
-       
+        viewdetail.backgroundColor = Colors.backgroundmaster
         
 
 
