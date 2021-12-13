@@ -42,7 +42,7 @@ class filerdokterViewController: UIViewController {
         table.bounces = false
         table.delegate = self
         table.dataSource = self
-        save.backgroundColor = Colors.basicvalue
+        save.backgroundColor = Colors.buttonActive
         kembali.layer.borderWidth = 1
         kembali.layer.borderColor = UIColor.init(rgb: 0xc4c4c4).cgColor
         textreset.textColor = .init(rgb: 0xc4c4c4)

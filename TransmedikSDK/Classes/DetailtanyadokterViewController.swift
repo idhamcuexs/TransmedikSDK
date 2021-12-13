@@ -44,6 +44,7 @@ class DetailtanyadokterViewController: UIViewController,UITextFieldDelegate {
     var actions = false
     var isform = false
     var presentPage : PresentPage!
+    var spinner = UIActivityIndicatorView(style: .gray)
 
     //tinggi
 
@@ -69,7 +70,7 @@ class DetailtanyadokterViewController: UIViewController,UITextFieldDelegate {
         collfilter.backgroundColor = Colors.backgroundmaster
         tables.bounces = false
         print("isform = > \(isform)" )
-
+        setupSpinner()
         
         back.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(backacc)))
 
@@ -132,6 +133,12 @@ class DetailtanyadokterViewController: UIViewController,UITextFieldDelegate {
         
         
     }
+    
+    func setupSpinner() {
+        spinner.frame = CGRect(x: CGFloat(0), y: CGFloat(0), width: self.tables.bounds.width, height: CGFloat(44))
+        self.tables.tableFooterView = spinner
+    }
+    
     
     func registercell(){
         tables.register(TanyaDokterListTableViewCell.nib(), forCellReuseIdentifier: TanyaDokterListTableViewCell.identifier)
@@ -228,21 +235,21 @@ class DetailtanyadokterViewController: UIViewController,UITextFieldDelegate {
     
     
     
-    func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
-
-        if loading && data != nil {
-            let rows = nextpage == nil ? data!.count - 2 : data!.count
-            
-            
-            if indexPath.row == rows  && !getdata{
-                self.tables.isScrollEnabled = false
-                DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
-                    self.add()
-                }
-            }
-        }
-        
-    }
+//    func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
+//
+//        if loading && data != nil {
+//            let rows = nextpage == nil ? data!.count - 2 : data!.count
+//
+//
+//            if indexPath.row == rows  && !getdata{
+//                self.tables.isScrollEnabled = false
+//                DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
+//                    self.add()
+//                }
+//            }
+//        }
+//
+//    }
     
     
     @objc func backacc(){
@@ -252,8 +259,10 @@ class DetailtanyadokterViewController: UIViewController,UITextFieldDelegate {
     
     
     func add(){
+        self.spinner.startAnimating()
         self.getdata = true
         self.funcspesial.specialistwithurl(token: self.token, url: self.nextpage!, filter: datafilter) { (data) in
+            self.spinner.stopAnimating()
             self.getdata = false
             if data != nil {
 //                self.tables.isScrollEnabled = false
@@ -426,6 +435,7 @@ extension DetailtanyadokterViewController : UITableViewDelegate,UITableViewDataS
         if datafilter != nil {
             let vc = UIStoryboard(name: "Tanyadokter", bundle: AppSettings.bundleframeworks()).instantiateViewController(withIdentifier: "filerdokterViewController") as? filerdokterViewController
             vc?.datafilter = datafilter
+            vc?.presentPage = self.presentPage
             vc?.delegate = self
             present(vc!, animated: false, completion: nil)
         }
@@ -437,3 +447,18 @@ extension DetailtanyadokterViewController : UITableViewDelegate,UITableViewDataS
     
     
 }
+
+extension DetailtanyadokterViewController: UIScrollViewDelegate {
+    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        print("uhuy")
+        if data != nil  && self.nextpage != nil{
+            let offsetY = scrollView.contentOffset.y
+            let contentHeight = scrollView.contentSize.height
+            
+            if offsetY > contentHeight - scrollView.frame.size.height {
+                self.add()
+            }
+        }
+    }
+}
+

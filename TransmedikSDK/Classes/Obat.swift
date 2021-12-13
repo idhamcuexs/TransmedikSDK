@@ -80,6 +80,44 @@ class Obat: NSObject {
     }
     
     
+    func orderComplited(token : String, id:String ,complited: @escaping(Bool,String?)->()){
+        
+        print(token)
+        let headers: HTTPHeaders = [
+            "Authorization": "Bearer \(token)",
+            "Accept": "application/json",
+            "Content-Type": "application/json"
+        ]
+        
+        let param : Parameters = [ "order_id_partner" : id]
+
+        let url = "\(AppSettings.Url)orders/complete"
+        
+        AF.request(url, method: .post, parameters: param,  encoding: JSONEncoding.default, headers: headers)
+            .responseJSON { respon in
+                print(respon)
+                switch respon.result {
+                case let .success(value):
+                    let json = JSON(value)
+                    print("uuuu")
+                    print(json["code"].stringValue)
+                    if json["code"].stringValue == "200"{
+                      
+                        complited(true,nil)
+                    }else{
+                        complited(false,json["messages"].stringValue )
+                        
+                    }
+                case let .failure(error):
+                    complited(false,"Terjadi masalah pada jaringan")
+                    
+                }
+                
+                
+        }
+        
+    }
+    
     func categoriesobat(token:String,complited: @escaping([ModelObat]?)->()){
         
       let headers: HTTPHeaders = [

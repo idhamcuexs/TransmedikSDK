@@ -516,12 +516,13 @@ extension NewHistoryViewController: historiescellkonsulTableViewCelldelegate,rat
 //        present(vc!, animated: true, completion: nil)
 //
         
+        
 //        let vc = UIStoryboard(name: "Profiledokter", bundle: AppSettings.bundleframeworks()).instantiateViewController(withIdentifier: "NewProfileDokterVC") as? NewProfileDokterVC
-//        vc?.header = data[row].detail_consultation!.doctor.
+//        vc?.header = data[row].detail_consultation!.doctor.specialist
 //        vc?.uuid = data[row].detail_consultation!.doctor.uuid
-//        vc?.list = list
-//        vc?.isform = isform
-//        vc?.id = id
+////        vc?.list = list
+//        vc?.isform = data[row].de
+//        vc?.id = data[row].detail_consultation!.doctor.specialist_slug
 //        vc?.data = self.data![indextPath.row]
 //        vc?.facilityid = facilityid!
 //        vc?.presentPage = self.presentPage

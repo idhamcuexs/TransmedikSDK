@@ -112,7 +112,7 @@ extension HomeViewController: UICollectionViewDataSource,UICollectionViewDelegat
                            
 
                             UserDefaults.standard.removeObject(forKey: AppSettings.ON_CHAT)
-                            Toast.show(message: "Konsultasi sudah berakhir", controller: self)
+//                            Toast.show(message: "Konsultasi sudah berakhir", controller: self)
                             DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
 
                                 let vc = UIStoryboard(name: "Fasilitaskesehatan", bundle: AppSettings.bundleframeworks()).instantiateViewController(withIdentifier: "fasilitaskesehatanViewController" ) as? fasilitaskesehatanViewController

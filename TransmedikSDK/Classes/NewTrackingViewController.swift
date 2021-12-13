@@ -72,6 +72,19 @@ class NewTrackingViewController: UIViewController {
         keluar(view: page)
     }
     
+    
+    @IBAction func compliteOrderOnClick(_ sender: Any) {
+        guard let token = UserDefaults.standard.string(forKey: AppSettings.Tokentransmedik) else {return }
+        
+        obat.orderComplited(token: token, id: data.order_id_partner!) { status, msg in
+            if status{
+                self.kurirViewButton.isHidden.toggle()
+            }else{
+                Toast.show(message: msg!, controller: self)
+            }
+        }
+    }
+    
     func layout(){
         self.Tables.delegate = self
         self.Tables.dataSource = self
@@ -90,6 +103,7 @@ class NewTrackingViewController: UIViewController {
         viewDetail.layer.cornerRadius = 10
         nav.dropShadow(shadowColor: UIColor.lightGray, fillColor: UIColor.white, opacity: 0.5, offset: CGSize(width: 2, height: 2), radius: 4)
         viewDetail.dropShadow(shadowColor: UIColor.lightGray, fillColor: UIColor.white, opacity: 0.5, offset: CGSize(width: 2, height: 2), radius: 4)
+
         point1.layer.cornerRadius =  point1.frame.height / 2
        point2.layer.cornerRadius = point1.frame.height / 2
         point3.layer.cornerRadius = point1.frame.height / 2
@@ -113,8 +127,13 @@ class NewTrackingViewController: UIViewController {
                         self.total.text = data!.total_order
                         self.biayaPengiriman.text  = data!.shipping_fee
                         let diskons = data!.voucher_amount ?? 0
-                        self.namaDriver.text = data!.couriers?.name ?? "kurir name"
-                        self.plat.text = data!.couriers?.vehicle_number ?? "D12313DF"
+                        self.namaDriver.text = data!.couriers?.name ?? ""
+                        self.plat.text = data!.couriers?.vehicle_number ?? ""
+                        if data!.couriers?.tracking_url == nil || data!.couriers?.tracking_url == "" {
+                            self.lacakDriver.isHidden = true
+                        }else{
+                            self.lacakDriver.isHidden = false
+                        }
                         self.diskon.text = "Rp.\(diskons.formattedWithSeparator)"
                         self.total.text = data!.total
                         self.penerima.text = data!.consignee

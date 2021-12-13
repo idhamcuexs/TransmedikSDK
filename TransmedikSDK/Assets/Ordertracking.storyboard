@@ -21,7 +21,7 @@
         <!--Ordertrackingtransaksi View Controller-->
         <scene sceneID="8Rw-xO-DuB">
             <objects>
-                <viewController storyboardIdentifier="ordertrackingtransaksiViewController" modalPresentationStyle="fullScreen" id="0Qc-vx-RV3" customClass="ordertrackingtransaksiViewController" customModule="transmedik" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="ordertrackingtransaksiViewController" modalPresentationStyle="fullScreen" id="0Qc-vx-RV3" customClass="ordertrackingtransaksiViewController" customModule="TransmedikSDK" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="9vp-tC-ENF">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -329,7 +329,7 @@
                                                                     <constraint firstAttribute="height" constant="100" id="914-8t-plc"/>
                                                                 </constraints>
                                                                 <prototypes>
-                                                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="cell" id="USF-HM-L3I" customClass="ordertrackingtransaksiTableViewCell" customModule="transmedik" customModuleProvider="target">
+                                                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="cell" id="USF-HM-L3I" customClass="ordertrackingtransaksiTableViewCell" customModule="TransmedikSDK" customModuleProvider="target">
                                                                         <rect key="frame" x="0.0" y="24.5" width="364" height="44.5"/>
                                                                         <autoresizingMask key="autoresizingMask"/>
                                                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="USF-HM-L3I" id="bYk-jQ-yIX">
@@ -767,7 +767,7 @@
         <!--New Tracking View Controller-->
         <scene sceneID="Tqc-Zm-vTr">
             <objects>
-                <viewController storyboardIdentifier="NewTrackingViewController" modalPresentationStyle="fullScreen" id="Rog-Sq-gfc" customClass="NewTrackingViewController" customModule="transmedik" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="NewTrackingViewController" modalPresentationStyle="fullScreen" id="Rog-Sq-gfc" customClass="NewTrackingViewController" customModule="TransmedikSDK" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="mgf-zn-VKb">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -814,7 +814,7 @@
                                                             <constraint firstAttribute="height" constant="100" id="6lk-Gx-xOh"/>
                                                         </constraints>
                                                         <prototypes>
-                                                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="cell" id="nad-LG-RFw" customClass="ordertrackingtransaksiTableViewCell" customModule="transmedik" customModuleProvider="target">
+                                                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="cell" id="nad-LG-RFw" customClass="ordertrackingtransaksiTableViewCell" customModule="TransmedikSDK" customModuleProvider="target">
                                                                 <rect key="frame" x="0.0" y="24.5" width="354" height="44"/>
                                                                 <autoresizingMask key="autoresizingMask"/>
                                                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="nad-LG-RFw" id="bYu-Sh-NuA">
@@ -1040,7 +1040,7 @@
                                                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="iyo-Dz-WMr">
                                                                                 <rect key="frame" x="0.0" y="64" width="384" height="103"/>
                                                                                 <subviews>
-                                                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Kurir" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Rpe-WE-YsQ">
+                                                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Rpe-WE-YsQ">
                                                                                         <rect key="frame" x="80" y="10" width="289" height="22"/>
                                                                                         <constraints>
                                                                                             <constraint firstAttribute="height" constant="22" id="KBA-eM-4OH"/>
@@ -1049,8 +1049,8 @@
                                                                                         <nil key="textColor"/>
                                                                                         <nil key="highlightedColor"/>
                                                                                     </label>
-                                                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" adjustsFontForContentSizeCategory="YES" translatesAutoresizingMaskIntoConstraints="NO" id="DY6-kz-ILU">
-                                                                                        <rect key="frame" x="80" y="32" width="31.5" height="22"/>
+                                                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" adjustsFontForContentSizeCategory="YES" translatesAutoresizingMaskIntoConstraints="NO" id="DY6-kz-ILU">
+                                                                                        <rect key="frame" x="80" y="32" width="0.0" height="22"/>
                                                                                         <constraints>
                                                                                             <constraint firstAttribute="height" constant="22" id="eIZ-OT-Ffe"/>
                                                                                         </constraints>
@@ -1103,6 +1103,9 @@
                                                                                         <state key="normal" title="Terima Barang">
                                                                                             <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                                         </state>
+                                                                                        <connections>
+                                                                                            <action selector="compliteOrderOnClick:" destination="Rog-Sq-gfc" eventType="touchUpInside" id="Xr1-U0-gdb"/>
+                                                                                        </connections>
                                                                                     </button>
                                                                                 </subviews>
                                                                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -1289,7 +1292,7 @@
                                                 </constraints>
                                             </view>
                                         </subviews>
-                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
                                             <constraint firstAttribute="trailing" secondItem="FIT-Eq-Anf" secondAttribute="trailing" constant="15" id="J2m-bG-Qic"/>
                                             <constraint firstAttribute="trailing" secondItem="yzC-ht-zEd" secondAttribute="trailing" id="bpf-Se-Dew"/>
