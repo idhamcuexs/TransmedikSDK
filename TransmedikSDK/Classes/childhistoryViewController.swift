@@ -57,7 +57,7 @@ class childhistoryViewController: UIViewController {
     override func viewDidAppear(_ animated: Bool) {
         if UserDefaults.standard.bool(forKey: "transaksi"){
             self.getdata()
-            print("ambil data")
+//            print("ambil data")
             UserDefaults.standard.removeObject(forKey: "transaksi")
         }
         
@@ -68,7 +68,7 @@ class childhistoryViewController: UIViewController {
         if CheckInternet.Connection(){
             self.loading(self)
             if uuid != "" && !getdatahistory{
-                print("data baru")
+//                print("data baru")
                 
                 data.removeAll()
                 self.table.reloadData()
@@ -82,7 +82,7 @@ class childhistoryViewController: UIViewController {
                             
                             self.closeloading(self)
                             self.nextpage = nextsp
-                            print("datanext => " + nextsp)
+//                            print("datanext => " + nextsp)
                             if nextsp == ""{
                                 self.loading = false
                                 
@@ -136,7 +136,7 @@ class childhistoryViewController: UIViewController {
     func adddata(){
         if CheckInternet.Connection(){
             if  !getdatahistory{
-                print("tambahdata")
+//                print("tambahdata")
           
                 let rowakhir = self.data.count
                 self.delegate.getdata(status: true)
@@ -149,13 +149,13 @@ class childhistoryViewController: UIViewController {
 
                             
                             if data != nil {
-                                print("End get data")
-                                print(data?.count)
+//                                print("End get data")
+//                                print(data?.count)
                                 
                                 self.table.isScrollEnabled = false
                                 self.table.beginUpdates()
                                 for index in data!{
-                                    print("add row data")
+//                                    print("add row data")
                                     
                                     self.data.append(index)
                                     
@@ -179,7 +179,7 @@ class childhistoryViewController: UIViewController {
                                 self.delegate.getdata(status: false)
                                 self.table.isScrollEnabled = true
                                 
-                                print("load")
+//                                print("load")
                                 
                                 
                                 
@@ -220,7 +220,7 @@ class childhistoryViewController: UIViewController {
         tglformat.dateFormat = "dd"
         let tgl = tglformat.string(from: dates)
         
-        print( "ini bulan \(bulan)")
+//        print( "ini bulan \(bulan)")
         
         switch Int(bulan) {
         case 1:
@@ -295,18 +295,18 @@ extension childhistoryViewController : UITableViewDelegate,UITableViewDataSource
         //    historiescellobatTableViewCell
         
         if loading {
-            print("loading true")
+//            print("loading true")
             return data.count == 0 ? 1 : data.count + 1
         }else{
-            print("loading false")
+//            print("loading false")
             return data.count
         }
     }
     
     func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
-        print("row => \(indexPath.row) =>>>\(self.data.count) ")
-        print( self.loading)
-        print(self.nextpage)
+//        print("row => \(indexPath.row) =>>>\(self.data.count) ")
+//        print( self.loading)
+//        print(self.nextpage)
         if self.loading && self.nextpage != "" &&  self.data.count > 0 {
             let rows = self.data.count - 2
             if indexPath.row == rows  {
@@ -324,8 +324,8 @@ extension childhistoryViewController : UITableViewDelegate,UITableViewDataSource
             openVC(vc!, present)
               
         }else{
-            print("masuk")
-            print(data[indexPath.row].detail_consultation!.consultation_id)
+//            print("masuk")
+//            print(data[indexPath.row].detail_consultation!.consultation_id)
             self.query = ConsultationModel.query()
             self.query = self.query.whereKey("consultation_id", equalTo: Int(data[indexPath.row].detail_consultation!.consultation_id))
             
@@ -419,67 +419,68 @@ extension childhistoryViewController : UITableViewDelegate,UITableViewDataSource
  
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        print("selected = >>\(selected) loading=> \(loading)")
-        if loading{
-            if data.count == 0{
-                let cell = tableView.dequeueReusableCell(withIdentifier: "loading", for: indexPath)
-                return cell
-            }else{
-                if indexPath.row < data.count{
-                    if data[indexPath.row].type_history == "2" {
-                        let cell = tableView.dequeueReusableCell(withIdentifier: "konsultasi", for: indexPath) as! historiescellkonsulTableViewCell
-                        cell.row = indexPath.row
-                        cell.delegate = self
-                        cell.historyTwo(data: data[indexPath.row])
-
-                        return cell
-                    }else{
-                        let cell = tableView.dequeueReusableCell(withIdentifier: "konsultasi", for: indexPath) as! historiescellkonsulTableViewCell
-                        cell.row = indexPath.row
-                        cell.delegate = self
-                        cell.historyOne(data: data[indexPath.row])
-
-                        return cell
-                    }
-                }else{
-                    let cell = tableView.dequeueReusableCell(withIdentifier: "loading", for: indexPath)
-                    return cell
-                }
-            }
-            
-        }else{
-            print("pathrow")
-            if data[indexPath.row].type_history == "2" {
-                let cell = tableView.dequeueReusableCell(withIdentifier: "konsultasi", for: indexPath) as! historiescellkonsulTableViewCell
-                cell.row = indexPath.row
-                cell.delegate = self
-                cell.historyTwo(data: data[indexPath.row])
-
-                return cell
-            }else{
-                let cell = tableView.dequeueReusableCell(withIdentifier: "konsultasi", for: indexPath) as! historiescellkonsulTableViewCell
-                cell.row = indexPath.row
-                cell.delegate = self
-                cell.historyOne(data: data[indexPath.row])
-
-                return cell
-                
+////        print("selected = >>\(selected) loading=> \(loading)")
+//        if loading{
+//            if data.count == 0{
+//                let cell = tableView.dequeueReusableCell(withIdentifier: "loading", for: indexPath)
+//                return cell
+//            }else{
+//                if indexPath.row < data.count{
+//                    if data[indexPath.row].type_history == "2" {
+//                        let cell = tableView.dequeueReusableCell(withIdentifier: "konsultasi", for: indexPath) as! historiescellkonsulTableViewCell
+//                        cell.row = indexPath.row
+//                        cell.delegate = self
+//                        cell.historyTwo(data: data[indexPath.row])
 //
-//                let cell = tableView.dequeueReusableCell(withIdentifier: "pembelian", for: indexPath) as! historiescellobatTableViewCell
+//                        return cell
+//                    }else{
+//                        let cell = tableView.dequeueReusableCell(withIdentifier: "konsultasi", for: indexPath) as! historiescellkonsulTableViewCell
+//                        cell.row = indexPath.row
+//                        cell.delegate = self
+//                        cell.historyOne(data: data[indexPath.row])
+//
+//                        return cell
+//                    }
+//                }else{
+//                    let cell = tableView.dequeueReusableCell(withIdentifier: "loading", for: indexPath)
+//                    return cell
+//                }
+//            }
+//
+//        }else{
+////            print("pathrow")
+//            if data[indexPath.row].type_history == "2" {
+//                let cell = tableView.dequeueReusableCell(withIdentifier: "konsultasi", for: indexPath) as! historiescellkonsulTableViewCell
 //                cell.row = indexPath.row
-//                cell.namadokter.text = data[indexPath.row].detail_medicine[0].name
-//                cell.backgroundColor = UIColor.clear
-//                cell.statustext(status: data[indexPath.row].status)
-//                cell.total.text = currency(data[indexPath.row].total)
-//                cell.waktu.text = getday(waktu: data[indexPath.row].transaction_date)
-//
+//                cell.delegate = self
+//                cell.historyTwo(data: data[indexPath.row])
 //
 //                return cell
-            }
-        }
+//            }else{
+//                let cell = tableView.dequeueReusableCell(withIdentifier: "konsultasi", for: indexPath) as! historiescellkonsulTableViewCell
+//                cell.row = indexPath.row
+//                cell.delegate = self
+//                cell.historyOne(data: data[indexPath.row])
+//
+//                return cell
+//
+////
+////                let cell = tableView.dequeueReusableCell(withIdentifier: "pembelian", for: indexPath) as! historiescellobatTableViewCell
+////                cell.row = indexPath.row
+////                cell.namadokter.text = data[indexPath.row].detail_medicine[0].name
+////                cell.backgroundColor = UIColor.clear
+////                cell.statustext(status: data[indexPath.row].status)
+////                cell.total.text = currency(data[indexPath.row].total)
+////                cell.waktu.text = getday(waktu: data[indexPath.row].transaction_date)
+////
+////
+////                return cell
+//            }
+//        }
         
         
-        
+        let cell = tableView.dequeueReusableCell(withIdentifier: "loading", for: indexPath)
+        return cell
     }
     
     
@@ -547,18 +548,18 @@ extension childhistoryViewController : historypembelianViewControllerdelegatetoc
         }
         if scrollView.contentOffset.y  > CGFloat(70){
             if (self.lastContentOffset < scrollView.contentOffset.y) {
-                print("kebawah")
+//                print("kebawah")
                 self.delegate.close()
             }
         }
         
     }
     func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
-        print("end")
+//        print("end")
     }
     
     func scrollViewWillEndDragging(_ scrollView: UIScrollView, withVelocity velocity: CGPoint, targetContentOffset: UnsafeMutablePointer<CGPoint>) {
-        print("ending")
+//        print("ending")
         self.lastContentOffset = scrollView.contentOffset.y
         
         

@@ -219,8 +219,17 @@ class ResepDokterViewController: MYUIViewController {
         view.contentMode = .scaleAspectFit
         
         view.addSubview(backButton)
-        backButton.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 20).isActive = true
-        backButton.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 20).isActive = true
+        if #available(iOS 11.0, *) {
+            backButton.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 20).isActive = true
+            backButton.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 20).isActive = true
+            
+            
+        } else {
+            backButton.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20).isActive = true
+            backButton.topAnchor.constraint(equalTo: view.topAnchor, constant: 20).isActive = true
+            // Fallback on earlier versions
+        }
+    
         backButton.widthAnchor.constraint(equalToConstant: 23).isActive = true
         backButton.heightAnchor.constraint(equalToConstant: 23).isActive = true
         
@@ -247,9 +256,16 @@ class ResepDokterViewController: MYUIViewController {
         
         view.addSubview(scrollView)
         scrollView.topAnchor.constraint(equalTo: lineView.bottomAnchor, constant: 5).isActive = true
-        scrollView.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor).isActive = true
-        scrollView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor).isActive = true
-        scrollView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -10).isActive = true
+        if #available(iOS 11.0, *) {
+            scrollView.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor).isActive = true
+            scrollView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor).isActive = true
+            scrollView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -10).isActive = true
+        } else {
+            scrollView.leadingAnchor.constraint(equalTo: view.leadingAnchor).isActive = true
+            scrollView.trailingAnchor.constraint(equalTo: view.trailingAnchor).isActive = true
+            scrollView.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -10).isActive = true
+        }
+ 
         
         contentView.addSubview(pasienView)
         pasienView.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 0).isActive = true

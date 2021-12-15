@@ -359,7 +359,6 @@ extension DetailtanyadokterViewController : UITableViewDelegate,UITableViewDataS
         vc?.list = list
         vc?.isform = isform
         vc?.id = id
-        vc?.data = self.data![indextPath.row]
         vc?.facilityid = facilityid!
         vc?.presentPage = self.presentPage
         openVC(vc!, presentPage)

@@ -7,6 +7,10 @@
 //
 
 import Foundation
+
+
+
+
 class ModelHistories{
     
     
@@ -99,19 +103,6 @@ struct ResponseDetailTracking : Codable {
     
 }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
 struct detailobattraking :Codable {
     var slug,name,unit : String?
     var qty,prescription_id,price : Int?
@@ -135,18 +126,97 @@ struct DetailCour : Codable {
 
 }
 
-
-
-
-
 struct keluhanorderobat {
     var desc,image_complain,reason_solved,order_status,order_date:String
     var images,complain_type_name : [String]
     var detail :[detailobattraking]
     var total,voucher_amount : String
     var namaapotek,alamatapotek,gambarapotek : String
-    
-
 }
 
 
+
+struct ResponseDataKonsultasi : Codable {
+    var data : DataHiostoryKonsultasi?
+    var messages : String?
+    var code : Int?
+}
+
+struct DataHiostoryKonsultasi :Codable {
+    var current_page,last_page : Int?
+    var data : [DetailDataHiostoryKonsultasi]?
+}
+struct  DetailDataHiostoryKonsultasi : Codable {
+    var total : Int?
+    var label,name,status,transaction_date : String?
+    var detail_consultation : NewsHistorykonsultasi?
+}
+
+struct NewsHistorykonsultasi :Codable{
+    var doctor : Newdoctors?
+    var patient : Newpatient?
+    var consultation_id : Int?
+    var doctor_note : DoctorNote?
+    var prescription : Newprescription?
+    var spa : Bool?
+    var clinic : Newclinic?
+}
+
+struct Newclinic : Codable {
+    var id : Int?
+    var name,address,image :String?
+    var medical_form,is_nik : Bool?
+}
+
+struct Newprescription : Codable {
+    var id ,consultation_id,status : Int?
+    var prescription_number,expires : String?
+}
+
+struct DoctorNote : Codable{
+    var note,next_schedule : String?
+}
+
+struct Newref : Codable {
+    var medical_record_number,nik,dob,relationship : String?
+}
+struct Newpatient : Codable {
+    var uuid,full_name,email,phone_number,gender : String?
+//    var ref : Newref?
+}
+
+struct Newdoctors : Codable {
+    var uuid,full_name,email,phone_number,profile_picture,gender,status,specialist_slug,specialist,status_docter : String?
+}
+
+
+//==========================================================================================================
+
+
+struct Newmedicines : Codable {
+    var slug,name,unit : String?
+    var price,qty,prescription_id : Int?
+}
+struct  Newdetail_order : Codable {
+    var medicines : [Newmedicines]?
+    var order_id : Int?
+}
+
+struct DetailDataHiostoryObat: Codable  {
+
+    var type_history,total : Int?
+    var label,name,transaction_date,status: String?
+    var detail_order: Newdetail_order?
+}
+
+
+struct ResponseDataObat: Codable {
+    var data : DataHiostoryObat?
+    var messages : String?
+    var code : Int?
+}
+
+struct DataHiostoryObat :Codable {
+    var current_page,last_page : Int?
+    var data : [DetailDataHiostoryObat]?
+}

@@ -59,12 +59,12 @@ class balanceobject: NSObject {
         
         let url = "\(AppSettings.Url)history-balances?from=\(from)&to=\(to)"
         
-        print(url)
+//        print(url)
         
         AF.request(url, method: .get, encoding: JSONEncoding.default, headers: headers)
             .responseJSON { respon in
-                print("gethistorybalance")
-                print(respon)
+//                print("gethistorybalance")
+//                print(respon)
                 switch respon.result {
                 case let .success(value):
                     let json = JSON(value)
@@ -91,9 +91,9 @@ class balanceobject: NSObject {
                         completion(json["message"].stringValue,nil,false)
                     }
                     
-                    print(value)
+//                    print(value)
                 case let .failure(error):
-                    print(error)
+//                    print(error)
                     
                     completion("Error koneksi",nil,false)
 
@@ -112,11 +112,11 @@ class balanceobject: NSObject {
         
         let url = "\(AppSettings.Url)account-balance"
         
-        print(url)
+//        print(url)
         
         AF.request(url, method: .get, encoding: JSONEncoding.default, headers: headers)
             .responseJSON { respon in
-                print(respon)
+//                print(respon)
                 switch respon.result {
                 case let .success(value):
                     let json = JSON(value)
@@ -127,9 +127,9 @@ class balanceobject: NSObject {
                         completion(json["message"].stringValue,nil,false)
                     }
                     
-                    print(value)
+//                    print(value)
                 case let .failure(error):
-                    print(error)
+//                    print(error)
                     
                     completion("Error koneksi",nil,false)
 

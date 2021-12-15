@@ -185,9 +185,7 @@ extension ResepViewController: UITableViewDelegate,UITableViewDataSource{
         self.tinggiTable.constant = tables.contentSize.height
     }
     
-    func tableView(_ tableView: UITableView, willDisplayContextMenu configuration: UIContextMenuConfiguration, animator: UIContextMenuInteractionAnimating?) {
-        
-    }
+   
 
     func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
         print("willDisplay")

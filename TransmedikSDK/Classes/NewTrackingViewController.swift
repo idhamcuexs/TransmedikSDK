@@ -8,6 +8,8 @@
 import UIKit
 import Kingfisher
 import SkeletonView
+import CDAlertView
+
 
 class NewTrackingViewController: UIViewController {
 
@@ -74,9 +76,30 @@ class NewTrackingViewController: UIViewController {
     
     
     @IBAction func compliteOrderOnClick(_ sender: Any) {
-        guard let token = UserDefaults.standard.string(forKey: AppSettings.Tokentransmedik) else {return }
         
-        obat.orderComplited(token: token, id: data.order_id_partner!) { status, msg in
+        let alert = CDAlertView(title: "Konfirmasi Terima Barang", message: "Apakah Anda sudah terima barang pesanan?", type: .warning)
+        
+        let yesAction = CDAlertViewAction(title: LocalizationHelper.getInstance().yes) { (CDAlertViewAction) -> Bool in
+            
+         
+            self.complitedOrder()
+            
+            return true
+        }
+        let noAction = CDAlertViewAction(title: LocalizationHelper.getInstance().no) { (CDAlertViewAction) -> Bool in
+            return true
+        }
+        
+        alert.add(action: noAction)
+        alert.add(action: yesAction)
+        alert.show()
+        
+    }
+    
+    func complitedOrder(){
+        guard let token = UserDefaults.standard.string(forKey: AppSettings.Tokentransmedik) else { return }
+        
+        self.obat.orderComplited(token: token, id: self.data.order_id_partner!) { status, msg in
             if status{
                 self.kurirViewButton.isHidden.toggle()
             }else{

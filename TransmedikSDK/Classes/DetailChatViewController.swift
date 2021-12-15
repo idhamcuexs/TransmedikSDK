@@ -156,12 +156,12 @@ class DetailChatViewController: MessagesViewController, MessagesDataSource {
         self.conversationQuery = ConversationModel.query()
        
 
-        if currentUser != nil {
-            print("data not null")
-
-        }else{
-            print("data null")
-        }
+//        if currentUser != nil {
+//            print("data not null")
+//
+//        }else{
+//            print("data null")
+//        }
         //error disini
         self.conversationQuery = self.conversationQuery.whereKey("uid", equalTo: currentUser!).whereKey("user", equalTo: currentDoctor!).whereKey("apps", contains:  "transmedika")
             .whereKey("consultation_id", equalTo: String(currentConsultation?.consultation_id ?? 0))
@@ -299,7 +299,7 @@ class DetailChatViewController: MessagesViewController, MessagesDataSource {
             if let message = self.messageForItem(at: indexPath, in: messagesCollectionView) as? MockMessage {
                 self.selectedIndexPath = indexPath
                 
-                print("didLongPressCollectionView")
+//                print("didLongPressCollectionView")
             }
         }
     }
@@ -314,7 +314,7 @@ class DetailChatViewController: MessagesViewController, MessagesDataSource {
         if let indexPath = self.messagesCollectionView.indexPathForItem(at: pointInCollectionView)  {
             if let message = self.messageForItem(at: indexPath, in: messagesCollectionView) as? MockMessage {
                 
-                print("didDoubleTapCollectionView")
+//                print("didDoubleTapCollectionView")
                 //self.willReplyMessage(at: indexPath)
             }
         }
@@ -330,7 +330,7 @@ class DetailChatViewController: MessagesViewController, MessagesDataSource {
         if let indexPath = self.messagesCollectionView.indexPathForItem(at: pointInCollectionView)  {
             if let message = self.messageForItem(at: indexPath, in: messagesCollectionView) as? MockMessage {
                 
-                print("didDoubleTapCollectionView")
+//                print("didDoubleTapCollectionView")
                 //self.willReplyMessage(at: indexPath)
             }
         }
@@ -338,7 +338,7 @@ class DetailChatViewController: MessagesViewController, MessagesDataSource {
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        print("detail did appear")
+//        print("detail did appear")
         registerNotificationsObservers()
         self.additionalSafeAreaInsets.top = AppSettings.NAVIGATIONBAR_HEIGHT - 44
         
@@ -405,7 +405,7 @@ class DetailChatViewController: MessagesViewController, MessagesDataSource {
         removeSnapshotListener()
         unregisterAllNotificationsObservers()
         
-        print("unsubscribe")
+//        print("unsubscribe")
     }
     
     override func viewDidDisappear(_ animated: Bool) {
@@ -417,7 +417,7 @@ class DetailChatViewController: MessagesViewController, MessagesDataSource {
         DispatchQueue.main.async {
             self.initializeMessages()
             self.updateSeenStatus()
-            print("loadFirstMessage")
+//            print("loadFirstMessage")
         }
     }
     
@@ -721,7 +721,7 @@ extension DetailChatViewController {
                 self.messageInputBar.leftStackView.alpha = 0
                 self.messageInputBar.layoutIfNeeded()
             }, completion: nil)
-            print("did end editing")
+//            print("did end editing")
             
             self.updateTyping(status: nil)
         }
@@ -767,7 +767,7 @@ extension DetailChatViewController {
     }
     
     @objc func willEnterForeground() {
-        print("detail enter foreground")
+//        print("detail enter foreground")
         //checkcall
         let userInfo:[String: String] =
             ["sceneEnterForeground": "1"]
@@ -780,7 +780,7 @@ extension DetailChatViewController {
     }
     
     @objc func willResignActive() {
-        print("detail willresignactive")
+//        print("detail willresignactive")
         
         isTyping = false
     }
@@ -830,15 +830,15 @@ extension DetailChatViewController {
 //                        self.shareinfopatient.bb.text = jsons["ref"]["body_weight"].stringValue
                         let not = "\(note[0].createdAt!)"
 //                        self.shareinfopatient.date.text = String(not[0...10])
-                        print("not")
-                        print(not)
-                        print(String(not[0...10]))
+//                        print("not")
+//                        print(not)
+//                        print(String(not[0...10]))
                         self.datetext = String(not[0...10])
                         let tgllahir = jsons["ref"]["dob"].stringValue
                         let dataclinic = note[0].medical_facility ?? ""
                         let clinic = dataclinic.toJSON() as? [String:AnyObject]
                         let jsonsclinic = JSON(clinic)
-                        print("lahir nya " + tgllahir)
+//                        print("lahir nya " + tgllahir)
                         
                         self.namaclinic = jsonsclinic["name"].stringValue
 //                        self.shareinfopatient.nameclinic.text = jsonsclinic["name"].stringValue
@@ -886,7 +886,7 @@ extension DetailChatViewController: ResepDokterViewControllerDelegate,extensionc
     }
     
     func resepDokterClosed() {
-        print("delegate called")
+//        print("delegate called")
         self.resepViewController = nil
     }
     

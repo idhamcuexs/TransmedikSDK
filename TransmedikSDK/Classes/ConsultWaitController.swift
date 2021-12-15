@@ -72,7 +72,7 @@ class ConsultWaitViewController: MYUIViewController {
         super.viewDidLoad()
         
 
-        print("masuk sini ceng")
+//        print("masuk sini ceng")
         setupViews()
         setupActions()
         setupTimer()
@@ -85,7 +85,7 @@ class ConsultWaitViewController: MYUIViewController {
     
     func setupParse() {
         
-        print("currentConsultationId : \(self.currentConsultation!.consultation_id!)")
+//        print("currentConsultationId : \(self.currentConsultation!.consultation_id!)")
         self.query = ConsultationModel.query()
         self.query = self.query.whereKey("consultation_id", equalTo: self.currentConsultation!.consultation_id!)
         getdata()
@@ -155,9 +155,9 @@ class ConsultWaitViewController: MYUIViewController {
         self.subscription = Client.shared.subscribe(self.query)
         self.subscription.handle(Event.updated) { (query, obj) in
             let consultation = obj as! ConsultationModel
-            print("status updated! : \(consultation.status)")
+//            print("status updated! : \(consultation.status)")
             if (consultation.status == AppSettings.ON_CHAT) {
-                print("on chat")
+//                print("on chat")
                 Client.shared.unsubscribe(self.query)
                 
                 DispatchQueue.main.async {

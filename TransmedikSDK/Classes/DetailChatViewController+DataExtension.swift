@@ -30,7 +30,7 @@ extension DetailChatViewController {
                 //sendTextMessageWithAttachments(data, attachments)
             }
             else {
-                print("send text message")
+//                print("send text message")
                 sendTextMessage(data, AppSettings.TEXT_TYPE)
             }
         }
@@ -62,13 +62,13 @@ extension DetailChatViewController {
                 )
                 
                 //                msg.saveEventually()
-                print("Kirim")
+//                print("Kirim")
                 msg.saveEventually { (status, err) in
                     if err != nil {
                         print(err)
                         return
                     }
-                    print("status")
+//                    print("status")
                     
                 }
                 
@@ -110,7 +110,7 @@ extension DetailChatViewController {
         )
         msg.saveEventually { (status, err) in
             if err != nil {
-                print(err)
+//                print(err)
                 return
             }
             //===
@@ -147,14 +147,14 @@ extension DetailChatViewController {
             apps: "transmedika"
         )
         //                msg.saveEventually()
-        print("Kirim")
+//        print("Kirim")
         msg.saveEventually { (status, err) in
             if err != nil {
-                print(err)
+//                print(err)
                 return
             }
-            print("status")
-            print(status)
+//            print("status")
+//            print(status)
         }
         
         let message = MockMessage(
@@ -231,8 +231,8 @@ extension DetailChatViewController {
         self.conversationQuery.findObjectsInBackground(block: { (results, error) in
             if error == nil {
                 if let messages = results as? [ConversationModel] {
-                    print("findObjectsInBackground")
-                    print(messages.count)
+//                    print("findObjectsInBackground")
+//                    print(messages.count)
                     for msg in messages {
                         let index = self.messageList.firstIndex(where: {$0.messageId == msg.messageId})
                         
@@ -273,8 +273,8 @@ extension DetailChatViewController {
                             if (msg.kind == AppSettings.TEXT_TYPE || msg.kind == AppSettings.CATATAN_TYPE || msg.kind == AppSettings.SPA_TYPE || msg.kind == AppSettings.RESEP_DOKTER_TYPE || msg.kind == AppSettings.SESSION_ENDED_TYPE || msg.kind == AppSettings.PHR_REQ || ( msg.kind == AppSettings.IMAGE_TYPE && msg.text != "Uploading")) {
                                 
                                 if (msg.kind == AppSettings.CATATAN_TYPE || msg.kind == AppSettings.SPA_TYPE || msg.kind == AppSettings.RESEP_DOKTER_TYPE ) {
-                                    print("resep")
-                                    print(msg.text)
+//                                    print("resep")
+//                                    print(msg.text)
                                     let message_system = self.buildMessageSystem(msg)
                                     self.tmpmessage.append(msg)
                                     self.messageList.append(message_system)
@@ -312,8 +312,8 @@ extension DetailChatViewController {
                             //UPDATE
                             if (msg.kind == AppSettings.TEXT_TYPE || msg.kind == AppSettings.CATATAN_TYPE || msg.kind == AppSettings.SPA_TYPE || msg.kind == AppSettings.RESEP_DOKTER_TYPE || msg.kind == AppSettings.SESSION_ENDED_TYPE||msg.kind == AppSettings.PHR_REQ || ( msg.kind == AppSettings.IMAGE_TYPE && msg.text != "Uploading")) {
                                 let message = self.buildMessageText(msg)
-                                print("resep")
-                                print(msg.text)
+//                                print("resep")
+//                                print(msg.text)
                                 if (msg.sender_id?.objectId != self.currentUser?.objectId && msg.status != AppSettings.SEEN_STATUS) {
                                     self.updated.append(msg)
                                     //self.updateMessageStatus(message: msg)
@@ -400,8 +400,8 @@ extension DetailChatViewController {
         tmpconversationQuery.findObjectsInBackground(block: { (results, error) in
             
             if error == nil {
-                print("ubah nemu")
-                print(results?.count)
+//                print("ubah nemu")
+//                print(results?.count)
                 if let messages = results as? [ConversationModel] {
                         for msg in messages {
                             msg.text = Url
@@ -420,7 +420,7 @@ extension DetailChatViewController {
         
         self.subscription.handle(Event.created) { (query, obj) in
             let msg = obj as! ConversationModel
-            print("databaru")
+//            print("databaru")
             self.updated = []
             do {
                 try msg.user?.fetchIfNeeded()
@@ -480,8 +480,8 @@ extension DetailChatViewController {
                         
                         if (msg.kind == AppSettings.CATATAN_TYPE || msg.kind == AppSettings.SPA_TYPE || msg.kind == AppSettings.RESEP_DOKTER_TYPE)
                         {
-                            print("resep")
-                            print(msg.text)
+//                            print("resep")
+//                            print(msg.text)
                             message_system = self.buildMessageSystem(msg)
                             
                         }
@@ -560,9 +560,9 @@ extension DetailChatViewController {
     
     func subscribeConsultationEvent() {
         self.consultationSubscription.handle(Event.updated) { (query, obj) in
-            print("data update")
+//            print("data update")
             let consultation = obj as! ConsultationModel
-            print("status updated! : \(consultation.status)")
+//            print("status updated! : \(consultation.status)")
             
             if (consultation.status == AppSettings.SESSION_ENDED) {
                 UserDefaults.standard.removeObject(forKey: AppSettings.KEY_CURRENT_CONSULTATION)
@@ -610,7 +610,7 @@ extension DetailChatViewController {
         
         
         self.subscription.handle(Event.updated) { (query, obj) in
-            print("update data")
+//            print("update data")
             let msg = obj as! ConversationModel
             self.updated = []
             do {

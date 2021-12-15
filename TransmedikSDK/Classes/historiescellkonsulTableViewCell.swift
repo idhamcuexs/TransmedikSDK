@@ -57,29 +57,29 @@ class historiescellkonsulTableViewCell: UITableViewCell {
         delegate.chatulang(row: row)
     }
   
-    func historyOne(data  : ModelHistories){
+    func historyOne(data  : DetailDataHiostoryObat){
         headerTitle.text = "Nama Obat"
 
         headerHistory.text = "Pembelian Obat"
-        namedokter.text = data.detail_medicine[0].name
+        namedokter.text = data.detail_order!.medicines![0].name!
         backgroundColor = UIColor.clear
-        statustext(status: data.status)
-        totalharga.text = "Rp. \(data.total.formattedWithSeparator)"
-        waktu.text = getday(waktu: data.transaction_date)
+        statustext(status: data.status!)
+        totalharga.text = "Rp. \(data.total!.formattedWithSeparator)"
+        waktu.text = getday(waktu: data.transaction_date!)
         viewItem.isHidden = true
         reChat.isHidden = true
         
     }
     
-    func historyTwo(data  : ModelHistories){
+    func historyTwo(data  : DetailDataHiostoryKonsultasi){
         viewItem.isHidden = false
         reChat.isHidden = false
         headerHistory.text = "Konsultasi"
         headerTitle.text = "Nama Dokter"
         backgroundColor = UIColor.clear
         namedokter.text = data.name
-        totalharga.text = "Rp. \(data.total.formattedWithSeparator)"
-        waktu.text = getday(waktu: data.transaction_date)
+        totalharga.text = "Rp. \(data.total!.formattedWithSeparator)"
+        waktu.text = getday(waktu: data.transaction_date!)
         if data.status ==  "FINISHED" || data.status ==  "SESI BERAKHIR"{
             status.text = " Selesai"
             
@@ -90,13 +90,14 @@ class historiescellkonsulTableViewCell: UITableViewCell {
     
       
         
-        if data.detail_consultation?.doctor_note.next_schedule == "" {
+        if data.detail_consultation?.doctor_note?.next_schedule ?? "" == "" {
             wobat.constant = 0
         }else{
             wobat.constant = 36.5
         }
         
-        if data.detail_consultation?.prescription.consultation_id == "" {
+       
+        if data.detail_consultation?.prescription?.consultation_id  == nil {
             wresep.constant = 0
         }else{
             wresep.constant = 36.5

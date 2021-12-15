@@ -86,6 +86,52 @@ class historiesobject: NSObject {
         
     }
     
+    
+    func NewGetHistories(token:String,uuid:String,selected:Int?,page:Int ,complited: @escaping(ResponseDataObat?,ResponseDataKonsultasi?)->()){
+        
+        let headers: HTTPHeaders = [
+            "Authorization": "Bearer \(token)",
+            "Accept": "application/json",
+            "Content-Type": "application/json"
+        ]
+         
+        let url = "\(AppSettings.Url)histories/\(uuid)?filter=\(selected ?? 1)&per_page=10&page=\(page)"
+        AF.request(url, method: .get,encoding: JSONEncoding.default, headers: headers)
+            .responseJSON { respon in
+//                print("history")
+//             print(respon)
+                switch respon.result {
+                case let .success(value):
+                    let json = JSON(value)
+                    if selected! == 2 {
+                        
+                        do{
+                            let result = try JSONDecoder().decode(ResponseDataKonsultasi.self, from: json.rawData())
+                            complited(nil,result)
+                            
+                        }catch{
+                            print("Error cpod")
+                            complited(nil,nil)
+                        }
+                        
+                    }else{
+                        do{
+                            let result = try JSONDecoder().decode(ResponseDataObat.self, from: json.rawData())
+                            complited(result,nil)
+                            print("Error cpod")
+
+                        }catch{
+                            complited(nil,nil)
+                        }
+                    }
+                
+                case let .failure(error):
+                    complited(nil,nil)
+                }
+        }
+        
+    }
+    
     func gethistories(token:String,uuid:String,selected:Int? ,complited: @escaping([ModelHistories]?,String)->()){
         
         let headers: HTTPHeaders = [

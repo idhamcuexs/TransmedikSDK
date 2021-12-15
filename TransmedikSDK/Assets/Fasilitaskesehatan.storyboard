@@ -14,7 +14,7 @@
         <!--Fasilitaskesehatan View Controller-->
         <scene sceneID="88J-BN-vIb">
             <objects>
-                <viewController storyboardIdentifier="fasilitaskesehatanViewController" modalPresentationStyle="fullScreen" id="8DB-33-iz4" customClass="fasilitaskesehatanViewController" customModule="transmedik" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="fasilitaskesehatanViewController" modalPresentationStyle="fullScreen" id="8DB-33-iz4" customClass="fasilitaskesehatanViewController" customModule="TransmedikSDK" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="KxD-dl-GkX">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -29,7 +29,7 @@
                                     <inset key="sectionInset" minX="15" minY="0.0" maxX="15" maxY="0.0"/>
                                 </collectionViewFlowLayout>
                                 <cells>
-                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="cell" id="QIu-Zs-c6o" customClass="facilitascellCollectionViewCell" customModule="transmedik" customModuleProvider="target">
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="cell" id="QIu-Zs-c6o" customClass="facilitascellCollectionViewCell" customModule="TransmedikSDK" customModuleProvider="target">
                                         <rect key="frame" x="15" y="0.0" width="168" height="169"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="Bgz-YC-aDe">
@@ -210,7 +210,7 @@
         <!--Detailklinik View Controller-->
         <scene sceneID="cmK-ih-kUl">
             <objects>
-                <viewController storyboardIdentifier="detailklinikViewController" modalPresentationStyle="fullScreen" id="ISf-Kb-2MQ" customClass="detailklinikViewController" customModule="transmedik" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="detailklinikViewController" modalPresentationStyle="fullScreen" id="ISf-Kb-2MQ" customClass="detailklinikViewController" customModule="TransmedikSDK" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="dLM-E8-9g1">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -265,7 +265,7 @@
                                             <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                         </collectionViewFlowLayout>
                                         <cells>
-                                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="cell" id="QMw-Su-iEI" customClass="FaskessCollectionViewCell" customModule="transmedik" customModuleProvider="target">
+                                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="cell" id="QMw-Su-iEI" customClass="FaskessCollectionViewCell" customModule="TransmedikSDK" customModuleProvider="target">
                                                 <rect key="frame" x="92" y="0.0" width="200" height="200"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                 <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="0Wg-XY-Pgm">
@@ -300,7 +300,7 @@
                                                     <outlet property="label" destination="HcO-0t-eQN" id="vmC-Qw-yfH"/>
                                                 </connections>
                                             </collectionViewCell>
-                                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" reuseIdentifier="loading" id="Unh-eL-bfv" customClass="tanyadokterCollectionViewCell" customModule="transmedik" customModuleProvider="target">
+                                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" reuseIdentifier="loading" id="Unh-eL-bfv" customClass="tanyadokterCollectionViewCell" customModule="TransmedikSDK" customModuleProvider="target">
                                                 <rect key="frame" x="92" y="200" width="200" height="200"/>
                                                 <autoresizingMask key="autoresizingMask"/>
                                                 <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="RE3-6v-6cS">

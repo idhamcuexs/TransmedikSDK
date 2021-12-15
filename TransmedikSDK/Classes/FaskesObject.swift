@@ -143,7 +143,7 @@ class Fasilitaskesehatan: NSObject {
         }
         
     }
-    func order(token:String,complited: @escaping([Fasilitaskesehatanmodel]?,String?)->()){
+    func  order(token:String,complited: @escaping([Fasilitaskesehatanmodel]?,String?)->()){
         
         let headers: HTTPHeaders = [
             "Authorization": "Bearer \(token)",

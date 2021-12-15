@@ -65,8 +65,8 @@ class ChatTitleView: UIView {
     private func setupView(frame: CGRect) {
         let _width = frame.width + (-1 * frame.minX * 2)
         let _height = frame.height + (-1 * frame.minY * 2)
-        print("tinggi")
-        print(_height)
+//        print("tinggi")
+//        print(_height)
         self.isUserInteractionEnabled = true
         
         translatesAutoresizingMaskIntoConstraints = false

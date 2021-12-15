@@ -32,15 +32,23 @@ class NewProfileDokterVC: UIViewController {
     
 
     
-    var data : Newdetailtanyadokter!
+    var dataDokter : NewDetailDokter!
     var uuid = ""
     var profil = Doctors()
     var presentPage : PresentPage!
     var isform = false
     var list : [listformmodel] = []
     var header = ""
-    var facilityid = ""
-    var id = ""
+    var facilityid = ""{
+        didSet{
+            print("facilityid ==>> \(facilityid)")
+        }
+    }
+    var id = ""{
+        didSet{
+            print("id ==>> \(id)")
+        }
+    }
     
 
 
@@ -57,57 +65,74 @@ class NewProfileDokterVC: UIViewController {
         if let token = UserDefaults.standard.string(forKey: AppSettings.Tokentransmedik){
             let param : [String : Any ] = ["specialist_slug" : self.specialist,
                                            "uuid_doctor" : self.uuid]
-            self.profil.getdokter(token: token, id: self.uuid) { (data) in
-                if data != nil {
-                    let edu = data!.educations.map{ $0.education}
-                    self.alumni.text =  edu.joined(separator: ",").count == 0 ? "-" : edu.joined(separator: ",")
-                    self.praktek.text = data!.facilitiesstring
-                    self.nostr.text = data!.no_str
-                    
+            self.profil.NewGetDokter(token: token, id: self.uuid) { data in
+                guard data != nil else {return}
+                if data!.code == 200 {
+                    self.dataDokter = data?.data!
+                    self.setData()
+                }else{
+                    Toast.show(message: data!.messages!, controller: self)
                 }
                 
-             
             }
+//            self.profil.getdokter(token: token, id: self.uuid) { (data) in
+//                if data != nil {
+//                    let edu = data!.educations.map{ $0.education}
+//                    self.alumni.text =  edu.joined(separator: ",").count == 0 ? "-" : edu.joined(separator: ",")
+//                    self.praktek.text = data!.facilitiesstring
+//                    self.nostr.text = data!.no_str
+//
+//                }
+//
+//
+//            }
         }
+    }
+    
+    func setData(){
+        if dataDokter!.profile_picture ?? "" != "" {
+            let url = URL(string: dataDokter!.profile_picture! )
+            photo.kf.setImage(with: url)
+
+        }
+        let edu = dataDokter!.educations!.map{ $0.education!}
+        self.alumni.text =  edu.joined(separator: ",").count == 0 ? "-" : edu.joined(separator: ",")
+        let fasilitasArray = dataDokter!.facilities!.map{ $0.name!}
+        self.praktek.text =  fasilitasArray.joined(separator: ",").count == 0 ? "-" : edu.joined(separator: ",")
+        self.nostr.text = dataDokter!.no_str!
+        nameDokter.text = dataDokter!.full_name
+        specialist.text = dataDokter.specialist
+        price.text = "Rp \(dataDokter!.rates!.formattedWithSeparator)"
+        rate.text = String(dataDokter!.rating!)
+        pengalaman.text = dataDokter.experience!
         
-     
+           if dataDokter!.status_docter! == "Online"{
+               chatButton.backgroundColor = Colors.buttonActive
+               viewStatus.backgroundColor = Colors.buttonActive
+               status.text = "Available"
+           }else{
+               chatButton.backgroundColor = Colors.buttonnonActive
+               viewStatus.backgroundColor = Colors.buttonnonActive
+               status.text = "Not Available"
+
+
+           }
+        
     }
     func layout(){
         navi.dropShadow(shadowColor: UIColor.lightGray, fillColor: UIColor.white, opacity: 0.5, offset: CGSize(width: 2, height: 2), radius: 4)
         viewDetail.backgroundColor = Colors.backgroundmaster
-        let url = URL(string: data.profile_picture ?? "")
         self.view.backgroundColor = Colors.backgroundmaster
-        
-        photo.kf.setImage(with: url)
         viewStatus.layer.cornerRadius = 6
-        nameDokter.text = data.full_name
-        specialist.text = header
         chatButton.layer.cornerRadius = 10
-        price.text = "Rp \(Int(data!.rates)!.formattedWithSeparator)"
-        rate.text = data!.rating
-        pengalaman.text = data.experience
         viewInformation.layer.cornerRadius = 10
         viewInformation.dropShadow(shadowColor: UIColor.lightGray, fillColor: UIColor.white, opacity: 0.5, offset: CGSize(width: 2, height: 2), radius: 4)
-        
-     
-        if data.status_docter == "Online"{
-            chatButton.backgroundColor = Colors.buttonActive
-            viewStatus.backgroundColor = Colors.buttonActive
-            status.text = "Available"
-        }else{
-            chatButton.backgroundColor = Colors.buttonnonActive
-            viewStatus.backgroundColor = Colors.buttonnonActive
-            status.text = "Not Available"
-
-
-        }
-        
     }
     
     
     
     @IBAction func chatOnClick(_ sender: Any) {
-        
+        guard dataDokter!.status_docter! == "Online" else { return }
         let vc = UIStoryboard(name: "Chat", bundle: AppSettings.bundleframeworks()).instantiateViewController(withIdentifier: "NewCheckConsulVC") as? NewCheckConsulVC
         vc?.header = header
         vc?.list = list
@@ -115,7 +140,7 @@ class NewProfileDokterVC: UIViewController {
 //        vc?.presentPage = self.presentPage
         vc?.facilityid = facilityid
         vc?.id = id
-        vc?.uuid = data.uuid
+        vc?.uuid = dataDokter!.uuid!
         present(vc!, animated: true, completion: nil)
 //        openVC(vc!, presentPage)
 

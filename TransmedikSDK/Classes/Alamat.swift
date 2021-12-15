@@ -28,7 +28,7 @@ class Address: NSObject {
         
         AF.request(url, method: .get, encoding: JSONEncoding.default, headers: headers)
             .responseJSON { respon in
-                print(respon)
+//                print(respon)
                 
                 switch respon.result {
                 case let .success(value):
@@ -46,7 +46,7 @@ class Address: NSObject {
                         complited(nil)
                         
                     }
-                    print(value)
+//                    print(value)
                 case let .failure(error):
                     complited(nil)
                 }
@@ -81,7 +81,7 @@ class Address: NSObject {
         
         AF.request(url, method: .post,parameters: param, encoding: JSONEncoding.default, headers: headers)
             .responseJSON { respon in
-                print(respon)
+//                print(respon)
                 
                 switch respon.result {
                 case let .success(value):
@@ -94,7 +94,7 @@ class Address: NSObject {
                         complited()
                         
                     }
-                    print(value)
+//                    print(value)
                 case let .failure(error):
                     complited()
                 }
@@ -130,7 +130,7 @@ class Address: NSObject {
         
         AF.request(url, method: .put, parameters:  param, encoding: JSONEncoding.default, headers: headers)
             .responseJSON { respon in
-                print(respon)
+//                print(respon)
                 
                 switch respon.result {
                 case let .success(value):
@@ -143,7 +143,7 @@ class Address: NSObject {
                         complited()
                         
                     }
-                    print(value)
+//                    print(value)
                 case let .failure(error):
                     complited()
                 }
@@ -169,7 +169,7 @@ class Address: NSObject {
         
         AF.request(url, method: .delete, encoding: JSONEncoding.default, headers: headers)
             .responseJSON { respon in
-                print(respon)
+//                print(respon)
                 
                 switch respon.result {
                 case let .success(value):
@@ -181,7 +181,7 @@ class Address: NSObject {
                         complited(false)
                         
                     }
-                    print(value)
+//                    print(value)
                 case let .failure(error):
                     complited(false)
                 }

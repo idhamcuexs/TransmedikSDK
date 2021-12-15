@@ -108,8 +108,8 @@ class Count{
           
           let hidet = waktu.replacingOccurrences(of: "T", with: " ")
           let zona = hidet.replacingOccurrences(of: ".000000Z", with: "")
-        print("ini zona count")
-        print(zona)
+//        print("ini zona count")
+//        print(zona)
           let oldDate: Date = myDateFormatter.date(from: String(zona.dropLast(3)))!
           let minute = minutesBetweenDates(oldDate, Date())
           if minute > 60.0 && minute < 1440.0{

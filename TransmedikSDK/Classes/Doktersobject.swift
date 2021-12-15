@@ -13,6 +13,43 @@ class Doctors: NSObject {
     
     
     
+    func NewGetDokter(token:String,id:String,complited: @escaping(ResponseDetailDOkter?)->()){
+        
+        let headers: HTTPHeaders = [
+            "Authorization": token,
+            "Accept": "application/json",
+            "Content-Type": "application/json"
+        ]
+        
+        let url = "\(AppSettings.Url)doctors/\(id)"
+        
+        
+        
+        AF.request(url, method: .get, encoding: JSONEncoding.default, headers: headers)
+            .responseJSON { respon in
+           
+                
+                switch respon.result {
+                case let .success(value):
+                    let json = JSON(value)
+                    do {
+                        let resutl = try JSONDecoder().decode(ResponseDetailDOkter.self, from: json.rawData())
+                        complited(resutl)
+                    }catch{
+                        print("salah1")
+                        complited(nil)
+                    }
+                    
+                case let .failure(error):
+                    print("salah2")
+
+                    complited(nil)
+                }
+                
+                
+        }
+        
+    }
     
     func getdokter(token:String,id:String,complited: @escaping(Detaildokter?)->()){
         

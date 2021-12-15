@@ -89,6 +89,7 @@ class Detailtanyadoktertepat_praktek{
 
 
 
+
 class Detaildokter {
    var description,device_id,email,experience,full_name,gender,no_str,object_id,phone_number,profile_picture,province_id,province_name,rates,rating ,regency_id,regency_name,specialist,specialist_slug,start_experience,status,status_docter,uuid : String
     var facilities:[Detailtanyadoktertepat_praktek]
@@ -179,3 +180,33 @@ struct Detailtanyadokters {
     
 }
 //Newdetailtanyadokter
+
+struct ResponseDetailDOkter : Codable {
+    
+    var code : Int?
+    var messages: String?
+    var data : NewDetailDokter?
+}
+
+struct NewDetailDokter :Codable{
+    
+    var rates  : Int?
+    var rating : Double?
+    var uuid,full_name,email,phone_number,profile_picture,gender,status,no_str,specialist_slug,specialist,experience,device_id,object_id,status_docter,description : String?
+    var  educations : [EducationDoctor]?
+    var facilities : [FacilitiesDoctor]?
+}
+
+
+struct EducationDoctor : Codable {
+    var id,doctor_id,graduation_year : Int?
+    var education : String?
+}
+
+struct  FacilitiesDoctor : Codable {
+
+    var id,doctor_id,medical_facility_id : Int?
+    var name : String?
+}
+
+
