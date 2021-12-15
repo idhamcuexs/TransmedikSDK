@@ -260,7 +260,9 @@ class NewCheckConsulVC: UIViewController,UITextViewDelegate {
         editProfileButton.layer.cornerRadius = 10
         self.view.backgroundColor = Colors.backgroundmaster
         viewdetail.backgroundColor = Colors.backgroundmaster
-        
+        if !isform {
+            viewForm.isHidden.toggle()
+        }
 
 
         shadow()
