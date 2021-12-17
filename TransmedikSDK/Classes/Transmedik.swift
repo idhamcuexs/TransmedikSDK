@@ -27,7 +27,7 @@ public class Transmedik {
         let parm : Parameters = [ "pin" : pin]
        
         
-        AF.request(url, method: .post,parameters: parm,  encoding: JSONEncoding.default, headers: headers)
+        Alamofire.request(url, method: .post,parameters: parm,  encoding: JSONEncoding.default, headers: headers)
             .responseJSON { respon in
                 print(url)
                 print(parm)
@@ -202,7 +202,7 @@ public class Transmedik {
         
         print(headers)
 
-        AF.request(url, method: .post,parameters: params,  encoding: JSONEncoding.default, headers: headers)
+        Alamofire.request(url, method: .post,parameters: params,  encoding: JSONEncoding.default, headers: headers)
             .responseJSON { respon in
                 print(params)
                 print("respon login \(respon)" )

@@ -64,8 +64,8 @@ class UIBadgeLabel: UILabel {
     override func drawText(in rect: CGRect) {
         let insets = UIEdgeInsets(top: margin, left: margin, bottom: margin, right: margin)
         //swift 4.2
-        let rect = rect.inset(by: insets)
-//        let rect = UIEdgeInsetsInsetRect(rect, insets)
+//        let rect = rect.inset(by: insets)
+        let rect = UIEdgeInsetsInsetRect(rect, insets)
         super.drawText(in: rect)
     }
 }

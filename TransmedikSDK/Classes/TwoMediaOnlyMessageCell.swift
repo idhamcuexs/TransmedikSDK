@@ -68,8 +68,13 @@ open class TwoMediaOnlyMessageCell: MediaOnlyMessageCell {
         super.setupSubviews()
         
         
-        imageView.layer.maskedCorners = [.layerMinXMinYCorner, .layerMaxXMinYCorner]
-        imageView2.layer.maskedCorners = [.layerMinXMaxYCorner, .layerMaxXMaxYCorner]
+        if #available(iOS 11.0, *) {
+            imageView.layer.maskedCorners = [.layerMinXMinYCorner, .layerMaxXMinYCorner]
+            imageView2.layer.maskedCorners = [.layerMinXMaxYCorner, .layerMaxXMaxYCorner]
+        } else {
+            // Fallback on earlier versions
+        }
+
         
         mediaView.addSubview(imageView)
         mediaView.addSubview(imageView2)

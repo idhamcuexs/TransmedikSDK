@@ -747,6 +747,7 @@ extension DetailChatViewController: UINavigationControllerDelegate, UIImagePicke
     }
     
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
+        /*
         let info = convertFromUIImagePickerControllerInfoKeyDictionary(info)
         
         dismiss(animated: true, completion: {
@@ -820,17 +821,21 @@ extension DetailChatViewController: UINavigationControllerDelegate, UIImagePicke
                 }
             }
         })
+        */
     }
     
-    fileprivate func convertFromUIImagePickerControllerInfoKeyDictionary(_ input: [UIImagePickerController.InfoKey: Any]) -> [String: Any] {
-        return Dictionary(uniqueKeysWithValues: input.map {key, value in (key.rawValue, value)})
-    }
+//    fileprivate func convertFromUIImagePickerControllerInfoKeyDictionary(_ input: [UIImagePickerController.InfoKey: Any]) -> [String: Any] {
+//
+//        return Dictionary(uniqueKeysWithValues: input.map {key, value in (key.rawValue, value)})
+//    }
     
     
     // Helper function inserted by Swift 4.2 migrator.
+    /*
     fileprivate func convertFromUIImagePickerControllerInfoKey(_ input: UIImagePickerController.InfoKey) -> String {
-        return input.rawValue
+//        return input.rawValue
     }
+    */
     
     func convertVideo(toMPEG4FormatForVideo inputURL: URL, outputURL: URL, handler: @escaping (AVAssetExportSession) -> Void) {
         if FileManager.default.fileExists(atPath: outputURL.absoluteString) {
@@ -918,7 +923,11 @@ extension DetailChatViewController: UINavigationControllerDelegate, UIImagePicke
         messageInputBar.sendButton.contentEdgeInsets = UIEdgeInsets(top: 2, left: 2, bottom: 2, right: 2)
         messageInputBar.sendButton.setSize(CGSize(width: 36, height: 36), animated: false)
         messageInputBar.sendButton.title = nil
-        messageInputBar.sendButton.image = UIImage(systemName: "paperplane.fill")?.withTintColor(.white)
+        if #available(iOS 13.0, *) {
+            messageInputBar.sendButton.image = UIImage(systemName: "paperplane.fill")?.withTintColor(.white)
+        } else {
+            // Fallback on earlier versions
+        }
         messageInputBar.middleContentViewPadding.right = -38
         messageInputBar.middleContentViewPadding.left = 5
         
@@ -967,7 +976,12 @@ extension DetailChatViewController: UINavigationControllerDelegate, UIImagePicke
         return InputBarButtonItem()
             .configure {
                 $0.spacing = .fixed(1)
-                $0.image = UIImage(systemName: "plus")?.resizeWithWidth(width: 28)!.withRenderingMode(.alwaysTemplate)
+                if #available(iOS 13.0, *) {
+                    $0.image = UIImage(systemName: "plus")?.resizeWithWidth(width: 28)!.withRenderingMode(.alwaysTemplate)
+                } else {
+                   
+                    $0.image = #imageLiteral(resourceName: "Tambahkan")
+                }
                 $0.setSize(CGSize(width: 28, height: 36), animated: false)
                 $0.tintColor = .blue
                 $0.contentEdgeInsets = UIEdgeInsets(top: 2, left: 0, bottom: 2, right: 0)

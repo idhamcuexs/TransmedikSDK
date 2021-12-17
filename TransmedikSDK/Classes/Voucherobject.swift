@@ -30,7 +30,7 @@ class Voucherobject: NSObject {
         print(url)
         
         var tmp :[ModelHistories] = []
-        AF.request(url, method: .post,parameters: param, encoding: JSONEncoding.default, headers: headers)
+        Alamofire.request(url, method: .post,parameters: param, encoding: JSONEncoding.default, headers: headers)
             .responseJSON { respon in
                 print(respon)
                 switch respon.result {

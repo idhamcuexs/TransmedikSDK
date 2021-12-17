@@ -23,31 +23,65 @@ class Chat: NSObject {
             "Accept": "application/json",
             "Content-Type": "application/json"
         ]
-//
-        AF.upload(multipartFormData: { (multipartFormData) in
-            multipartFormData.append(images.jpegData(compressionQuality: 1)!, withName: "file", fileName: "\(Date().timeIntervalSince1970).jpeg", mimeType: "image/jpeg")
-//            multipartFormData.append(UIImageJPEGRepresentation(images, 1)!, withName: "file", fileName: "\(Date().timeIntervalSince1970).jpeg", mimeType: "image/jpeg")
+        
+        
+        Alamofire.upload(multipartFormData: { (multipartFormData) in
+//            multipartFormData.append(images.UIImageJPEGRepresentation(compressionQuality: 1)!, withName: "file", fileName: "\(Date().timeIntervalSince1970).jpeg", mimeType: "image/jpeg")
+            multipartFormData.append(UIImageJPEGRepresentation(images, 1)!, withName: "image/jpeg")
             
             multipartFormData.append(Data(consul.data(using: .utf8)!), withName: "consultation_id")
-
-        }, to: url ,method: .post,headers:  headers).responseJSON { respon in
-//            print(respon)
-            switch respon.result {
-            case let .success(value):
-                let json = JSON(value)
-                if json["code"].stringValue == "200"{
-                    complited(true,json["messages"].stringValue,json["data"].stringValue)
-                    
-                }else{
-                    complited(false,json["messages"].stringValue,nil)
-                    
+            
+        }, to: url ,method: .post,headers:  headers){ result in
+            switch result {
+                
+            case .success(let request, let streamingFromDisk, let streamFileURL):
+                print("Upload Success : \(request), \(streamingFromDisk), \(String(describing: streamFileURL))")
+                request.responseJSON() { response in
+                    switch response.result {
+                    case let .success(value):
+                        let json = JSON(value)
+                        if json["code"].stringValue == "200"{
+                            complited(true,json["messages"].stringValue,json["data"].stringValue)
+                            
+                        }else{
+                            complited(false,json["messages"].stringValue,nil)
+                            
+                        }
+                    case let .failure(error):
+                        complited(false,"error server",nil)
+                    }
                 }
-            case let .failure(error):
+            case .failure(let error):
+                print(error)
                 complited(false,"error server",nil)
             }
-            
-            
         }
+        
+        
+        
+        
+        
+//        Alamofire.upload(multipartFormData: { (multipartFormData) in
+//            multipartFormData.append(images.jpegData(compressionQuality: 1)!, withName: "file", fileName: "\(Date().timeIntervalSince1970).jpeg", mimeType: "image/jpeg")
+//            multipartFormData.append(Data(consul.data(using: .utf8)!), withName: "consultation_id")
+
+//        }, to: url ,method: .post,headers:  headers).responseJSON { respon in
+//            switch respon.result {
+//            case let .success(value):
+//                let json = JSON(value)
+//                if json["code"].stringValue == "200"{
+//                    complited(true,json["messages"].stringValue,json["data"].stringValue)
+//
+//                }else{
+//                    complited(false,json["messages"].stringValue,nil)
+//
+//                }
+//            case let .failure(error):
+//                complited(false,"error server",nil)
+//            }
+//
+//
+//        }
         
         
     }
@@ -60,7 +94,7 @@ class Chat: NSObject {
         ]
         
         let url = "\(AppSettings.Url)consultation-clinic"
-        AF.request(url, method: .post,
+        Alamofire.request(url, method: .post,
                    parameters: param,
                    encoding: JSONEncoding.default, headers: headers)
             .responseJSON { respon in
@@ -110,7 +144,7 @@ class Chat: NSObject {
         
 //        print(url)
         
-        AF.request(url, method: .post,
+        Alamofire.request(url, method: .post,
                    parameters: ["uuid_patient" : uuid_patient,
                                 "email_patient" : email_patient,
                                 "uuid_doctor" : uuid_doctor,
@@ -167,7 +201,7 @@ class Chat: NSObject {
       
 //        print(headers)
         
-        AF.request(url, method: .get,
+        Alamofire.request(url, method: .get,
                    encoding: JSONEncoding.default, headers: headers)
             .responseJSON { respon in
 //                print(url)
@@ -225,7 +259,7 @@ class Chat: NSObject {
 //        print(url)
 //        print(param)
         
-        AF.request(url, method: .post,
+        Alamofire.request(url, method: .post,
                    parameters: param,
                    encoding: JSONEncoding.default, headers: headers)
             .responseJSON { respon in
@@ -318,7 +352,7 @@ class Chat: NSObject {
         
 
         
-        AF.request(url, method: .post,
+        Alamofire.request(url, method: .post,
                    parameters: params,
                    encoding: JSONEncoding.default, headers: headers)
             .responseJSON { respon in
@@ -368,7 +402,7 @@ class Chat: NSObject {
 //        print(consultation_id)
 //        print("status =>> " + status)
         
-        AF.request(url, method: .put,
+        Alamofire.request(url, method: .put,
                    parameters: ["status" : status
                    ],
                    encoding: JSONEncoding.default, headers: headers)

@@ -26,7 +26,7 @@ class Specialist: NSObject {
         print(url)
        
         
-        AF.request(url, method: .get, encoding: JSONEncoding.default, headers: headers)
+        Alamofire.request(url, method: .get, encoding: JSONEncoding.default, headers: headers)
             .responseJSON { respon in
                 switch respon.result {
                 case let .success(value):
@@ -65,7 +65,7 @@ class Specialist: NSObject {
         var exp : [filterdokterdetail] = []
         var rate : [filterdokterdetail] = []
         
-        AF.request(url, method: .get, encoding: JSONEncoding.default, headers: headers)
+        Alamofire.request(url, method: .get, encoding: JSONEncoding.default, headers: headers)
             .responseJSON { respon in
                 switch respon.result {
                 case let .success(value):
@@ -108,7 +108,7 @@ class Specialist: NSObject {
         print(url)
         var data : [Tanyadokter] = []
         
-        AF.request(url, method: .get, encoding: JSONEncoding.default, headers: headers)
+        Alamofire.request(url, method: .get, encoding: JSONEncoding.default, headers: headers)
             .responseJSON { respon in
                 switch respon.result {
                 case let .success(value):
@@ -191,7 +191,7 @@ class Specialist: NSObject {
         
         var dataspesialis : [Newdetailtanyadokter] = []
         
-        AF.request(url, method: .post,parameters: param, encoding: JSONEncoding.default, headers: headers)
+        Alamofire.request(url, method: .post,parameters: param, encoding: JSONEncoding.default, headers: headers)
             .responseJSON { respon in
                 print("ini respon dari ==>> " + url)
                 print(respon)
@@ -270,7 +270,7 @@ class Specialist: NSObject {
         
         var dataspesialis : [Newdetailtanyadokter] = []
         
-        AF.request(url, method: .post,parameters: param, encoding: JSONEncoding.default, headers: headers)
+        Alamofire.request(url, method: .post,parameters: param, encoding: JSONEncoding.default, headers: headers)
             .responseJSON { respon in
                 print(respon)
                 

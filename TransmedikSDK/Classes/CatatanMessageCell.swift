@@ -121,8 +121,8 @@ open class CatatanMessageCell: MessageContentCell {
         messageView.layoutSubviews()
         messageContainerView.layoutSubviews()
         
-        headerView.bringSubviewToFront(checkbox)
-//        headerView.bringSubview(toFront: checkbox)
+//        headerView.bringSubviewToFront(checkbox)
+        headerView.bringSubview(toFront: checkbox)
 
     }
     
@@ -160,7 +160,7 @@ open class CatatanMessageCell: MessageContentCell {
                 title.sizeToFit()
                 
                 let underlineAttributedString = NSAttributedString(string: LocalizationHelper.getInstance()!.detail_catatan, attributes:
-                     [ NSAttributedString.Key.underlineStyle: NSUnderlineStyle.single.rawValue,
+                                                                    [ NSAttributedString.Key.underlineStyle: NSUnderlineStyle.styleSingle.rawValue,
                       .font: UIFont.systemFont(ofSize: 14),
                       NSAttributedString.Key.foregroundColor: UIColor.darkGray
                      ]
@@ -177,10 +177,11 @@ open class CatatanMessageCell: MessageContentCell {
                 let text = NSMutableAttributedString()
                 text.append(NSAttributedString(string: "\(LocalizationHelper.getInstance()!.symptoms) :\r\n", attributes: [.font: UIFont.boldSystemFont(ofSize: 14)]) )
                 text.append(NSAttributedString(string: symptoms! , attributes: [.font: UIFont.systemFont(ofSize: 14)]) )
-                /*text.append(NSAttributedString(string: "\(LocalizationHelper.getInstance()!.possible_diagnosis) :\r\n", attributes: [.font: UIFont.boldSystemFont(ofSize: 14)]) )
-                text.append(NSAttributedString(string: possible_diagnosis! + "\r\n\r\n", attributes: [.font: UIFont.systemFont(ofSize: 14)]) )
-                text.append(NSAttributedString(string: "\(LocalizationHelper.getInstance()!.advice) :\r\n", attributes: [.font: UIFont.boldSystemFont(ofSize: 14)]) )
-                text.append(NSAttributedString(string: advice! , attributes: [.font: UIFont.systemFont(ofSize: 14)]) )*/
+//                
+//                text.append(NSAttributedString(string: "\(LocalizationHelper.getInstance()!.possible_diagnosis) :\r\n", attributes: [.font: UIFont.boldSystemFont(ofSize: 14)]) )
+//                text.append(NSAttributedString(string: possible_diagnosis! + "\r\n\r\n", attributes: [.font: UIFont.systemFont(ofSize: 14)]) )
+//                text.append(NSAttributedString(string: "\(LocalizationHelper.getInstance()!.advice) :\r\n", attributes: [.font: UIFont.boldSystemFont(ofSize: 14)]) )
+//                text.append(NSAttributedString(string: advice! , attributes: [.font: UIFont.systemFont(ofSize: 14)]) )
                 
                 content.attributedText =  text
                 content.sizeToFit()

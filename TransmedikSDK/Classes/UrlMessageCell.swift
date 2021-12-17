@@ -73,11 +73,16 @@ open class UrlMessageCell: TextWithMediaMessageCell {
         
         mediaView.backgroundColor = .white
         
-        embeddedView.layer.maskedCorners = [.layerMinXMinYCorner, .layerMaxXMinYCorner]
+        if #available(iOS 11.0, *) {
+            embeddedView.layer.maskedCorners = [.layerMinXMinYCorner, .layerMaxXMinYCorner]
+            mediaView.layer.maskedCorners = [.layerMinXMinYCorner, .layerMaxXMinYCorner]
+        } else {
+            // Fallback on earlier versions
+        }
         mediaView.clipsToBounds = true
         mediaView.layer.masksToBounds = true
         mediaView.layer.cornerRadius = 10
-        mediaView.layer.maskedCorners = [.layerMinXMinYCorner, .layerMaxXMinYCorner]
+
         
         mediaView.addSubview(embeddedView)
         stackView.addArrangedSubview(mediaView)

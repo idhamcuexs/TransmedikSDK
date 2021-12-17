@@ -113,11 +113,16 @@ open class TextWithFourMediaMessageCell: TextWithMediaMessageCell {
         badgeLabel.textColor = AppColor.shared.instance(traitCollection).badgeTextColor
         
         
-        imageView.layer.maskedCorners = [.layerMinXMinYCorner]
-        imageView2.layer.maskedCorners = [.layerMaxXMinYCorner]
-        imageView3.layer.maskedCorners = []
-        imageView4.layer.maskedCorners = []
-        
+        if #available(iOS 11.0, *) {
+            imageView.layer.maskedCorners = [.layerMinXMinYCorner]
+            imageView2.layer.maskedCorners = [.layerMaxXMinYCorner]
+            imageView3.layer.maskedCorners = []
+            imageView4.layer.maskedCorners = []
+            
+        } else {
+            // Fallback on earlier versions
+        }
+       
         
         mediaView.addSubview(imageView)
         mediaView.addSubview(imageView2)

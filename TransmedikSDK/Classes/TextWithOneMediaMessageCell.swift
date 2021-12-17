@@ -67,7 +67,11 @@ open class TextWithOneMediaMessageCell: TextWithMediaMessageCell {
     open override  func setupSubviews() {
         super.setupSubviews()
         
-        imageView.layer.maskedCorners = [.layerMinXMinYCorner, .layerMaxXMinYCorner]
+        if #available(iOS 11.0, *) {
+            imageView.layer.maskedCorners = [.layerMinXMinYCorner, .layerMaxXMinYCorner]
+        } else {
+            // Fallback on earlier versions
+        }
         
         mediaView.addSubview(imageView)
         stackView.addArrangedSubview(mediaView)

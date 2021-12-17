@@ -239,14 +239,14 @@ class ResepDokterViewController: MYUIViewController {
         
         view.addSubview(doctorView)
         doctorView.topAnchor.constraint(equalTo: navigationTitle.bottomAnchor, constant: 20).isActive = true
-        doctorView.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 15).isActive = true
-        doctorView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -15).isActive = true
+        doctorView.leadingAnchor.constraint(equalTo: view.leftAnchor, constant: 15).isActive = true
+        doctorView.trailingAnchor.constraint(equalTo: view.rightAnchor, constant: -15).isActive = true
         doctorView.heightAnchor.constraint(equalToConstant: 60).isActive = true
         
         view.addSubview(lineView)
         lineView.topAnchor.constraint(equalTo: doctorView.bottomAnchor, constant: 5).isActive = true
-        lineView.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 15).isActive = true
-        lineView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -15).isActive = true
+        lineView.leadingAnchor.constraint(equalTo: view.leftAnchor, constant: 15).isActive = true
+        lineView.trailingAnchor.constraint(equalTo: view.rightAnchor, constant: -15).isActive = true
         lineView.heightAnchor.constraint(equalToConstant: 1).isActive = true
         
         doctorView.layoutIfNeeded()

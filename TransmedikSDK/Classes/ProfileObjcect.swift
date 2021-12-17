@@ -32,7 +32,7 @@ class Profile: NSObject {
        
         
         
-        AF.request(url, method: .post,parameters: param, encoding: JSONEncoding.default, headers: headers)
+        Alamofire.request(url, method: .post,parameters: param, encoding: JSONEncoding.default, headers: headers)
             .responseJSON { respon in
                 print(param)
                 print(url)
@@ -75,7 +75,7 @@ class Profile: NSObject {
         
         let url = "\(AppSettings.Url)auth/device-id"
         
-        AF.request(url, method: .put, encoding: JSONEncoding.default, headers: headers)
+        Alamofire.request(url, method: .put, encoding: JSONEncoding.default, headers: headers)
             .responseJSON { respon in
             }
         
@@ -92,7 +92,7 @@ class Profile: NSObject {
         print(url)
         
         
-        AF.request(url, method: .post , parameters: param, encoding: JSONEncoding.default)
+        Alamofire.request(url, method: .post , parameters: param, encoding: JSONEncoding.default)
             .responseJSON { respon in
                 print("respon profile")
                 
@@ -145,7 +145,7 @@ class Profile: NSObject {
         
         print(headers)
         
-        AF.request(url, method: .put, encoding: JSONEncoding.default, headers: headers)
+        Alamofire.request(url, method: .put, encoding: JSONEncoding.default, headers: headers)
             .responseJSON { respon in
                 print("respon profile")
                 print(respon)
@@ -187,7 +187,7 @@ class Profile: NSObject {
         print(url)
         print(headers)
         
-        AF.request(url, method: .get, encoding: JSONEncoding.default, headers: headers)
+        Alamofire.request(url, method: .get, encoding: JSONEncoding.default, headers: headers)
             .responseJSON { respon in
                 print("respon profile")
                 print(respon)
@@ -252,7 +252,7 @@ class Profile: NSObject {
         let url = "\(AppSettings.Url)family/\(data.uuid)"
         
         
-        AF.request(url, method: .put,parameters: param, encoding: JSONEncoding.default, headers: headers)
+        Alamofire.request(url, method: .put,parameters: param, encoding: JSONEncoding.default, headers: headers)
             .responseJSON { respon in
                 print(respon)
                 
@@ -297,7 +297,7 @@ class Profile: NSObject {
         let url = "\(AppSettings.Url)profile/phone-number"
         
         
-        AF.request(url, method: .put,parameters: param, encoding: JSONEncoding.default, headers: headers)
+        Alamofire.request(url, method: .put,parameters: param, encoding: JSONEncoding.default, headers: headers)
             .responseJSON { respon in
                 print(respon)
                 
@@ -340,7 +340,7 @@ class Profile: NSObject {
         let url = "\(AppSettings.Url)profile/reset-password-by-email"
         
         
-        AF.request(url, method: .post,parameters: param, encoding: JSONEncoding.default, headers: headers)
+        Alamofire.request(url, method: .post,parameters: param, encoding: JSONEncoding.default, headers: headers)
             .responseJSON { respon in
                 print(respon)
                 
@@ -382,7 +382,7 @@ class Profile: NSObject {
         let url = "\(AppSettings.Url)profile/reset-password-by-phone"
         
         
-        AF.request(url, method: .put,parameters: param, encoding: JSONEncoding.default, headers: headers)
+        Alamofire.request(url, method: .put,parameters: param, encoding: JSONEncoding.default, headers: headers)
             .responseJSON { respon in
                 print(respon)
                 
@@ -427,7 +427,7 @@ class Profile: NSObject {
         let url = "\(AppSettings.Url)profile/password"
         
         
-        AF.request(url, method: .put,parameters: param, encoding: JSONEncoding.default, headers: headers)
+        Alamofire.request(url, method: .put,parameters: param, encoding: JSONEncoding.default, headers: headers)
             .responseJSON { respon in
                 print(respon)
                 
@@ -471,7 +471,7 @@ class Profile: NSObject {
        
         
         
-        AF.request(url, method: .put,parameters: param, encoding: JSONEncoding.default, headers: headers)
+        Alamofire.request(url, method: .put,parameters: param, encoding: JSONEncoding.default, headers: headers)
             .responseJSON { respon in
                 print(param)
                 print(url)
@@ -516,7 +516,7 @@ class Profile: NSObject {
         let url = "\(AppSettings.Url)profile/email"
         
         
-        AF.request(url, method: .put,parameters: param, encoding: JSONEncoding.default, headers: headers)
+        Alamofire.request(url, method: .put,parameters: param, encoding: JSONEncoding.default, headers: headers)
             .responseJSON { respon in
                 print(respon)
                 
@@ -570,7 +570,7 @@ class Profile: NSObject {
         let url = "\(AppSettings.Url)profile"
         
         
-        AF.request(url, method: .put,parameters: param, encoding: JSONEncoding.default, headers: headers)
+        Alamofire.request(url, method: .put,parameters: param, encoding: JSONEncoding.default, headers: headers)
             .responseJSON { respon in
                 print(respon)
                 
@@ -609,7 +609,7 @@ class Profile: NSObject {
         print(url)
         var datas : [relation] = []
         
-        AF.request(url, method: .get,encoding: JSONEncoding.default, headers: headers)
+        Alamofire.request(url, method: .get,encoding: JSONEncoding.default, headers: headers)
             .responseJSON { respon in
                 print(respon)
                 
@@ -648,7 +648,7 @@ class Profile: NSObject {
         
         let url = "\(AppSettings.Url)family"
         var data :[ModelProfile] = []
-        AF.request(url, method: .get, encoding: JSONEncoding.default, headers: headers)
+        Alamofire.request(url, method: .get, encoding: JSONEncoding.default, headers: headers)
             .responseJSON { respon in
                 print("Family")
                 print(respon)
@@ -692,36 +692,40 @@ class Profile: NSObject {
             "Content-Type": "application/json"
         ]
   
-        AF.upload(multipartFormData: { (multipartFormData) in
-         
-            multipartFormData.append(images.jpegData(compressionQuality: 1)!, withName: "image", fileName: "\(Date().timeIntervalSince1970).jpeg", mimeType: "image/jpeg")
-//            multipartFormData.append(UIImageJPEGRepresentation(images, 1)!, withName: "image", fileName: "\(Date().timeIntervalSince1970).jpeg", mimeType: "image/jpeg")
+        Alamofire.upload(multipartFormData: { (multipartFormData) in
+            multipartFormData.append(UIImageJPEGRepresentation(images, 1)!, withName: "image", fileName: "\(Date().timeIntervalSince1970).jpeg", mimeType: "image/jpeg")
             
             
             multipartFormData.append(Data(id.data(using: .utf8)!), withName: "uuid")
+                },  to: url ,method: .post, headers: headers){ result in
+                    switch result {
+                        
+                    case .success(let request, let streamingFromDisk, let streamFileURL):
+                        print("Upload Success : \(request), \(streamingFromDisk), \(String(describing: streamFileURL))")
+                        request.responseJSON() { response in
+                            switch response.result {
+                            case let .success(value):
+                                let json = JSON(value)
+                                if json["code"].stringValue == "200"{
+                                    
+                                    let datatmp = ModelProfile(uuid: json["data"]["uuid"].stringValue, full_name: json["data"]["full_name"].stringValue, email: json["data"]["email"].stringValue, phone_number: json["data"]["phone_number"].stringValue, gender: json["data"]["gender"].stringValue, status: json["data"]["status"].stringValue, nik: json["data"]["ref"]["nik"].stringValue, no_kk: json["data"]["ref"]["no_kk"].stringValue, dob: json["data"]["ref"]["dob"].stringValue, height: json["data"]["ref"]["body_height"].stringValue, weight: json["data"]["ref"]["body_weight"].stringValue, blood: json["data"]["ref"]["blood_type"].stringValue, relationship: json["data"]["ref"]["relationship"].stringValue, allergy: json["data"]["ref"]["allergy"].stringValue, created_at: json["data"]["created_at"].stringValue, updated_at: json["data"]["updated_at"].stringValue, image: json["data"]["profile_picture"].stringValue)
+                                    complited(datatmp,"")
 
-
-        }, to: url ,method: .post, headers: headers).responseJSON { respon in
-            print(respon)
-            switch respon.result {
-            case let .success(value):
-                let json = JSON(value)
-                if json["code"].stringValue == "200"{
-                    
-                    let datatmp = ModelProfile(uuid: json["data"]["uuid"].stringValue, full_name: json["data"]["full_name"].stringValue, email: json["data"]["email"].stringValue, phone_number: json["data"]["phone_number"].stringValue, gender: json["data"]["gender"].stringValue, status: json["data"]["status"].stringValue, nik: json["data"]["ref"]["nik"].stringValue, no_kk: json["data"]["ref"]["no_kk"].stringValue, dob: json["data"]["ref"]["dob"].stringValue, height: json["data"]["ref"]["body_height"].stringValue, weight: json["data"]["ref"]["body_weight"].stringValue, blood: json["data"]["ref"]["blood_type"].stringValue, relationship: json["data"]["ref"]["relationship"].stringValue, allergy: json["data"]["ref"]["allergy"].stringValue, created_at: json["data"]["created_at"].stringValue, updated_at: json["data"]["updated_at"].stringValue, image: json["data"]["profile_picture"].stringValue)
-                    complited(datatmp,"")
-
-                    
-                }else{
-                    complited(nil,json["messages"].stringValue)
-                    
+                                    
+                                }else{
+                                    complited(nil,json["messages"].stringValue)
+                                    
+                                }
+                            case let .failure(error):
+                                complited(nil,"Server error")
+                            }
+                        }
+                    case .failure(let error):
+                        print(error)
+                        complited(nil,"Server error")
+                    }
                 }
-            case let .failure(error):
-                complited(nil,"Server error")
-            }
-            
-            
-        }
+        
         
         
     }
@@ -755,7 +759,7 @@ class Profile: NSObject {
         let url = "\(AppSettings.Url)family"
         
         
-        AF.request(url, method: .post,parameters: param, encoding: JSONEncoding.default, headers: headers)
+        Alamofire.request(url, method: .post,parameters: param, encoding: JSONEncoding.default, headers: headers)
             .responseJSON { respon in
                 print(respon)
                 
@@ -791,7 +795,7 @@ class Profile: NSObject {
             "Content-Type": "application/json"
         ]
         let url = "\(AppSettings.Url)family/\(uuid)"
-        AF.request(url, method: .delete, encoding: JSONEncoding.default, headers: headers)
+        Alamofire.request(url, method: .delete, encoding: JSONEncoding.default, headers: headers)
             .responseJSON { respon in
                 print(respon)
                 
@@ -825,13 +829,9 @@ class Profile: NSObject {
             "Content-Type": "application/json"
         ]
      
-        print(images)
         
-        AF.upload(multipartFormData: { (multipartFormData) in
-         
-            multipartFormData.append(images.jpegData(compressionQuality: 1)!, withName: "image", fileName: "\(Date().timeIntervalSince1970).jpeg", mimeType: "image/jpeg")
-            
-//            multipartFormData.append(UIImageJPEGRepresentation(images, 1)!, withName: "image", fileName: "\(Date().timeIntervalSince1970).jpeg", mimeType: "image/jpeg")
+        Alamofire.upload(multipartFormData: { (multipartFormData) in
+            multipartFormData.append(UIImageJPEGRepresentation(images, 1)!, withName: "image", fileName: "\(Date().timeIntervalSince1970).jpeg", mimeType: "image/jpeg")
             multipartFormData.append(Data(data.blood.data(using: .utf8)!), withName: "blood_type")
             multipartFormData.append(Data(data.height.data(using: .utf8)!), withName: "body_height")
             multipartFormData.append(Data(data.weight.data(using: .utf8)!), withName: "body_weight")
@@ -844,28 +844,72 @@ class Profile: NSObject {
             multipartFormData.append(Data(data.phone_number.data(using: .utf8)!), withName: "phone_number")
             multipartFormData.append(Data(data.relationship.data(using: .utf8)!), withName: "relationship")
 
-
-                                                          
-        }, to: url ,method: .post, headers: headers).responseJSON { respon in
-            print(respon)
-            switch respon.result {
-            case let .success(value):
-                let json = JSON(value)
-                if json["code"].stringValue == "200"{
-                    let keluarga = json["data"]
-                    complited("success",ModelProfile(uuid: keluarga["uuid"].stringValue, full_name: keluarga["full_name"].stringValue, email: keluarga["email"].stringValue, phone_number: keluarga["phone_number"].stringValue, gender: keluarga["gender"].stringValue, status: keluarga["status"].stringValue, nik: keluarga["ref"]["nik"].stringValue, no_kk: keluarga["ref"]["no_kk"].stringValue, dob: keluarga["ref"]["dob"].stringValue, height: keluarga["ref"]["body_height"].stringValue, weight: keluarga["ref"]["body_weight"].stringValue, blood: keluarga["ref"]["blood_type"].stringValue, relationship: keluarga["ref"]["relationship"].stringValue, allergy: keluarga["ref"]["allergy"].stringValue,created_at : keluarga["created_at"].stringValue, updated_at: keluarga["updated_at"].stringValue, image: keluarga["profile_picture"].stringValue))
-                    
-                }else{
-                    complited(json["messages"].stringValue,nil)
-                    
+        }, to: url ,method: .post, headers: headers){ result in
+            switch result {
+                
+            case .success(let request, let streamingFromDisk, let streamFileURL):
+                print("Upload Success : \(request), \(streamingFromDisk), \(String(describing: streamFileURL))")
+                request.responseJSON() { response in
+                    switch response.result {
+                    case let .success(value):
+                        let json = JSON(value)
+                        if json["code"].stringValue == "200"{
+                            let keluarga = json["data"]
+                            complited("success",ModelProfile(uuid: keluarga["uuid"].stringValue, full_name: keluarga["full_name"].stringValue, email: keluarga["email"].stringValue, phone_number: keluarga["phone_number"].stringValue, gender: keluarga["gender"].stringValue, status: keluarga["status"].stringValue, nik: keluarga["ref"]["nik"].stringValue, no_kk: keluarga["ref"]["no_kk"].stringValue, dob: keluarga["ref"]["dob"].stringValue, height: keluarga["ref"]["body_height"].stringValue, weight: keluarga["ref"]["body_weight"].stringValue, blood: keluarga["ref"]["blood_type"].stringValue, relationship: keluarga["ref"]["relationship"].stringValue, allergy: keluarga["ref"]["allergy"].stringValue,created_at : keluarga["created_at"].stringValue, updated_at: keluarga["updated_at"].stringValue, image: keluarga["profile_picture"].stringValue))
+                            
+                        }else{
+                            complited(json["messages"].stringValue,nil)
+                            
+                        }
+                    case let .failure(error):
+                        complited("server error",nil)
+                    }
                 }
-            case let .failure(error):
-                complited("server error",nil)
-            }
-            
-            
+            case .failure(let error):
+                print(error)
+                complited("server error",nil)            }
         }
         
+//
+//        Alamofire.upload(multipartFormData: { (multipartFormData) in
+//
+////            multipartFormData.append(images.jpegData(compressionQuality: 1)!, withName: "image", fileName: "\(Date().timeIntervalSince1970).jpeg", mimeType: "image/jpeg")
+//
+//            multipartFormData.append(UIImageJPEGRepresentation(images, 1)!, withName: "image", fileName: "\(Date().timeIntervalSince1970).jpeg", mimeType: "image/jpeg")
+//            multipartFormData.append(Data(data.blood.data(using: .utf8)!), withName: "blood_type")
+//            multipartFormData.append(Data(data.height.data(using: .utf8)!), withName: "body_height")
+//            multipartFormData.append(Data(data.weight.data(using: .utf8)!), withName: "body_weight")
+//            multipartFormData.append(Data(data.dob.data(using: .utf8)!), withName: "dob")
+//            multipartFormData.append(Data(data.full_name.data(using: .utf8)!), withName: "full_name")
+//            multipartFormData.append(Data(data.gender.data(using: .utf8)!), withName: "gender")
+//            multipartFormData.append(Data(data.nik.data(using: .utf8)!), withName: "nik")
+//            multipartFormData.append(Data(data.no_kk.data(using: .utf8)!), withName: "no_kk")
+//            multipartFormData.append(Data(data.email.data(using: .utf8)!), withName: "email")
+//            multipartFormData.append(Data(data.phone_number.data(using: .utf8)!), withName: "phone_number")
+//            multipartFormData.append(Data(data.relationship.data(using: .utf8)!), withName: "relationship")
+//
+//
+//
+//        }, to: url ,method: .post, headers: headers).responseJSON { respon in
+//            print(respon)
+//            switch respon.result {
+//            case let .success(value):
+//                let json = JSON(value)
+//                if json["code"].stringValue == "200"{
+//                    let keluarga = json["data"]
+//                    complited("success",ModelProfile(uuid: keluarga["uuid"].stringValue, full_name: keluarga["full_name"].stringValue, email: keluarga["email"].stringValue, phone_number: keluarga["phone_number"].stringValue, gender: keluarga["gender"].stringValue, status: keluarga["status"].stringValue, nik: keluarga["ref"]["nik"].stringValue, no_kk: keluarga["ref"]["no_kk"].stringValue, dob: keluarga["ref"]["dob"].stringValue, height: keluarga["ref"]["body_height"].stringValue, weight: keluarga["ref"]["body_weight"].stringValue, blood: keluarga["ref"]["blood_type"].stringValue, relationship: keluarga["ref"]["relationship"].stringValue, allergy: keluarga["ref"]["allergy"].stringValue,created_at : keluarga["created_at"].stringValue, updated_at: keluarga["updated_at"].stringValue, image: keluarga["profile_picture"].stringValue))
+//
+//                }else{
+//                    complited(json["messages"].stringValue,nil)
+//
+//                }
+//            case let .failure(error):
+//                complited("server error",nil)
+//            }
+//
+//
+//        }
+//
         
     }
     
@@ -878,14 +922,9 @@ class Profile: NSObject {
             "Content-Type": "application/json"
         ]
         
-        print(url)
-  
-        AF.upload(multipartFormData: { (multipartFormData) in
-//
-            multipartFormData.append(images.jpegData(compressionQuality: 1)!, withName: "image", fileName: "\(Date().timeIntervalSince1970).jpeg", mimeType: "image/jpeg")
-            
-//               multipartFormData.append(UIImageJPEGRepresentation(images, 1)!, withName: "image", fileName: "\(Date().timeIntervalSince1970).jpeg", mimeType: "image/jpeg")
-            multipartFormData.append(Data(data.uuid.data(using: .utf8)!), withName: "uuid")
+        
+        Alamofire.upload(multipartFormData: { (multipartFormData) in
+            multipartFormData.append(UIImageJPEGRepresentation(images, 1)!, withName: "image", fileName: "\(Date().timeIntervalSince1970).jpeg", mimeType: "image/jpeg")
             multipartFormData.append(Data(data.blood.data(using: .utf8)!), withName: "blood_type")
             multipartFormData.append(Data(data.height.data(using: .utf8)!), withName: "body_height")
             multipartFormData.append(Data(data.weight.data(using: .utf8)!), withName: "body_weight")
@@ -898,35 +937,35 @@ class Profile: NSObject {
             multipartFormData.append(Data(data.phone_number.data(using: .utf8)!), withName: "phone_number")
             multipartFormData.append(Data(data.relationship.data(using: .utf8)!), withName: "relationship")
 
+        }, to: url ,method: .post, headers: headers){ result in
+            switch result {
+                
+            case .success(let request, let streamingFromDisk, let streamFileURL):
+                print("Upload Success : \(request), \(streamingFromDisk), \(String(describing: streamFileURL))")
+                request.responseJSON() { response in
+                    switch response.result {
+                    case let .success(value):
+                        let json = JSON(value)
+                        if json["code"].stringValue == "200"{
+                            
+                            let datatmp = ModelProfile(uuid: json["data"]["uuid"].stringValue, full_name: json["data"]["full_name"].stringValue, email: json["data"]["email"].stringValue, phone_number: json["data"]["phone_number"].stringValue, gender: json["data"]["gender"].stringValue, status: json["data"]["status"].stringValue, nik: json["data"]["ref"]["nik"].stringValue, no_kk: json["data"]["ref"]["no_kk"].stringValue, dob: json["data"]["ref"]["dob"].stringValue, height: json["data"]["ref"]["body_height"].stringValue, weight: json["data"]["ref"]["body_weight"].stringValue, blood: json["data"]["ref"]["blood_type"].stringValue, relationship: json["data"]["ref"]["relationship"].stringValue, allergy: json["data"]["ref"]["allergy"].stringValue, created_at: json["data"]["created_at"].stringValue, updated_at: json["data"]["updated_at"].stringValue, image: json["data"]["profile_picture"].stringValue)
+                            complited("success",json["data"]["profile_picture"].stringValue)
 
-
-//            multipartFormData.append(Data(data..data(using: .utf8)!), withName: "device_id")
-          
-                                                           
-
-
-        }, to: url ,method: .post, headers: headers).responseJSON { respon in
-            print(respon)
-            switch respon.result {
-            case let .success(value):
-                let json = JSON(value)
-                if json["code"].stringValue == "200"{
-                    
-                    let datatmp = ModelProfile(uuid: json["data"]["uuid"].stringValue, full_name: json["data"]["full_name"].stringValue, email: json["data"]["email"].stringValue, phone_number: json["data"]["phone_number"].stringValue, gender: json["data"]["gender"].stringValue, status: json["data"]["status"].stringValue, nik: json["data"]["ref"]["nik"].stringValue, no_kk: json["data"]["ref"]["no_kk"].stringValue, dob: json["data"]["ref"]["dob"].stringValue, height: json["data"]["ref"]["body_height"].stringValue, weight: json["data"]["ref"]["body_weight"].stringValue, blood: json["data"]["ref"]["blood_type"].stringValue, relationship: json["data"]["ref"]["relationship"].stringValue, allergy: json["data"]["ref"]["allergy"].stringValue, created_at: json["data"]["created_at"].stringValue, updated_at: json["data"]["updated_at"].stringValue, image: json["data"]["profile_picture"].stringValue)
-                    complited("success",json["data"]["profile_picture"].stringValue)
-
-                    
-                }else{
-                    complited(json["messages"].stringValue,"")
-                    
+                            
+                        }else{
+                            complited(json["messages"].stringValue,"")
+                            
+                        }
+                    case let .failure(error):
+                        complited("Server error","")
+                    }
                 }
-            case let .failure(error):
+            case .failure(let error):
+                print(error)
                 complited("Server error","")
+                
             }
-            
-            
         }
-        
         
     }
     
@@ -939,11 +978,11 @@ class Profile: NSObject {
             "Content-Type": "application/json"
         ]
   
-        let device = UserDefaults.standard.string(forKey: "DOKTERKELUARGA_FCM_TOKEN") ?? ""
-        AF.upload(multipartFormData: { (multipartFormData) in
-         
-            multipartFormData.append(images.jpegData(compressionQuality: 1)!, withName: "image", fileName: "\(Date().timeIntervalSince1970).jpeg", mimeType: "image/jpeg")
-//            multipartFormData.append(UIImageJPEGRepresentation(images, 1)!, withName: "image", fileName: "\(Date().timeIntervalSince1970).jpeg", mimeType: "image/jpeg")
+        let device = UserDefaults.standard.string(forKey: AppSettings.Tokentransmedik) ?? ""
+                                   
+        
+        Alamofire.upload(multipartFormData: { (multipartFormData) in
+            multipartFormData.append(UIImageJPEGRepresentation(images, 1)!, withName: "image", fileName: "\(Date().timeIntervalSince1970).jpeg", mimeType: "image/jpeg")
             
             multipartFormData.append(Data(data.uuid.data(using: .utf8)!), withName: "uuid")
             multipartFormData.append(Data(data.blood.data(using: .utf8)!), withName: "blood_type")
@@ -956,30 +995,38 @@ class Profile: NSObject {
             multipartFormData.append(Data(data.no_kk.data(using: .utf8)!), withName: "no_kk")
             multipartFormData.append(Data(device.data(using: .utf8)!), withName: "device_id")
             
+        }, to: url ,method: .post, headers: headers){ result in
+            switch result {
+                
+            case .success(let request, let streamingFromDisk, let streamFileURL):
+                print("Upload Success : \(request), \(streamingFromDisk), \(String(describing: streamFileURL))")
+                request.responseJSON() { response in
+                    switch response.result {
+                    case let .success(value):
+                        let json = JSON(value)
+                        if json["code"].stringValue == "200"{
+                            
+                            let datatmp = ModelProfile(uuid: json["data"]["uuid"].stringValue, full_name: json["data"]["full_name"].stringValue, email: json["data"]["email"].stringValue, phone_number: json["data"]["phone_number"].stringValue, gender: json["data"]["gender"].stringValue, status: json["data"]["status"].stringValue, nik: json["data"]["ref"]["nik"].stringValue, no_kk: json["data"]["ref"]["no_kk"].stringValue, dob: json["data"]["ref"]["dob"].stringValue, height: json["data"]["ref"]["body_height"].stringValue, weight: json["data"]["ref"]["body_weight"].stringValue, blood: json["data"]["ref"]["blood_type"].stringValue, relationship: json["data"]["ref"]["relationship"].stringValue, allergy: json["data"]["ref"]["allergy"].stringValue, created_at: json["data"]["created_at"].stringValue, updated_at: json["data"]["updated_at"].stringValue, image: json["data"]["profile_picture"].stringValue)
+                            complited(datatmp,"success")
 
-
-
-        }, to: url ,method: .post, headers: headers).responseJSON { respon in
-            print(respon)
-            switch respon.result {
-            case let .success(value):
-                let json = JSON(value)
-                if json["code"].stringValue == "200"{
-                    
-                    let datatmp = ModelProfile(uuid: json["data"]["uuid"].stringValue, full_name: json["data"]["full_name"].stringValue, email: json["data"]["email"].stringValue, phone_number: json["data"]["phone_number"].stringValue, gender: json["data"]["gender"].stringValue, status: json["data"]["status"].stringValue, nik: json["data"]["ref"]["nik"].stringValue, no_kk: json["data"]["ref"]["no_kk"].stringValue, dob: json["data"]["ref"]["dob"].stringValue, height: json["data"]["ref"]["body_height"].stringValue, weight: json["data"]["ref"]["body_weight"].stringValue, blood: json["data"]["ref"]["blood_type"].stringValue, relationship: json["data"]["ref"]["relationship"].stringValue, allergy: json["data"]["ref"]["allergy"].stringValue, created_at: json["data"]["created_at"].stringValue, updated_at: json["data"]["updated_at"].stringValue, image: json["data"]["profile_picture"].stringValue)
-                    complited(datatmp,"success")
-
-                    
-                }else{
-                    complited(nil,json["messages"].stringValue)
-                    
+                            
+                        }else{
+                            complited(nil,json["messages"].stringValue)
+                            
+                        }
+                    case let .failure(error):
+                        complited(nil,"Server error")
+                    }
                 }
-            case let .failure(error):
+            case .failure(let error):
+                print(error)
                 complited(nil,"Server error")
+
             }
-            
-            
         }
+                                                  
+                                                  
+       
         
         
     }

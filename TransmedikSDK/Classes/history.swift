@@ -23,7 +23,8 @@ class historiesobject: NSObject {
 
         
         var tmp :[ModelHistories] = []
-        AF.request(url, method: .get,encoding: JSONEncoding.default, headers: headers)
+        
+        Alamofire.request(url, method: .get,encoding: JSONEncoding.default, headers: headers)
             .responseJSON { respon in
                 print("ini respon history url")
                 print(respon)
@@ -96,7 +97,7 @@ class historiesobject: NSObject {
         ]
          
         let url = "\(AppSettings.Url)histories/\(uuid)?filter=\(selected ?? 1)&per_page=10&page=\(page)"
-        AF.request(url, method: .get,encoding: JSONEncoding.default, headers: headers)
+        Alamofire.request(url, method: .get,encoding: JSONEncoding.default, headers: headers)
             .responseJSON { respon in
 //                print("history")
 //             print(respon)
@@ -146,7 +147,7 @@ class historiesobject: NSObject {
         print(headers)
         
         var tmp :[ModelHistories] = []
-        AF.request(url, method: .get,encoding: JSONEncoding.default, headers: headers)
+        Alamofire.request(url, method: .get,encoding: JSONEncoding.default, headers: headers)
             .responseJSON { respon in
                 print("ini respon history")
                 print(respon)
@@ -297,7 +298,7 @@ class historiesobject: NSObject {
         print(headers)
         
         var tmp :[ModelHistories] = []
-        AF.request(url, method: .get,encoding: JSONEncoding.default, headers: headers)
+        Alamofire.request(url, method: .get,encoding: JSONEncoding.default, headers: headers)
             .responseJSON { respon in
                 
                 

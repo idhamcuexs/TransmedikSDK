@@ -137,7 +137,7 @@ class ChatTitleView: UIView {
 
         self.widthAnchor.constraint(equalToConstant: _width).isActive = true
         self.heightAnchor.constraint(equalToConstant: _height).isActive = true
-        self.bringSubviewToFront(backButton)
+        self.bringSubview(toFront: backButton)
 //        self.bringSubview(toFront: backButton)
         
         

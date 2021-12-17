@@ -340,7 +340,12 @@ class DetailChatViewController: MessagesViewController, MessagesDataSource {
         super.viewDidAppear(animated)
 //        print("detail did appear")
         registerNotificationsObservers()
-        self.additionalSafeAreaInsets.top = AppSettings.NAVIGATIONBAR_HEIGHT - 44
+        if #available(iOS 11.0, *) {
+            self.additionalSafeAreaInsets.top = AppSettings.NAVIGATIONBAR_HEIGHT - 44
+        } else {
+        }
+        
+       
         
        
     }
@@ -639,9 +644,9 @@ class DetailChatViewController: MessagesViewController, MessagesDataSource {
         
      
      //swift 4.2
-        NotificationCenter.default.removeObserver(self, name: UIDevice.orientationDidChangeNotification, object: nil)
+//        NotificationCenter.default.removeObserver(self, name: UIDevice.orientationDidChangeNotification, object: nil)
         
-//        NotificationCenter.default.removeObserver(self, name: NSNotification.Name.UIDeviceOrientationDidChange, object: nil)
+        NotificationCenter.default.removeObserver(self, name: NSNotification.Name.UIDeviceOrientationDidChange, object: nil)
     }
 }
 
@@ -650,37 +655,37 @@ class DetailChatViewController: MessagesViewController, MessagesDataSource {
 extension DetailChatViewController {
     private func setupObservers() {
         //swift 4.2
-        NotificationCenter.default.addObserver(self,
-                                               selector: #selector(inputTextViewDidChange),
-                                               name: UITextView.textDidChangeNotification, object: messageInputBar.inputTextView)
-        NotificationCenter.default.addObserver(self,
-                                               selector: #selector(inputTextViewDidBeginEditing),
-                                               name: UITextView.textDidBeginEditingNotification, object: messageInputBar.inputTextView)
-        NotificationCenter.default.addObserver(self,
-                                               selector: #selector(inputTextViewDidEndEditing),
-                                               name: UITextView.textDidEndEditingNotification, object: messageInputBar.inputTextView)
-        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShown(note:)), name: UIResponder.keyboardWillShowNotification, object: nil)
-        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide(note:)), name: UIResponder.keyboardWillHideNotification, object: nil)
-        
-        
 //        NotificationCenter.default.addObserver(self,
 //                                               selector: #selector(inputTextViewDidChange),
-//                                               name: Notification.Name.UITextViewTextDidChange, object: messageInputBar.inputTextView)
+//                                               name: UITextView.textDidChangeNotification, object: messageInputBar.inputTextView)
 //        NotificationCenter.default.addObserver(self,
 //                                               selector: #selector(inputTextViewDidBeginEditing),
-//                                               name: Notification.Name.UITextViewTextDidBeginEditing, object: messageInputBar.inputTextView)
+//                                               name: UITextView.textDidBeginEditingNotification, object: messageInputBar.inputTextView)
 //        NotificationCenter.default.addObserver(self,
 //                                               selector: #selector(inputTextViewDidEndEditing),
-//                                               name:Notification.Name.UITextViewTextDidEndEditing, object: messageInputBar.inputTextView)
-//        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShown(note:)), name: .UIKeyboardWillShow, object: nil)
-//        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide(note:)), name: .UIKeyboardWillHide, object: nil)
+//                                               name: UITextView.textDidEndEditingNotification, object: messageInputBar.inputTextView)
+//        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShown(note:)), name: UIResponder.keyboardWillShowNotification, object: nil)
+//        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide(note:)), name: UIResponder.keyboardWillHideNotification, object: nil)
+//
+        
+        NotificationCenter.default.addObserver(self,
+                                               selector: #selector(inputTextViewDidChange),
+                                               name: Notification.Name.UITextViewTextDidChange, object: messageInputBar.inputTextView)
+        NotificationCenter.default.addObserver(self,
+                                               selector: #selector(inputTextViewDidBeginEditing),
+                                               name: Notification.Name.UITextViewTextDidBeginEditing, object: messageInputBar.inputTextView)
+        NotificationCenter.default.addObserver(self,
+                                               selector: #selector(inputTextViewDidEndEditing),
+                                               name:Notification.Name.UITextViewTextDidEndEditing, object: messageInputBar.inputTextView)
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShown(note:)), name: .UIKeyboardWillShow, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide(note:)), name: .UIKeyboardWillHide, object: nil)
     }
     
     @objc func keyboardWillShown(note: Notification) {
         let userInfo = note.userInfo
         //swift 4.2
-        let keyboardFrame = userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as! CGRect
-//        let keyboardScreenEndFrame = userInfo?[UIKeyboardFrameEndUserInfoKey] as! CGRect
+//        let keyboardFrame = userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as! CGRect
+        let keyboardScreenEndFrame = userInfo?[UIKeyboardFrameEndUserInfoKey] as! CGRect
 
         
         /*let contentInset = UIEdgeInsets(top: 0.0, left: 0.0, bottom: keyboardFrame.height, right: 0.0)
@@ -739,31 +744,31 @@ extension DetailChatViewController {
     
     func registerNotificationsObservers() {
         
-//
-//        NotificationCenter.default.addObserver(self, selector: #selector(willEnterForeground), name: .UIApplicationWillEnterForeground, object: nil)
-//
-//        NotificationCenter.default.addObserver(self, selector: #selector(willResignActive), name: .UIApplicationWillResignActive, object: nil)
-//
-//        NotificationCenter.default.addObserver(self, selector: #selector(orientationDidChange), name: .UIDeviceOrientationDidChange, object: nil)
+
+        NotificationCenter.default.addObserver(self, selector: #selector(willEnterForeground), name: .UIApplicationWillEnterForeground, object: nil)
+
+        NotificationCenter.default.addObserver(self, selector: #selector(willResignActive), name: .UIApplicationWillResignActive, object: nil)
+
+        NotificationCenter.default.addObserver(self, selector: #selector(orientationDidChange), name: .UIDeviceOrientationDidChange, object: nil)
         
         //swift 4.2
-        NotificationCenter.default.addObserver(self, selector: #selector(willEnterForeground), name: UIApplication.willEnterForegroundNotification, object: nil)
-
-        NotificationCenter.default.addObserver(self, selector: #selector(willResignActive), name: UIApplication.willResignActiveNotification, object: nil)
-
-        NotificationCenter.default.addObserver(self, selector: #selector(orientationDidChange), name: UIDevice.orientationDidChangeNotification, object: nil)
+//        NotificationCenter.default.addObserver(self, selector: #selector(willEnterForeground), name: UIApplication.willEnterForegroundNotification, object: nil)
+//
+//        NotificationCenter.default.addObserver(self, selector: #selector(willResignActive), name: UIApplication.willResignActiveNotification, object: nil)
+//
+//        NotificationCenter.default.addObserver(self, selector: #selector(orientationDidChange), name: UIDevice.orientationDidChangeNotification, object: nil)
     }
     
     func unregisterAllNotificationsObservers() {
 //        
-//        NotificationCenter.default.removeObserver(self, name: .UIApplicationWillEnterForeground, object: nil)
-//        
-//        NotificationCenter.default.removeObserver(self, name: .UIApplicationWillResignActive, object: nil)
+        NotificationCenter.default.removeObserver(self, name: .UIApplicationWillEnterForeground, object: nil)
+        
+        NotificationCenter.default.removeObserver(self, name: .UIApplicationWillResignActive, object: nil)
 //        
         //swift 4.2
-        NotificationCenter.default.removeObserver(self, name: UIApplication.willEnterForegroundNotification, object: nil)
-
-        NotificationCenter.default.removeObserver(self, name: UIApplication.willResignActiveNotification, object: nil)
+//        NotificationCenter.default.removeObserver(self, name: UIApplication.willEnterForegroundNotification, object: nil)
+//
+//        NotificationCenter.default.removeObserver(self, name: UIApplication.willResignActiveNotification, object: nil)
     }
     
     @objc func willEnterForeground() {

@@ -104,12 +104,17 @@ open class FourMediaOnlyMessageCell: MediaOnlyMessageCell {
         badgeLabel.badgeColor = AppColor.shared.instance(traitCollection).badgeColor
         badgeLabel.textColor = AppColor.shared.instance(traitCollection).badgeTextColor
         
-        imageView.layer.maskedCorners = [.layerMinXMinYCorner]
-        imageView2.layer.maskedCorners = [.layerMaxXMinYCorner]
-        
-        imageView3.layer.maskedCorners = [.layerMinXMaxYCorner]
-        imageView4.layer.maskedCorners = [.layerMaxXMaxYCorner]
-        
+        if #available(iOS 11.0, *) {
+            imageView.layer.maskedCorners = [.layerMinXMinYCorner]
+            imageView2.layer.maskedCorners = [.layerMaxXMinYCorner]
+            
+            imageView3.layer.maskedCorners = [.layerMinXMaxYCorner]
+            imageView4.layer.maskedCorners = [.layerMaxXMaxYCorner]
+            
+        } else {
+            // Fallback on earlier versions
+        }
+       
         mediaView.addSubview(imageView)
         mediaView.addSubview(imageView2)
         mediaView.addSubview(imageView3)

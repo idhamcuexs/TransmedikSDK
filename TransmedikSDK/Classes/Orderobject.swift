@@ -109,36 +109,43 @@ class Orderobject: NSObject {
         let param = "{\"map_lat\":\"\(data.lat)\",\"map_lng\":\"\(data.long)\",\"address\":\"\(data.address)\",\"id\" : \(data.id),\"note\":\"\(data.note)\",\"total\":\(data.total),\"voucher\":null,\"voucher_amount\": \(data.voucher_amount),\"medicines\":[\(stt)],\"pin\" : \"\(pin)\",\"payment_id\": \(PaymentId),\"payment_name\" : \"\(PaymentName)\"}"
 
         print(param)
+        
+        ///
 
-    
-        AF.upload(multipartFormData: { (multipartFormData) in
+        Alamofire.upload(multipartFormData: { (multipartFormData) in
             if images != nil && images!.count > 0{
                 for i in 0..<images!.count{
-                    multipartFormData.append(images![i].jpegData(compressionQuality: 1)!, withName: "images[]", fileName: "\(Date().timeIntervalSince1970).jpeg", mimeType: "image/jpeg")
-//                    multipartFormData.append(UIImageJPEGRepresentation(images![i], 1)!, withName: "images[]", fileName: "\(Date().timeIntervalSince1970).jpeg", mimeType: "image/jpeg")
+                    multipartFormData.append(UIImageJPEGRepresentation(images![i], 1)!, withName: "images[]", fileName: "\(Date().timeIntervalSince1970).jpeg", mimeType: "image/jpeg")
                 }
             }
             multipartFormData.append(Data(param.data(using: .utf8)!), withName: "data")
-
-
-        }, to: url ,method: .post, headers: headers).responseJSON { respon in
-            print(respon)
-            switch respon.result {
-            case let .success(value):
-                let json = JSON(value)
-                if json["code"].stringValue == "200"{
-                    complited("success")
-                    
-                }else{
-                    complited(json["messages"].stringValue)
-                    
+        },  to: url ,method: .post, headers: headers){ result in
+            switch result {
+                
+            case .success(let request, let streamingFromDisk, let streamFileURL):
+                print("Upload Success : \(request), \(streamingFromDisk), \(String(describing: streamFileURL))")
+                request.responseJSON() { response in
+                    switch response.result {
+                    case let .success(value):
+                        let json = JSON(value)
+                        if json["code"].stringValue == "200"{
+                            complited("success")
+                            
+                        }else{
+                            complited(json["messages"].stringValue)
+                            
+                        }
+                    case let .failure(error):
+                        complited("error server")
+                    }
                 }
-            case let .failure(error):
+            case .failure(let error):
+                print(error)
                 complited("error server")
+                
             }
-            
-            
         }
+        
         
         
     }
@@ -183,7 +190,7 @@ class Orderobject: NSObject {
         print(param)
         
         
-        AF.request(url, method: .post,parameters: param, encoding: JSONEncoding.default, headers: headers)
+        Alamofire.request(url, method: .post,parameters: param, encoding: JSONEncoding.default, headers: headers)
             .responseJSON { respon in
                 print(respon)
                 switch respon.result {
@@ -235,40 +242,43 @@ class Orderobject: NSObject {
         
        let param = ""
 
-
-    
-        AF.upload(multipartFormData: { (multipartFormData) in
+        Alamofire.upload(multipartFormData: { (multipartFormData) in
             if images != nil && images!.count > 0{
                 for i in 0..<images!.count{
-                    //swift 4.2
-                    multipartFormData.append(images![i].jpegData(compressionQuality: 1)!, withName: "images[]", fileName: "\(Date().timeIntervalSince1970).jpeg", mimeType: "image/jpeg")
-//                    multipartFormData.append(UIImageJPEGRepresentation(images![i], 1)!, withName: "images[]", fileName: "\(Date().timeIntervalSince1970).jpeg", mimeType: "image/jpeg")
+                    multipartFormData.append(UIImageJPEGRepresentation(images![i], 1)!, withName: "images[]", fileName: "\(Date().timeIntervalSince1970).jpeg", mimeType: "image/jpeg")
                 }
             }
             multipartFormData.append(Data(param.data(using: .utf8)!), withName: "data")
             multipartFormData.append(Data(valuepembayaran.data(using: .utf8)!), withName: pembayaran)
 
 
+                }, to: url ,method: .post, headers: headers){ result in
+                    switch result {
+                        
+                    case .success(let request, let streamingFromDisk, let streamFileURL):
+                        print("Upload Success : \(request), \(streamingFromDisk), \(String(describing: streamFileURL))")
+                        request.responseJSON() { response in
+                            switch response.result {
+                            case let .success(value):
+                                let json = JSON(value)
+                                if json["code"].stringValue == "200"{
+                                    complited("success")
+                                    
+                                }else{
+                                    complited(json["messages"].stringValue)
+                                    
+                                }
+                            case let .failure(error):
+                                complited("error server")
+                            }
+                        }
+                    case .failure(let error):
+                        complited("error server")
 
-        }, to: url ,method: .post, headers: headers).responseJSON { respon in
-            print(respon)
-            switch respon.result {
-            case let .success(value):
-                let json = JSON(value)
-                if json["code"].stringValue == "200"{
-                    complited("success")
-                    
-                }else{
-                    complited(json["messages"].stringValue)
-                    
+                    }
                 }
-            case let .failure(error):
-                complited("error server")
-            }
-            
-            
-        }
-        
+//
+    
         
     }
     
@@ -285,7 +295,7 @@ class Orderobject: NSObject {
         
         print("parammmmm =>>>>>> \(param)" )
 
-        AF.request(url, method: .post,parameters: param, encoding: JSONEncoding.default, headers: headers)
+        Alamofire.request(url, method: .post,parameters: param, encoding: JSONEncoding.default, headers: headers)
             .responseJSON { respon in
             print(respon)
             switch respon.result {
@@ -326,37 +336,40 @@ class Orderobject: NSObject {
             "Content-Type": "application/json"
         ]
         
-
-        AF.upload(multipartFormData: { (multipartFormData) in
-           
+        
+        Alamofire.upload(multipartFormData: { (multipartFormData) in
+            
             multipartFormData.append(Data(param.data(using: .utf8)!), withName: "data")
-
-
-
-        }, to: url ,method: .post, headers: headers).responseJSON { respon in
-            print(respon)
-            switch respon.result {
-            case let .success(value):
-                let json = JSON(value)
-                if json["messages"].stringValue == "Unauthenticated."{
-                    complited(json["messages"].stringValue,nil,nil)
-                }
+            
+        },  to: url ,method: .post, headers: headers){ result in
+            switch result {
                 
-                if json["code"].stringValue == "200"{
-                    complited("success",json["data"]["trans_merchant_id"].stringValue,json["data"]["url"].stringValue)
-                    
-                }else{
-                    complited(json["messages"].stringValue,nil,nil)
-                    
+            case .success(let request, let streamingFromDisk, let streamFileURL):
+                print("Upload Success : \(request), \(streamingFromDisk), \(String(describing: streamFileURL))")
+                request.responseJSON() { response in
+                    switch response.result {
+                    case let .success(value):
+                        let json = JSON(value)
+                        if json["messages"].stringValue == "Unauthenticated."{
+                            complited(json["messages"].stringValue,nil,nil)
+                        }
+                        
+                        if json["code"].stringValue == "200"{
+                            complited("success",json["data"]["trans_merchant_id"].stringValue,json["data"]["url"].stringValue)
+                            
+                        }else{
+                            complited(json["messages"].stringValue,nil,nil)
+                            
+                        }
+                    case let .failure(error):
+                        complited("error server",nil,nil)
+                    }
                 }
-            case let .failure(error):
+            case .failure(let error):
+                print(error)
                 complited("error server",nil,nil)
             }
-            
-            
         }
-        
-        
     }
     
     

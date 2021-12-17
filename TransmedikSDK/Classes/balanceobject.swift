@@ -61,7 +61,7 @@ class balanceobject: NSObject {
         
 //        print(url)
         
-        AF.request(url, method: .get, encoding: JSONEncoding.default, headers: headers)
+        Alamofire.request(url, method: .get, encoding: JSONEncoding.default, headers: headers)
             .responseJSON { respon in
 //                print("gethistorybalance")
 //                print(respon)
@@ -114,7 +114,7 @@ class balanceobject: NSObject {
         
 //        print(url)
         
-        AF.request(url, method: .get, encoding: JSONEncoding.default, headers: headers)
+        Alamofire.request(url, method: .get, encoding: JSONEncoding.default, headers: headers)
             .responseJSON { respon in
 //                print(respon)
                 switch respon.result {

@@ -323,7 +323,7 @@ extension NewTrackingViewController : UITableViewDelegate,UITableViewDataSource{
     func tableView(_ tableView: UITableView, estimatedHeightForRowAt indexPath: IndexPath) -> CGFloat {
 
         print("waehs")
-        return  UITableView.automaticDimension
+        return  UITableViewAutomaticDimension
     }
     
 }

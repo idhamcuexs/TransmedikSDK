@@ -47,7 +47,7 @@ class NewHistoryViewController: UIViewController {
             self.userDropDown,
         ]
     }()
-    var spinner = UIActivityIndicatorView(style: .gray)
+    var spinner = UIActivityIndicatorView(activityIndicatorStyle: .gray)
     
     var success = false{
         didSet{

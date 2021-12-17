@@ -330,8 +330,8 @@ extension OrderobatViewController: UITableViewDelegate,UITableViewDataSource{
     }
     
     func tableView(_ tableView: UITableView, estimatedHeightForRowAt indexPath: IndexPath) -> CGFloat {
-        return UITableView.automaticDimension
-//        return  UITableViewAutomaticDimension
+//        return UITableView.automaticDimension
+        return  UITableViewAutomaticDimension
     }
     
     

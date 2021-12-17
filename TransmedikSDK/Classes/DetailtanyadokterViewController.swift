@@ -44,7 +44,7 @@ class DetailtanyadokterViewController: UIViewController,UITextFieldDelegate {
     var actions = false
     var isform = false
     var presentPage : PresentPage!
-    var spinner = UIActivityIndicatorView(style: .gray)
+    var spinner = UIActivityIndicatorView(activityIndicatorStyle: .gray)
 
     //tinggi
 

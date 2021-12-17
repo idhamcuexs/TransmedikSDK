@@ -204,10 +204,10 @@ extension ResepViewController: UITableViewDelegate,UITableViewDataSource{
         self.tinggiTable.constant = tableView.contentSize.height    }
     
     func tableView(_ tableView: UITableView, estimatedHeightForRowAt indexPath: IndexPath) -> CGFloat {
-        return UITableView.automaticDimension
+//        return UITableView.automaticDimension
         print("estimatedHeightForRowAt")
 
-//        return  UITableViewAutomaticDimension
+        return  UITableViewAutomaticDimension
     }
     
 }
