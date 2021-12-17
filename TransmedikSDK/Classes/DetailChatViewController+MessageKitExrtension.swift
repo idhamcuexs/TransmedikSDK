@@ -926,6 +926,8 @@ extension DetailChatViewController: UINavigationControllerDelegate, UIImagePicke
         if #available(iOS 13.0, *) {
             messageInputBar.sendButton.image = UIImage(systemName: "paperplane.fill")?.withTintColor(.white)
         } else {
+          
+            
             // Fallback on earlier versions
         }
         messageInputBar.middleContentViewPadding.right = -38
@@ -979,20 +981,20 @@ extension DetailChatViewController: UINavigationControllerDelegate, UIImagePicke
                 if #available(iOS 13.0, *) {
                     $0.image = UIImage(systemName: "plus")?.resizeWithWidth(width: 28)!.withRenderingMode(.alwaysTemplate)
                 } else {
-                   
-                    $0.image = #imageLiteral(resourceName: "Tambahkan")
+
                 }
+                
                 $0.setSize(CGSize(width: 28, height: 36), animated: false)
-                $0.tintColor = .blue
+                $0.tintColor = .white
                 $0.contentEdgeInsets = UIEdgeInsets(top: 2, left: 0, bottom: 2, right: 0)
             }.onEnabled {
-                $0.tintColor = .blue
+                $0.tintColor = .white
             }.onDisabled {
-                $0.tintColor = .blue
+                $0.tintColor = .white
             }.onSelected {
-                $0.tintColor = .blue
+                $0.tintColor = .white
             }.onDeselected {
-                $0.tintColor = .blue
+                $0.tintColor = .white
             }.onTouchUpInside {
                 let actionSheet = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
                 

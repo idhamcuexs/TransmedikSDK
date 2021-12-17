@@ -442,6 +442,9 @@ extension NewHistoryViewController : UITableViewDelegate,UITableViewDataSource{
             
         }else{
             
+//           guard dataKonsultasi!.data!.data![indexPath.row].status ==  "FINISHED" || dataKonsultasi!.data!.data![indexPath.row].status ==  "SESI BERAKHIR"
+//           else {return}
+
             
             self.query = ConsultationModel.query()
             self.query = self.query.whereKey("consultation_id", equalTo: Int(self.dataKonsultasi!.data!.data![indexPath.row].detail_consultation!.consultation_id!))

@@ -8,7 +8,7 @@
 
 Pod::Spec.new do |s|
   s.name             = 'TransmedikSDK'
-  s.version          = '1.1.6'
+  s.version          = '1.1.8'
   s.summary          = 'TransmedikSDK for library WE+'
 
   s.description      = "TransmedikSDK for we plus"
@@ -34,13 +34,15 @@ Pod::Spec.new do |s|
     s.dependency 'Alamofire', '~> 4.7.3'
     s.dependency 'AlamofireImage', '~>  3.3.1'
     s.dependency 'SwiftyJSON', '~> 5.0.0'
-    s.dependency 'MessageKit', '~> 3.0.0'
+    s.dependency 'MessageKit'
+s.dependency 'MessageInputBar'
+
+
     s.dependency 'Kingfisher', '~> 5.15.8'
     s.dependency 'FSPagerView', '~> 0.8.3'
 #    s.dependency 'IQKeyboardManagerSwift', '~> 6.5.6'
     s.dependency 'SwiftyCodeView', '~> 0.3.6'
     s.dependency 'DropDown', '~> 2.3.2'
-    s.dependency 'MessageInputBar', '~> 0.4.0'
     s.dependency 'URLEmbeddedView', '~> 0.18.0'
     s.dependency 'SwipeCellKit', '~> 2.7.1'
     s.dependency 'Parse', '~> 1.19.1'

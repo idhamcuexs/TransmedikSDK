@@ -1045,7 +1045,7 @@
                                                                         <subviews>
                                                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tb4-P0-xRe">
                                                                                 <rect key="frame" x="10" y="55" width="150.5" height="30"/>
-                                                                                <color key="backgroundColor" systemColor="systemBlueColor"/>
+                                                                                <color key="backgroundColor" red="0.94117647058823528" green="0.54117647058823526" blue="0.13725490196078433" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                                                 <constraints>
                                                                                     <constraint firstAttribute="height" constant="30" id="Noh-pl-3yy"/>
                                                                                 </constraints>
@@ -1156,7 +1156,7 @@
                                                         </subviews>
                                                     </stackView>
                                                 </subviews>
-                                                <color key="backgroundColor" systemColor="systemBlueColor"/>
+                                                <color key="backgroundColor" red="0.94117647058823528" green="0.54117647058823526" blue="0.13725490196078433" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <constraints>
                                                     <constraint firstItem="738-qg-B5s" firstAttribute="centerX" secondItem="pMM-it-WmS" secondAttribute="centerX" id="EkW-EK-YRY"/>
                                                     <constraint firstItem="738-qg-B5s" firstAttribute="top" secondItem="pMM-it-WmS" secondAttribute="top" constant="10" id="Qx1-hY-RuO"/>
@@ -1186,7 +1186,7 @@
                                                         </subviews>
                                                     </stackView>
                                                 </subviews>
-                                                <color key="backgroundColor" systemColor="systemBlueColor"/>
+                                                <color key="backgroundColor" red="0.94117647058823528" green="0.54117647058823526" blue="0.13725490196078433" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <constraints>
                                                     <constraint firstItem="LYC-CK-fHk" firstAttribute="centerX" secondItem="wDJ-ka-9IJ" secondAttribute="centerX" id="9lE-Xr-86M"/>
                                                     <constraint firstItem="LYC-CK-fHk" firstAttribute="top" secondItem="wDJ-ka-9IJ" secondAttribute="top" constant="10" id="XO0-Op-rwK"/>

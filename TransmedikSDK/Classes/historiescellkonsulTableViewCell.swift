@@ -84,6 +84,7 @@ class historiescellkonsulTableViewCell: UITableViewCell {
             status.text = " Selesai"
             
         }else{
+            print("ditolak adalah ==>>> \(data.status ) ")
             status.text = " Ditolak"
            
         }
