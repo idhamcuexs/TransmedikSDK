@@ -26,7 +26,7 @@ class Address: NSObject {
         let url = "\(AppSettings.Url)patient-address"
         var alamat :[AlamatModel] = []
         
-        AF.request(url, method: .get, encoding: JSONEncoding.default, headers: headers)
+        Alamofire.request(url, method: .get, encoding: JSONEncoding.default, headers: headers)
             .responseJSON { respon in
 //                print(respon)
                 
@@ -79,7 +79,7 @@ class Address: NSObject {
         let url = "\(AppSettings.Url)patient-address"
         
         
-        AF.request(url, method: .post,parameters: param, encoding: JSONEncoding.default, headers: headers)
+        Alamofire.request(url, method: .post,parameters: param, encoding: JSONEncoding.default, headers: headers)
             .responseJSON { respon in
 //                print(respon)
                 
@@ -128,7 +128,7 @@ class Address: NSObject {
         let url = "\(AppSettings.Url)patient-address/\(data.id)"
         
         
-        AF.request(url, method: .put, parameters:  param, encoding: JSONEncoding.default, headers: headers)
+        Alamofire.request(url, method: .put, parameters:  param, encoding: JSONEncoding.default, headers: headers)
             .responseJSON { respon in
 //                print(respon)
                 
@@ -167,7 +167,7 @@ class Address: NSObject {
         let url = "\(AppSettings.Url)patient-address/\(id)"
         var alamat :[AlamatModel] = []
         
-        AF.request(url, method: .delete, encoding: JSONEncoding.default, headers: headers)
+        Alamofire.request(url, method: .delete, encoding: JSONEncoding.default, headers: headers)
             .responseJSON { respon in
 //                print(respon)
                 

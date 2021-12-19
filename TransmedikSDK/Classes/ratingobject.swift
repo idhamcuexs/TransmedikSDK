@@ -28,7 +28,7 @@ class ratingobject: NSObject {
         let url = "\(AppSettings.Url)rating"
             
             
-            AF.request(url, method: .post,parameters: body, encoding: JSONEncoding.default, headers: headers)
+            Alamofire.request(url, method: .post,parameters: body, encoding: JSONEncoding.default, headers: headers)
                 .responseJSON { respon in
                 
                     switch respon.result {

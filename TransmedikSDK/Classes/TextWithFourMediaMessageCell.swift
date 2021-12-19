@@ -40,10 +40,10 @@ open class TextWithFourMediaMessageCell: TextWithMediaMessageCell {
         //mediaView.leadingAnchor.constraint(equalTo: stackView.leadingAnchor, constant: 5).isActive = true
         //mediaView.trailingAnchor.constraint(equalTo: stackView.trailingAnchor, constant: -5).isActive = true
         //mediaView.centerXAnchor.constraint(equalTo: stackView.centerXAnchor).isActive = true
-
+        
         textLabel.topAnchor.constraint(equalTo: mediaView.bottomAnchor, constant: 0).isActive = true
         //textLabel.bottomAnchor.constraint(equalTo: stackView.bottomAnchor, constant: -5).isActive = true
-
+        
         mediaViewLeading = mediaView.leadingAnchor.constraint(equalTo: stackView.leadingAnchor)
         mediaViewTrailing = mediaView.trailingAnchor.constraint(equalTo: stackView.trailingAnchor)
         textLabelLeading = textLabel.leadingAnchor.constraint(equalTo: stackView.leadingAnchor)
@@ -58,7 +58,7 @@ open class TextWithFourMediaMessageCell: TextWithMediaMessageCell {
         imageViewLeading = imageView.leadingAnchor.constraint(equalTo: mediaView.leadingAnchor)
         imageViewTrailing = imageView.trailingAnchor.constraint(equalTo: mediaView.centerXAnchor)
         imageViewBottom = imageView.bottomAnchor.constraint(equalTo: mediaView.centerYAnchor)
-                
+        
         imageView2Top = imageView2.topAnchor.constraint(equalTo: mediaView.topAnchor)
         imageView2Leading = imageView2.leadingAnchor.constraint(equalTo: mediaView.centerXAnchor)
         imageView2Trailing = imageView2.trailingAnchor.constraint(equalTo: mediaView.trailingAnchor)
@@ -113,10 +113,52 @@ open class TextWithFourMediaMessageCell: TextWithMediaMessageCell {
         badgeLabel.textColor = AppColor.shared.instance(traitCollection).badgeTextColor
         
         
-        imageView.layer.maskedCorners = [.layerMinXMinYCorner]
-        imageView2.layer.maskedCorners = [.layerMaxXMinYCorner]
-        imageView3.layer.maskedCorners = []
-        imageView4.layer.maskedCorners = []
+        if #available(iOS 11.0, *) {
+            imageView.layer.maskedCorners = [.layerMinXMinYCorner]
+            imageView2.layer.maskedCorners = [.layerMaxXMinYCorner]
+            imageView3.layer.maskedCorners = []
+            imageView4.layer.maskedCorners = []
+        } else {
+            let Views1 :[CACornerMask] = [.layerMinXMinYCorner]
+            var cornerMask = UIRectCorner()
+            if(Views1.contains(.layerMinXMinYCorner)){
+                cornerMask.insert(.topLeft)
+            }
+            if(Views1.contains(.layerMaxXMinYCorner)){
+                cornerMask.insert(.topRight)
+            }
+            if(Views1.contains(.layerMinXMaxYCorner)){
+                cornerMask.insert(.bottomLeft)
+            }
+            if(Views1.contains(.layerMaxXMaxYCorner)){
+                cornerMask.insert(.bottomRight)
+            }
+            let path = UIBezierPath(roundedRect: self.bounds, byRoundingCorners: cornerMask, cornerRadii: CGSize(width: 5, height: 5))
+            let mask = CAShapeLayer()
+            mask.path = path.cgPath
+            imageView.layer.mask = mask
+            
+            
+            let Views2 :[CACornerMask] = [.layerMinXMinYCorner]
+            var cornerMask2 = UIRectCorner()
+            if(Views2.contains(.layerMinXMinYCorner)){
+                cornerMask2.insert(.topLeft)
+            }
+            if(Views2.contains(.layerMaxXMinYCorner)){
+                cornerMask2.insert(.topRight)
+            }
+            if(Views2.contains(.layerMinXMaxYCorner)){
+                cornerMask2.insert(.bottomLeft)
+            }
+            if(Views2.contains(.layerMaxXMaxYCorner)){
+                cornerMask2.insert(.bottomRight)
+            }
+            let path2 = UIBezierPath(roundedRect: self.bounds, byRoundingCorners: cornerMask2, cornerRadii: CGSize(width: 5, height: 5))
+            let mask2 = CAShapeLayer()
+            mask2.path = path2.cgPath
+            imageView2.layer.mask = mask2
+        }
+        
         
         
         mediaView.addSubview(imageView)

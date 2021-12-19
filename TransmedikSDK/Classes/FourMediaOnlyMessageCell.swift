@@ -104,11 +104,17 @@ open class FourMediaOnlyMessageCell: MediaOnlyMessageCell {
         badgeLabel.badgeColor = AppColor.shared.instance(traitCollection).badgeColor
         badgeLabel.textColor = AppColor.shared.instance(traitCollection).badgeTextColor
         
-        imageView.layer.maskedCorners = [.layerMinXMinYCorner]
-        imageView2.layer.maskedCorners = [.layerMaxXMinYCorner]
         
-        imageView3.layer.maskedCorners = [.layerMinXMaxYCorner]
-        imageView4.layer.maskedCorners = [.layerMaxXMaxYCorner]
+        imageView.roundCorners([.layerMinXMinYCorner], radius: 5)
+        imageView2.roundCorners([.layerMaxXMinYCorner], radius: 5)
+        imageView3.roundCorners([.layerMinXMaxYCorner], radius: 5)
+        imageView4.roundCorners([.layerMaxXMaxYCorner], radius: 5)
+
+//        imageView.layer.maskedCorners = [.layerMinXMinYCorner]
+//        imageView2.layer.maskedCorners = [.layerMaxXMinYCorner]
+//        
+//        imageView3.layer.maskedCorners = [.layerMinXMaxYCorner]
+//        imageView4.layer.maskedCorners = [.layerMaxXMaxYCorner]
         
         mediaView.addSubview(imageView)
         mediaView.addSubview(imageView2)

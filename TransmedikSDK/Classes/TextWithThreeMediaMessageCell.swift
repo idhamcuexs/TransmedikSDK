@@ -87,10 +87,52 @@ open class TextWithThreeMediaMessageCell: TextWithMediaMessageCell {
     open override  func setupSubviews() {
         super.setupSubviews()
         
-        imageView.layer.maskedCorners = [.layerMinXMinYCorner]
-        imageView2.layer.maskedCorners = [.layerMaxXMinYCorner]
-        imageView3.layer.maskedCorners = []
-        
+        if #available(iOS 11.0, *) {
+            imageView.layer.maskedCorners = [.layerMinXMinYCorner]
+            imageView2.layer.maskedCorners = [.layerMaxXMinYCorner]
+            imageView3.layer.maskedCorners = []
+            
+        } else {
+            let Views1 :[CACornerMask] = [.layerMinXMinYCorner]
+            var cornerMask = UIRectCorner()
+            if(Views1.contains(.layerMinXMinYCorner)){
+                cornerMask.insert(.topLeft)
+            }
+            if(Views1.contains(.layerMaxXMinYCorner)){
+                cornerMask.insert(.topRight)
+            }
+            if(Views1.contains(.layerMinXMaxYCorner)){
+                cornerMask.insert(.bottomLeft)
+            }
+            if(Views1.contains(.layerMaxXMaxYCorner)){
+                cornerMask.insert(.bottomRight)
+            }
+            let path = UIBezierPath(roundedRect: self.bounds, byRoundingCorners: cornerMask, cornerRadii: CGSize(width: 5, height: 5))
+            let mask = CAShapeLayer()
+            mask.path = path.cgPath
+            imageView.layer.mask = mask
+            
+            
+            let Views2 :[CACornerMask] = [.layerMaxXMinYCorner]
+            var cornerMask2 = UIRectCorner()
+            if(Views2.contains(.layerMinXMinYCorner)){
+                cornerMask2.insert(.topLeft)
+            }
+            if(Views2.contains(.layerMaxXMinYCorner)){
+                cornerMask2.insert(.topRight)
+            }
+            if(Views2.contains(.layerMinXMaxYCorner)){
+                cornerMask2.insert(.bottomLeft)
+            }
+            if(Views2.contains(.layerMaxXMaxYCorner)){
+                cornerMask2.insert(.bottomRight)
+            }
+            let path2 = UIBezierPath(roundedRect: self.bounds, byRoundingCorners: cornerMask2, cornerRadii: CGSize(width: 5, height: 5))
+            let mask2 = CAShapeLayer()
+            mask2.path = path2.cgPath
+            imageView2.layer.mask = mask2
+        }
+      
         mediaView.addSubview(imageView)
         mediaView.addSubview(imageView2)
         mediaView.addSubview(imageView3)

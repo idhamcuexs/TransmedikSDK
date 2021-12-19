@@ -28,7 +28,7 @@ class paymentobject: NSObject {
 
         
         print(params)
-        AF.request(url, method: .post, parameters : params , encoding: JSONEncoding.default, headers: headers)
+        Alamofire.request(url, method: .post, parameters : params , encoding: JSONEncoding.default, headers: headers)
             .responseJSON { respon in
                 print("respon profile")
                 print(respon)
@@ -65,7 +65,7 @@ class paymentobject: NSObject {
         let url = "\(AppSettings.Url)doku/receive?\(param)"
 
         
-        AF.request(url, method: .post, encoding: JSONEncoding.default, headers: headers)
+        Alamofire.request(url, method: .post, encoding: JSONEncoding.default, headers: headers)
             .responseJSON { respon in
                 print("respon profile")
                 print(respon)
@@ -104,7 +104,7 @@ class paymentobject: NSObject {
         let param : Parameters = [ "payment_id": id ,
                                    "payment_name" : name ]
         
-        AF.request(url, method: .post,parameters: param, encoding: JSONEncoding.default, headers: headers)
+        Alamofire.request(url, method: .post,parameters: param, encoding: JSONEncoding.default, headers: headers)
             .responseJSON { respon in
                 print("respon profile")
                 print(respon)
@@ -143,7 +143,7 @@ class paymentobject: NSObject {
         print(headers)
 //        var modelpayment
         
-        AF.request(url, method: .get, encoding: JSONEncoding.default, headers: headers)
+        Alamofire.request(url, method: .get, encoding: JSONEncoding.default, headers: headers)
             .responseJSON { respon in
                 print("respon profile")
                 print(respon)

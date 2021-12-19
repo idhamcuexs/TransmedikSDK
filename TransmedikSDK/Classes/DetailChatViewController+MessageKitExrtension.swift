@@ -918,7 +918,9 @@ extension DetailChatViewController: UINavigationControllerDelegate, UIImagePicke
         messageInputBar.sendButton.contentEdgeInsets = UIEdgeInsets(top: 2, left: 2, bottom: 2, right: 2)
         messageInputBar.sendButton.setSize(CGSize(width: 36, height: 36), animated: false)
         messageInputBar.sendButton.title = nil
-        messageInputBar.sendButton.image = UIImage(systemName: "paperplane.fill")?.withTintColor(.white)
+//        messageInputBar.sendButton.image = UIImage(systemName: "paperplane.fill")?.withTintColor(.white)
+        messageInputBar.sendButton.image = UIImage(named: "send")
+//        send
         messageInputBar.middleContentViewPadding.right = -38
         messageInputBar.middleContentViewPadding.left = 5
         
@@ -967,7 +969,11 @@ extension DetailChatViewController: UINavigationControllerDelegate, UIImagePicke
         return InputBarButtonItem()
             .configure {
                 $0.spacing = .fixed(1)
-                $0.image = UIImage(systemName: "plus")?.resizeWithWidth(width: 28)!.withRenderingMode(.alwaysTemplate)
+                if #available(iOS 13.0, *) {
+                    $0.image = UIImage(systemName: "plus")?.resizeWithWidth(width: 28)!.withRenderingMode(.alwaysTemplate)
+                } else {
+                    $0.image = UIImage(named: "")
+                }
                 $0.setSize(CGSize(width: 28, height: 36), animated: false)
                 $0.tintColor = .blue
                 $0.contentEdgeInsets = UIEdgeInsets(top: 2, left: 0, bottom: 2, right: 0)

@@ -340,7 +340,11 @@ class DetailChatViewController: MessagesViewController, MessagesDataSource {
         super.viewDidAppear(animated)
 //        print("detail did appear")
         registerNotificationsObservers()
-        self.additionalSafeAreaInsets.top = AppSettings.NAVIGATIONBAR_HEIGHT - 44
+        if #available(iOS 11.0, *) {
+            self.additionalSafeAreaInsets.top = AppSettings.NAVIGATIONBAR_HEIGHT - 44
+        } else {
+            // Fallback on earlier versions
+        }
         
        
     }

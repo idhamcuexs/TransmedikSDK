@@ -79,10 +79,13 @@ open class ThreeMediaOnlyMessageCell: MediaOnlyMessageCell {
     open override  func setupSubviews() {
         super.setupSubviews()
         
-        imageView.layer.maskedCorners = [.layerMinXMinYCorner]
-        imageView2.layer.maskedCorners = [.layerMaxXMinYCorner]
-        
-        imageView3.layer.maskedCorners = [.layerMinXMaxYCorner, .layerMaxXMaxYCorner]
+//        imageView.layer.maskedCorners = [.layerMinXMinYCorner]
+//        imageView2.layer.maskedCorners = [.layerMaxXMinYCorner]
+//        imageView3.layer.maskedCorners = [.layerMinXMaxYCorner, .layerMaxXMaxYCorner]
+        imageView.roundCorners([.layerMinXMinYCorner], radius: 5)
+        imageView2.roundCorners([.layerMaxXMinYCorner], radius: 5)
+        imageView3.roundCorners([.layerMinXMaxYCorner, .layerMaxXMaxYCorner], radius: 5)
+
         
         mediaView.addSubview(imageView)
         mediaView.addSubview(imageView2)

@@ -24,7 +24,7 @@ class resepdigitalobject: NSObject {
         let url = "\(AppSettings.Url)prescription/\(id)"
         print(url)
         
-        AF.request(url, method: .get, encoding: JSONEncoding.default, headers: headers)
+        Alamofire.request(url, method: .get, encoding: JSONEncoding.default, headers: headers)
             .responseJSON { respon in
                 print(respon)
                 switch respon.result {

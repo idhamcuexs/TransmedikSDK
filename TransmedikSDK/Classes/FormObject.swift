@@ -27,7 +27,7 @@ class FormObject: NSObject {
         let url = "\(AppSettings.Url)medical-form-patients/\(id)"
         
         
-        AF.request(url, method: .get,
+        Alamofire.request(url, method: .get,
                    encoding: JSONEncoding.default, headers: headers)
             .responseJSON { respon in
                 switch respon.result {
@@ -78,7 +78,7 @@ class FormObject: NSObject {
         print(url)
         print(param)
         
-        AF.request(url, method: .post, parameters: param, encoding: JSONEncoding.default, headers: headers)
+        Alamofire.request(url, method: .post, parameters: param, encoding: JSONEncoding.default, headers: headers)
             .responseJSON { respon in
                 print("gethistorybalance")
                 print(respon)

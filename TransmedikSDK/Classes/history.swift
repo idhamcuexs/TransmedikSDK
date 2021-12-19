@@ -23,7 +23,7 @@ class historiesobject: NSObject {
 
         
         var tmp :[ModelHistories] = []
-        AF.request(url, method: .get,encoding: JSONEncoding.default, headers: headers)
+        Alamofire.request(url, method: .get,encoding: JSONEncoding.default, headers: headers)
             .responseJSON { respon in
                 print("ini respon history url")
                 print(respon)
@@ -66,11 +66,14 @@ class historiesobject: NSObject {
 
                             tmp.append(ModelHistories(type_history: data["type_history"].stringValue, label: data["label"].stringValue, name: data["name"].stringValue, transaction_date: data["transaction_date"].stringValue, status: data["status"].stringValue, total: data["total"].intValue, detail_medicine: datapembelian, detail_consultation: detailkonsul, rating: data["rating"].intValue))
                             if tmp.count == json["data"]["data"].count{
-                                DispatchQueue.main.asyncAfter(deadline: .now() + 0.4) {
-                                    print("total respon")
-                                    print(tmp.count )
-                                complited(tmp, json["data"]["next_page_url"].stringValue)
+                                DispatchQueue.main.sync {
+                                    complited(tmp, json["data"]["next_page_url"].stringValue)
                                 }
+//                                DispatchQueue.main.asyncAlamofire.er(deadline: .now() + 0.4) {
+//                                    print("total respon")
+//                                    print(tmp.count )
+//                                complited(tmp, json["data"]["next_page_url"].stringValue)
+//                                }
                             }
                         })
                     }else{
@@ -96,7 +99,7 @@ class historiesobject: NSObject {
         ]
          
         let url = "\(AppSettings.Url)histories/\(uuid)?filter=\(selected ?? 1)&per_page=10&page=\(page)"
-        AF.request(url, method: .get,encoding: JSONEncoding.default, headers: headers)
+        Alamofire.request(url, method: .get,encoding: JSONEncoding.default, headers: headers)
             .responseJSON { respon in
 //                print("history")
 //             print(respon)
@@ -146,7 +149,7 @@ class historiesobject: NSObject {
         print(headers)
         
         var tmp :[ModelHistories] = []
-        AF.request(url, method: .get,encoding: JSONEncoding.default, headers: headers)
+        Alamofire.request(url, method: .get,encoding: JSONEncoding.default, headers: headers)
             .responseJSON { respon in
                 print("ini respon history")
                 print(respon)
@@ -224,7 +227,7 @@ class historiesobject: NSObject {
 //        print(url)
 //        print(headers)
 //        
-//        AF.request(url, method: .get,encoding: JSONEncoding.default, headers: headers)
+//        Alamofire.request(url, method: .get,encoding: JSONEncoding.default, headers: headers)
 //            .responseJSON { respon in
 //                print("ini respon history")
 //                print(respon)
@@ -297,7 +300,7 @@ class historiesobject: NSObject {
         print(headers)
         
         var tmp :[ModelHistories] = []
-        AF.request(url, method: .get,encoding: JSONEncoding.default, headers: headers)
+        Alamofire.request(url, method: .get,encoding: JSONEncoding.default, headers: headers)
             .responseJSON { respon in
                 
                 

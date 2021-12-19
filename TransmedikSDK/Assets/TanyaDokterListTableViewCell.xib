@@ -54,8 +54,8 @@
                                                             <userDefinedRuntimeAttribute type="boolean" keyPath="isSkeletonable" value="YES"/>
                                                         </userDefinedRuntimeAttributes>
                                                     </label>
-                                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="star" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="luK-ns-b5f">
-                                                        <rect key="frame" x="0.0" y="-1" width="20" height="20.5"/>
+                                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Vector star" translatesAutoresizingMaskIntoConstraints="NO" id="luK-ns-b5f">
+                                                        <rect key="frame" x="0.0" y="0.0" width="20" height="20"/>
                                                         <color key="tintColor" red="0.83921568629999999" green="0.1333333333" blue="0.14901960780000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                         <constraints>
                                                             <constraint firstAttribute="width" constant="20" id="3GV-bp-ZCa"/>
@@ -174,13 +174,13 @@
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="zfv-zr-c4z">
                                         <rect key="frame" x="0.0" y="48" width="219" height="22"/>
                                         <subviews>
-                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="clock" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="xcq-41-DWJ">
-                                                <rect key="frame" x="0.0" y="1" width="20" height="19.5"/>
+                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Union-4" translatesAutoresizingMaskIntoConstraints="NO" id="xcq-41-DWJ">
+                                                <rect key="frame" x="0.0" y="1" width="20" height="20"/>
                                                 <color key="tintColor" red="0.83921568629999999" green="0.1333333333" blue="0.14901960780000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" secondItem="xcq-41-DWJ" secondAttribute="height" id="3Of-eS-LwV"/>
                                                 </constraints>
-                                                <preferredSymbolConfiguration key="preferredSymbolConfiguration" scale="medium" weight="medium"/>
+                                                <preferredSymbolConfiguration key="preferredSymbolConfiguration" scale="default"/>
                                                 <userDefinedRuntimeAttributes>
                                                     <userDefinedRuntimeAttribute type="boolean" keyPath="isSkeletonable" value="YES"/>
                                                 </userDefinedRuntimeAttributes>
@@ -353,7 +353,8 @@
     <resources>
         <image name="Union-2" width="68.5" height="68.5"/>
         <image name="Union-3" width="49" height="68.5"/>
-        <image name="clock" catalog="system" width="128" height="121"/>
+        <image name="Union-4" width="68.5" height="68.5"/>
+        <image name="Vector star" width="68.5" height="67.5"/>
         <image name="imageView:FSd-8O-hyl:image" width="128" height="121">
             <mutableData key="keyedArchiveRepresentation">
 YnBsaXN0MDDUAQIDBAUGBwpYJHZlcnNpb25ZJGFyY2hpdmVyVCR0b3BYJG9iamVjdHMSAAGGoF8QD05T
@@ -17029,7 +17030,6 @@ QVkAD0FmAA9BaQAPQXYAD0F7AA9BgwAPQYYAD0GLAA9BkwAAAAAAAAQBAAAAAAAAAFYAAAAAAAAAAAAA
 AAAAD0GWA
 </mutableData>
         </image>
-        <image name="star" catalog="system" width="128" height="116"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>

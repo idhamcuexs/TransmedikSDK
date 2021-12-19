@@ -123,12 +123,23 @@ class ConsultWaitViewController: MYUIViewController {
         btnCancel.centerXAnchor.constraint(equalTo: contentView.centerXAnchor).isActive = true
         
         view.addSubview(contentView)
-        contentView.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 0).isActive = true
-        contentView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: 0).isActive = true
-        contentView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 0).isActive = true
-        contentView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: 0).isActive = true
-        contentView.heightAnchor.constraint(equalTo: view.safeAreaLayoutGuide.heightAnchor).isActive = true
-        contentView.widthAnchor.constraint(equalTo: view.safeAreaLayoutGuide.widthAnchor).isActive = true
+        if #available(iOS 11.0, *) {
+            contentView.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 0).isActive = true
+            contentView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: 0).isActive = true
+            contentView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 0).isActive = true
+            contentView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: 0).isActive = true
+            contentView.heightAnchor.constraint(equalTo: view.safeAreaLayoutGuide.heightAnchor).isActive = true
+            contentView.widthAnchor.constraint(equalTo: view.safeAreaLayoutGuide.widthAnchor).isActive = true
+        } else {
+           
+            contentView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 0).isActive = true
+            contentView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: 0).isActive = true
+            contentView.topAnchor.constraint(equalTo: view.topAnchor, constant: 0).isActive = true
+            contentView.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: 0).isActive = true
+            contentView.heightAnchor.constraint(equalTo: view.heightAnchor).isActive = true
+            contentView.widthAnchor.constraint(equalTo: view.widthAnchor).isActive = true
+        }
+     
         
         view.layoutIfNeeded()
         

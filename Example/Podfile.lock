@@ -1,9 +1,11 @@
 PODS:
-  - Alamofire (5.4.0)
+  - Alamofire (4.7.3)
+  - AlamofireImage (3.3.1):
+    - Alamofire (~> 4.5)
   - Bolts-Swift (1.5.0)
   - Bolts/Tasks (1.9.1)
   - BubbleShowCase (1.2.0)
-  - Cache (6.0.0)
+  - Cache (4.2.0)
   - CDAlertView (0.10.0)
   - CRRefresh (1.1.3)
   - DividerView (3.0)
@@ -11,14 +13,16 @@ PODS:
   - ESTabBarController-swift (2.8.0)
   - FloatRatingView (4.0)
   - FSPagerView (0.8.3)
-  - Imaginary (5.0.0):
-    - Cache (~> 6.0.0)
+  - Hue (3.0.1)
+  - Imaginary (3.0.3):
+    - Cache (~> 4.0)
   - InputBarAccessoryView (4.2.2)
   - Kingfisher (5.15.8):
     - Kingfisher/Core (= 5.15.8)
   - Kingfisher/Core (5.15.8)
-  - Lightbox (2.5.0):
-    - Imaginary (~> 5.0.0)
+  - Lightbox (2.1.2):
+    - Hue (~> 3.0)
+    - Imaginary (~> 3.0)
   - lottie-ios (2.5.3)
   - MessageInputBar (0.4.1):
     - MessageInputBar/Core (= 0.4.1)
@@ -47,8 +51,9 @@ PODS:
   - SwiftyCodeView/Core (0.3.6)
   - SwiftyJSON (5.0.0)
   - SwipeCellKit (2.7.1)
-  - TransmedikSDK (1.1.5):
-    - Alamofire (~> 5.4)
+  - TransmedikSDK (1.1.6):
+    - Alamofire (~> 4.7.3)
+    - AlamofireImage (~> 3.3.1)
     - BubbleShowCase (~> 1.2.0)
     - CDAlertView (~> 0.10.0)
     - CRRefresh (~> 1.1.3)
@@ -58,7 +63,7 @@ PODS:
     - FloatRatingView (~> 4)
     - FSPagerView (~> 0.8.3)
     - Kingfisher (~> 5.15.8)
-    - Lightbox (~> 2.5.0)
+    - Lightbox (~> 2.1.1)
     - lottie-ios (~> 2.5.0)
     - MessageInputBar (~> 0.4.0)
     - MessageKit (~> 3.0.0)
@@ -80,7 +85,8 @@ PODS:
     - SteviaLayout (~> 4.7.3)
 
 DEPENDENCIES:
-  - Alamofire (~> 5.4)
+  - Alamofire (~> 4.7.3)
+  - AlamofireImage (~> 3.3.1)
   - BubbleShowCase (~> 1.2.0)
   - CDAlertView (~> 0.10.0)
   - CRRefresh (~> 1.1.3)
@@ -90,7 +96,7 @@ DEPENDENCIES:
   - FloatRatingView (~> 4)
   - FSPagerView (~> 0.8.3)
   - Kingfisher (~> 5.15.8)
-  - Lightbox (~> 2.5.0)
+  - Lightbox (~> 2.1.1)
   - lottie-ios
   - MessageInputBar (~> 0.4.0)
   - MessageKit (~> 3.0.0)
@@ -111,6 +117,7 @@ DEPENDENCIES:
 SPEC REPOS:
   trunk:
     - Alamofire
+    - AlamofireImage
     - Bolts
     - Bolts-Swift
     - BubbleShowCase
@@ -122,6 +129,7 @@ SPEC REPOS:
     - ESTabBarController-swift
     - FloatRatingView
     - FSPagerView
+    - Hue
     - Imaginary
     - InputBarAccessoryView
     - Kingfisher
@@ -149,11 +157,12 @@ EXTERNAL SOURCES:
     :path: "../"
 
 SPEC CHECKSUMS:
-  Alamofire: 3b6a534a3df22db367e4dedeeca73d1ddfcf0e2f
+  Alamofire: c7287b6e5d7da964a70935e5db17046b7fde6568
+  AlamofireImage: 3b35b586853abaf94ca1250f4e94cff3c21a4c0d
   Bolts: 8c1e8aab2f603387b8b9924f57d1d64f43d3ffdc
   Bolts-Swift: afbbaf8c8186e7f769be4afa656949c14087ba44
   BubbleShowCase: a49a216f1e1373399060c41c1c599f91b77ce6bd
-  Cache: 4ca7e00363fca5455f26534e5607634c820ffc2d
+  Cache: f28f8dd64b632155aabf9b3906b036a659048251
   CDAlertView: ee6a87c90c4283c8d316d55633db1a6981f1cc51
   CRRefresh: 1415d4ae06837fa7bb064c44f2e102f3ef517044
   DividerView: 5d1446924c4149fd9d8a4fb726f1cde2155e30e6
@@ -161,10 +170,11 @@ SPEC CHECKSUMS:
   ESTabBarController-swift: 05593a6ad64700b03c0eb60ff625916370aa4136
   FloatRatingView: bb6bdddfbeec51b1d387b4bd50abc27b4dfccd48
   FSPagerView: 670405b2f18e2a87fa37f20b00de783e562c25a8
-  Imaginary: cf5e3a7dd6ab1dcbd47ba8ce5edf2307c4e99eb3
+  Hue: 93e852fa6211ab35922ad8c293f51c43d6c79eb2
+  Imaginary: 9b45836a5af881f452a86e0a1215772ae4712d00
   InputBarAccessoryView: 2b937602598e2fab3149f37f51dd7ad795653812
   Kingfisher: a3c03d702433fa6cfedabb2bddbe076fb8f2e902
-  Lightbox: cc3d5124f024fa8197fd23f913160db1c61a1852
+  Lightbox: 2dc267df8be2285bc7724cb11cbbf4aaaf59dced
   lottie-ios: a50d5c0160425cd4b01b852bb9578963e6d92d31
   MessageInputBar: e81c7535347f1f7b923de7080409a535a004b6e4
   MessageKit: e892a9ca49ebe6d82684d3a93ad84021fa23e2c6
@@ -180,10 +190,10 @@ SPEC CHECKSUMS:
   SwiftyCodeView: 0252e3520749a3fda1a9b141873401f8e6c570ad
   SwiftyJSON: 36413e04c44ee145039d332b4f4e2d3e8d6c4db7
   SwipeCellKit: 3972254a826da74609926daf59b08d6c72e619ea
-  TransmedikSDK: b28f4c6d58e24b578233c309391c42aa22ff36a9
+  TransmedikSDK: b2cf22d24f43d6a83a3b41bd678d07143f106946
   URLEmbeddedView: 3fe17ae535d2b8d38c3b08ab8ba0aea5efe5d1cd
   YPImagePicker: 15aed8bcaa4dad976e11b6114126d731a2f9f3c9
 
-PODFILE CHECKSUM: 8fc223a9ccc020da6d63a792e10428677c641b64
+PODFILE CHECKSUM: 58e538268a0e1d7a86672990650b72466f49920a
 
 COCOAPODS: 1.10.0

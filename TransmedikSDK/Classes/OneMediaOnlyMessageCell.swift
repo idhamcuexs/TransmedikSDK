@@ -58,7 +58,27 @@ open class OneMediaOnlyMessageCell: MediaOnlyMessageCell {
     open override  func setupSubviews() {
         super.setupSubviews()
         
-        imageView.layer.maskedCorners = [.layerMinXMinYCorner, .layerMaxXMinYCorner, .layerMinXMaxYCorner, .layerMaxXMaxYCorner]
+        if #available(iOS 11.0, *) {
+            imageView.layer.maskedCorners = [.layerMinXMinYCorner, .layerMaxXMinYCorner, .layerMinXMaxYCorner, .layerMaxXMaxYCorner]
+        } else {
+            let Views1 :[CACornerMask] = [.layerMinXMinYCorner, .layerMaxXMinYCorner, .layerMinXMaxYCorner, .layerMaxXMaxYCorner]
+            var cornerMask = UIRectCorner()
+            if(Views1.contains(.layerMinXMinYCorner)){
+                cornerMask.insert(.topLeft)
+            }
+            if(Views1.contains(.layerMaxXMinYCorner)){
+                cornerMask.insert(.topRight)
+            }
+            if(Views1.contains(.layerMinXMaxYCorner)){
+                cornerMask.insert(.bottomLeft)
+            }
+            if(Views1.contains(.layerMaxXMaxYCorner)){
+                cornerMask.insert(.bottomRight)
+            }
+            let path = UIBezierPath(roundedRect: self.bounds, byRoundingCorners: cornerMask, cornerRadii: CGSize(width: 5, height: 5))
+            let mask = CAShapeLayer()
+            mask.path = path.cgPath
+            imageView.layer.mask = mask        }
         
         mediaView.addSubview(imageView)
         stackView.addArrangedSubview(mediaView)

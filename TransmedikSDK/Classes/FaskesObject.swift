@@ -24,7 +24,7 @@ class Fasilitaskesehatan: NSObject {
        
         
          var tmp :[Fasilitaskesehatanmodel] = []
-        AF.request(url, method: .post,encoding: JSONEncoding.default, headers: headers)
+        Alamofire.request(url, method: .post,encoding: JSONEncoding.default, headers: headers)
             .responseJSON { respon in
                 switch respon.result {
                 case let .success(value):
@@ -65,7 +65,7 @@ class Fasilitaskesehatan: NSObject {
         print(url)
         
          var tmp :[Fasilitaskesehatanmodel] = []
-        AF.request(url, method: .post,encoding: JSONEncoding.default, headers: headers)
+        Alamofire.request(url, method: .post,encoding: JSONEncoding.default, headers: headers)
             .responseJSON { respon in
                 switch respon.result {
                 case let .success(value):
@@ -107,7 +107,7 @@ class Fasilitaskesehatan: NSObject {
         print(url)
         
          var tmp :[Fasilitaskesehatanmodel] = []
-        AF.request(url, method: .get,encoding: JSONEncoding.default, headers: headers)
+        Alamofire.request(url, method: .get,encoding: JSONEncoding.default, headers: headers)
             .responseJSON { respon in
                 print(respon)
                 switch respon.result {
@@ -156,7 +156,7 @@ class Fasilitaskesehatan: NSObject {
         print(url)
         
          var tmp :[Fasilitaskesehatanmodel] = []
-        AF.request(url, method: .post,encoding: JSONEncoding.default, headers: headers)
+        Alamofire.request(url, method: .post,encoding: JSONEncoding.default, headers: headers)
             .responseJSON { respon in
                 print(respon)
                 switch respon.result {

@@ -27,7 +27,7 @@ public class Transmedik {
         let parm : Parameters = [ "pin" : pin]
        
         
-        AF.request(url, method: .post,parameters: parm,  encoding: JSONEncoding.default, headers: headers)
+        Alamofire.request(url, method: .post,parameters: parm,  encoding: JSONEncoding.default, headers: headers)
             .responseJSON { respon in
                 print(url)
                 print(parm)
@@ -77,13 +77,22 @@ public class Transmedik {
                         CloseLoading(Viewcontroller)
                         UserDefaults.standard.removeObject(forKey: AppSettings.ON_CHAT)
                         Toast.show(message: "Konsultasi sudah berakhir", controller: Viewcontroller)
-                        DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
+//
+//                        DispatchQueue.main.asyncAlamofire.er(deadline: .now() + 1) {
+//                            let bundle =  Bundle(for: fasilitaskesehatanVC.self)
+//                            let vc = fasilitaskesehatanVC(nibName: "fasilitaskesehatanVC", bundle: bundle)
+//                            vc.modalPresentationStyle = .fullScreen
+//
+//                            Viewcontroller.present(vc, animated: false, completion: nil)
+//                        }
+                        DispatchQueue.main.sync {
                             let bundle =  Bundle(for: fasilitaskesehatanVC.self)
                             let vc = fasilitaskesehatanVC(nibName: "fasilitaskesehatanVC", bundle: bundle)
                             vc.modalPresentationStyle = .fullScreen
 
                             Viewcontroller.present(vc, animated: false, completion: nil)
                         }
+                        
                     }
                 }
             }
@@ -202,7 +211,7 @@ public class Transmedik {
         
         print(headers)
 
-        AF.request(url, method: .post,parameters: params,  encoding: JSONEncoding.default, headers: headers)
+        Alamofire.request(url, method: .post,parameters: params,  encoding: JSONEncoding.default, headers: headers)
             .responseJSON { respon in
                 print(params)
                 print("respon login \(respon)" )

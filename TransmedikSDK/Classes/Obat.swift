@@ -28,7 +28,7 @@ class Obat: NSObject {
         print(headers)
     
         
-        AF.request(url, method: .get, encoding: JSONEncoding.default, headers: headers)
+        Alamofire.request(url, method: .get, encoding: JSONEncoding.default, headers: headers)
             .responseJSON { respon in
                 print(respon)
                 switch respon.result {
@@ -93,7 +93,7 @@ class Obat: NSObject {
 
         let url = "\(AppSettings.Url)orders/complete"
         
-        AF.request(url, method: .post, parameters: param,  encoding: JSONEncoding.default, headers: headers)
+        Alamofire.request(url, method: .post, parameters: param,  encoding: JSONEncoding.default, headers: headers)
             .responseJSON { respon in
                 print(respon)
                 switch respon.result {
@@ -130,7 +130,7 @@ class Obat: NSObject {
         print(url)
         var datas : [ModelObat] = []
         
-        AF.request(url, method: .get, encoding: JSONEncoding.default, headers: headers)
+        Alamofire.request(url, method: .get, encoding: JSONEncoding.default, headers: headers)
             .responseJSON { respon in
                 switch respon.result {
                 case let .success(value):
@@ -169,7 +169,7 @@ class Obat: NSObject {
     //          print(url)
     //          var data : [Modeldetailcategoriesobat] = []
     //
-    //          AF.request(url, method: .get, encoding: JSONEncoding.default, headers: headers)
+    //          Alamofire.request(url, method: .get, encoding: JSONEncoding.default, headers: headers)
     //              .responseJSON { respon in
     //                  switch respon.result {
     //                  case let .success(value):
@@ -209,7 +209,7 @@ class Obat: NSObject {
 
         var data : [newmodelobat] = []
            
-           AF.request(url, method: .get, encoding: JSONEncoding.default, headers: headers)
+           Alamofire.request(url, method: .get, encoding: JSONEncoding.default, headers: headers)
                .responseJSON { respon in
                    print(respon)
                    switch respon.result {
@@ -265,7 +265,7 @@ class Obat: NSObject {
             print(url)
             var data : [newmodelobat] = []
             
-            AF.request(url, method: .get, encoding: JSONEncoding.default, headers: headers)
+            Alamofire.request(url, method: .get, encoding: JSONEncoding.default, headers: headers)
                 .responseJSON { respon in
                     print(respon)
                     switch respon.result {
@@ -315,7 +315,7 @@ class Obat: NSObject {
         print(url)
         var data : [newmodelobat] = []
         
-        AF.request(url, method: .get, encoding: JSONEncoding.default, headers: headers)
+        Alamofire.request(url, method: .get, encoding: JSONEncoding.default, headers: headers)
             .responseJSON { respon in
                 print(respon)
                 switch respon.result {
@@ -386,7 +386,7 @@ class Obat: NSObject {
         
         var data : [resdetailobat] = []
         
-        AF.request(url, method: .post,parameters: param, encoding: JSONEncoding.default, headers: headers)
+        Alamofire.request(url, method: .post,parameters: param, encoding: JSONEncoding.default, headers: headers)
             .responseJSON { respon in
                 print(respon)
                 switch respon.result {
@@ -455,7 +455,7 @@ class Obat: NSObject {
         print(param)
         print(headers)
         
-        AF.request(url, method: .post,parameters: param, encoding: JSONEncoding.default, headers: headers)
+        Alamofire.request(url, method: .post,parameters: param, encoding: JSONEncoding.default, headers: headers)
             .responseJSON { respon in
                 print("ini ress")
                 print(respon)
