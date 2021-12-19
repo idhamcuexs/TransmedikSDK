@@ -43,7 +43,7 @@ Pod::Spec.new do |s|
   s.dependency 'URLEmbeddedView', '~> 0.18.0'
   s.dependency 'SwipeCellKit', '~> 2.7.1'
   s.dependency 'Parse', '~> 1.19.1'
-  s.dependency 'Lightbox', '~> 2.1.1'
+#  s.dependency 'Lightbox', '~> 2.1.1'
   s.dependency 'CDAlertView','~> 0.10.0'
   s.dependency 'Starscream', '~> 3.1.0'
   s.dependency 'ParseLiveQuery', '~> 2.7.0 '

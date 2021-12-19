@@ -13,7 +13,7 @@ import AVFoundation
 import AVKit
 import MobileCoreServices
 import InputBarAccessoryView
-import Lightbox
+//import Lightbox
 import SwiftyJSON
 
 extension DetailChatViewController {
@@ -209,16 +209,7 @@ extension DetailChatViewController: MessageCellDelegate {
                     vcs?.json = JSON(parseJSON: textItem.string)
                     vcs?.consultation = currentConsultation
                     self.present(vcs!, animated: true, completion: nil)
-                    
-                    
-//                    let vc = ResepDokterViewController()
-//                    vc.json = JSON(parseJSON: textItem.string)
-//                    vc.consultation = currentConsultation
-//                    vc.date = msg.sentDate
-////                    vc.consultationEnded = self.consultationEnded
-//                    
-//                    self.resepViewController = vc
-//                    self.present(vc, animated: true, completion: nil)
+
                 }
                 else if msg.type == AppSettings.CATATAN_TYPE {
                     let json = JSON(parseJSON: textItem.string)
@@ -253,10 +244,10 @@ extension DetailChatViewController: MessageCellDelegate {
             break
         case .photo(let photoItem):
             /// if we don't have a url, that means it's simply a pending message
-            willPreviewPhoto(photo: photoItem)
+//            willPreviewPhoto(photo: photoItem)
             break
         case .video(let videoItem):
-            willPreviewVideo(video: videoItem)
+//            willPreviewVideo(video: videoItem)
             break
         default:
             break
@@ -493,58 +484,58 @@ extension DetailChatViewController: MessageLabelDelegate {
         }
     }
     
-    func willPreviewPhoto(photo: MediaItem) {
-        if let media = photo as? ImageMediaItem {
-            
-            if media.image != nil {
-                
-                let imgs = [LightboxImage(image: media.image ?? UIImage())]
-                let controller = LightboxController(images: imgs)
-                controller.modalPresentationStyle = .fullScreen
-                controller.dynamicBackground = true
-                self.present(controller, animated: true)
-            }
-            else if media.url != nil {
-                
-                let imgs = [LightboxImage(imageURL: media.url!)]
-                let controller = LightboxController(images: imgs)
-                controller.modalPresentationStyle = .fullScreen
-                controller.dynamicBackground = true
-                self.present(controller, animated: true)
-            }
-            else if (media.images != nil && media.images!.count > 0 && (media.urls == nil || media.urls!.count <= 0)) {
-                var imgs : [LightboxImage] = []
-                for i in 0..<media.images!.count {
-                    imgs.append(LightboxImage(image: media.images![i] ))
-                }
-                
-                let controller = LightboxController(images: imgs)
-                controller.modalPresentationStyle = .fullScreen
-                controller.dynamicBackground = true
-                self.present(controller, animated: true)
-            }
-            else if (media.urls != nil && media.urls!.count > 0) {
-                var urls : [LightboxImage] = []
-                for i in 0..<media.urls!.count {
-                    urls.append(LightboxImage(imageURL: media.urls![i] ))
-                }
-                
-                let controller = LightboxController(images: urls)
-                controller.modalPresentationStyle = .fullScreen
-                controller.dynamicBackground = true
-                self.present(controller, animated: true)
-                
-                /*DispatchQueue.main.async {
-                 media.urls!.forEach({
-                 ImageDownloader.default.downloadImage(with: $0, options: [], progressBlock: nil) {
-                 (image, error, url, data) in
-                 controller.images.append(LightboxImage(image: image!))
-                 }
-                 })
-                 }*/
-            }
-        }
-    }
+//    func willPreviewPhoto(photo: MediaItem) {
+//        if let media = photo as? ImageMediaItem {
+//
+//            if media.image != nil {
+//
+//                let imgs = [LightboxImage(image: media.image ?? UIImage())]
+//                let controller = LightboxController(images: imgs)
+//                controller.modalPresentationStyle = .fullScreen
+//                controller.dynamicBackground = true
+//                self.present(controller, animated: true)
+//            }
+//            else if media.url != nil {
+//
+//                let imgs = [LightboxImage(imageURL: media.url!)]
+//                let controller = LightboxController(images: imgs)
+//                controller.modalPresentationStyle = .fullScreen
+//                controller.dynamicBackground = true
+//                self.present(controller, animated: true)
+//            }
+//            else if (media.images != nil && media.images!.count > 0 && (media.urls == nil || media.urls!.count <= 0)) {
+//                var imgs : [LightboxImage] = []
+//                for i in 0..<media.images!.count {
+//                    imgs.append(LightboxImage(image: media.images![i] ))
+//                }
+//
+//                let controller = LightboxController(images: imgs)
+//                controller.modalPresentationStyle = .fullScreen
+//                controller.dynamicBackground = true
+//                self.present(controller, animated: true)
+//            }
+//            else if (media.urls != nil && media.urls!.count > 0) {
+//                var urls : [LightboxImage] = []
+//                for i in 0..<media.urls!.count {
+//                    urls.append(LightboxImage(imageURL: media.urls![i] ))
+//                }
+//
+//                let controller = LightboxController(images: urls)
+//                controller.modalPresentationStyle = .fullScreen
+//                controller.dynamicBackground = true
+//                self.present(controller, animated: true)
+//
+//                /*DispatchQueue.main.async {
+//                 media.urls!.forEach({
+//                 ImageDownloader.default.downloadImage(with: $0, options: [], progressBlock: nil) {
+//                 (image, error, url, data) in
+//                 controller.images.append(LightboxImage(image: image!))
+//                 }
+//                 })
+//                 }*/
+//            }
+//        }
+//    }
 }
 
 
