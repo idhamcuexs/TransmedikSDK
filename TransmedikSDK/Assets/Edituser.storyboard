@@ -13,7 +13,7 @@
         <!--Edit and add phr View Controller-->
         <scene sceneID="9O7-og-eea">
             <objects>
-                <viewController storyboardIdentifier="edit_and_add_phrViewController" modalPresentationStyle="fullScreen" id="dBv-mC-1fk" customClass="edit_and_add_phrViewController" customModule="transmedik" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="edit_and_add_phrViewController" modalPresentationStyle="fullScreen" id="dBv-mC-1fk" customClass="edit_and_add_phrViewController" customModule="TransmedikSDK" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="ZdV-HV-V6F">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -32,33 +32,35 @@
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ROg-jJ-M9a">
-                                                <rect key="frame" x="0.0" y="0.0" width="77.5" height="52"/>
+                                                <rect key="frame" x="10" y="11" width="30" height="30"/>
                                                 <subviews>
-                                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="3lZ-Ua-4Dj">
-                                                        <rect key="frame" x="15" y="10.5" width="57.5" height="31"/>
+                                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="3lZ-Ua-4Dj">
+                                                        <rect key="frame" x="5" y="5" width="20" height="20"/>
                                                         <color key="tintColor" red="0.93333333330000001" green="0.42745098040000001" blue="0.51764705879999995" alpha="1" colorSpace="calibratedRGB"/>
-                                                        <imageReference key="image" image="arrow.left" catalog="system" symbolScale="large"/>
-                                                        <preferredSymbolConfiguration key="preferredSymbolConfiguration" scale="medium" weight="semibold"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="width" constant="20" id="Brq-YG-H3n"/>
+                                                            <constraint firstAttribute="height" constant="20" id="aGM-97-5Li"/>
+                                                        </constraints>
+                                                        <imageReference key="image" image="back" symbolScale="large"/>
+                                                        <preferredSymbolConfiguration key="preferredSymbolConfiguration" scale="default"/>
                                                     </imageView>
                                                 </subviews>
                                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                                 <constraints>
-                                                    <constraint firstAttribute="bottom" secondItem="3lZ-Ua-4Dj" secondAttribute="bottom" constant="10" id="0xL-oZ-jLt"/>
-                                                    <constraint firstAttribute="width" secondItem="ROg-jJ-M9a" secondAttribute="height" multiplier="3:2" id="8KG-PX-Du8"/>
-                                                    <constraint firstAttribute="trailing" secondItem="3lZ-Ua-4Dj" secondAttribute="trailing" constant="5" id="OLk-hS-c3M"/>
-                                                    <constraint firstItem="3lZ-Ua-4Dj" firstAttribute="leading" secondItem="ROg-jJ-M9a" secondAttribute="leading" constant="15" id="Rmq-bb-F9r"/>
-                                                    <constraint firstItem="3lZ-Ua-4Dj" firstAttribute="top" secondItem="ROg-jJ-M9a" secondAttribute="top" constant="10" id="tMA-1k-MQ4"/>
+                                                    <constraint firstAttribute="height" constant="30" id="83n-sS-qpJ"/>
+                                                    <constraint firstAttribute="width" constant="30" id="XZY-eu-sEP"/>
+                                                    <constraint firstItem="3lZ-Ua-4Dj" firstAttribute="centerX" secondItem="ROg-jJ-M9a" secondAttribute="centerX" id="jTn-tD-bgP"/>
+                                                    <constraint firstItem="3lZ-Ua-4Dj" firstAttribute="centerY" secondItem="ROg-jJ-M9a" secondAttribute="centerY" id="nce-I0-vxw"/>
                                                 </constraints>
                                             </view>
                                         </subviews>
                                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                         <constraints>
                                             <constraint firstAttribute="width" secondItem="zjM-mM-KpA" secondAttribute="height" multiplier="8" id="2u8-mW-fiI"/>
-                                            <constraint firstItem="ROg-jJ-M9a" firstAttribute="top" secondItem="zjM-mM-KpA" secondAttribute="top" id="4oy-iY-wSS"/>
                                             <constraint firstItem="MwB-ra-nj8" firstAttribute="centerX" secondItem="zjM-mM-KpA" secondAttribute="centerX" id="9Lf-Pw-X0w"/>
                                             <constraint firstItem="MwB-ra-nj8" firstAttribute="centerY" secondItem="zjM-mM-KpA" secondAttribute="centerY" id="deZ-Vo-YHz"/>
-                                            <constraint firstItem="ROg-jJ-M9a" firstAttribute="leading" secondItem="zjM-mM-KpA" secondAttribute="leading" id="oKE-vg-d5C"/>
-                                            <constraint firstAttribute="bottom" secondItem="ROg-jJ-M9a" secondAttribute="bottom" id="y4O-Ta-oZD"/>
+                                            <constraint firstItem="ROg-jJ-M9a" firstAttribute="leading" secondItem="zjM-mM-KpA" secondAttribute="leading" constant="10" id="oKE-vg-d5C"/>
+                                            <constraint firstItem="ROg-jJ-M9a" firstAttribute="centerY" secondItem="zjM-mM-KpA" secondAttribute="centerY" id="yk1-RC-SJf"/>
                                         </constraints>
                                     </view>
                                 </subviews>
@@ -112,7 +114,7 @@
                                             <constraint firstAttribute="height" constant="700" id="uOM-Dr-McC"/>
                                         </constraints>
                                         <prototypes>
-                                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="badan" rowHeight="80" id="ZBv-dd-6Ht" customClass="editphrbadanTableViewCell" customModule="transmedik" customModuleProvider="target">
+                                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="badan" rowHeight="80" id="ZBv-dd-6Ht" customClass="editphrbadanTableViewCell" customModule="TransmedikSDK" customModuleProvider="target">
                                                 <rect key="frame" x="0.0" y="24.5" width="384" height="80"/>
                                                 <autoresizingMask key="autoresizingMask"/>
                                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="ZBv-dd-6Ht" id="a7v-lf-pMg">
@@ -311,7 +313,7 @@
         </scene>
     </scenes>
     <resources>
-        <image name="arrow.left" catalog="system" width="128" height="98"/>
+        <image name="back" width="43.5" height="74.5"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>

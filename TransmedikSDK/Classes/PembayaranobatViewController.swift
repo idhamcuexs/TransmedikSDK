@@ -110,7 +110,7 @@ class PembayaranobatViewController: UIViewController {
         table.delegate = self
         table.dataSource = self
         table.isScrollEnabled = false
-        konfirmasi.backgroundColor = Colors.bluecolor
+        konfirmasi.backgroundColor = Colors.buttonActive
         konfirmasi.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(konfirmasiaction)))
         tinggiTableBarang.constant = table.contentSize.height
         self.view.layoutIfNeeded()

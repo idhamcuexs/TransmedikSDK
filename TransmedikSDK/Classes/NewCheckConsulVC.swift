@@ -20,7 +20,8 @@ public enum PresentPage{
 class NewCheckConsulVC: UIViewController,UITextViewDelegate {
   
     @IBOutlet weak var navigation: UIView!
-
+    @IBOutlet weak var back: UIImageView!
+    
     @IBOutlet weak var viewdetail: UIView!
     @IBOutlet weak var spesialis: UILabel!
     @IBOutlet weak var name: UILabel!
@@ -263,6 +264,7 @@ class NewCheckConsulVC: UIViewController,UITextViewDelegate {
         if !isform {
             viewForm.isHidden.toggle()
         }
+        back.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(kembali)))
 
 
         shadow()
@@ -287,7 +289,7 @@ class NewCheckConsulVC: UIViewController,UITextViewDelegate {
         viewForm.dropShadow(shadowColor: UIColor.lightGray, fillColor: UIColor.white, opacity: 0.5, offset: CGSize(width: 2, height: 2), radius: 4)
     }
     
-    @IBAction func backOnClick(_ sender: Any) {
+    @objc func kembali() {
         dismiss(animated: true, completion: nil)
     }
     

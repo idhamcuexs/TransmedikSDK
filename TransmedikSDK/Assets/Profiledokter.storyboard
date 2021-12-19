@@ -1399,12 +1399,17 @@
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Ijp-NF-rBl">
                                         <rect key="frame" x="0.0" y="50" width="414" height="50"/>
                                         <subviews>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5LF-sW-gDb">
-                                                <rect key="frame" x="10" y="0.0" width="24.5" height="50"/>
+                                            <button opaque="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5LF-sW-gDb">
+                                                <rect key="frame" x="10" y="15" width="20" height="20"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="20" id="IZC-ql-qP9"/>
+                                                    <constraint firstAttribute="width" constant="20" id="XqM-Ox-OF5"/>
+                                                </constraints>
                                                 <color key="tintColor" red="0.35686274509999999" green="0.70196078429999997" blue="0.28235294119999998" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
+                                                <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="5" maxY="0.0"/>
                                                 <state key="normal">
-                                                    <imageReference key="image" image="arrow.left" catalog="system" symbolScale="large"/>
-                                                    <preferredSymbolConfiguration key="preferredSymbolConfiguration" scale="large" weight="semibold"/>
+                                                    <imageReference key="image" image="back" symbolScale="large"/>
+                                                    <preferredSymbolConfiguration key="preferredSymbolConfiguration" scale="default"/>
                                                 </state>
                                                 <connections>
                                                     <action selector="backOnClick:" destination="Mzg-EL-K20" eventType="touchUpInside" id="Mku-t4-xjq"/>
@@ -1413,10 +1418,9 @@
                                         </subviews>
                                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                         <constraints>
-                                            <constraint firstAttribute="bottom" secondItem="5LF-sW-gDb" secondAttribute="bottom" id="DsM-Cn-yuK"/>
-                                            <constraint firstItem="5LF-sW-gDb" firstAttribute="leading" secondItem="Ijp-NF-rBl" secondAttribute="leading" constant="10" id="LoZ-DZ-bj3"/>
-                                            <constraint firstItem="5LF-sW-gDb" firstAttribute="top" secondItem="Ijp-NF-rBl" secondAttribute="top" id="pBT-KW-hXA"/>
+                                            <constraint firstItem="5LF-sW-gDb" firstAttribute="centerY" secondItem="Ijp-NF-rBl" secondAttribute="centerY" id="Rte-EL-hw0"/>
                                             <constraint firstAttribute="height" constant="50" id="v9l-7p-XDL"/>
+                                            <constraint firstItem="5LF-sW-gDb" firstAttribute="leading" secondItem="Ijp-NF-rBl" secondAttribute="leading" constant="10" id="xRe-Sv-86w"/>
                                         </constraints>
                                     </view>
                                 </subviews>
@@ -1504,6 +1508,7 @@
         <image name="Union-4" width="68.5" height="68.5"/>
         <image name="Vector star" width="68.5" height="67.5"/>
         <image name="arrow.left" catalog="system" width="128" height="98"/>
+        <image name="back" width="43.5" height="74.5"/>
         <image name="profile dokter edu" width="266.5" height="167.5"/>
         <image name="profile dokter lokasi" width="266.5" height="266.5"/>
         <image name="tanyadokterclock" width="37.5" height="37.5"/>

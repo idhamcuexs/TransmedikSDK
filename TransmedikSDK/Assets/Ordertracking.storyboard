@@ -1317,17 +1317,18 @@
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="afO-zM-9H7">
                                         <rect key="frame" x="0.0" y="55" width="414" height="52"/>
                                         <subviews>
-                                            <imageView clipsSubviews="YES" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="m8X-Ad-ggK">
-                                                <rect key="frame" x="15" y="10.5" width="32" height="31"/>
+                                            <imageView clipsSubviews="YES" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="m8X-Ad-ggK">
+                                                <rect key="frame" x="10" y="16" width="20" height="20"/>
                                                 <color key="tintColor" red="0.93333333330000001" green="0.42745098040000001" blue="0.51764705879999995" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
                                                 <constraints>
-                                                    <constraint firstAttribute="width" secondItem="m8X-Ad-ggK" secondAttribute="height" id="ReQ-Dw-2I6"/>
+                                                    <constraint firstAttribute="width" constant="20" id="BWJ-P4-Fmn"/>
+                                                    <constraint firstAttribute="height" constant="20" id="bZ7-5E-1NA"/>
                                                 </constraints>
-                                                <imageReference key="image" image="arrow.left" catalog="system" symbolScale="large"/>
+                                                <imageReference key="image" image="back" symbolScale="large"/>
                                                 <preferredSymbolConfiguration key="preferredSymbolConfiguration" scale="large" weight="semibold"/>
                                             </imageView>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Pembelian Obat" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" adjustsFontForContentSizeCategory="YES" translatesAutoresizingMaskIntoConstraints="NO" id="r5T-sx-A8u">
-                                                <rect key="frame" x="57" y="15.5" width="126" height="20.5"/>
+                                                <rect key="frame" x="144" y="15.5" width="126" height="20.5"/>
                                                 <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="17"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
@@ -1335,11 +1336,10 @@
                                         </subviews>
                                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                         <constraints>
-                                            <constraint firstAttribute="bottom" secondItem="m8X-Ad-ggK" secondAttribute="bottom" constant="10" id="7Wn-72-a1e"/>
-                                            <constraint firstItem="r5T-sx-A8u" firstAttribute="centerY" secondItem="m8X-Ad-ggK" secondAttribute="centerY" id="9Sm-BR-Tj1"/>
-                                            <constraint firstItem="m8X-Ad-ggK" firstAttribute="leading" secondItem="afO-zM-9H7" secondAttribute="leading" constant="15" id="P6f-KJ-LXR"/>
-                                            <constraint firstItem="m8X-Ad-ggK" firstAttribute="top" secondItem="afO-zM-9H7" secondAttribute="top" constant="10" id="Ska-HO-KXY"/>
-                                            <constraint firstItem="r5T-sx-A8u" firstAttribute="leading" secondItem="m8X-Ad-ggK" secondAttribute="trailing" constant="10" id="dvd-F0-dOs"/>
+                                            <constraint firstItem="m8X-Ad-ggK" firstAttribute="centerY" secondItem="afO-zM-9H7" secondAttribute="centerY" id="aGo-xC-zUB"/>
+                                            <constraint firstItem="m8X-Ad-ggK" firstAttribute="leading" secondItem="afO-zM-9H7" secondAttribute="leading" constant="10" id="h40-qg-QNr"/>
+                                            <constraint firstItem="r5T-sx-A8u" firstAttribute="centerY" secondItem="afO-zM-9H7" secondAttribute="centerY" id="p95-Fk-ZF4"/>
+                                            <constraint firstItem="r5T-sx-A8u" firstAttribute="centerX" secondItem="afO-zM-9H7" secondAttribute="centerX" id="zRc-ax-Wmp"/>
                                         </constraints>
                                     </view>
                                 </subviews>
@@ -1411,6 +1411,7 @@
         <image name="Tanda Seru" width="50" height="50"/>
         <image name="alamat home abu" width="21" height="23"/>
         <image name="arrow.left" catalog="system" width="128" height="98"/>
+        <image name="back" width="43.5" height="74.5"/>
         <image name="check" width="128" height="128"/>
         <image name="kurir" width="50" height="30"/>
         <systemColor name="systemBackgroundColor">
