@@ -5,7 +5,7 @@ platform :ios, '13.0'
 target 'TransmedikSDK_Example' do
   pod 'TransmedikSDK', :path => '../'
   pod 'Alamofire', '~>  4.7.3'
-    pod 'AlamofireImage', '~>  3.3.1'
+#    pod 'AlamofireImage', '~>  3.3.1'
     pod 'Kingfisher', '~> 5.15.8'
   pod 'FSPagerView', '~> 0.8.3'
   pod 'SwiftyJSON', '~> 5.0.0'
