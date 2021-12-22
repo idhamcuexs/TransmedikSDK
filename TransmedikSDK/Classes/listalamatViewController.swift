@@ -147,7 +147,7 @@ class listalamatViewController: UIViewController {
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        print(data.count)
+        // print(data.count)
         return loading ? 1 : data.count
         
     }
@@ -172,18 +172,18 @@ class listalamatViewController: UIViewController {
             cell.backgroundview.layer.shadowOffset = CGSize.zero
             cell.backgroundview.layer.shadowRadius = 2
             cell.backgroundview.layer.shadowOpacity = 0.2
-            print("types")
-            print(data[indexPath.row].address_type)
+            // print("types")
+            // print(data[indexPath.row].address_type)
             if data[indexPath.row].address_type == "Alamat rumah"{
                 cell.iconrumah.image = UIImage(named: "alamathome")
-                print("type1")
+                // print("type1")
                 
             }else if data[indexPath.row].address_type == "Tambah alamat lainnya"{
-                print("type1")
+                // print("type1")
 
                 cell.iconrumah.image = UIImage(named: "Pin Lokasi")
             }else{
-                print("type1")
+                // print("type1")
 
                 cell.iconrumah.image = UIImage(named: "alamatoffice")
 

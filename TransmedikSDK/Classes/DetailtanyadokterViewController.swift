@@ -69,7 +69,7 @@ class DetailtanyadokterViewController: UIViewController,UITextFieldDelegate {
         collfilter.dataSource = self
         collfilter.backgroundColor = Colors.backgroundmaster
         tables.bounces = false
-        print("isform = > \(isform)" )
+        // print("isform = > \(isform)" )
         setupSpinner()
         
         back.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(backacc)))
@@ -113,9 +113,9 @@ class DetailtanyadokterViewController: UIViewController,UITextFieldDelegate {
                         if data != nil {
                             
                             self.datafilter = data!
-                            print("uuu")
+                            // print("uuu")
                             for index in data!.experince{
-                                print(index.value)
+                                // print(index.value)
                             }
                            
                             
@@ -203,7 +203,7 @@ class DetailtanyadokterViewController: UIViewController,UITextFieldDelegate {
     
     
     func layoutopen(){
-//        print("layoutopen")
+//        // print("layoutopen")
         self.view.layoutIfNeeded()
         collfilter.isHidden = true
 
@@ -449,7 +449,7 @@ extension DetailtanyadokterViewController : UITableViewDelegate,UITableViewDataS
 
 extension DetailtanyadokterViewController: UIScrollViewDelegate {
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
-        print("uhuy")
+        // print("uhuy")
         if data != nil  && self.nextpage != nil{
             let offsetY = scrollView.contentOffset.y
             let contentHeight = scrollView.contentSize.height

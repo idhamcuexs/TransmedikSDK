@@ -30,8 +30,8 @@ class Fasilitaskesehatan: NSObject {
                 case let .success(value):
                     let json = JSON(value)
                     if json["code"].stringValue == "200"{
-                        print("responsi")
-                        print(json["data"]["data"].count)
+                        // print("responsi")
+                        // print(json["data"]["data"].count)
                         json["data"]["data"].array?.forEach({ (data) in
                             tmp.append(Fasilitaskesehatanmodel(id: data["id"].stringValue, name: data["name"].stringValue, province_id: data["province_id"].stringValue, province: data["province"].stringValue, regency_id: data["regency_id"].stringValue, regency: data["regency"].stringValue, address: data["address"].stringValue, lat: data["map_lat"].doubleValue, long: data["map_lng"].doubleValue, image: data["image"].stringValue, medical_form: data["medical_form"].boolValue))
                             if tmp.count == json["data"]["data"].count{
@@ -62,7 +62,7 @@ class Fasilitaskesehatan: NSObject {
         
    
         let url = "\(AppSettings.Url)medical-facilities-public?search=\(search)&per_page=15"
-        print(url)
+        // print(url)
         
          var tmp :[Fasilitaskesehatanmodel] = []
         Alamofire.request(url, method: .post,encoding: JSONEncoding.default, headers: headers)
@@ -71,8 +71,8 @@ class Fasilitaskesehatan: NSObject {
                 case let .success(value):
                     let json = JSON(value)
                     if json["code"].stringValue == "200"{
-                        print("responsi")
-                        print(json["data"]["data"].count)
+                        // print("responsi")
+                        // print(json["data"]["data"].count)
                         json["data"]["data"].array?.forEach({ (data) in
                             tmp.append(Fasilitaskesehatanmodel(id: data["id"].stringValue, name: data["name"].stringValue, province_id: data["province_id"].stringValue, province: data["province"].stringValue, regency_id: data["regency_id"].stringValue, regency: data["regency"].stringValue, address: data["address"].stringValue, lat: data["map_lat"].doubleValue, long: data["map_lng"].doubleValue, image: data["image"].stringValue, medical_form: data["medical_form"].boolValue))
                             if tmp.count == json["data"]["data"].count{
@@ -104,12 +104,12 @@ class Fasilitaskesehatan: NSObject {
         
    
         let url = "\(AppSettings.Url)medical-facilities-closein?map_lng=\(long)&map_lat=\(lat)"
-        print(url)
+        // print(url)
         
          var tmp :[Fasilitaskesehatanmodel] = []
         Alamofire.request(url, method: .get,encoding: JSONEncoding.default, headers: headers)
             .responseJSON { respon in
-                print(respon)
+                // print(respon)
                 switch respon.result {
                 case let .success(value):
                     let json = JSON(value)
@@ -153,12 +153,12 @@ class Fasilitaskesehatan: NSObject {
         
    
         let url = "\(AppSettings.Url)medical-facilities-public?per_page=15"
-        print(url)
+        // print(url)
         
          var tmp :[Fasilitaskesehatanmodel] = []
         Alamofire.request(url, method: .post,encoding: JSONEncoding.default, headers: headers)
             .responseJSON { respon in
-                print(respon)
+                // print(respon)
                 switch respon.result {
                 case let .success(value):
                     let json = JSON(value)
@@ -172,8 +172,8 @@ class Fasilitaskesehatan: NSObject {
                     
                     
                     if json["code"].stringValue == "200"{
-                        print("responsi")
-                        print(json["data"]["data"].count)
+                        // print("responsi")
+                        // print(json["data"]["data"].count)
                         json["data"]["data"].array?.forEach({ (data) in
                             tmp.append(Fasilitaskesehatanmodel(id: data["id"].stringValue, name: data["name"].stringValue, province_id: data["province_id"].stringValue, province: data["province"].stringValue, regency_id: data["regency_id"].stringValue, regency: data["regency"].stringValue, address: data["address"].stringValue, lat: data["map_lat"].doubleValue, long: data["map_lng"].doubleValue, image: data["image"].stringValue, medical_form: data["medical_form"].boolValue))
                             if tmp.count == json["data"]["data"].count{

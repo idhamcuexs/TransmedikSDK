@@ -217,7 +217,9 @@ class CatatanDokterViewController: MYUIViewController {
             backButton.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 20).isActive = true
         } else {
             backButton.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20).isActive = true
-            backButton.topAnchor.constraint(equalTo: view.topAnchor, constant: 20).isActive = true
+            backButton.topAnchor.constraint(equalTo: topLayoutGuide.bottomAnchor, constant: 20).isActive = true
+
+//            backButton.topAnchor.constraint(equalTo: view.topAnchor, constant: 20).isActive = true
         }
      
         backButton.widthAnchor.constraint(equalToConstant: 23).isActive = true
@@ -246,7 +248,7 @@ class CatatanDokterViewController: MYUIViewController {
             lineView.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 15).isActive = true
             lineView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -15).isActive = true
         } else {
-            // Fallback on earlier versions
+
             lineView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 15).isActive = true
             lineView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -15).isActive = true
         }
@@ -269,7 +271,7 @@ class CatatanDokterViewController: MYUIViewController {
             // Fallback on earlier versions
             scrollView.leadingAnchor.constraint(equalTo: view.leadingAnchor).isActive = true
             scrollView.trailingAnchor.constraint(equalTo: view.trailingAnchor).isActive = true
-            scrollView.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -10).isActive = true
+            scrollView.bottomAnchor.constraint(equalTo: bottomLayoutGuide.topAnchor, constant: -10).isActive = true
         }
    
         //contentView.widthAnchor.constraint(greaterThanOrEqualToConstant: self.view.frame.width).isActive = true

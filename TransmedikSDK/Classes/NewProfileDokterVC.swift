@@ -39,17 +39,8 @@ class NewProfileDokterVC: UIViewController {
     var isform = false
     var list : [listformmodel] = []
     var header = ""
-    var facilityid = ""{
-        didSet{
-            print("facilityid ==>> \(facilityid)")
-        }
-    }
-    var id = ""{
-        didSet{
-            print("id ==>> \(id)")
-        }
-    }
-    
+    var facilityid = ""
+    var id = ""
 
 
     override func viewDidLoad() {

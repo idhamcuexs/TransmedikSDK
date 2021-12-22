@@ -23,7 +23,7 @@ class Specialist: NSObject {
         ]
         
         let url = "\(AppSettings.Url)specialists-medical-facility/\(id)"
-        print(url)
+        // print(url)
        
         
         Alamofire.request(url, method: .get, encoding: JSONEncoding.default, headers: headers)
@@ -41,7 +41,7 @@ class Specialist: NSObject {
                         complited(nil,json["messages"].stringValue)
                         
                     }
-                    print(value)
+                    // print(value)
                 case let .failure(error):
                     complited(nil,"")
                 }
@@ -61,7 +61,7 @@ class Specialist: NSObject {
         ]
         
         let url = "\(AppSettings.Url)parameter-filter-doctor"
-        print(url)
+        // print(url)
         var exp : [filterdokterdetail] = []
         var rate : [filterdokterdetail] = []
         
@@ -87,7 +87,7 @@ class Specialist: NSObject {
                         complited(nil)
                         
                     }
-                    print(value)
+                    // print(value)
                 case let .failure(error):
                     complited(nil)
                 }
@@ -105,7 +105,7 @@ class Specialist: NSObject {
         ]
         
         let url = "\(AppSettings.Url)specialists"
-        print(url)
+        // print(url)
         var data : [Tanyadokter] = []
         
         Alamofire.request(url, method: .get, encoding: JSONEncoding.default, headers: headers)
@@ -124,7 +124,7 @@ class Specialist: NSObject {
                         complited(nil)
                         
                     }
-                    print(value)
+                    // print(value)
                 case let .failure(error):
                     complited(nil)
                 }
@@ -186,15 +186,15 @@ class Specialist: NSObject {
 
         }
         
-        print(url)
-        print(param)
+        // print(url)
+        // print(param)
         
         var dataspesialis : [Newdetailtanyadokter] = []
         
         Alamofire.request(url, method: .post,parameters: param, encoding: JSONEncoding.default, headers: headers)
             .responseJSON { respon in
-                print("ini respon dari ==>> " + url)
-                print(respon)
+                // print("ini respon dari ==>> " + url)
+                // print(respon)
                 
                 switch respon.result {
                 case let .success(value):
@@ -217,10 +217,10 @@ class Specialist: NSObject {
                         complited(nil)
                         
                     }
-                    print(value)
+                    // print(value)
                 case let .failure(error):
-                    print(error)
-                    print("eeror cing")
+                    // print(error)
+                    // print("eeror cing")
                     complited(nil)
                 }
                 
@@ -272,7 +272,7 @@ class Specialist: NSObject {
         
         Alamofire.request(url, method: .post,parameters: param, encoding: JSONEncoding.default, headers: headers)
             .responseJSON { respon in
-                print(respon)
+                // print(respon)
                 
                 switch respon.result {
                 case let .success(value):
@@ -293,10 +293,10 @@ class Specialist: NSObject {
                         complited(nil)
                         
                     }
-                    print(value)
+                    // print(value)
                 case let .failure(error):
-                    print(error)
-                    print("eeror cing")
+                    // print(error)
+                    // print("eeror cing")
                     complited(nil)
                 }
                 

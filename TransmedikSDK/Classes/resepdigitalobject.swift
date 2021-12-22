@@ -14,7 +14,7 @@ class resepdigitalobject: NSObject {
     
     func getresep(token : String, id:String ,complited: @escaping(Data?)->()){
         
-        print(token)
+        // print(token)
         let headers: HTTPHeaders = [
             "Authorization": "Bearer \(token)",
             "Accept": "application/json",
@@ -22,18 +22,18 @@ class resepdigitalobject: NSObject {
         ]
         
         let url = "\(AppSettings.Url)prescription/\(id)"
-        print(url)
+        // print(url)
         
         Alamofire.request(url, method: .get, encoding: JSONEncoding.default, headers: headers)
             .responseJSON { respon in
-                print(respon)
+                // print(respon)
                 switch respon.result {
                 case let .success(value):
                     let json = JSON(value)
                     do {
                         complited(try json.rawData())
                     }catch{
-                        print("error")
+                        // print("error")
                     }
                 case let .failure(error):
                     complited(nil)

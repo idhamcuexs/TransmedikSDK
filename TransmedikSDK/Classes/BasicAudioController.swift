@@ -88,7 +88,7 @@ open class BasicAudioController: NSObject, AVAudioPlayerDelegate {
             playingCell = audioCell
             playingMessage = message
             guard let player = try? AVAudioPlayer(contentsOf: item.url) else {
-                print("Failed to create audio player for URL: \(item.url)")
+                // print("Failed to create audio player for URL: \(item.url)")
                 return
             }
             audioPlayer = player
@@ -100,7 +100,7 @@ open class BasicAudioController: NSObject, AVAudioPlayerDelegate {
             startProgressTimer()
             audioCell.delegate?.didStartAudio(in: audioCell)
         default:
-            print("BasicAudioPlayer failed play sound becasue given message kind is not Audio")
+             print("BasicAudioPlayer failed play sound becasue given message kind is not Audio")
         }
     }
 

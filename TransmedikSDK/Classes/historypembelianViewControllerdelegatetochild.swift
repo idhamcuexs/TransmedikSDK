@@ -85,8 +85,8 @@ class historypembelianViewController: MYUIViewController,CLLocationManagerDelega
     func set(){
         if success && loadingint == 2 {
             setuser()
-            print("total mdata")
-            print("\(mdata.count)")
+            // print("total mdata")
+            // print("\(mdata.count)")
             if mdata.count > 0{
                 rowuser = 1
                 self.user.setTitle(mdata[rowuser - 1].full_name, for: .normal)
@@ -151,9 +151,9 @@ class historypembelianViewController: MYUIViewController,CLLocationManagerDelega
                             self.login()
                             
                         }
-                        print("complited profile")
+                        // print("complited profile")
                         if data != nil {
-                            print("my name = >\(data!.full_name)")
+                            // print("my name = >\(data!.full_name)")
                             self.listname.insert(data!.full_name, at: 0)
                             self.mdata.insert(data!, at: 0)
                             self.success = true
@@ -170,8 +170,8 @@ class historypembelianViewController: MYUIViewController,CLLocationManagerDelega
                             self.login()
                         }
 //                        self.loadingint += 1
-                        print("complited keluarga")
-                        print("status ==>> \(status)")
+                        // print("complited keluarga")
+                        // print("status ==>> \(status)")
                         if status{
                             if keluarga != nil {
                                 for tempkeluarga in keluarga!{
@@ -232,8 +232,8 @@ class historypembelianViewController: MYUIViewController,CLLocationManagerDelega
         userDropDown.bottomOffset = CGPoint(x: 0, y: user.bounds.height)
         userDropDown.dataSource = listname
         userDropDown.selectionAction = { [weak self] (index, item) in
-            print("index")
-            print(index)
+            // print("index")
+            // print(index)
             self?.rowuser = index + 1
             self?.user.setTitle(item, for: .normal)
         }
@@ -270,7 +270,7 @@ class historypembelianViewController: MYUIViewController,CLLocationManagerDelega
     
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         let location = locations[0]
-        print("update^^")
+        // print("update^^")
         lat = location.coordinate.latitude
         long = location.coordinate.longitude
         let loc = CLLocation(latitude: lat!, longitude: long!)
@@ -302,7 +302,7 @@ class historypembelianViewController: MYUIViewController,CLLocationManagerDelega
                 
                 self.alamat = addressString
                 
-                //                print(addressString)
+                //                // print(addressString)
             }
             
             

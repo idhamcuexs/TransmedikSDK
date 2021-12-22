@@ -139,13 +139,13 @@ extension EdituserViewController: UITableViewDataSource{
 
 extension EdituserViewController : editphrbadanTableViewCelldelegate{
     func dismisskeyboards() {
-        print("dismis keyboard")
+//        print("dismis keyboard")
         view.endEditing(true)
     }
     
     
     func kirimtinggi(tinggi: Int) {
-        print("1")
+//        print("1")
         self.datauser.height = "\(tinggi)"
     }
     

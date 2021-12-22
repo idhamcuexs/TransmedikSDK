@@ -251,7 +251,7 @@ class transaksichatchildViewController: UIViewController,UIScrollViewDelegate, O
         note.text = "Apa yang anda rasakan"
         layout()
         ketdiskons.text = "Potongan "
-        print("isform2 = > \(isform)" )
+        // print("isform2 = > \(isform)" )
         if !isform{
             viewnote.isHidden.toggle()
             self.view.layoutIfNeeded()
@@ -372,7 +372,7 @@ class transaksichatchildViewController: UIViewController,UIScrollViewDelegate, O
     }
     
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
-        print("scroll = > \(scrollView.contentOffset.y)")
+        // print("scroll = > \(scrollView.contentOffset.y)")
         
         if scrollView.contentOffset.y <= 0.0{
             delegate.scrollup()
@@ -381,7 +381,7 @@ class transaksichatchildViewController: UIViewController,UIScrollViewDelegate, O
         if self.lastContentOffset  <= 0.0{
             if (self.lastContentOffset < scrollView.contentOffset.y) {
                 scrollView.contentOffset.y = 10
-                print("handap")
+                // print("handap")
             }
         }else{
             if (self.lastContentOffset < scrollView.contentOffset.y) {
@@ -507,8 +507,8 @@ extension transaksichatchildViewController : insertpinViewControllerdelegate,pem
                 
                 
                 if pin == "" {
-                    print("not pin")
-                    print(email)
+                    // print("not pin")
+                    // print(email)
                     let param : Parameters = [
                         "CHAINMERCHANT":"NA",
                         "CURRENCY":"360",
@@ -532,10 +532,10 @@ extension transaksichatchildViewController : insertpinViewControllerdelegate,pem
                             
                             self.currentConsultationId = data!.consultation_id!
                             self.consultationPostModel = data!
-                            print("ini print")
-                            print(url)
+                            // print("ini // print")
+                            // print(url)
                             if url == nil {
-                                print("kosong")
+                                // print("kosong")
                                 let vc  = ConsultWaitViewController()
                                 vc.modalPresentationStyle = .fullScreen
                                 vc.modalTransitionStyle = .flipHorizontal
@@ -560,7 +560,7 @@ extension transaksichatchildViewController : insertpinViewControllerdelegate,pem
                                     
                                 }
                             }else{
-                                print("ayaan")
+                                // print("ayaan")
                                 let vc = UIStoryboard(name: "PMR", bundle: AppSettings.bundleframeworks()).instantiateViewController(withIdentifier: "OpenpdfViewController") as? OpenpdfViewController
                                 vc?.headers = "DOKU pembayaran"
                                 vc?.delegate = self
@@ -577,7 +577,7 @@ extension transaksichatchildViewController : insertpinViewControllerdelegate,pem
                         
                     }
                 }else{
-                    print("jol bayar cash")
+                    // print("jol bayar cash")
                     self.chatacc.confirmConsultclinic(token: UserDefaults.standard.string(forKey: AppSettings.Tokentransmedik)!, uuid_patient: UserDefaults.standard.string(forKey: AppSettings.uuid)!, uuid_doctor:  self.detaildokter!.uuid, email_patient: UserDefaults.standard.string(forKey: AppSettings.email)!, email_doctor: self.detaildokter!.email, rates: Int(self.detaildokter!.rates)!, jawab: stringform, medical_facility_id: self.facilityid!, voucher_amount: "\(self.getdiskon().0)", voucher: self.getdiskon().1, pin: pin, payment_id: "2", payment_name: "Escrow", param: nil, trans_merchant_id: "") { (data,merchant_id,url) in
                         DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
 
@@ -738,10 +738,10 @@ extension transaksichatchildViewController : transaksichatmasterViewControllerde
         totaldiskon.text = setmoney(harga: getdiskon().0)
         totalpembayaran.text = setmoney(harga: gettotal())
         
-        print("seendd")
-        print(setmoney(harga: getdiskon().0))
+        // print("seendd")
+        // print(setmoney(harga: getdiskon().0))
         
-        print(setmoney(harga: gettotal()))
+        // print(setmoney(harga: gettotal()))
     }
     
     

@@ -26,7 +26,7 @@ class Profile: NSObject {
         ]
         
         
-        print(headers)
+        // print(headers)
         
         let url = "\(AppSettings.Url)auth/check-password"
        
@@ -34,9 +34,9 @@ class Profile: NSObject {
         
         Alamofire.request(url, method: .post,parameters: param, encoding: JSONEncoding.default, headers: headers)
             .responseJSON { respon in
-                print(param)
-                print(url)
-                print(respon)
+                // print(param)
+                // print(url)
+                // print(respon)
                 
                 switch respon.result {
                 case let .success(value):
@@ -53,7 +53,7 @@ class Profile: NSObject {
                         complited(json["messages"].stringValue)
                         
                     }
-                    print(value)
+                    // print(value)
                 case let .failure(error):
                     complited("error")
                 }
@@ -86,15 +86,15 @@ class Profile: NSObject {
         let param : Parameters = ["password" : pass,
                                   "password_confirmation" : pass,
                                   "phone_number": phone]
-        print(param)
+        // print(param)
         
         let url = "\(AppSettings.Url)forgot-password-by-phone"
-        print(url)
+        // print(url)
         
         
         Alamofire.request(url, method: .post , parameters: param, encoding: JSONEncoding.default)
             .responseJSON { respon in
-                print("respon profile")
+                // print("respon profile")
                 
                
                 
@@ -116,7 +116,7 @@ class Profile: NSObject {
                         complited(false,json["messages"].stringValue,"")
                         
                     }
-                    print(value)
+                    // print(value)
                 case let .failure(error):
                     complited(false,"Server error","")
                 }
@@ -138,17 +138,17 @@ class Profile: NSObject {
         let param : Parameters = ["password" : pass,
                                   "password_confirmation" : pass,
                                   "uuid": uuid]
-        print(param)
+        // print(param)
         
         let url = "\(AppSettings.Url)profile/reset-password-by-phone"
-        print(url)
+        // print(url)
         
-        print(headers)
+        // print(headers)
         
         Alamofire.request(url, method: .put, encoding: JSONEncoding.default, headers: headers)
             .responseJSON { respon in
-                print("respon profile")
-                print(respon)
+                // print("respon profile")
+                // print(respon)
                 
                 switch respon.result {
                 case let .success(value):
@@ -165,7 +165,7 @@ class Profile: NSObject {
                         complited(false,json["message"].stringValue )
                         
                     }
-                    print(value)
+                    // print(value)
                 case let .failure(error):
                     complited(false,"Terjadi kesalahan pada jaringan")
                 }
@@ -184,13 +184,13 @@ class Profile: NSObject {
         ]
         
         let url = "\(AppSettings.Url)profile"
-        print(url)
-        print(headers)
+        // print(url)
+        // print(headers)
         
         Alamofire.request(url, method: .get, encoding: JSONEncoding.default, headers: headers)
             .responseJSON { respon in
-                print("respon profile")
-                print(respon)
+                // print("respon profile")
+                // print(respon)
                 
                 switch respon.result {
                 case let .success(value):
@@ -200,12 +200,12 @@ class Profile: NSObject {
                     }
                     
                     if json["code"].stringValue == "200"{
-                        print(json["data"])
+                        // print(json["data"])
                         
                         
                         
                         let datatmp = ModelProfile(uuid: json["data"]["uuid"].stringValue, full_name: json["data"]["full_name"].stringValue, email: json["data"]["email"].stringValue, phone_number: json["data"]["phone_number"].stringValue, gender: json["data"]["gender"].stringValue, status: json["data"]["status"].stringValue, nik: json["data"]["ref"]["nik"].stringValue, no_kk: json["data"]["ref"]["no_kk"].stringValue, dob: json["data"]["ref"]["dob"].stringValue, height: json["data"]["ref"]["body_height"].stringValue, weight: json["data"]["ref"]["body_weight"].stringValue, blood: json["data"]["ref"]["blood_type"].stringValue, relationship: json["data"]["ref"]["relationship"].stringValue, allergy: json["data"]["ref"]["allergy"].stringValue, created_at: json["data"]["created_at"].stringValue, updated_at: json["data"]["updated_at"].stringValue, image: json["data"]["profile_picture"].stringValue)
-                        print("=>   \(datatmp.phone_number)")
+                        // print("=>   \(datatmp.phone_number)")
                         complited(datatmp,"")
                         
                     }else{
@@ -247,14 +247,14 @@ class Profile: NSObject {
             
         ]
         
-        print(param)
+        // print(param)
         
         let url = "\(AppSettings.Url)family/\(data.uuid)"
         
         
         Alamofire.request(url, method: .put,parameters: param, encoding: JSONEncoding.default, headers: headers)
             .responseJSON { respon in
-                print(respon)
+                // print(respon)
                 
                 switch respon.result {
                 case let .success(value):
@@ -267,7 +267,7 @@ class Profile: NSObject {
                         complited(json["messages"].stringValue)
                         
                     }
-                    print(value)
+                    // print(value)
                 case let .failure(error):
                     complited("error")
                 }
@@ -299,7 +299,7 @@ class Profile: NSObject {
         
         Alamofire.request(url, method: .put,parameters: param, encoding: JSONEncoding.default, headers: headers)
             .responseJSON { respon in
-                print(respon)
+                // print(respon)
                 
                 switch respon.result {
                 case let .success(value):
@@ -312,7 +312,7 @@ class Profile: NSObject {
                         complited(json["messages"].stringValue)
                         
                     }
-                    print(value)
+                    // print(value)
                 case let .failure(error):
                     complited("error")
                 }
@@ -342,7 +342,7 @@ class Profile: NSObject {
         
         Alamofire.request(url, method: .post,parameters: param, encoding: JSONEncoding.default, headers: headers)
             .responseJSON { respon in
-                print(respon)
+                // print(respon)
                 
                 switch respon.result {
                 case let .success(value):
@@ -355,7 +355,7 @@ class Profile: NSObject {
                         complited(json["messages"].stringValue)
                         
                     }
-                    print(value)
+                    // print(value)
                 case let .failure(error):
                     complited("error")
                 }
@@ -384,7 +384,7 @@ class Profile: NSObject {
         
         Alamofire.request(url, method: .put,parameters: param, encoding: JSONEncoding.default, headers: headers)
             .responseJSON { respon in
-                print(respon)
+                // print(respon)
                 
                 switch respon.result {
                 case let .success(value):
@@ -397,7 +397,7 @@ class Profile: NSObject {
                         complited(json["messages"].stringValue)
                         
                     }
-                    print(value)
+                    // print(value)
                 case let .failure(error):
                     complited("error")
                 }
@@ -429,7 +429,7 @@ class Profile: NSObject {
         
         Alamofire.request(url, method: .put,parameters: param, encoding: JSONEncoding.default, headers: headers)
             .responseJSON { respon in
-                print(respon)
+                // print(respon)
                 
                 switch respon.result {
                 case let .success(value):
@@ -442,7 +442,7 @@ class Profile: NSObject {
                         complited(json["messages"].stringValue,false)
                         
                     }
-                    print(value)
+                    // print(value)
                 case let .failure(error):
                     complited("error",false)
                 }
@@ -473,9 +473,9 @@ class Profile: NSObject {
         
         Alamofire.request(url, method: .put,parameters: param, encoding: JSONEncoding.default, headers: headers)
             .responseJSON { respon in
-                print(param)
-                print(url)
-                print(respon)
+                // print(param)
+                // print(url)
+                // print(respon)
                 
                 switch respon.result {
                 case let .success(value):
@@ -488,7 +488,7 @@ class Profile: NSObject {
                         complited(json["messages"].stringValue)
                         
                     }
-                    print(value)
+                    // print(value)
                 case let .failure(error):
                     complited("error")
                 }
@@ -518,7 +518,7 @@ class Profile: NSObject {
         
         Alamofire.request(url, method: .put,parameters: param, encoding: JSONEncoding.default, headers: headers)
             .responseJSON { respon in
-                print(respon)
+                // print(respon)
                 
                 switch respon.result {
                 case let .success(value):
@@ -531,7 +531,7 @@ class Profile: NSObject {
                         complited(json["messages"].stringValue)
                         
                     }
-                    print(value)
+                    // print(value)
                 case let .failure(error):
                     complited("error")
                 }
@@ -572,7 +572,7 @@ class Profile: NSObject {
         
         Alamofire.request(url, method: .put,parameters: param, encoding: JSONEncoding.default, headers: headers)
             .responseJSON { respon in
-                print(respon)
+                // print(respon)
                 
                 switch respon.result {
                 case let .success(value):
@@ -585,7 +585,7 @@ class Profile: NSObject {
                         complited(json["messages"].stringValue)
                         
                     }
-                    print(value)
+                    // print(value)
                 case let .failure(error):
                     complited("error")
                 }
@@ -606,12 +606,12 @@ class Profile: NSObject {
         ]
         
         let url = "\(AppSettings.Url)relationships"
-        print(url)
+        // print(url)
         var datas : [relation] = []
         
         Alamofire.request(url, method: .get,encoding: JSONEncoding.default, headers: headers)
             .responseJSON { respon in
-                print(respon)
+                // print(respon)
                 
                 switch respon.result {
                 case let .success(value):
@@ -627,7 +627,7 @@ class Profile: NSObject {
                         complited(nil)
                         
                     }
-                    print(value)
+                    // print(value)
                 case let .failure(error):
                     complited(nil)
                 }
@@ -650,8 +650,8 @@ class Profile: NSObject {
         var data :[ModelProfile] = []
         Alamofire.request(url, method: .get, encoding: JSONEncoding.default, headers: headers)
             .responseJSON { respon in
-                print("Family")
-                print(respon)
+                // print("Family")
+                // print(respon)
                 
                 switch respon.result {
                 case let .success(value):
@@ -703,7 +703,7 @@ class Profile: NSObject {
                     switch result {
                         
                     case .success(let request, let streamingFromDisk, let streamFileURL):
-                        print("Upload Success : \(request), \(streamingFromDisk), \(String(describing: streamFileURL))")
+                        // print("Upload Success : \(request), \(streamingFromDisk), \(String(describing: streamFileURL))")
                         request.responseJSON() { response in
                             switch response.result {
                             case let .success(value):
@@ -723,7 +723,7 @@ class Profile: NSObject {
                             }
                         }
                     case .failure(let error):
-                        print(error)
+                        // print(error)
                         complited(nil,"Server error")
                     }
                 }
@@ -761,7 +761,7 @@ class Profile: NSObject {
         
         Alamofire.request(url, method: .post,parameters: param, encoding: JSONEncoding.default, headers: headers)
             .responseJSON { respon in
-                print(respon)
+                // print(respon)
                 
                 switch respon.result {
                 case let .success(value):
@@ -774,7 +774,7 @@ class Profile: NSObject {
                         complited(json["messages"].stringValue,nil)
                         
                     }
-                    print(value)
+                    // print(value)
                 case let .failure(error):
                     complited("error",nil)
                 }
@@ -797,7 +797,7 @@ class Profile: NSObject {
         let url = "\(AppSettings.Url)family/\(uuid)"
         Alamofire.request(url, method: .delete, encoding: JSONEncoding.default, headers: headers)
             .responseJSON { respon in
-                print(respon)
+                // print(respon)
                 
                 switch respon.result {
                 case let .success(value):
@@ -829,7 +829,7 @@ class Profile: NSObject {
             "Content-Type": "application/json"
         ]
      
-        print(images)
+        // print(images)
         
         
         Alamofire.upload(multipartFormData: { (multipartFormData) in
@@ -852,7 +852,7 @@ class Profile: NSObject {
                     switch result {
                         
                     case .success(let request, let streamingFromDisk, let streamFileURL):
-                        print("Upload Success : \(request), \(streamingFromDisk), \(String(describing: streamFileURL))")
+                        // print("Upload Success : \(request), \(streamingFromDisk), \(String(describing: streamFileURL))")
                         request.responseJSON() { response in
                             switch response.result {
                             case let .success(value):
@@ -870,7 +870,7 @@ class Profile: NSObject {
                             }
                         }
                     case .failure(let error):
-                        print(error)
+                        // print(error)
                         complited("server error",nil)
                     }
                 }
@@ -888,7 +888,7 @@ class Profile: NSObject {
             "Content-Type": "application/json"
         ]
         
-        print(url)
+        // print(url)
         
         
         Alamofire.upload(multipartFormData: { (multipartFormData) in
@@ -915,7 +915,7 @@ class Profile: NSObject {
                     switch result {
                         
                     case .success(let request, let streamingFromDisk, let streamFileURL):
-                        print("Upload Success : \(request), \(streamingFromDisk), \(String(describing: streamFileURL))")
+                        // print("Upload Success : \(request), \(streamingFromDisk), \(String(describing: streamFileURL))")
                         request.responseJSON() { response in
                             switch response.result {
                             case let .success(value):
@@ -935,7 +935,7 @@ class Profile: NSObject {
                             }
                         }
                     case .failure(let error):
-                        print(error)
+                        // print(error)
                         complited("Server error","")
                     }
                 }
@@ -976,7 +976,7 @@ class Profile: NSObject {
 //
 //
 //        }, to: url ,method: .post, headers: headers).responseJSON { respon in
-//            print(respon)
+//            // print(respon)
 //            switch respon.result {
 //            case let .success(value):
 //                let json = JSON(value)

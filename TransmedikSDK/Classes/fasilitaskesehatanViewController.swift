@@ -73,7 +73,7 @@ public class fasilitaskesehatanViewController: UIViewController,UITextFieldDeleg
                 }
                 
                 if data != nil {
-                    print("bres")
+                    // print("bres")
                     self.data = data!
                     self.collection.reloadData()
                 }
@@ -150,7 +150,7 @@ public class fasilitaskesehatanViewController: UIViewController,UITextFieldDeleg
 extension fasilitaskesehatanViewController : UIScrollViewDelegate{
     
     public func scrollViewDidScroll(_ scrollView: UIScrollView) {
-        print("scroll = >")
+        // print("scroll = >")
         if collection.contentOffset.y <= CGFloat(-150) && CheckInternet.Connection(){
             
             collection.isScrollEnabled = false
@@ -275,7 +275,7 @@ extension fasilitaskesehatanViewController:UICollectionViewDelegate , UICollecti
     
     
     public func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        print("Sett")
+        // print("Sett")
         return CGSize(width: (self.collection.frame.width - 50) / 2, height:   (self.collection.frame.width - 50 ) / 2)
     }
     

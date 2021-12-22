@@ -72,9 +72,9 @@ class OpenpdfViewController: UIViewController, UIWebViewDelegate, openchatfromdo
     
 
     func webView(_ webView: UIWebView, shouldStartLoadWith request: URLRequest, navigationType: UIWebView.NavigationType) -> Bool {
-        print("shouldStartLoadWith")
-        print(request.url?.scheme)
-        print(request.url)
+        // print("shouldStartLoadWith")
+        // print(request.url?.scheme)
+        // print(request.url)
         
 
         if request.url != nil && "\(request.url!)" == "https://api-dev.transmedika.co.id/redirect-form"{

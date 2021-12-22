@@ -41,7 +41,7 @@ class Orderobject: NSObject {
 //        
 //        let datakirim = "{\"order_id\": \"\(id)\", \"complain_type\" : [\(datakeluhan)],\"description\": \"\(note)\"}"
 //
-//print(datakirim)
+//// print(datakirim)
 //
 //    
 //        Alamofire.upload(multipartFormData: { (multipartFormData) in
@@ -52,7 +52,7 @@ class Orderobject: NSObject {
 //
 //
 //        }, to: url ,method: .post, headers: headers).responseJSON { respon in
-//            print(respon)
+//            // print(respon)
 //            switch respon.result {
 //            case let .success(value):
 //                let json = JSON(value)
@@ -105,10 +105,10 @@ class Orderobject: NSObject {
             ])
 
         }
-        print("[\(stt)]")
+        // print("[\(stt)]")
         let param = "{\"map_lat\":\"\(data.lat)\",\"map_lng\":\"\(data.long)\",\"address\":\"\(data.address)\",\"id\" : \(data.id),\"note\":\"\(data.note)\",\"total\":\(data.total),\"voucher\":null,\"voucher_amount\": \(data.voucher_amount),\"medicines\":[\(stt)],\"pin\" : \"\(pin)\",\"payment_id\": \(PaymentId),\"payment_name\" : \"\(PaymentName)\"}"
 
-        print(param)
+        // print(param)
 
         Alamofire.upload(multipartFormData: { (multipartFormData) in
             if images != nil && images!.count > 0{
@@ -123,7 +123,7 @@ class Orderobject: NSObject {
                     switch result {
                         
                     case .success(let request, let streamingFromDisk, let streamFileURL):
-                        print("Upload Success : \(request), \(streamingFromDisk), \(String(describing: streamFileURL))")
+                        // print("Upload Success : \(request), \(streamingFromDisk), \(String(describing: streamFileURL))")
                         request.responseJSON() { response in
                             switch response.result {
                             case let .success(value):
@@ -140,7 +140,7 @@ class Orderobject: NSObject {
                             }
                         }
                     case .failure(let error):
-                        print(error)
+                        // print(error)
                         complited("error server")
                     }
                 }
@@ -188,13 +188,13 @@ class Orderobject: NSObject {
             
         ]
         let url = "\(AppSettings.Url)orders"
-        print(url)
-        print(param)
+        // print(url)
+        // print(param)
         
         
         Alamofire.request(url, method: .post,parameters: param, encoding: JSONEncoding.default, headers: headers)
             .responseJSON { respon in
-                print(respon)
+                // print(respon)
                 switch respon.result {
                 case let .success(value):
                     let json = JSON(value)
@@ -259,7 +259,7 @@ class Orderobject: NSObject {
                     switch result {
                         
                     case .success(let request, let streamingFromDisk, let streamFileURL):
-                        print("Upload Success : \(request), \(streamingFromDisk), \(String(describing: streamFileURL))")
+                        // print("Upload Success : \(request), \(streamingFromDisk), \(String(describing: streamFileURL))")
                         request.responseJSON() { response in
                             switch response.result {
                             case let .success(value):
@@ -276,7 +276,7 @@ class Orderobject: NSObject {
                             }
                         }
                     case .failure(let error):
-                        print(error)
+                        // print(error)
                         complited("error server")
                     }
                 }
@@ -292,18 +292,18 @@ class Orderobject: NSObject {
         let url = "\(AppSettings.Url)payment/check-status"
         let param : Parameters = ["trans_merchant_id":id]
 
-        print(url)
+        // print(url)
         let headers: HTTPHeaders = [
             "Authorization": "Bearer \(token)",
             "Accept": "application/json",
             "Content-Type": "application/json"
         ]
         
-        print("parammmmm =>>>>>> \(param)" )
+        // print("parammmmm =>>>>>> \(param)" )
 
         Alamofire.request(url, method: .post,parameters: param, encoding: JSONEncoding.default, headers: headers)
             .responseJSON { respon in
-            print(respon)
+            // print(respon)
             switch respon.result {
             case let .success(value):
                 let json = JSON(value)
@@ -335,7 +335,7 @@ class Orderobject: NSObject {
     func neworder(token:String,param : String ,complited: @escaping(String,String?,String?)->()){
         let url = "\(AppSettings.Url)orders"
 
-        print(url)
+        // print(url)
         let headers: HTTPHeaders = [
             "Authorization": "Bearer \(token)",
             "Accept": "application/json",
@@ -352,7 +352,7 @@ class Orderobject: NSObject {
                     switch result {
                         
                     case .success(let request, let streamingFromDisk, let streamFileURL):
-                        print("Upload Success : \(request), \(streamingFromDisk), \(String(describing: streamFileURL))")
+                        // print("Upload Success : \(request), \(streamingFromDisk), \(String(describing: streamFileURL))")
                         request.responseJSON() { response in
                             switch response.result {
                             case let .success(value):
@@ -373,7 +373,7 @@ class Orderobject: NSObject {
                             }
                         }
                     case .failure(let error):
-                        print(error)
+                        // print(error)
                         complited("error server",nil,nil)
                     }
                 }

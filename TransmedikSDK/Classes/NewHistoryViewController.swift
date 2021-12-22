@@ -123,14 +123,14 @@ class NewHistoryViewController: UIViewController {
                     
                     if obat == nil && konsultasi == nil {
                         self.table.backgroundView = self.notfound
-                        print("close1")
+                        // print("close1")
                     }
                     
                     if self.selected == 1{
                         self.dataObat = obat
                         if obat?.data?.data?.count ?? 0 == 0{
                             self.table.backgroundView = self.notfound
-                            print("close2")
+                            // print("close2")
 
                         }else{
 
@@ -139,11 +139,11 @@ class NewHistoryViewController: UIViewController {
                     }else{
                         self.dataKonsultasi = konsultasi
                         if  konsultasi?.data?.data?.count ?? 0 == 0 {
-                            print("close2")
+                            // print("close2")
 
                             self.table.backgroundView = self.notfound
                         }else{
-                            print("close3")
+                            // print("close3")
 
                             self.table.backgroundView = nil
                         }
@@ -168,7 +168,7 @@ class NewHistoryViewController: UIViewController {
     //    func getdata(){
     //        if CheckInternet.Connection(){
     //            self.loading(self)
-    //                print("data baru")
+    //                // print("data baru")
     //                data.removeAll()
     //                self.table.reloadData()
     //                loading = true
@@ -180,7 +180,7 @@ class NewHistoryViewController: UIViewController {
     //
     //                            self.closeloading(self)
     //                            self.nextpage = nextsp
-    //                            print("datanext => " + nextsp)
+    //                            // print("datanext => " + nextsp)
     //                            if nextsp == ""{
     //                                self.loading = false
     //
@@ -256,9 +256,9 @@ class NewHistoryViewController: UIViewController {
                         UserDefaults.standard.set(true, forKey: "Unauthenticated")
                         
                     }
-                    print("complited profile")
+                    // print("complited profile")
                     if data != nil {
-                        print("my name = >\(data!.full_name)")
+                        // print("my name = >\(data!.full_name)")
                         self.listname.insert(data!.full_name, at: 0)
                         self.mdata.insert(data!, at: 0)
                         self.success = true
@@ -274,8 +274,8 @@ class NewHistoryViewController: UIViewController {
                         UserDefaults.standard.set(true, forKey: "Unauthenticated")
                     }
                     //                        self.loadingint += 1
-                    print("complited keluarga")
-                    print("status ==>> \(status)")
+                    // print("complited keluarga")
+                    // print("status ==>> \(status)")
                     if status{
                         if keluarga != nil {
                             for tempkeluarga in keluarga!{
@@ -375,7 +375,7 @@ extension NewHistoryViewController : UITableViewDelegate,UITableViewDataSource{
     //    func adddata(){
     //        if CheckInternet.Connection(){
     //            if  !getdatahistory && nextpage != ""{
-    //                print("tambahdata")
+    //                // print("tambahdata")
     //                self.spinner.startAnimating()
     //                let rowakhir = self.data.count
     //                loading = true
@@ -391,7 +391,7 @@ extension NewHistoryViewController : UITableViewDelegate,UITableViewDataSource{
     //                            self.table.isScrollEnabled = false
     //                            self.table.beginUpdates()
     //                            for index in data!{
-    //                                print("add row data")
+    //                                // print("add row data")
     //
     //                                self.data.append(index)
     //
@@ -415,7 +415,7 @@ extension NewHistoryViewController : UITableViewDelegate,UITableViewDataSource{
     //                            self.getdatahistory = false
     //                            self.table.isScrollEnabled = true
     //
-    //                            print("load")
+    //                            // print("load")
     //
     //
     //
@@ -450,6 +450,9 @@ extension NewHistoryViewController : UITableViewDelegate,UITableViewDataSource{
                 if  let consultation = results as? [ConsultationModel] {
                     DispatchQueue.main.async {
                         let vc = DetailChatViewController()
+                        vc.consultationEnded = true
+                        vc.SpecialistString = self.dataKonsultasi!.data!.data![indexPath.row].detail_consultation!.doctor?.specialist ?? ""
+                        vc.nomorString = self.dataKonsultasi!.data!.data![indexPath.row].detail_consultation!.doctor?.no_str ?? ""
                         vc.uuid_patient = self.dataKonsultasi!.data!.data![indexPath.row].detail_consultation!.patient!.uuid!
                         vc.uuid_doctor = self.dataKonsultasi!.data!.data![indexPath.row].detail_consultation!.doctor!.uuid!
                         vc.email_patient =  self.dataKonsultasi!.data!.data![indexPath.row].detail_consultation!.patient!.email!

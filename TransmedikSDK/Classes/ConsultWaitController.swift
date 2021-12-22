@@ -134,8 +134,8 @@ class ConsultWaitViewController: MYUIViewController {
            
             contentView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 0).isActive = true
             contentView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: 0).isActive = true
-            contentView.topAnchor.constraint(equalTo: view.topAnchor, constant: 0).isActive = true
-            contentView.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: 0).isActive = true
+            contentView.topAnchor.constraint(equalTo: topLayoutGuide.bottomAnchor, constant: 0).isActive = true
+            contentView.bottomAnchor.constraint(equalTo: bottomLayoutGuide.topAnchor, constant: 0).isActive = true
             contentView.heightAnchor.constraint(equalTo: view.heightAnchor).isActive = true
             contentView.widthAnchor.constraint(equalTo: view.widthAnchor).isActive = true
         }

@@ -133,11 +133,11 @@ class newformsViewController: UIViewController {
                 })
                 
             } else {
-                print("bad json")
+                // print("bad json")
             }
 
         } catch let error as NSError {
-            print(error)
+            // print(error)
         }
         
         
@@ -213,7 +213,7 @@ class newformsViewController: UIViewController {
 
 extension newformsViewController : UITableViewDataSource ,UITableViewDelegate{
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        print("regresh form master")
+        // print("regresh form master")
         
         return list.count == 0 ? 0 : list.count
     }
@@ -245,8 +245,8 @@ extension newformsViewController : UITableViewDataSource ,UITableViewDelegate{
                 }
                 let ind = list[indexPath.row].detail!.count - 1
                 cell.jawaban = list[indexPath.row].jawaban
-                print("jawaban box")
-                print(list[indexPath.row].jawaban)
+                // print("jawaban box")
+                // print(list[indexPath.row].jawaban)
                 
                 return cell
                 
@@ -368,9 +368,9 @@ extension newformsViewController : UITableViewDataSource ,UITableViewDelegate{
 
 extension newformsViewController : form_pertanyaan_delegate{
     func set_checkbox_value_to_master(row: Int, value: String, datavalue: [listvalue]) {
-        print("set_checkbox_value_to_master")
-        print(value)
-        print(row)
+        // print("set_checkbox_value_to_master")
+        // print(value)
+        // print(row)
         self.list[row].detail = datavalue
         self.list[row].jawaban = value
     }
@@ -394,12 +394,12 @@ extension newformsViewController : form_pertanyaan_delegate{
     
     
     func set_checkbox_value_to_master(row: Int, value: String, list: Int, status: Bool) {
-        print("set_checkbox_value_to_master with status")
+        // print("set_checkbox_value_to_master with status")
         self.list[row].detail![list].check = status
         if  self.list[row].jawaban == ""{
             self.list[row].jawaban = value
         }else{
-            print(value)
+            // print(value)
             var _temp = ""
             for (i,index) in self.list[row].detail!.enumerated(){
                 if index.check{
@@ -432,7 +432,7 @@ extension newformsViewController : form_pertanyaan_delegate{
     func setdate(row: Int, value: String) {
         list[row].jawaban = value
         self.view.endEditing(true)
-        print(list[row].question + " ===> " + value)
+        // print(list[row].question + " ===> " + value)
     }
     
     func refresh(row : Int) {
@@ -455,7 +455,7 @@ extension newformsViewController : form_pertanyaan_delegate{
     
     func set_textfield_value_to_master(row: Int, value: String) {
         list[row].jawaban = value
-        print(list[row].question + " ===> " + value)
+        // print(list[row].question + " ===> " + value)
         
     }
     
@@ -463,7 +463,7 @@ extension newformsViewController : form_pertanyaan_delegate{
     
     
     func remove_checkbox_value_to_master(row: Int, value: String) {
-        print(list[row].question + " ===> " + value)
+        // print(list[row].question + " ===> " + value)
         var _tmp = list[row].jawaban.components(separatedBy: "|")
         if let index = _tmp.index(of: value) {
             _tmp.remove(at: index)
@@ -484,12 +484,12 @@ extension newformsViewController : form_pertanyaan_delegate{
     
     
    @objc func sendacc() {
-        print("sending data")
+        // print("sending data")
     
         for i in 0..<list.count{
             if list[i].required && list[i].jawaban == "" {
-                print("kosong")
-                print(list[i].jawaban)
+                // print("kosong")
+                // print(list[i].jawaban)
                 let indexPath = IndexPath(row: i , section: 0)
                 self.tables.scrollToRow(at: indexPath, at: .none, animated: true)
                 

@@ -132,13 +132,13 @@ extension edit_and_add_phrViewController: UITableViewDataSource{
 
 extension edit_and_add_phrViewController : editphrbadanTableViewCelldelegate{
     func dismisskeyboards() {
-        print("dismis keyboard")
+//        print("dismis keyboard")
         view.endEditing(true)
     }
     
     
     func kirimtinggi(tinggi: Int) {
-        print("1")
+//        print("1")
         self.datauser.height = "\(tinggi)"
     }
     

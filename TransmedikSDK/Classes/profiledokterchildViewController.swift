@@ -117,7 +117,7 @@ class profiledokterchildViewController: UIViewController,UIScrollViewDelegate {
     
     
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
-        print("scroll = > \(scrollView.contentOffset.y)")
+//        print("scroll = > \(scrollView.contentOffset.y)")
         
         
         if scrollView.contentOffset.y <= 0.0{
@@ -127,7 +127,7 @@ class profiledokterchildViewController: UIViewController,UIScrollViewDelegate {
         }
         if (self.lastContentOffset < scrollView.contentOffset.y) {
             delegate.scrolldown()
-            print("kebawah")
+//            print("kebawah")
             if ontop{
                 scroll.isScrollEnabled = false
                 DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {

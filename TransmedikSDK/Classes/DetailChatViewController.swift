@@ -60,6 +60,8 @@ class DetailChatViewController: MessagesViewController, MessagesDataSource {
     var updated: [ConversationModel] = []
     var tmpmessage : [ConversationModel] = []
 
+    var SpecialistString = ""
+    var nomorString  = ""
     var catatanIdx = -1
     var resepIdx = -1
     var spaIdx = -1
@@ -70,6 +72,11 @@ class DetailChatViewController: MessagesViewController, MessagesDataSource {
     var resepViewController: ResepDokterViewController?
     var consultationEnded: Bool = false {
         didSet{
+            if consultationEnded{
+                self.messageInputBar.isHidden = true
+                self.navigationController?.dismiss(animated: true, completion: nil)
+            }
+           
             guard consultationEnded != oldValue else {
                 return
             }
@@ -771,7 +778,8 @@ extension DetailChatViewController {
     }
     
     @objc func willEnterForeground() {
-//        print("detail enter foreground")
+        print("detail enter foreground")
+        loadFirstMessages()
         //checkcall
         let userInfo:[String: String] =
             ["sceneEnterForeground": "1"]

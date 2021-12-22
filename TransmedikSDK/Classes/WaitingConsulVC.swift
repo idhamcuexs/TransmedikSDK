@@ -83,7 +83,7 @@ class WaitingConsulVC: UIViewController {
     
     func setupParse() {
         
-        print("currentConsultationId : \(Int(self.currentConsultation!.consultation_id!))")
+        // print("currentConsultationId : \(Int(self.currentConsultation!.consultation_id!))")
         self.query = ConsultationModel.query()
         self.query = self.query.whereKey("consultation_id", equalTo: Int(self.currentConsultation!.consultation_id!)).whereKey("apps", contains: "transmedika")
         getdata()
@@ -121,15 +121,15 @@ class WaitingConsulVC: UIViewController {
             if error == nil {
                 
                 if let chat = results as? [ConsultationModel] {
-                    print("chat => \(chat.count)")
+                    // print("chat => \(chat.count)")
                     if chat.count > 0{
                         let consultation = chat[0]
                         self.pfdoctor = consultation.doctor
                         self.pfuser = consultation.patient
                         
-                        print("status updated! : \(consultation.status)")
+                        // print("status updated! : \(consultation.status)")
                         if (consultation.status == AppSettings.ON_CHAT) {
-                            print("on chat")
+                            // print("on chat")
                             Client.shared.unsubscribe(self.query)
                             self.open = true
                             DispatchQueue.main.async {
@@ -173,9 +173,9 @@ class WaitingConsulVC: UIViewController {
         self.subscription = Client.shared.subscribe(self.query)
         self.subscription.handle(Event.updated) { (query, obj) in
             let consultation = obj as! ConsultationModel
-            print("status updated! : \(consultation.status)")
+            // print("status updated! : \(consultation.status)")
             if (consultation.status == AppSettings.ON_CHAT) {
-                print("on chat")
+                // print("on chat")
                 Client.shared.unsubscribe(self.query)
                 
                 DispatchQueue.main.async {

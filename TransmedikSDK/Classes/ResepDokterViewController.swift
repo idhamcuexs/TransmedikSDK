@@ -226,7 +226,8 @@ class ResepDokterViewController: MYUIViewController {
             
         } else {
             backButton.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20).isActive = true
-            backButton.topAnchor.constraint(equalTo: view.topAnchor, constant: 20).isActive = true
+            backButton.topAnchor.constraint(equalTo: topLayoutGuide.bottomAnchor, constant: 20).isActive = true
+
             // Fallback on earlier versions
         }
     
@@ -276,7 +277,8 @@ class ResepDokterViewController: MYUIViewController {
         } else {
             scrollView.leadingAnchor.constraint(equalTo: view.leadingAnchor).isActive = true
             scrollView.trailingAnchor.constraint(equalTo: view.trailingAnchor).isActive = true
-            scrollView.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -10).isActive = true
+            
+            scrollView.bottomAnchor.constraint(equalTo: bottomLayoutGuide.topAnchor, constant: -10).isActive = true
         }
  
         
@@ -370,10 +372,10 @@ class ResepDokterViewController: MYUIViewController {
     
     func setupObatStackView() {
         view.layoutSubviews()
-        print("resep")
-        print(consultation)
+        // print("resep")
+        // print(consultation)
         
-        print(json)
+        // print(json)
         let height = backButton.frame.height + doctorView.frame.height + pasienView.frame.height + lineView.frame.height + lineView2.frame.height + 20 + 20 + 5 + 5
         idconsul = String(consultation!.consultation_id!)
         for (key,subJson):(String, JSON) in json!["recipes"] {
@@ -404,7 +406,7 @@ class ResepDokterViewController: MYUIViewController {
     @objc func beliButtonDidTap(){
 //        Toast.show(message: "Beli Obat", controller: self)//
 
-        print("beliButtonDidTap")
+        // print("beliButtonDidTap")
         let alert = CDAlertView(title: "Pembelian Obat", message: "Apakah ingin memperbaharui keranjang belanja?", type: .warning)
 
         let yesAction = CDAlertViewAction(title: LocalizationHelper.getInstance().yes) { (CDAlertViewAction) -> Bool in

@@ -138,7 +138,7 @@ class historiescellkonsulTableViewCell: UITableViewCell {
         tglformat.dateFormat = "dd"
         let tgl = tglformat.string(from: dates)
         
-        print( "ini bulan \(bulan)")
+//        print( "ini bulan \(bulan)")
         
         switch Int(bulan) {
         case 1:

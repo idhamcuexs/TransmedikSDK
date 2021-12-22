@@ -80,14 +80,14 @@ extension DetailChatViewController {
 extension DetailChatViewController: MessageCellDelegate {
     
     func didTapAvatar(in cell: MessageCollectionViewCell) {
-        print("Avatar tapped")
+        // print("Avatar tapped")
     }
     
     func didTapMessage(in cell: MessageCollectionViewCell) {
-        print("Message tapped")
+        // print("Message tapped")
         guard let indexPath = messagesCollectionView.indexPath(for: cell),
               let message = messagesCollectionView.messagesDataSource?.messageForItem(at: indexPath, in: messagesCollectionView) else {
-            print("Failed to identify message")
+            // print("Failed to identify message")
             return
         }
         
@@ -98,12 +98,22 @@ extension DetailChatViewController: MessageCellDelegate {
                     willOpenUrl(text: textItem)
                 }
                 else if msg.type == AppSettings.SPA_TYPE {
-                    let vc = CatatanDokterViewController()
-                    vc.json = JSON(parseJSON: textItem)
-                    vc.consultation = currentConsultation
-                    vc.date = msg.sentDate
                     
-                    self.present(vc, animated: true, completion: nil)
+                    let vcs = UIStoryboard(name: "Chat", bundle: AppSettings.bundleframeworks()).instantiateViewController(withIdentifier: "DetailCatatanDiagnosaVC") as? DetailCatatanDiagnosaVC
+                    vcs?.json = JSON(parseJSON: textItem)
+                    vcs?.date = "\(msg.sentDate)"
+                    vcs?.dokterString = currentConsultation?.doctor?.full_name ?? ""
+                    vcs?.phtoString = currentConsultation?.doctor?.profile_picture ?? ""
+                    vcs?.spesialis = SpecialistString
+                    vcs?.nomorString = nomorString
+                    
+                    self.present(vcs!, animated: true, completion: nil)
+//                    let vc = CatatanDokterViewController()
+//                    vc.json = JSON(parseJSON: textItem)
+//                    vc.consultation = currentConsultation
+//                    vc.date = msg.sentDate
+//
+//                    self.present(vc, animated: true, completion: nil)
                 }
                 else if msg.type == AppSettings.RESEP_DOKTER_TYPE {
                     
@@ -126,7 +136,7 @@ extension DetailChatViewController: MessageCellDelegate {
 //                    let vc = UIStoryboard(name: "Sizeimage", bundle: nil).instantiateViewController(withIdentifier: "sizeimageViewController") as? sizeimageViewController
 //                    vc.consultationEnded = self.consultationEnded
 
-                    print(JSON(parseJSON: textItem))
+                    // print(JSON(parseJSON: textItem))
                     
 //                    self.present(vc!, animated: true, completion: nil)
                 }
@@ -167,12 +177,16 @@ extension DetailChatViewController: MessageCellDelegate {
                     willOpenUrl(text: textItem.string)
                 }
                 else if msg.type == AppSettings.SPA_TYPE {
-                    let vc = CatatanDokterViewController()
-                    vc.json = JSON(parseJSON: textItem.string)
-                    vc.consultation = currentConsultation
-                    vc.date = msg.sentDate
                     
-                    self.present(vc, animated: true, completion: nil)
+                    let vcs = UIStoryboard(name: "Chat", bundle: AppSettings.bundleframeworks()).instantiateViewController(withIdentifier: "DetailCatatanDiagnosaVC") as? DetailCatatanDiagnosaVC
+                    vcs?.json = JSON(parseJSON: textItem.string)
+                    vcs?.date = "\(msg.sentDate)"
+                    vcs?.dokterString = currentConsultation?.doctor?.full_name ?? ""
+                    vcs?.phtoString = currentConsultation?.doctor?.profile_picture ?? ""
+                    vcs?.spesialis = SpecialistString
+                    vcs?.nomorString = nomorString
+                    
+                    self.present(vcs!, animated: true, completion: nil)
                 }
                 
                 else if msg.type == AppSettings.PHR_REQ {
@@ -255,27 +269,27 @@ extension DetailChatViewController: MessageCellDelegate {
     }
     
     func didTapImage(in cell: MessageCollectionViewCell) {
-        print("Image tapped")
+        // print("Image tapped")
     }
     
     func didTapCellTopLabel(in cell: MessageCollectionViewCell) {
-        print("Top cell label tapped")
+        // print("Top cell label tapped")
     }
     
     func didTapCellBottomLabel(in cell: MessageCollectionViewCell) {
-        print("Bottom cell label tapped")
+        // print("Bottom cell label tapped")
     }
     
     func didTapMessageTopLabel(in cell: MessageCollectionViewCell) {
-        print("Top message label tapped")
+        // print("Top message label tapped")
     }
     
     func didTapMessageBottomLabel(in cell: MessageCollectionViewCell) {
-        print("Bottom label tapped")
+        // print("Bottom label tapped")
         
         guard let indexPath = messagesCollectionView.indexPath(for: cell),
               let message = messagesCollectionView.messagesDataSource?.messageForItem(at: indexPath, in: messagesCollectionView) else {
-            print("Failed to identify message")
+            // print("Failed to identify message")
             return
         }
         
@@ -359,7 +373,7 @@ extension DetailChatViewController: MessageCellDelegate {
     func didTapPlayButton(in cell: AudioMessageCell) {
         guard let indexPath = messagesCollectionView.indexPath(for: cell),
               let message = messagesCollectionView.messagesDataSource?.messageForItem(at: indexPath, in: messagesCollectionView) else {
-            print("Failed to identify message when audio cell receive tap gesture")
+            // print("Failed to identify message when audio cell receive tap gesture")
             return
         }
         guard audioController.state != .stopped else {
@@ -382,19 +396,19 @@ extension DetailChatViewController: MessageCellDelegate {
     }
     
     func didStartAudio(in cell: AudioMessageCell) {
-        print("Did start playing audio sound")
+        // print("Did start playing audio sound")
     }
     
     func didPauseAudio(in cell: AudioMessageCell) {
-        print("Did pause audio sound")
+        // print("Did pause audio sound")
     }
     
     func didStopAudio(in cell: AudioMessageCell) {
-        print("Did stop audio sound")
+        // print("Did stop audio sound")
     }
     
     func didTapAccessoryView(in cell: MessageCollectionViewCell) {
-        print("Accessory view tapped")
+        // print("Accessory view tapped")
     }
     
 }
@@ -404,35 +418,35 @@ extension DetailChatViewController: MessageCellDelegate {
 extension DetailChatViewController: MessageLabelDelegate {
     
     func didSelectAddress(_ addressComponents: [String: String]) {
-        print("Address Selected: \(addressComponents)")
+        // print("Address Selected: \(addressComponents)")
     }
     
     func didSelectDate(_ date: Date) {
-        print("Date Selected: \(date)")
+        // print("Date Selected: \(date)")
     }
     
     func didSelectPhoneNumber(_ phoneNumber: String) {
-        print("Phone Number Selected: \(phoneNumber)")
+        // print("Phone Number Selected: \(phoneNumber)")
     }
     
     func didSelectURL(_ url: URL) {
-        print("URL Selected: \(url)")
+        // print("URL Selected: \(url)")
     }
     
     func didSelectTransitInformation(_ transitInformation: [String: String]) {
-        print("TransitInformation Selected: \(transitInformation)")
+        // print("TransitInformation Selected: \(transitInformation)")
     }
     
     func didSelectHashtag(_ hashtag: String) {
-        print("Hashtag selected: \(hashtag)")
+        // print("Hashtag selected: \(hashtag)")
     }
     
     func didSelectMention(_ mention: String) {
-        print("Mention selected: \(mention)")
+        // print("Mention selected: \(mention)")
     }
     
     func didSelectCustom(_ pattern: String, match: String?) {
-        print("Custom data detector patter selected: \(pattern)")
+        // print("Custom data detector patter selected: \(pattern)")
     }
     
     
@@ -552,7 +566,7 @@ extension DetailChatViewController: InputBarAccessoryViewDelegate {
          
          let substring = attributedText.attributedSubstring(from: range)
          let context = substring.attribute(.autocompletedContext, at: 0, effectiveRange: nil)
-         print("Autocompleted: `", substring, "` with context: ", context ?? [])
+         // print("Autocompleted: `", substring, "` with context: ", context ?? [])
          }*/
         
         if !CheckInternet.Connection(){
@@ -707,11 +721,11 @@ extension DetailChatViewController: UINavigationControllerDelegate, UIImagePicke
     }
     
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
-        print("info imagepicket")
-        print(info)
-        print("=============")
-        print(info["UIImagePickerControllerMediaType"])
-        print(info["UIImagePickerControllerEditedImage"])
+        // print("info imagepicket")
+        // print(info)
+        // print("=============")
+        // print(info["UIImagePickerControllerMediaType"])
+        // print(info["UIImagePickerControllerEditedImage"])
         dismiss(animated: true, completion: {
             self.attachmentManager.showAddAttachmentCell = true
 
@@ -753,12 +767,12 @@ extension DetailChatViewController: UINavigationControllerDelegate, UIImagePicke
                         self.videoThumbnail = UIImage(cgImage: cgImage).resizeWithWidth(width: AppSettings.videoThumbnailWidth)
                         
                         /*self.videoUrl = videoURL
-                         print(self.videoUrl)
+                         // print(self.videoUrl)
                          
                          let handled = self.attachmentManager.handleInput(of: self.videoThumbnail!)
                          if !handled {
                          // throw error
-                         print("error")
+                         // print("error")
                          }*/
                         
                         let name = "\(Int(Date().timeIntervalSince1970)).mp4"
@@ -783,11 +797,11 @@ extension DetailChatViewController: UINavigationControllerDelegate, UIImagePicke
                         let handled = self.attachmentManager.handleInput(of: self.videoThumbnail!)
                         if !handled {
                             // throw error
-                            print("error")
+                            // print("error")
                         }
                         
                     } catch let error {
-                        print("*** Error generating thumbnail: \(error.localizedDescription)")
+                        // print("*** Error generating thumbnail: \(error.localizedDescription)")
                     }
                 }
             }
@@ -910,7 +924,15 @@ extension DetailChatViewController: UINavigationControllerDelegate, UIImagePicke
         messageInputBar.sendButton.setSize(CGSize(width: 36, height: 36), animated: false)
         messageInputBar.sendButton.title = nil
 //        messageInputBar.sendButton.image = UIImage(systemName: "paperplane.fill")?.withTintColor(.white)
-        messageInputBar.sendButton.image = UIImage(named: "send")
+        if #available(iOS 13.0, *) {
+            messageInputBar.sendButton.image = UIImage(named: "send", in: Bundle.init(identifier: AppSettings.frameworkBundleID), compatibleWith: nil)?.withTintColor(.white)
+        } else {
+            messageInputBar.sendButton.image = UIImage(named: "send", in: Bundle.init(identifier: AppSettings.frameworkBundleID), compatibleWith: nil)
+            
+            // Fallback on earlier versions
+        }
+
+//        messageInputBar.sendButton.image = UIImage(named: "send")
 //        send
         messageInputBar.middleContentViewPadding.right = -38
         messageInputBar.middleContentViewPadding.left = 5
@@ -960,22 +982,22 @@ extension DetailChatViewController: UINavigationControllerDelegate, UIImagePicke
         return InputBarButtonItem()
             .configure {
                 $0.spacing = .fixed(1)
-                if #available(iOS 13.0, *) {
-                    $0.image = UIImage(systemName: "plus")?.resizeWithWidth(width: 28)!.withRenderingMode(.alwaysTemplate)
-                } else {
-                    $0.image = UIImage(named: "")
-                }
+
+                $0.image = UIImage(named: "plus-round", in: Bundle.init(identifier: AppSettings.frameworkBundleID), compatibleWith: nil)?.resizeWithWidth(width: 28)!.withRenderingMode(.alwaysTemplate)
+
+                
+                
                 $0.setSize(CGSize(width: 28, height: 36), animated: false)
-                $0.tintColor = .blue
+                $0.tintColor = .white
                 $0.contentEdgeInsets = UIEdgeInsets(top: 2, left: 0, bottom: 2, right: 0)
             }.onEnabled {
-                $0.tintColor = .blue
+                $0.tintColor = .white
             }.onDisabled {
-                $0.tintColor = .blue
+                $0.tintColor = .white
             }.onSelected {
-                $0.tintColor = .blue
+                $0.tintColor = .white
             }.onDeselected {
-                $0.tintColor = .blue
+                $0.tintColor = .white
             }.onTouchUpInside {
                 let actionSheet = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
                 
@@ -1260,7 +1282,7 @@ extension DetailChatViewController: MessagesDisplayDelegate {
          
          let msg = messagesDataSource.messageForItem(at: indexPath, in: messagesCollectionView) as! MockMessage
          
-         //print(msg.status + " = " + msg.messageId)
+         //// print(msg.status + " = " + msg.messageId)
          let borderColor:UIColor = isFromCurrentSender(message: message) ? AppColor.shared.instance(self.traitCollection).chatBorderColor : AppColor.shared.instance(self.traitCollection).chatBorderColor2
          return .bubbleTailOutline(borderColor, corner, .curved)*/
     }
@@ -1330,7 +1352,7 @@ extension DetailChatViewController: MessagesDisplayDelegate {
      imageView.startAnimating()
      }
      else if (photoItem.urls != nil && photoItem.urls!.count > 0) {
-     print("array URLS")
+     // print("array URLS")
      }
      }
      default:

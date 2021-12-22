@@ -186,7 +186,7 @@ struct Newpatient : Codable {
 }
 
 struct Newdoctors : Codable {
-    var uuid,full_name,email,phone_number,profile_picture,gender,status,specialist_slug,specialist,status_docter : String?
+    var uuid,full_name,email,phone_number,profile_picture,gender,status,specialist_slug,specialist,status_docter,no_str : String?
 }
 
 

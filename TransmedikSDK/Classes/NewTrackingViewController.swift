@@ -136,7 +136,7 @@ class NewTrackingViewController: UIViewController {
     func getData(){
         if let token = UserDefaults.standard.string(forKey: AppSettings.Tokentransmedik) {
                 self.api.getdetailhistory(token: token, id: self.id) { (data, msg) in
-                    print("brsz")
+                    // print("brsz")
                     if msg.contains("Unauthenticated"){
                         UserDefaults.standard.set(true, forKey: "logout")
                         self.dismiss(animated: false, completion: nil)
@@ -175,7 +175,7 @@ class NewTrackingViewController: UIViewController {
     
     func statustext(status : String){
           
-        print("statustext >>>" + status )
+        // print("statustext >>>" + status )
         switch status {
         case "Unpaid":
             self.status.text = "Menunggu Pembayaran"
@@ -312,7 +312,7 @@ extension NewTrackingViewController : UITableViewDelegate,UITableViewDataSource{
     }
     
     private func tableView(tableView: UITableView, willDisplayMyCell myCell: ResepObatTableViewCell, forRowAtIndexPath indexPath: NSIndexPath) {
-        print("willDisplay2")
+        // print("willDisplay2")
 
         tableView.layoutIfNeeded()
         
@@ -322,7 +322,7 @@ extension NewTrackingViewController : UITableViewDelegate,UITableViewDataSource{
     
     func tableView(_ tableView: UITableView, estimatedHeightForRowAt indexPath: IndexPath) -> CGFloat {
 
-        print("waehs")
+        // print("waehs")
         return  UITableView.automaticDimension
     }
     

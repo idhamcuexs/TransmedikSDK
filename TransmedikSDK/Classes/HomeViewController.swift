@@ -18,6 +18,7 @@ struct modelmenuinhome {
 
 class HomeViewController: UIViewController {
 
+    @IBOutlet weak var closeVC: UIView!
     @IBOutlet weak var collmenu: UICollectionView!
     @IBOutlet weak var back: UIView!
     @IBOutlet weak var viewnavigation: UIView!
@@ -36,15 +37,21 @@ class HomeViewController: UIViewController {
         collmenu.dataSource = self
         viewnavigation.dropShadow(shadowColor: UIColor.lightGray, fillColor: UIColor.white, opacity: 0.5, offset: CGSize(width: 2, height: 2), radius: 4)
         
-        back.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(kembali)))
+        closeVC.isUserInteractionEnabled = true
+        closeVC.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(kembali)))
         
         
     }
     @objc func kembali(){
+        // print("ucoing")
        keluar(view: presentPage)
     }
 
-
+    @IBAction func balik(_ sender: Any) {
+        // print("ucing")
+        keluar(view: presentPage)
+    }
+    
     
     func getdata(id : Int,data: ConsultationPostModel,uuid : String,email : String){
         
@@ -66,7 +73,7 @@ class HomeViewController: UIViewController {
                     vc.currentDoctor = chat[0].doctor
                     vc.currentUser = chat[0].patient
                     
-                    print("uhuy")
+                    // print("uhuy")
                     
                     let nav = UINavigationController(navigationBarClass: UICustomNavigationBar.self, toolbarClass: nil)
                     nav.modalPresentationStyle = .fullScreen
@@ -89,8 +96,8 @@ extension HomeViewController: UICollectionViewDataSource,UICollectionViewDelegat
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        print("jumlah")
-        print("menuhome.count")
+        // print("jumlah")
+        // print("menuhome.count")
         return menuhome.count
     }
     
@@ -98,7 +105,7 @@ extension HomeViewController: UICollectionViewDataSource,UICollectionViewDelegat
         
             switch indexPath.row {
             case 0:
-                print("case 00")
+                // print("case 00")
                 if let token = UserDefaults.standard.string(forKey: AppSettings.Tokentransmedik) {
                     let chat = Chat()
                     Loading.show()
@@ -127,7 +134,7 @@ extension HomeViewController: UICollectionViewDataSource,UICollectionViewDelegat
                     }
 
                 }else{
-                    print("not token")
+                    // print("not token")
                 }
             
             
@@ -138,7 +145,7 @@ extension HomeViewController: UICollectionViewDataSource,UICollectionViewDelegat
 //                    Loading.show()
 //                        if let token = UserDefaults.standard.string(forKey: AppSettings.Tokentransmedik) {
 //                            let chat = Chat()
-//                            print("token on")
+//                            // print("token on")
 //                            chat.checkkonsul(token: token) { (data) in
 //                                Loading.dismiss()
 //                                if data != nil {

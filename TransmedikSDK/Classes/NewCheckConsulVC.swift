@@ -173,11 +173,20 @@ class NewCheckConsulVC: UIViewController,UITextViewDelegate {
         }
         
         if statusDoctor {
-            viewStatus.backgroundColor = Colors.buttonActive
             desStatus.text = "Available"
+            if self.isform{
+                if list.count > 0{
+                    statussend = true
+
+                }else{
+                    statussend = false
+                }
+            }else{
+                statussend = true
+            }
             
         }else{
-            viewStatus.backgroundColor = Colors.buttonnonActive
+            statussend = false
             desStatus.text = "Not Available"
         }
     }
@@ -196,7 +205,7 @@ class NewCheckConsulVC: UIViewController,UITextViewDelegate {
                         self.presentingViewController?.presentingViewController?.dismiss(animated: false, completion: nil)
                     }
                     if data != nil {
-                        print("my name = >\(data!.full_name)")
+                        // print("my name = >\(data!.full_name)")
                         self.mdata.insert(data!, at: 0)
                         self.success = true
                     }else{
@@ -251,7 +260,7 @@ class NewCheckConsulVC: UIViewController,UITextViewDelegate {
     }
     
     func setup(){
-        konfirmasiButton.isUserInteractionEnabled = false
+//        konfirmasiButton.isUserInteractionEnabled = false
         konfirmasiButton.backgroundColor = Colors.buttonnonActive
         konfirmasiButton.layer.cornerRadius = 10
         viewForm.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(form)))
@@ -383,8 +392,8 @@ class NewCheckConsulVC: UIViewController,UITextViewDelegate {
                         "voucher_amount" : 0
                     ]
                 }
-                print("param>>")
-                print(params)
+                // print("param>>")
+                // print(params)
                 
                 chatacc.newstartkonsultasi(param: params) { (data,merchant_id,url) in
                     
@@ -393,7 +402,7 @@ class NewCheckConsulVC: UIViewController,UITextViewDelegate {
                         if data != nil {
                             
                             
-                            print("kosong")
+                            // print("kosong")
                             let vc = UIStoryboard(name: "Chat", bundle: AppSettings.bundleframeworks()).instantiateViewController(withIdentifier: "WaitingConsulVC") as? WaitingConsulVC
                             
                             vc?.modalPresentationStyle = .fullScreen
@@ -432,8 +441,8 @@ class NewCheckConsulVC: UIViewController,UITextViewDelegate {
                 
                 
 //                if pin == "" {
-//                    print("not pin")
-//                    print(email)
+//                    // print("not pin")
+//                    // print(email)
 //                    let param : Parameters = [
 //                        "CHAINMERCHANT":"NA",
 //                        "CURRENCY":"360",
@@ -457,10 +466,10 @@ class NewCheckConsulVC: UIViewController,UITextViewDelegate {
 //
 //                            self.currentConsultationId = data!.consultation_id!
 //                            self.consultationPostModel = data!
-//                            print("ini print")
-//                            print(url)
+//                            // print("ini // print")
+//                            // print(url)
 //                            if url == nil {
-//                                print("kosong")
+//                                // print("kosong")
 //                                let vc  = ConsultWaitViewController()
 //                                vc.modalPresentationStyle = .fullScreen
 //                                vc.modalTransitionStyle = .flipHorizontal
@@ -485,7 +494,7 @@ class NewCheckConsulVC: UIViewController,UITextViewDelegate {
 //
 //                                }
 //                            }else{
-//                                print("ayaan")
+//                                // print("ayaan")
 //                                let vc = UIStoryboard(name: "PMR", bundle: AppSettings.bundleframework).instantiateViewController(withIdentifier: "OpenpdfViewController") as? OpenpdfViewController
 //                                vc?.headers = "DOKU pembayaran"
 //                                vc?.delegate = self
@@ -504,7 +513,7 @@ class NewCheckConsulVC: UIViewController,UITextViewDelegate {
 //                }else{
 //
 //
-//                    print("jol bayar cash")
+//                    // print("jol bayar cash")
 //                    self.chatacc.confirmConsultclinic(token: UserDefaults.standard.string(forKey: AppSettings.Tokentransmedik)!, uuid_patient: UserDefaults.standard.string(forKey: AppSettings.uuid)!, uuid_doctor:  self.detaildokter!.uuid, email_patient: UserDefaults.standard.string(forKey: AppSettings.email)!, email_doctor: self.detaildokter!.email, rates: Int(self.detaildokter!.rates)!, jawab: stringform, medical_facility_id: self.facilityid!, voucher_amount: "\(self.getdiskon().0)", voucher: self.getdiskon().1, pin: pin, payment_id: "2", payment_name: "Escrow", param: nil, trans_merchant_id: "") { (data,merchant_id,url) in
 //                        DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
 //

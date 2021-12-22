@@ -44,7 +44,7 @@ class insertpinViewController: UIViewController, openchatfromdoku {
             
         }
         headerlabel.textColor = Colors.headerlabel
-        send.backgroundColor = Colors.basicvalue
+        send.backgroundColor = Colors.buttonActive
         send.layer.cornerRadius = 10
         
         back.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(kembali)))
@@ -73,7 +73,7 @@ class insertpinViewController: UIViewController, openchatfromdoku {
         view.endEditing(true)
 
         if let token = UserDefaults.standard.string(forKey: AppSettings.Tokentransmedik){
-                print(self.pintext)
+//                print(self.pintext)
                 Transmedik.checkpin(token: token, pin: self.pintext) { (status, msg) in
                     if msg == "Unauthenticated."{
                         let vc = UIStoryboard(name: "Notification", bundle: AppSettings.bundleframeworks()).instantiateViewController(withIdentifier: "loadingsuccessViewController") as? loadingsuccessViewController

@@ -49,7 +49,7 @@ class OrderobatViewController: UIViewController,CLLocationManagerDelegate, lista
     var api = Obat()
     var location : NameMyLocation?{
         didSet{
-            print("location set")
+            // print("location set")
         }
     }
     var id = ""
@@ -124,12 +124,12 @@ class OrderobatViewController: UIViewController,CLLocationManagerDelegate, lista
         
         let tmplocation = CLLocationCoordinate2D(latitude: location.coordinate.latitude, longitude: location.coordinate.longitude)
         let loc = CLLocation(latitude: location.coordinate.latitude, longitude: location.coordinate.longitude)
-        print("get my location")
-        print(tmplocation)
+        // print("get my location")
+        // print(tmplocation)
         let geocoder = CLGeocoder()
         geocoder.reverseGeocodeLocation(loc) { (locstring, err) in
             if let _ = err {
-                return print("error cuy")
+                return // print("error cuy")
             }
             let pm = locstring! as [CLPlacemark]
             
@@ -152,10 +152,10 @@ class OrderobatViewController: UIViewController,CLLocationManagerDelegate, lista
                     addressString = addressString + pm.postalCode! + " "
                 }
                 
-                print(addressString)
+                // print(addressString)
                 self.alamat.text = addressString
                 self.location = NameMyLocation(location: tmplocation, address: addressString, note: "")
-                //                print(addressString)
+                //                // print(addressString)
             }
             
             
@@ -200,7 +200,7 @@ class OrderobatViewController: UIViewController,CLLocationManagerDelegate, lista
                                 "\(self.location?.location.longitude ?? 0.0)", lat: "\(self.location?.location.longitude ?? 0.0)", data: model) { (status,data,msg) in
                 
                 if data != nil {
-                    print("data not nul")
+                    // print("data not nul")
                     self.data = data
                     self.tableResep.reloadData()
                     self.tableKurir.reloadData()
@@ -225,7 +225,7 @@ class OrderobatViewController: UIViewController,CLLocationManagerDelegate, lista
 //                    }
 
                     if status {
-                        print(1)
+                        // print(1)
                         if dataresep != nil{
                             self.resepobat = dataresep!
                             self.getprice()
@@ -252,10 +252,10 @@ class OrderobatViewController: UIViewController,CLLocationManagerDelegate, lista
 
 extension OrderobatViewController: UITableViewDelegate,UITableViewDataSource{
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        print("medicines")
-        print(data?.data?.medicines?.count ?? 0)
-        print("medicines")
-        print(data?.data?.couriers?.count ?? 0)
+        // print("medicines")
+        // print(data?.data?.medicines?.count ?? 0)
+        // print("medicines")
+        // print(data?.data?.couriers?.count ?? 0)
         switch tableView {
         case tableResep:
             return  data?.data?.medicines?.count ?? 0
@@ -340,16 +340,16 @@ extension OrderobatViewController: UITableViewDelegate,UITableViewDataSource{
         tableView.layoutIfNeeded()
         switch tableView {
         case tableResep:
-            print("tableResep")
-            print(tableResep.contentSize.height)
+            // print("tableResep")
+            // print(tableResep.contentSize.height)
             hightable.constant = tableResep.contentSize.height
             self.view.layoutIfNeeded()
             
             
         case tableKurir:
-            print("tableKurir")
+            // print("tableKurir")
             
-            print( tableKurir.contentSize.height)
+            // print( tableKurir.contentSize.height)
             hightTableKurir.constant = tableKurir.contentSize.height
             self.view.layoutIfNeeded()
             

@@ -109,7 +109,7 @@ class ResepViewController: UIViewController,UITextViewDelegate {
                     
               
                 } catch {
-                    print("eror")
+                    // print("eror")
                 }
             }
 
@@ -134,7 +134,7 @@ class ResepViewController: UIViewController,UITextViewDelegate {
     @objc func buy(){
         //        Toast.show(message: "Beli Obat", controller: self)//
 
-                print("beliButtonDidTap")
+                // print("beliButtonDidTap")
                 let alert = CDAlertView(title: "Pembelian Obat", message: "Apakah ingin memperbaharui keranjang belanja?", type: .warning)
 
                 let yesAction = CDAlertViewAction(title: LocalizationHelper.getInstance().yes) { (CDAlertViewAction) -> Bool in
@@ -162,7 +162,7 @@ class ResepViewController: UIViewController,UITextViewDelegate {
 
 extension ResepViewController: UITableViewDelegate,UITableViewDataSource{
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        print("retun =>> \(data?.recipes?.count ?? 0)")
+        // print("retun =>> \(data?.recipes?.count ?? 0)")
         return data?.recipes?.count ?? 0
     }
     
@@ -174,13 +174,13 @@ extension ResepViewController: UITableViewDelegate,UITableViewDataSource{
     }
     
 //    func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
-//        print("willDisplay")
+//        // print("willDisplay")
 //
 //
 //    }
     
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
-        print("scrollViewDidScroll")
+        // print("scrollViewDidScroll")
         tables.layoutIfNeeded()
         self.tinggiTable.constant = tables.contentSize.height
     }
@@ -188,7 +188,7 @@ extension ResepViewController: UITableViewDelegate,UITableViewDataSource{
    
 
     func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
-        print("willDisplay")
+        // print("willDisplay")
         tableView.layoutIfNeeded()
         self.tinggiTable.constant = tableView.contentSize.height
       }
@@ -198,14 +198,14 @@ extension ResepViewController: UITableViewDelegate,UITableViewDataSource{
     }
 
     private func tableView(tableView: UITableView, willDisplayMyCell myCell: ResepObatTableViewCell, forRowAtIndexPath indexPath: NSIndexPath) {
-        print("willDisplay2")
+        // print("willDisplay2")
 
         tableView.layoutIfNeeded()
         self.tinggiTable.constant = tableView.contentSize.height    }
     
     func tableView(_ tableView: UITableView, estimatedHeightForRowAt indexPath: IndexPath) -> CGFloat {
         return UITableView.automaticDimension
-        print("estimatedHeightForRowAt")
+        // print("estimatedHeightForRowAt")
 
 //        return  UITableViewAutomaticDimension
     }

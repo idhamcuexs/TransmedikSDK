@@ -27,11 +27,11 @@ class paymentobject: NSObject {
         let params :Parameters = ["trans_merchant_id" : param]
 
         
-        print(params)
+        // print(params)
         Alamofire.request(url, method: .post, parameters : params , encoding: JSONEncoding.default, headers: headers)
             .responseJSON { respon in
-                print("respon profile")
-                print(respon)
+                // print("respon profile")
+                // print(respon)
                 
                 switch respon.result {
                 case let .success(value):
@@ -44,7 +44,7 @@ class paymentobject: NSObject {
                         complited(false)
                         
                     }
-                    print(value)
+                    // print(value)
                 case let .failure(error):
                     complited(false)
                 }
@@ -67,8 +67,8 @@ class paymentobject: NSObject {
         
         Alamofire.request(url, method: .post, encoding: JSONEncoding.default, headers: headers)
             .responseJSON { respon in
-                print("respon profile")
-                print(respon)
+                // print("respon profile")
+                // print(respon)
                 
                 switch respon.result {
                 case let .success(value):
@@ -81,7 +81,7 @@ class paymentobject: NSObject {
                         complited(false,json["messages"].stringValue,"")
                         
                     }
-                    print(value)
+                    // print(value)
                 case let .failure(error):
                     complited(false,"Terjadi gangguan pada jaringan atau server ","")
                 }
@@ -106,8 +106,8 @@ class paymentobject: NSObject {
         
         Alamofire.request(url, method: .post,parameters: param, encoding: JSONEncoding.default, headers: headers)
             .responseJSON { respon in
-                print("respon profile")
-                print(respon)
+                // print("respon profile")
+                // print(respon)
                 
                 switch respon.result {
                 case let .success(value):
@@ -120,7 +120,7 @@ class paymentobject: NSObject {
                         complited(false,json["messages"].stringValue)
                         
                     }
-                    print(value)
+                    // print(value)
                 case let .failure(error):
                     complited(false,"Terjadi gangguan pada jaringan atau server ")
                 }
@@ -139,14 +139,14 @@ class paymentobject: NSObject {
         ]
         
         let url = "\(AppSettings.Url)payment-types"
-        print(url)
-        print(headers)
+        // print(url)
+        // print(headers)
 //        var modelpayment
         
         Alamofire.request(url, method: .get, encoding: JSONEncoding.default, headers: headers)
             .responseJSON { respon in
-                print("respon profile")
-                print(respon)
+                // print("respon profile")
+                // print(respon)
                 
                 switch respon.result {
                 case let .success(value):
@@ -199,7 +199,7 @@ class paymentobject: NSObject {
                         complited(false,json["messages"].stringValue,nil)
                         
                     }
-                    print(value)
+                    // print(value)
                 case let .failure(error):
                     complited(false,"Terjadi gangguan pada jaringan atau server ",nil)
                 }

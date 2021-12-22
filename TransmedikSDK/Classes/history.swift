@@ -25,8 +25,8 @@ class historiesobject: NSObject {
         var tmp :[ModelHistories] = []
         Alamofire.request(url, method: .get,encoding: JSONEncoding.default, headers: headers)
             .responseJSON { respon in
-                print("ini respon history url")
-                print(respon)
+                // print("ini respon history url")
+                // print(respon)
                 switch respon.result {
                 case let .success(value):
                     let json = JSON(value)
@@ -62,7 +62,7 @@ class historiesobject: NSObject {
                                 datapembelian.append(resdetailobat(slug: dataobat["slug"].stringValue, name: dataobat["name"].stringValue, unit: dataobat["unit"].stringValue, price: dataobat["price"].intValue, stock: dataobat["stock"].intValue, qty: dataobat["qty"].intValue, available: dataobat["available"].boolValue, min_prices: dataobat["min_prices"].intValue, max_prices: dataobat["max_prices"].intValue, order_id: data["detail_order"]["order_id"].intValue, prescription_id: dataobat["prescription_id"].stringValue, status: false))
                             })
                             
-                            print("yyyyyyy =>>>\(datapembelian.count)" )
+                            // print("yyyyyyy =>>>\(datapembelian.count)" )
 
                             tmp.append(ModelHistories(type_history: data["type_history"].stringValue, label: data["label"].stringValue, name: data["name"].stringValue, transaction_date: data["transaction_date"].stringValue, status: data["status"].stringValue, total: data["total"].intValue, detail_medicine: datapembelian, detail_consultation: detailkonsul, rating: data["rating"].intValue))
                             if tmp.count == json["data"]["data"].count{
@@ -70,8 +70,8 @@ class historiesobject: NSObject {
                                     complited(tmp, json["data"]["next_page_url"].stringValue)
                                 }
 //                                DispatchQueue.main.asyncAlamofire.er(deadline: .now() + 0.4) {
-//                                    print("total respon")
-//                                    print(tmp.count )
+//                                    // print("total respon")
+//                                    // print(tmp.count )
 //                                complited(tmp, json["data"]["next_page_url"].stringValue)
 //                                }
                             }
@@ -101,8 +101,8 @@ class historiesobject: NSObject {
         let url = "\(AppSettings.Url)histories/\(uuid)?filter=\(selected ?? 1)&per_page=10&page=\(page)"
         Alamofire.request(url, method: .get,encoding: JSONEncoding.default, headers: headers)
             .responseJSON { respon in
-//                print("history")
-//             print(respon)
+//                // print("history")
+//             // print(respon)
                 switch respon.result {
                 case let .success(value):
                     let json = JSON(value)
@@ -113,7 +113,7 @@ class historiesobject: NSObject {
                             complited(nil,result)
                             
                         }catch{
-                            print("Error cpod")
+                            // print("Error cpod")
                             complited(nil,nil)
                         }
                         
@@ -121,7 +121,7 @@ class historiesobject: NSObject {
                         do{
                             let result = try JSONDecoder().decode(ResponseDataObat.self, from: json.rawData())
                             complited(result,nil)
-                            print("Error cpod")
+                            // print("Error cpod")
 
                         }catch{
                             complited(nil,nil)
@@ -145,14 +145,14 @@ class historiesobject: NSObject {
         
         
         let url = "\(AppSettings.Url)histories/\(uuid)?filter=\(selected ?? 1)&per_page=10"
-        print(url)
-        print(headers)
+        // print(url)
+        // print(headers)
         
         var tmp :[ModelHistories] = []
         Alamofire.request(url, method: .get,encoding: JSONEncoding.default, headers: headers)
             .responseJSON { respon in
-                print("ini respon history")
-                print(respon)
+                // print("ini respon history")
+                // print(respon)
                 switch respon.result {
                 case let .success(value):
                     let json = JSON(value)
@@ -190,11 +190,11 @@ class historiesobject: NSObject {
                                 datapembelian.append(resdetailobat(slug: dataobat["slug"].stringValue, name: dataobat["name"].stringValue, unit: dataobat["unit"].stringValue, price: dataobat["price"].intValue, stock: dataobat["stock"].intValue, qty: dataobat["qty"].intValue, available: dataobat["available"].boolValue, min_prices: dataobat["min_prices"].intValue, max_prices: dataobat["max_prices"].intValue, order_id: data["detail_order"]["order_id"].intValue, prescription_id: dataobat["prescription_id"].stringValue, status: false))
                             })
                             
-                            print("yyyyyyy =>>>\(datapembelian.count)" )
+                            // print("yyyyyyy =>>>\(datapembelian.count)" )
 
                             tmp.append(ModelHistories(type_history: data["type_history"].stringValue, label: data["label"].stringValue, name: data["name"].stringValue, transaction_date: data["transaction_date"].stringValue, status: data["status"].stringValue, total: data["total"].intValue, detail_medicine: datapembelian, detail_consultation: detailkonsul, rating: data["rating"].intValue))
                             if tmp.count == json["data"]["data"].count{
-                                print("=>>>>>>>>>>>>> \(json["data"]["next_page_url"]) "  + json["data"]["next_page_url"].stringValue)
+                                // print("=>>>>>>>>>>>>> \(json["data"]["next_page_url"]) "  + json["data"]["next_page_url"].stringValue)
                                 complited(tmp, json["data"]["next_page_url"].stringValue)
                             }
                         })
@@ -224,13 +224,13 @@ class historiesobject: NSObject {
 ////        let url = "\(api.API())history/\(id)"
 //        let url = "\(AppSettings.Url)order/complained/\(id)"
 //
-//        print(url)
-//        print(headers)
+//        // print(url)
+//        // print(headers)
 //        
 //        Alamofire.request(url, method: .get,encoding: JSONEncoding.default, headers: headers)
 //            .responseJSON { respon in
-//                print("ini respon history")
-//                print(respon)
+//                // print("ini respon history")
+//                // print(respon)
 //                switch respon.result {
 //                case let .success(value):
 //                    let json = JSON(value)
@@ -296,16 +296,16 @@ class historiesobject: NSObject {
 //        let url = "\(api.API())history/\(id)"
         let url = "\(AppSettings.Url)history/\(id)"
 
-        print(url)
-        print(headers)
+        // print(url)
+        // print(headers)
         
         var tmp :[ModelHistories] = []
         Alamofire.request(url, method: .get,encoding: JSONEncoding.default, headers: headers)
             .responseJSON { respon in
                 
                 
-                print("ini respon history")
-                print(respon)
+                // print("ini respon history")
+                // print(respon)
                 switch respon.result {
                 case let .success(value):
                     let json = JSON(value)
@@ -314,7 +314,7 @@ class historiesobject: NSObject {
                         complited(restult.data,restult.messages ?? "")
                     }
                     catch{
-                        print("error")
+                        // print("error")
                     }
                     
 //                    if json["code"].stringValue == "200"{

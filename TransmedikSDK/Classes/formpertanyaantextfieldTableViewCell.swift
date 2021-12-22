@@ -47,7 +47,7 @@ class formpertanyaantextfieldTableViewCell: UITableViewCell,UITextFieldDelegate 
     }
     
     @IBAction func check(_ sender: Any) {
-        print("end keyboard")
+//        print("end keyboard")
         let _isi = nametext.text ?? ""
         if required{
             if _isi == "" {

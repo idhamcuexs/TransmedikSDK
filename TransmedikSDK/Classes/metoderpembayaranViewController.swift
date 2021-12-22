@@ -290,7 +290,7 @@ extension metoderpembayaranViewController : UITableViewDelegate,UITableViewDataS
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         if pay != nil {
-            print("\(indexPath.section) ==>>> \(indexPath.row)")
+//            print("\(indexPath.section) ==>>> \(indexPath.row)")
             switch indexPath.section {
             case 0:
                 delegate.send(data: pay!.EWallet[indexPath.row])

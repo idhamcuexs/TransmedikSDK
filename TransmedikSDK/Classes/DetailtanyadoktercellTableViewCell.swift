@@ -88,7 +88,7 @@ class DetailtanyadoktercellTableViewCell: UITableViewCell {
     }
     @IBAction func ChatOnClick(_ sender: Any) {
         if row != nil {
-            print("klik row")
+//            print("klik row")
             
             delegate.chat(row: row!)
         }
@@ -97,7 +97,7 @@ class DetailtanyadoktercellTableViewCell: UITableViewCell {
     @objc func chatacc(){
         
         if row != nil {
-            print("klik row")
+//            print("klik row")
             
             delegate.chat(row: row!)
         }

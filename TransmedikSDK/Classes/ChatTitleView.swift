@@ -21,7 +21,11 @@ class ChatTitleView: UIView {
     public var backButton: UIButton = {
         let view = UIButton(type: .custom)
         view.setImage(UIImage(named: "back", in: Bundle.init(identifier: AppSettings.frameworkBundleID), compatibleWith: nil), for: .normal)
-        view.frame = CGRect(x: 0, y: 0, width: 23, height: 23)
+//        view.frame = CGRect(x: 0, y: 0, width: 20 , height: 20)
+        view.frame.size.height = 20
+        view.frame.size.width = 20
+        view.imageEdgeInsets.left = 8
+
         return view
     }()
     
@@ -74,10 +78,16 @@ class ChatTitleView: UIView {
 //        endChatButton.backgroundColor = .blue
 //        videoCallButton.backgroundColor = .red
         self.addSubview(backButton)
+//        backButton.sizeToFit()
+        backButton.heightAnchor.constraint(equalToConstant: 20).isActive = true
+        backButton.widthAnchor.constraint(equalToConstant: 20).isActive = true
+
         backButton.isUserInteractionEnabled = true
         backButton.translatesAutoresizingMaskIntoConstraints = false
         backButton.centerYAnchor.constraint(equalTo: self.centerYAnchor, constant: frame.minY).isActive = true
-        backButton.leadingAnchor.constraint(equalTo: self.leadingAnchor).isActive = true
+//        backButton.leadingAnchor.constraint(equalTo: self.leadingAnchor).isActive = true
+        backButton.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: -12).isActive = true
+
         endChatButton.contentMode = .scaleAspectFit
         self.addSubview(profileImageView)
         profileImageView.translatesAutoresizingMaskIntoConstraints = false

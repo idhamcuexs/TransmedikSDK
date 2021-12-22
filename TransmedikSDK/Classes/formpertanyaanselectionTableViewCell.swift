@@ -101,7 +101,7 @@ class formpertanyaanselectionTableViewCell: UITableViewCell,getheightrow {
         if !radio{
             var _temp = ""
             listvalue[row].check = value
-            print("pilihan")
+            // print("pilihan")
             for i in 0..<listvalue.count{
                 if listvalue[i].check {
                     var jawaban = ""
@@ -110,7 +110,7 @@ class formpertanyaanselectionTableViewCell: UITableViewCell,getheightrow {
                     }else{
                         jawaban = listvalue[i].label
                     }
-                    print(jawaban)
+                    // print(jawaban)
                     
                     
                     if _temp.count == 0 {
@@ -121,12 +121,12 @@ class formpertanyaanselectionTableViewCell: UITableViewCell,getheightrow {
                 }
             }
 
-            print("checknox")
-            print(_temp)
+            // print("checknox")
+            // print(_temp)
             delegate?.set_checkbox_value_to_master(row: self.row!, value: _temp, datavalue: listvalue)
             
         }else{
-            print("radio")
+            // print("radio")
 
             for i in 0..<listvalue.count{
                 if i != row {
@@ -140,7 +140,7 @@ class formpertanyaanselectionTableViewCell: UITableViewCell,getheightrow {
 //                tables.reloadData()
 
             }
-            print(label)
+            // print(label)
 
             delegate?.set_radio_value_to_master(row: self.row!, value: label, list: row, status: value, datavalue:  self.listvalue)
             
@@ -173,9 +173,9 @@ class formpertanyaanselectionTableViewCell: UITableViewCell,getheightrow {
         let hasil = jawaban.components(separatedBy: "|")
         let set1 : Set<String> = Set(hasil)
         
-        print("ini hasillllnya")
-        print(set1)
-        print(set2)
+        // print("ini hasillllnya")
+        // print(set1)
+        // print(set2)
         
         
         var data =  listvalue.map {$0.label}
@@ -200,18 +200,18 @@ class formpertanyaanselectionTableViewCell: UITableViewCell,getheightrow {
         if !radio{
             var _temp = ""
             listvalue[row].check = value
-            print("pilihan")
+            // print("pilihan")
             for i in 0..<listvalue.count{
                 if listvalue[i].check {
                     var jawaban = ""
                     if listvalue[i].label == "Lainnya"{
-                        print(filter() ?? "kosong")
+                        // print(filter() ?? "kosong")
                         jawaban = filter() ?? ""
                     }else{
                         jawaban = listvalue[i].label
                     }
                     
-                  print(jawaban)
+                  // print(jawaban)
                     if _temp.count == 0 {
                         _temp = listvalue[i].label
                     }else{
@@ -220,12 +220,12 @@ class formpertanyaanselectionTableViewCell: UITableViewCell,getheightrow {
                 }
             }
 
-            print("checknox")
+            // print("checknox")
 
             delegate?.set_checkbox_value_to_master(row: self.row!, value: _temp, datavalue: listvalue)
             
         }else{
-            print("radio")
+            // print("radio")
             jawaban = label
             for i in 0..<listvalue.count{
                 if i != row {
@@ -283,8 +283,8 @@ extension formpertanyaanselectionTableViewCell : UITableViewDelegate,UITableView
             
             cell.row = indexPath.row
 
-            print("lainnya masuk")
-            print( filter() == nil ? "kosong" : filter())
+            // print("lainnya masuk")
+            // print( filter() == nil ? "kosong" : filter())
             cell.values.text = filter() == nil ? "" : filter()
             cell.radio = self.radio
             cell.ischeck = listvalue[indexPath.row].check

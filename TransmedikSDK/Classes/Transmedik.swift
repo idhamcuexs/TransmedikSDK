@@ -29,12 +29,12 @@ public class Transmedik {
         
         Alamofire.request(url, method: .post,parameters: parm,  encoding: JSONEncoding.default, headers: headers)
             .responseJSON { respon in
-                print(url)
-                print(parm)
-                print(headers)
-                print("respon profile check")
-                print("vvvvvvvvvvvvvvvvv")
-                print(respon)
+                // print(url)
+                // print(parm)
+                // print(headers)
+                // print("respon profile check")
+                // print("vvvvvvvvvvvvvvvvv")
+                // print(respon)
                 
                 switch respon.result {
                 case let .success(value):
@@ -45,7 +45,7 @@ public class Transmedik {
                         }else{
                             complited(false , "Pin sebelumnya tidak sama")
                         }
-                        print(json["data"])
+                        // print(json["data"])
                       
                         
                     }else{
@@ -209,12 +209,12 @@ public class Transmedik {
         
         let url = "\(AppSettings.Url)auth/login"
         
-        print(headers)
+        // print(headers)
 
         Alamofire.request(url, method: .post,parameters: params,  encoding: JSONEncoding.default, headers: headers)
             .responseJSON { respon in
-                print(params)
-                print("respon login \(respon)" )
+                // print(params)
+                // print("respon login \(respon)" )
                 switch respon.result {
                 case let .success(value):
                     let json = JSON(value)
@@ -255,7 +255,7 @@ public class Transmedik {
                         complited(false,json["messages"].stringValue)
                         
                     }
-                    print(value)
+                    // print(value)
                 case let .failure(error):
                     complited(false,"")
                 }

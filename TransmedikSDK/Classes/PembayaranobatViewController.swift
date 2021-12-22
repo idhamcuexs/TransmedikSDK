@@ -178,7 +178,7 @@ class PembayaranobatViewController: UIViewController {
     }
     
     @objc func getotherpay(){
-        print("getotherpay")
+        // print("getotherpay")
         let vc = UIStoryboard(name: "Orderobat", bundle: AppSettings.bundleframeworks()).instantiateViewController(withIdentifier: "metoderpembayaranViewController") as? metoderpembayaranViewController
             vc?.delegate = self
         present(vc!, animated: false, completion: nil)
@@ -259,7 +259,7 @@ extension PembayaranobatViewController {
                 
                 let paramer = "{\"address\": \"\(mylocation.address)\",\"id\": \(indexs.id!),\"courier\": {\"id\": \(indexs.couriers![selectCour!].id!),\"note\": \"\",\"price\": \(indexs.couriers![selectCour!].price!),\"type\": \"\(indexs.couriers![selectCour!].type!)\"}, \"map_lat\": \"\(mylocation.location.latitude)\", \"map_lng\": \"\(mylocation.location.longitude)\",\"note\": \"\(mylocation.note)\",\"medicines\": [\(medicines)],\"payment_id\": \(detailpayment!.payment_id),\"payment_name\": \"\(detailpayment!.account_name)\",\"pharmacy_address\": \"\(data!.data!.address!)\",\"pharmacy_custNumber\": \"\(data!.data!.pharmacy_custNumber!)\",\"pharmacy_shiptoNumber\": \"\(data!.data!.pharmacy_shiptoNumber!)\",\"pin\": \"null\",\"subtotal\": \(totalbarang()),\"total\": \(finaltotal()), \"voucher\": \(_tmpvoucher),\"voucher_amount\": \(voceramount)}"
                 
-                print("paramer =>>> " + paramer)
+                // print("paramer =>>> " + paramer)
                 
                 self.order.neworder(token: token, param: paramer) { (msg,trans_merchant_id,url) in
                     
@@ -279,7 +279,7 @@ extension PembayaranobatViewController {
                         vc?.delegate = self
                         vc?.urlstring = url!
                         vc?.merchant_id = trans_merchant_id!
-                        print("trans_merchant_id >>> " + trans_merchant_id!)
+                        // print("trans_merchant_id >>> " + trans_merchant_id!)
                         self.present(vc!, animated: true, completion: nil)
                         
                         
@@ -358,7 +358,7 @@ extension PembayaranobatViewController :pembayaranrincianobatViewControllerdeleg
             
             
             let paramer = "{\"address\": \"\(mylocation.address)\",\"id\": \(indexs.id!),\"courier\": {\"id\": \(indexs.couriers![selectCour!].id!),\"note\": \"\",\"price\": \(indexs.couriers![selectCour!].price!),\"type\": \"\(indexs.couriers![selectCour!].type!)\"}, \"map_lat\": \"\(mylocation.location.latitude)\", \"map_lng\": \"\(mylocation.location.longitude)\",\"note\": \"\(mylocation.note)\",\"medicines\": [\(medicines)],\"payment_id\": 2,\"payment_name\": \"Escrow\",\"pharmacy_address\": \"\(data!.data!.address!)\",\"pharmacy_custNumber\": \"\(data!.data!.pharmacy_custNumber!)\",\"pharmacy_shiptoNumber\": \"\(data!.data!.pharmacy_shiptoNumber!)\",\"pin\": \"\(pin)\",\"subtotal\": \(totalbarang()),\"total\": \(finaltotal()), \"voucher\": \(_tmpvoucher),\"voucher_amount\": \(voceramount)}"
-            print("paramer =>>> " + paramer)
+            // print("paramer =>>> " + paramer)
             
             self.order.neworder(token: token, param: paramer) { (msg, trans_merchant_id, url) in
                 if msg == "success"{

@@ -27,12 +27,12 @@ class Voucherobject: NSObject {
         ]
         
         let url = "\(AppSettings.Url)voucher-exist"
-        print(url)
+        // print(url)
         
         var tmp :[ModelHistories] = []
         Alamofire.request(url, method: .post,parameters: param, encoding: JSONEncoding.default, headers: headers)
             .responseJSON { respon in
-                print(respon)
+                // print(respon)
                 switch respon.result {
                 case let .success(value):
                     let json = JSON(value)

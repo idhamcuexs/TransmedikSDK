@@ -65,7 +65,7 @@ class transaksichatmasterViewController: UIViewController,edit_and_add_phrViewCo
         viewconstraint.layer.cornerRadius = 15
         self.view.layoutIfNeeded()
         self.viewtop.backgroundColor = .clear
-        print("isform = > \(isform)" )
+        // print("isform = > \(isform)" )
 
         tinggi.constant = self.view.frame.height - photo.frame.height -  CGFloat(80)
         koneksi()
@@ -76,7 +76,7 @@ class transaksichatmasterViewController: UIViewController,edit_and_add_phrViewCo
     
     @objc func kembali(){
         delegate.close()
-        print("masuk")
+        // print("masuk")
         dismiss(animated: true, completion: nil)
     }
     
@@ -110,7 +110,7 @@ class transaksichatmasterViewController: UIViewController,edit_and_add_phrViewCo
                         self.presentingViewController?.presentingViewController?.dismiss(animated: false, completion: nil)
                     }
                     if data != nil {
-                        print("my name = >\(data!.full_name)")
+                        // print("my name = >\(data!.full_name)")
                         self.mdata.insert(data!, at: 0)
                         self.success = true
                     }else{
@@ -227,7 +227,7 @@ extension transaksichatmasterViewController : formsViewControllerdelegate,transa
    
     
     func scrolldown() {
-        print("kebawah delegate")
+        // print("kebawah delegate")
         self.view.layoutIfNeeded()
         
         UIView.animate(withDuration : 0.5){
@@ -240,7 +240,7 @@ extension transaksichatmasterViewController : formsViewControllerdelegate,transa
     }
     
     func scrollup() {
-        print("keatas delegate")
+        // print("keatas delegate")
         
         self.view.layoutIfNeeded()
         

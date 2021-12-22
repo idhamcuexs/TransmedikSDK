@@ -23,6 +23,8 @@ open class ResepDokterMessageCell: MessageContentCell {
         view.contentMode = .scaleAspectFill
         view.clipsToBounds = true
         view.layer.masksToBounds = true
+        view.frame = CGRect(x: 0, y: 0, width: 20, height: 20)
+
         return view
     }()
     
@@ -129,7 +131,7 @@ open class ResepDokterMessageCell: MessageContentCell {
         headerView.topAnchor.constraint(equalTo: messageView.topAnchor, constant: 30).isActive = true
         headerView.leadingAnchor.constraint(equalTo: messageView.leadingAnchor, constant: 15).isActive = true
         headerView.trailingAnchor.constraint(equalTo: messageView.trailingAnchor, constant: -15).isActive = true
-        
+        headerView.heightAnchor.constraint(equalToConstant: 0).isActive = true
         messageView.addSubview(lineView)
         lineView.translatesAutoresizingMaskIntoConstraints = false
         lineView.topAnchor.constraint(equalTo: headerView.bottomAnchor, constant: 25).isActive = true
@@ -225,8 +227,8 @@ open class ResepDokterMessageCell: MessageContentCell {
     }
     
     func buildResepView(json: JSON) {
-        print("jsonn")
-        print(json)
+//        print("jsonn")
+//        print(json)
         
         let _view = UIView()
         content.addArrangedSubview(_view)

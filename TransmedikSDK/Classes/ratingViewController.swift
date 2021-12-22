@@ -17,11 +17,8 @@ protocol ratingViewControllerdelegate  {
 
 class ratingViewController: MYUIViewController,UITextViewDelegate {
     var delegate :ratingViewControllerdelegate!
-    var ratingstring = ""{
-        didSet{
-            print(ratingstring)
-        }
-    }
+    var ratingstring = ""
+    
     
     @IBOutlet weak var blur: UIVisualEffectView!
     

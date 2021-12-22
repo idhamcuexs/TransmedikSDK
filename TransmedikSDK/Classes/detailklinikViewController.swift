@@ -45,7 +45,7 @@ public class detailklinikViewController: UIViewController, openchatfromdoku {
         
         coll.delegate = self
         coll.dataSource = self
-        print("isform = > \(isform)" )
+//        print("isform = > \(isform)" )
         coll.backgroundColor = .clear
         let url = URL(string: imageurl)
         setgambar.kf.setImage(with: url)

@@ -17,7 +17,7 @@ class Chat: NSObject {
     func sendimagechat(images:UIImage,token : String,consul : String ,complited: @escaping(Bool,String?,String?)->()){
         let url = "\(AppSettings.Url)chat/upload"
 
-//        print(url)
+//        // print(url)
         let headers: HTTPHeaders = [
             "Authorization": "Bearer \(token)",
             "Accept": "application/json",
@@ -34,7 +34,7 @@ class Chat: NSObject {
                     switch result {
                         
                     case .success(let request, let streamingFromDisk, let streamFileURL):
-                        print("Upload Success : \(request), \(streamingFromDisk), \(String(describing: streamFileURL))")
+                        // print("Upload Success : \(request), \(streamingFromDisk), \(String(describing: streamFileURL))")
                         request.responseJSON() { response in
                             switch response.result {
                             case let .success(value):
@@ -51,7 +51,7 @@ class Chat: NSObject {
                             }
                         }
                     case .failure(let error):
-                        print(error)
+                        // print(error)
                         complited(false,"error server",nil)
                     }
                 }
@@ -75,7 +75,7 @@ class Chat: NSObject {
                    parameters: param,
                    encoding: JSONEncoding.default, headers: headers)
             .responseJSON { respon in
-//                print(respon)
+//                // print(respon)
                 switch respon.result {
                 case let .success(value):
                     let json = JSON(value)
@@ -86,20 +86,20 @@ class Chat: NSObject {
                             let url  = json["data"]["url"].stringValue
                             let merchant_id = json["data"]["trans_merchant_id"].stringValue
                             let result = try decoder.decode(ConsultationPostModel.self, from: json["data"].rawData())
-                            print(url)
+                            // print(url)
                             
                             completion(result,merchant_id,url)
                         } catch let error {
-                            print(error)
+                            // print(error)
                             completion(nil,nil,nil)
                         }
                     } else{
                         completion(nil,nil,nil)
                     }
                     
-//                    print(value)
+//                    // print(value)
                 case let .failure(error):
-//                    print(error)
+//                    // print(error)
                     
                     completion(nil,nil,nil)
                 }
@@ -119,7 +119,7 @@ class Chat: NSObject {
         
         let url = "\(AppSettings.Url)consultation"
         
-//        print(url)
+//        // print(url)
         
         Alamofire.request(url, method: .post,
                    parameters: ["uuid_patient" : uuid_patient,
@@ -147,16 +147,16 @@ class Chat: NSObject {
                             let result = try decoder.decode(ConsultationPostModel.self, from: json["data"].rawData())
                             completion(result)
                         } catch let error {
-//                            print(error)
+//                            // print(error)
                             completion(nil)
                         }
                     } else{
                         completion(nil)
                     }
                     
-//                    print(value)
+//                    // print(value)
                 case let .failure(error):
-//                    print(error)
+//                    // print(error)
                     
                     completion(nil)
                 }
@@ -176,13 +176,13 @@ class Chat: NSObject {
         let url = "\(AppSettings.Url)check-consultation-available"
         
       
-//        print(headers)
+//        // print(headers)
         
         Alamofire.request(url, method: .get,
                    encoding: JSONEncoding.default, headers: headers)
             .responseJSON { respon in
-//                print(url)
-//                print(respon)
+//                // print(url)
+//                // print(respon)
                 switch respon.result {
                 case let .success(value):
                     let json = JSON(value)
@@ -193,7 +193,7 @@ class Chat: NSObject {
                             let result = try decoder.decode(ConsultationPostModel.self, from: json["data"].rawData())
                             completion(result)
                         } catch let error {
-//                            print(error)
+//                            // print(error)
                             completion(nil)
                         }
                     } else{
@@ -233,8 +233,8 @@ class Chat: NSObject {
                                   "answers" : jawab
                                   
                      ]
-//        print(url)
-//        print(param)
+//        // print(url)
+//        // print(param)
         
         Alamofire.request(url, method: .post,
                    parameters: param,
@@ -250,16 +250,16 @@ class Chat: NSObject {
                             let result = try decoder.decode(ConsultationPostModel.self, from: json["data"].rawData())
                             completion(result)
                         } catch let error {
-//                            print(error)
+//                            // print(error)
                             completion(nil)
                         }
                     } else{
                         completion(nil)
                     }
                     
-//                    print(value)
+//                    // print(value)
                 case let .failure(error):
-//                    print(error)
+//                    // print(error)
                     
                     completion(nil)
                 }
@@ -333,7 +333,7 @@ class Chat: NSObject {
                    parameters: params,
                    encoding: JSONEncoding.default, headers: headers)
             .responseJSON { respon in
-//                print(respon)
+//                // print(respon)
                 switch respon.result {
                 case let .success(value):
                     let json = JSON(value)
@@ -344,20 +344,20 @@ class Chat: NSObject {
                             let url  = json["data"]["url"].stringValue
                             let merchant_id = json["data"]["trans_merchant_id"].stringValue
                             let result = try decoder.decode(ConsultationPostModel.self, from: json["data"].rawData())
-//                            print(url)
+//                            // print(url)
                             
                             completion(result,merchant_id,url)
                         } catch let error {
-//                            print(error)
+//                            // print(error)
                             completion(nil,nil,nil)
                         }
                     } else{
                         completion(nil,nil,nil)
                     }
                     
-//                    print(value)
+//                    // print(value)
                 case let .failure(error):
-//                    print(error)
+//                    // print(error)
                     
                     completion(nil,nil,nil)
                 }
@@ -375,9 +375,9 @@ class Chat: NSObject {
         
         let url = "\(AppSettings.Url)consultation/\(consultation_id)"
         
-//        print(url)
-//        print(consultation_id)
-//        print("status =>> " + status)
+//        // print(url)
+//        // print(consultation_id)
+//        // print("status =>> " + status)
         
         Alamofire.request(url, method: .put,
                    parameters: ["status" : status
@@ -394,9 +394,9 @@ class Chat: NSObject {
                         completion(false)
                     }
                     
-//                    print(value)
+//                    // print(value)
                 case let .failure(error):
-//                    print(error)
+//                    // print(error)
                     
                     completion(false)
                 }

@@ -43,7 +43,7 @@ class ratingobject: NSObject {
                             completion(json["message"].stringValue)
                         }
                         
-                        print(value)
+//                        print(value)
                     case let .failure(error):
                         print(error)
                         

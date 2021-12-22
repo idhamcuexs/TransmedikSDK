@@ -36,12 +36,12 @@ class Doctors: NSObject {
                         let resutl = try JSONDecoder().decode(ResponseDetailDOkter.self, from: json.rawData())
                         complited(resutl)
                     }catch{
-                        print("salah1")
+                        // print("salah1")
                         complited(nil)
                     }
                     
                 case let .failure(error):
-                    print("salah2")
+                    // print("salah2")
 
                     complited(nil)
                 }
@@ -65,9 +65,9 @@ class Doctors: NSObject {
         
         Alamofire.request(url, method: .get, encoding: JSONEncoding.default, headers: headers)
             .responseJSON { respon in
-                print(url)
+                // print(url)
 
-                print(respon)
+                // print(respon)
                 
                 switch respon.result {
                 case let .success(value):
@@ -107,14 +107,14 @@ class Doctors: NSObject {
                         complited(data)
                         
                     }else{
-                        print("error cing")
+                        // print("error cing")
 
                         complited(nil)
                         
                     }
-                //                        print(value)
+                //                        // print(value)
                 case let .failure(error):
-                    print("error cing")
+                    // print("error cing")
                     complited(nil)
                 }
                 

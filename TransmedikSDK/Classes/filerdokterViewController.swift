@@ -107,7 +107,7 @@ extension filerdokterViewController : UITableViewDelegate ,UITableViewDataSource
     
     
     func numberOfSections(in tableView: UITableView) -> Int {
-        print("calll")
+//        print("calll")
         return 2
     }
     //

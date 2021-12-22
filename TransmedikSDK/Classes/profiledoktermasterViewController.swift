@@ -79,7 +79,7 @@ extension profiledoktermasterViewController : profiledokterchildViewControllerde
     
    
     func close() {
-        print("masuk close")
+        // print("masuk close")
         dismiss(animated: false, completion: nil)
         dismiss(animated: false, completion: nil)
 
@@ -93,7 +93,7 @@ extension profiledoktermasterViewController : profiledokterchildViewControllerde
     }
     
     func scrolldown() {
-        print("kebawah delegate")
+        // print("kebawah delegate")
         self.view.layoutIfNeeded()
 
         UIView.animate(withDuration : 0.5){
@@ -106,7 +106,7 @@ extension profiledoktermasterViewController : profiledokterchildViewControllerde
     }
     
     func scrollup() {
-        print("keatas delegate")
+        // print("keatas delegate")
 
         self.view.layoutIfNeeded()
 

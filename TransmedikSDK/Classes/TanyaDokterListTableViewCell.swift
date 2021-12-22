@@ -76,7 +76,7 @@ class TanyaDokterListTableViewCell: UITableViewCell {
     }
     
     @IBAction func chatOnClick(_ sender: Any) {
-        print("kampreset")
+//        print("kampreset")
         delegate?.chat(cell: self)
     }
     

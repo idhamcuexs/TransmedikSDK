@@ -145,7 +145,7 @@ class ordertrackingtransaksiViewController: UIViewController,CLLocationManagerDe
         viewshowkomplin.backgroundColor = Colors.basicvalue
         if let token = UserDefaults.standard.string(forKey: AppSettings.Tokentransmedik) {
                 self.api.getdetailhistory(token: token, id: self.id) { (data, msg) in
-                    print("brsz")
+//                    print("brsz")
                     if msg.contains("Unauthenticated"){
                         UserDefaults.standard.set(true, forKey: "logout")
                         self.dismiss(animated: false, completion: nil)
@@ -213,7 +213,7 @@ class ordertrackingtransaksiViewController: UIViewController,CLLocationManagerDe
 
     func statustext(status : String){
           
-        print("statustext >>>" + status )
+//        print("statustext >>>" + status )
         switch status {
         case "Unpaid":
             self.statuspemesanan.text = "Menunggu Pembayaran"

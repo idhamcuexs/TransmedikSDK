@@ -43,7 +43,7 @@ class FormObject: NSObject {
                             
                             completion(found)
                         } catch {
-                            print("error=============")
+                            // print("error=============")
                         }
                     } else{
                         completion(nil)
@@ -75,13 +75,13 @@ class FormObject: NSObject {
         let url = "\(AppSettings.Url)medical-facility-form"
         
         var values : [listformmodel] = []
-        print(url)
-        print(param)
+        // print(url)
+        // print(param)
         
         Alamofire.request(url, method: .post, parameters: param, encoding: JSONEncoding.default, headers: headers)
             .responseJSON { respon in
-                print("gethistorybalance")
-                print(respon)
+                // print("gethistorybalance")
+                // print(respon)
                 switch respon.result {
                 case let .success(value):
                     let json = JSON(value)
@@ -122,9 +122,9 @@ class FormObject: NSObject {
                     })
                     
                     
-                    print(value)
+                    // print(value)
                 case let .failure(error):
-                    print(error)
+                    // print(error)
                     
                     completion(values,"Terjadi masalah pada server")
                     

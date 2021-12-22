@@ -24,6 +24,7 @@ open class CatatanMessageCell: MessageContentCell {
         view.contentMode = .scaleAspectFill
         view.clipsToBounds = true
         view.layer.masksToBounds = true
+        view.frame = CGRect(x: 0, y: 0, width: 20, height: 20)
         return view
     }()
     
@@ -99,7 +100,8 @@ open class CatatanMessageCell: MessageContentCell {
         headerView.topAnchor.constraint(equalTo: messageView.topAnchor, constant: 30).isActive = true
         headerView.leadingAnchor.constraint(equalTo: messageView.leadingAnchor, constant: 15).isActive = true
         headerView.trailingAnchor.constraint(equalTo: messageView.trailingAnchor, constant: -15).isActive = true
-        
+        headerView.heightAnchor.constraint(equalToConstant: 0).isActive = true
+
         messageView.addSubview(lineView)
         lineView.translatesAutoresizingMaskIntoConstraints = false
         lineView.topAnchor.constraint(equalTo: headerView.bottomAnchor, constant: 25).isActive = true

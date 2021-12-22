@@ -58,7 +58,7 @@ class formpertanyaandateTableViewCell: UITableViewCell {
     }
     
     @objc func nonenext() {
-        print("cek none2")
+//        print("cek none2")
 
         let format = DateFormatter()
         if typetimes == "time"{

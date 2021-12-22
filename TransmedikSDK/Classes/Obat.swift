@@ -14,7 +14,7 @@ class Obat: NSObject {
     
     func getresep(token : String, id:String ,complited: @escaping(Bool,[Resepobat]?,String?)->()){
         
-        print(token)
+        // print(token)
         let headers: HTTPHeaders = [
             "Authorization": "Bearer \(token)",
             "Accept": "application/json",
@@ -24,24 +24,24 @@ class Obat: NSObject {
 //        let url = "\(api.API())prescription/\(id)"
 
         let url = "\(AppSettings.Url)prescription/\(id)"
-        print(url)
-        print(headers)
+        // print(url)
+        // print(headers)
     
         
         Alamofire.request(url, method: .get, encoding: JSONEncoding.default, headers: headers)
             .responseJSON { respon in
-                print(respon)
+                // print(respon)
                 switch respon.result {
                 case let .success(value):
                     let json = JSON(value)
-                    print("uuuu")
-                    print(json["code"].stringValue)
+                    // print("uuuu")
+                    // print(json["code"].stringValue)
                     if json["code"].stringValue == "200"{
-                        print(1)
-                        print(json["success"].intValue)
-                        print(json["success"].boolValue)
+                        // print(1)
+                        // print(json["success"].intValue)
+                        // print(json["success"].boolValue)
                         if json["success"].boolValue{
-                            print(2)
+                            // print(2)
                             if json["data"]["recipes"].count > 0{
                                 var resep = [Resepobat]()
                                 json["data"]["recipes"].array?.forEach({ (datas) in
@@ -49,7 +49,7 @@ class Obat: NSObject {
                                     resep.append(Resepobat(medicines_name: datas["medicines_name"].stringValue, medicine_code_partner: datas["medicine_code_partner"].stringValue, slug: datas["slug"].stringValue, rule: datas["rule"].stringValue, period: datas["period"].stringValue, unit: datas["unit"].stringValue, prescription_id: datas["prescription_id"].stringValue, qty: datas["qty"].intValue, status: datas["status"].boolValue))
     //
                                 })
-                                print("mausk sini")
+                                // print("mausk sini")
                                 complited(true,resep,nil)
                             }else{
                                 complited(true,nil,json["messages"].stringValue)
@@ -57,7 +57,7 @@ class Obat: NSObject {
          
 
                         }else{
-                            print("mausk sini2")
+                            // print("mausk sini2")
 
                             complited(true,nil,json["messages"].stringValue )
 
@@ -82,7 +82,7 @@ class Obat: NSObject {
     
     func orderComplited(token : String, id:String ,complited: @escaping(Bool,String?)->()){
         
-        print(token)
+        // print(token)
         let headers: HTTPHeaders = [
             "Authorization": "Bearer \(token)",
             "Accept": "application/json",
@@ -95,12 +95,12 @@ class Obat: NSObject {
         
         Alamofire.request(url, method: .post, parameters: param,  encoding: JSONEncoding.default, headers: headers)
             .responseJSON { respon in
-                print(respon)
+                // print(respon)
                 switch respon.result {
                 case let .success(value):
                     let json = JSON(value)
-                    print("uuuu")
-                    print(json["code"].stringValue)
+                    // print("uuuu")
+                    // print(json["code"].stringValue)
                     if json["code"].stringValue == "200"{
                       
                         complited(true,nil)
@@ -127,7 +127,7 @@ class Obat: NSObject {
                ]
         
         let url = "\(AppSettings.Url)medicine-categories"
-        print(url)
+        // print(url)
         var datas : [ModelObat] = []
         
         Alamofire.request(url, method: .get, encoding: JSONEncoding.default, headers: headers)
@@ -138,7 +138,7 @@ class Obat: NSObject {
                     if json["code"].stringValue == "200"{
                         json["data"].array?.forEach({ (data) in
                             let dt = ModelObat(id: data["slug"].stringValue, name: data["name"].stringValue , image: data["image"].stringValue)
-                            print(" uyyy===>>> \(dt.name)")
+                            // print(" uyyy===>>> \(dt.name)")
                             datas.append(dt)
                         })
                         
@@ -166,7 +166,7 @@ class Obat: NSObject {
     //          ]
     //
     //          let url = "\(api.API())medicine/\(id)"
-    //          print(url)
+    //          // print(url)
     //          var data : [Modeldetailcategoriesobat] = []
     //
     //          Alamofire.request(url, method: .get, encoding: JSONEncoding.default, headers: headers)
@@ -186,7 +186,7 @@ class Obat: NSObject {
     //                          complited(nil)
     //
     //                      }
-    //                      print(value)
+    //                      // print(value)
     //                  case let .failure(error):
     //                      complited(nil)
     //                  }
@@ -211,7 +211,7 @@ class Obat: NSObject {
            
            Alamofire.request(url, method: .get, encoding: JSONEncoding.default, headers: headers)
                .responseJSON { respon in
-                   print(respon)
+                   // print(respon)
                    switch respon.result {
                    case let .success(value):
                        let json = JSON(value)
@@ -224,7 +224,7 @@ class Obat: NSObject {
                                var desc :[hashs] = []
                               for (key, values) in tanya["description"] {
                                desc.append(hashs(key: "\(key)", value: values.stringValue))
-                               print("key \(key) value2 \(values.stringValue)")
+                               // print("key \(key) value2 \(values.stringValue)")
 
                               }
                                data.append(newmodelobat(bbpom_reg: tanya["bbpom_reg"].stringValue, category_name: tanya["category_name"].stringValue, category_slug: tanya["category_slug"].stringValue, classification_name: tanya["classification_name"].stringValue, classification_slug: tanya["classification_slug"].stringValue, image: tanya["image"].stringValue, unit_small: tanya["unit_small"].stringValue, unit: tanya["unit"].stringValue, slug: tanya["slug"].stringValue, packaging: tanya["packaging"].stringValue, name: tanya["name"].stringValue, medicine_type: tanya["medicine_type"].stringValue, qty_unit_small: tanya["qty_unit_small"].stringValue, status: tanya["status"].boolValue, netto: tanya["netto"].intValue, max_prices: tanya["max_prices"].intValue, min_prices: tanya["min_prices"].intValue, description: desc))
@@ -241,7 +241,7 @@ class Obat: NSObject {
                            complited(nil)
                            
                        }
-   //                    print(value)
+   //                    // print(value)
                    case let .failure(error):
                        complited(nil)
                    }
@@ -262,12 +262,12 @@ class Obat: NSObject {
                        "Content-Type": "application/json"
                    ]
             
-            print(url)
+            // print(url)
             var data : [newmodelobat] = []
             
             Alamofire.request(url, method: .get, encoding: JSONEncoding.default, headers: headers)
                 .responseJSON { respon in
-                    print(respon)
+                    // print(respon)
                     switch respon.result {
                     case let .success(value):
                         let json = JSON(value)
@@ -276,7 +276,7 @@ class Obat: NSObject {
                                 var desc :[hashs] = []
                                for (key, values) in tanya["description"] {
                                 desc.append(hashs(key: "\(key)", value: values.stringValue))
-                                print("key \(key) value2 \(values.stringValue)")
+                                // print("key \(key) value2 \(values.stringValue)")
 
                                }
                                 data.append(newmodelobat(bbpom_reg: tanya["bbpom_reg"].stringValue, category_name: tanya["category_name"].stringValue, category_slug: tanya["category_slug"].stringValue, classification_name: tanya["classification_name"].stringValue, classification_slug: tanya["classification_slug"].stringValue, image: tanya["image"].stringValue, unit_small: tanya["unit_small"].stringValue, unit: tanya["unit"].stringValue, slug: tanya["slug"].stringValue, packaging: tanya["packaging"].stringValue, name: tanya["name"].stringValue, medicine_type: tanya["medicine_type"].stringValue, qty_unit_small: tanya["qty_unit_small"].stringValue, status: tanya["status"].boolValue, netto: tanya["netto"].intValue, max_prices: tanya["max_prices"].intValue, min_prices: tanya["min_prices"].intValue, description: desc))
@@ -293,7 +293,7 @@ class Obat: NSObject {
                             complited(nil)
                             
                         }
-    //                    print(value)
+    //                    // print(value)
                     case let .failure(error):
                         complited(nil)
                     }
@@ -312,12 +312,12 @@ class Obat: NSObject {
                ]
         
         let url = "\(AppSettings.Url)medicine/\(id)?per_page=10"
-        print(url)
+        // print(url)
         var data : [newmodelobat] = []
         
         Alamofire.request(url, method: .get, encoding: JSONEncoding.default, headers: headers)
             .responseJSON { respon in
-                print(respon)
+                // print(respon)
                 switch respon.result {
                 case let .success(value):
                     let json = JSON(value)
@@ -329,7 +329,7 @@ class Obat: NSObject {
                             var desc :[hashs] = []
                            for (key, values) in tanya["description"] {
                             desc.append(hashs(key: "\(key)", value: values.stringValue))
-                            print("key \(key) value2 \(values.stringValue)")
+                            // print("key \(key) value2 \(values.stringValue)")
 
                            }
                             data.append(newmodelobat(bbpom_reg: tanya["bbpom_reg"].stringValue, category_name: tanya["category_name"].stringValue, category_slug: tanya["category_slug"].stringValue, classification_name: tanya["classification_name"].stringValue, classification_slug: tanya["classification_slug"].stringValue, image: tanya["image"].stringValue, unit_small: tanya["unit_small"].stringValue, unit: tanya["unit"].stringValue, slug: tanya["slug"].stringValue, packaging: tanya["packaging"].stringValue, name: tanya["name"].stringValue, medicine_type: tanya["medicine_type"].stringValue, qty_unit_small: tanya["qty_unit_small"].stringValue, status: tanya["status"].boolValue, netto: tanya["netto"].intValue, max_prices: tanya["max_prices"].intValue, min_prices: tanya["min_prices"].intValue, description: desc))
@@ -346,7 +346,7 @@ class Obat: NSObject {
                         complited(nil)
                         
                     }
-//                    print(value)
+//                    // print(value)
                 case let .failure(error):
                     complited(nil)
                 }
@@ -357,7 +357,7 @@ class Obat: NSObject {
     }
     
     func getpricetransaksi(token:String,long:String,lat:String,data:[reqpriceobat],id:String,transaction_id:String,complited: @escaping(String,respriceobat?)->()){
-        print("getpricetransaksi")
+        // print("getpricetransaksi")
        let headers: HTTPHeaders = [
                    "Authorization": "Bearer \(token)",
                    "Accept": "application/json",
@@ -381,14 +381,14 @@ class Obat: NSObject {
         ]
         
         let url = "\(AppSettings.Url)medicine-stocks-pharmacy"
-        print(url)
-        print(param)
+        // print(url)
+        // print(param)
         
         var data : [resdetailobat] = []
         
         Alamofire.request(url, method: .post,parameters: param, encoding: JSONEncoding.default, headers: headers)
             .responseJSON { respon in
-                print(respon)
+                // print(respon)
                 switch respon.result {
                 case let .success(value):
                     let json = JSON(value)
@@ -414,7 +414,7 @@ class Obat: NSObject {
                         complited(json["messages"].stringValue,nil)
                         
                     }
-                    print(value)
+                    // print(value)
                 case let .failure(error):
                     complited("error server",nil)
                 }
@@ -451,14 +451,14 @@ class Obat: NSObject {
             "orders":temp,
         ]
         let url = "\(AppSettings.Url)medicine-stocks-pharmacy"
-        print(url)
-        print(param)
-        print(headers)
+        // print(url)
+        // print(param)
+        // print(headers)
         
         Alamofire.request(url, method: .post,parameters: param, encoding: JSONEncoding.default, headers: headers)
             .responseJSON { respon in
-                print("ini ress")
-                print(respon)
+                // print("ini ress")
+                // print(respon)
                 switch respon.result {
                 case let .success(value):
                     let json = JSON(value)
@@ -478,7 +478,7 @@ class Obat: NSObject {
                          
                             
                         }catch{
-                            print("error trying to convert data to JSON: \(error)")
+                            // print("error trying to convert data to JSON: \(error)")
                             complited(false,nil,"error server")
                            
                         }
