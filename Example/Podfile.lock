@@ -11,6 +11,7 @@ PODS:
   - FloatRatingView (4.0)
   - FSPagerView (0.8.3)
   - InputBarAccessoryView (4.2.2)
+  - IQKeyboardManagerSwift (6.0.5)
   - Kingfisher (5.15.8):
     - Kingfisher/Core (= 5.15.8)
   - Kingfisher/Core (5.15.8)
@@ -42,7 +43,7 @@ PODS:
   - SwiftyCodeView/Core (0.3.6)
   - SwiftyJSON (5.0.0)
   - SwipeCellKit (2.7.1)
-  - TransmedikSDK (1.1.9):
+  - TransmedikSDK (1.2.1):
     - Alamofire (~> 4.7.3)
     - BubbleShowCase (~> 1.2.0)
     - CDAlertView (~> 0.10.0)
@@ -52,6 +53,7 @@ PODS:
     - ESTabBarController-swift (~> 2.8.0)
     - FloatRatingView (~> 4)
     - FSPagerView (~> 0.8.3)
+    - IQKeyboardManagerSwift (~> 6.0.4)
     - Kingfisher (~> 5.15.8)
     - lottie-ios (~> 2.5.0)
     - MessageInputBar (~> 0.4.0)
@@ -83,6 +85,7 @@ DEPENDENCIES:
   - ESTabBarController-swift (~> 2.8.0)
   - FloatRatingView (~> 4)
   - FSPagerView (~> 0.8.3)
+  - IQKeyboardManagerSwift (~> 6.0.4)
   - Kingfisher (~> 5.15.8)
   - lottie-ios
   - MessageInputBar (~> 0.4.0)
@@ -115,6 +118,7 @@ SPEC REPOS:
     - FloatRatingView
     - FSPagerView
     - InputBarAccessoryView
+    - IQKeyboardManagerSwift
     - Kingfisher
     - lottie-ios
     - MessageInputBar
@@ -151,6 +155,7 @@ SPEC CHECKSUMS:
   FloatRatingView: bb6bdddfbeec51b1d387b4bd50abc27b4dfccd48
   FSPagerView: 670405b2f18e2a87fa37f20b00de783e562c25a8
   InputBarAccessoryView: 2b937602598e2fab3149f37f51dd7ad795653812
+  IQKeyboardManagerSwift: c14eca30f6001457d6ddf25e313f23fb6578c41c
   Kingfisher: a3c03d702433fa6cfedabb2bddbe076fb8f2e902
   lottie-ios: a50d5c0160425cd4b01b852bb9578963e6d92d31
   MessageInputBar: e81c7535347f1f7b923de7080409a535a004b6e4
@@ -167,10 +172,10 @@ SPEC CHECKSUMS:
   SwiftyCodeView: 0252e3520749a3fda1a9b141873401f8e6c570ad
   SwiftyJSON: 36413e04c44ee145039d332b4f4e2d3e8d6c4db7
   SwipeCellKit: 3972254a826da74609926daf59b08d6c72e619ea
-  TransmedikSDK: 64a8cebeeed1d1d996bf057c09d2818b05df6e4d
+  TransmedikSDK: 06fc821f66076363fbf029aa38e0ef8c97837705
   URLEmbeddedView: 3fe17ae535d2b8d38c3b08ab8ba0aea5efe5d1cd
   YPImagePicker: 15aed8bcaa4dad976e11b6114126d731a2f9f3c9
 
-PODFILE CHECKSUM: e8e56a8a1f88bc57b6ac3800689b3ed0917b94f0
+PODFILE CHECKSUM: 92bb45fa4329394ac2965cdd779f9b4055e4c1a9
 
 COCOAPODS: 1.10.0

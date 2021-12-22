@@ -106,6 +106,7 @@ public class Transmedik {
     
     
     public static func SetSettingparseTransmedik(){
+        
         let parseConfig = ParseClientConfiguration {
             $0.applicationId = AppSettings.PARSE_APPID
             $0.clientKey = AppSettings.PARSE_CLIENTKEY

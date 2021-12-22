@@ -11,6 +11,7 @@ import Alamofire
 import CDAlertView
 
 
+
 class ResepViewController: UIViewController,UITextViewDelegate {
 
     
@@ -50,11 +51,14 @@ class ResepViewController: UIViewController,UITextViewDelegate {
     var api = resepdigitalobject()
     var resep = [Resepobat]()
     var prescription_id = ""
-//    var idconsul = ""
     var data : Resepdigital?
+
+    var long,lat : Double?
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        beli.isUserInteractionEnabled = false
         self.view.layoutIfNeeded()
         self.view.backgroundColor = Colors.backgroundmaster
         pasienPhoto.layer.cornerRadius = 25
@@ -119,7 +123,10 @@ class ResepViewController: UIViewController,UITextViewDelegate {
     
     func textViewDidBeginEditing(_ textView: UITextView) {
         if textView == alamat{
+            let vc = UIStoryboard(name: "Alamat", bundle: AppSettings.bundleframework).instantiateViewController(withIdentifier: "SetMapingViewController") as? SetMapingViewController
+            vc?.delegate = self
             
+            present(vc!, animated: true, completion: nil)
         }
     }
     
@@ -209,5 +216,18 @@ extension ResepViewController: UITableViewDelegate,UITableViewDataSource{
 
 //        return  UITableViewAutomaticDimension
     }
+    
+}
+
+
+extension ResepViewController : SetMapingViewControllerDelegate{
+    func setLocation(long: Double, lat: Double, alamat: String, note: String) {
+        self.long = long
+        self.lat = lat
+        self.alamat.text = alamat
+        self.note.text = note
+        beli.isUserInteractionEnabled = true
+    }
+    
     
 }
