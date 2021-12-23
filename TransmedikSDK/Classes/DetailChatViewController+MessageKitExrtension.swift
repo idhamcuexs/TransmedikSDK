@@ -191,7 +191,7 @@ extension DetailChatViewController: MessageCellDelegate {
                 
                 else if msg.type == AppSettings.PHR_REQ {
 
-                    let alert = UIAlertController(title: "Infomasi Kesehatan Pasien", message: "", preferredStyle: .actionSheet)
+                    let alert = UIAlertController(title: "Informasi Kesehatan Pasien", message: "", preferredStyle: .actionSheet)
                     let Tolak = UIAlertAction(title: "Tolak", style: .default) { ( _ ) in
                        
                         self.updatestausphr(status: "DENIED", message_id:  message.messageId, consultation_id: String(self.currentConsultation!.consultation_id!))
@@ -923,15 +923,19 @@ extension DetailChatViewController: UINavigationControllerDelegate, UIImagePicke
         messageInputBar.sendButton.contentEdgeInsets = UIEdgeInsets(top: 2, left: 2, bottom: 2, right: 2)
         messageInputBar.sendButton.setSize(CGSize(width: 36, height: 36), animated: false)
         messageInputBar.sendButton.title = nil
+        
 //        messageInputBar.sendButton.image = UIImage(systemName: "paperplane.fill")?.withTintColor(.white)
         if #available(iOS 13.0, *) {
             messageInputBar.sendButton.image = UIImage(named: "send", in: Bundle.init(identifier: AppSettings.frameworkBundleID), compatibleWith: nil)?.withTintColor(.white)
+            messageInputBar.sendButton.tintColor = .white
+
         } else {
-            messageInputBar.sendButton.image = UIImage(named: "send", in: Bundle.init(identifier: AppSettings.frameworkBundleID), compatibleWith: nil)
+            messageInputBar.sendButton.image = UIImage(named: "send", in: Bundle.init(identifier: AppSettings.frameworkBundleID), compatibleWith: nil)?.maskWithColor(color: .white)
+            messageInputBar.sendButton.tintColor = .white
             
             // Fallback on earlier versions
         }
-
+        messageInputBar.sendButton.layer.cornerRadius = messageInputBar.sendButton.frame.height / 2
 //        messageInputBar.sendButton.image = UIImage(named: "send")
 //        send
         messageInputBar.middleContentViewPadding.right = -38

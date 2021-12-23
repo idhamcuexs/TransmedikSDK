@@ -10,6 +10,8 @@ import SkeletonView
 import DropDown
 import Kingfisher
 import Alamofire
+import CDAlertView
+
 
 public enum PresentPage{
     case present
@@ -190,7 +192,24 @@ class NewCheckConsulVC: UIViewController,UITextViewDelegate {
             desStatus.text = "Not Available"
         }
     }
-    
+    func alert(){
+            let alert = CDAlertView(title: "Konsultasi", message: "Anda yakin akan melakukan konsultasi?", type: .warning)
+            
+            let yesAction = CDAlertViewAction(title: "Konsultasi") { (CDAlertViewAction) -> Bool in
+                
+                self.konsul()
+                
+                return true
+            }
+            let noAction = CDAlertViewAction(title: "Batal") { (CDAlertViewAction) -> Bool in
+                return true
+            }
+            
+            alert.add(action: noAction)
+            alert.add(action: yesAction)
+            alert.show()
+       
+    }
     func koneksi(){
        
         if let token = UserDefaults.standard.string(forKey: AppSettings.Tokentransmedik){
@@ -307,13 +326,116 @@ class NewCheckConsulVC: UIViewController,UITextViewDelegate {
         guard statussend else {
             return Toast.show(message: "Anda belum melengkapi form", controller: self)
         }
+        alert()
         
-        let vc = UIStoryboard(name: "pinandpassword", bundle: AppSettings.bundleframeworks()).instantiateViewController(withIdentifier: "insertpinViewController") as? insertpinViewController
-        vc?.delegate = self
-        self.present(vc!, animated: true, completion: nil)
+//
+//        let vc = UIStoryboard(name: "pinandpassword", bundle: AppSettings.bundleframeworks()).instantiateViewController(withIdentifier: "insertpinViewController") as? insertpinViewController
+//        vc?.delegate = self
+//        self.present(vc!, animated: true, completion: nil)
                  
     }
     
+    func konsul(){
+        let chatacc = Chat()
+        var stringform = ""
+        if self.list.count == 1{
+            
+            stringform = "[{\"answer\":\"\(self.list[0].jawaban)\",\"id\":\"\(self.list[0].id)\",\"question\":\"\(self.list[0].question)\"}]"
+        }else{
+            for i in 0..<self.list.count{
+                if stringform == "" {
+                    stringform = "[{\"answer\":\"\(self.list[i].jawaban)\",\"id\":\"\(self.list[i].id)\",\"question\":\"\(self.list[i].question)\"}"
+                }else{
+                    if i == self.list.count - 1{
+                        stringform = stringform + ",{\"answer\":\"\(self.list[i].jawaban)\",\"id\":\"\(self.list[i].id)\",\"question\":\"\(self.list[i].question)\"}]"
+                    }else{
+                        stringform = stringform + ",{\"answer\":\"\(self.list[i].jawaban)\",\"id\":\"\(self.list[i].id)\",\"question\":\"\(self.list[i].question)\"}"
+                    }
+                    
+                }
+            }
+            
+        }
+        
+        var params : Parameters!
+        if stringform != "" {
+             params  = [
+                "answers": stringform,
+                "medical_facility_id" : facilityid!,
+                "specialist_slug" : id,
+                "complaint" : "",
+                "email_doctor": detaildokter.email,
+                "email_patient" : UserDefaults.standard.string(forKey: AppSettings.email) ?? "",
+                "payment_id" : 2,
+                "payment_name": "Escrow",
+                "rates": detaildokter.rates,
+                "uuid_doctor" : detaildokter.uuid,
+                "uuid_patient" : UserDefaults.standard.string(forKey: AppSettings.uuid) ?? "",
+                "voucher" : "",
+                "voucher_amount" : 0
+            ]
+        }else{
+             params  = [
+                "answers": "null",
+                "medical_facility_id" : facilityid!,
+                "specialist_slug" : id,
+                "complaint" : "",
+                "email_doctor": detaildokter.email,
+                "email_patient" : UserDefaults.standard.string(forKey: AppSettings.email) ?? "",
+                "payment_id" : 2,
+                "payment_name": "Escrow",
+                "rates": detaildokter.rates,
+                "uuid_doctor" : detaildokter.uuid,
+                "uuid_patient" : UserDefaults.standard.string(forKey: AppSettings.uuid) ?? "",
+                "voucher" : "",
+                "voucher_amount" : 0
+            ]
+        }
+        // print("param>>")
+        // print(params)
+        
+        chatacc.newstartkonsultasi(param: params) { (data,merchant_id,url) in
+            
+                DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
+                
+                if data != nil {
+                    
+                    
+                    // print("kosong")
+                    let vc = UIStoryboard(name: "Chat", bundle: AppSettings.bundleframeworks()).instantiateViewController(withIdentifier: "WaitingConsulVC") as? WaitingConsulVC
+                    
+                    vc?.modalPresentationStyle = .fullScreen
+                    vc?.modalTransitionStyle = .flipHorizontal
+                    vc?.uuid_patient = UserDefaults.standard.string(forKey: AppSettings.uuid) ?? ""
+                    vc?.uuid_doctor = self.detaildokter!.uuid
+                    vc?.email_patient = UserDefaults.standard.string(forKey: AppSettings.email) ?? ""
+                    vc?.email_doctor = self.detaildokter!.email
+                    vc?.rates = Int(self.detaildokter!.rates)!
+                    vc?.currentConsultation = data!
+
+                    
+                    
+                    let encoder = JSONEncoder()
+                    if let encoded = try? encoder.encode(data!) {
+                        UserDefaults.standard.set(encoded, forKey: AppSettings.KEY_CURRENT_CONSULTATION)
+                    }
+                    
+                    //
+                    weak var pvc = self.presentingViewController
+                    
+                    self.dismiss(animated: false) {
+                        pvc?.present(vc!, animated: true, completion: nil)
+                        
+                    }
+                }
+                else {
+                    Toast.show(message: "Gagal memulai sesi konsultasi", controller: self)
+                }
+                
+            }
+        }
+
+    }
     
     func edit() {
   
@@ -333,206 +455,85 @@ class NewCheckConsulVC: UIViewController,UITextViewDelegate {
     }
     
     
-    func chataction(pin : String){
-            if UserDefaults.standard.bool(forKey: AppSettings.pin){
-                let chatacc = Chat()
-               
-                
-                var stringform = ""
-                if self.list.count == 1{
-                    
-                    stringform = "[{\"answer\":\"\(self.list[0].jawaban)\",\"id\":\"\(self.list[0].id)\",\"question\":\"\(self.list[0].question)\"}]"
-                }else{
-                    for i in 0..<self.list.count{
-                        if stringform == "" {
-                            stringform = "[{\"answer\":\"\(self.list[i].jawaban)\",\"id\":\"\(self.list[i].id)\",\"question\":\"\(self.list[i].question)\"}"
-                        }else{
-                            if i == self.list.count - 1{
-                                stringform = stringform + ",{\"answer\":\"\(self.list[i].jawaban)\",\"id\":\"\(self.list[i].id)\",\"question\":\"\(self.list[i].question)\"}]"
-                            }else{
-                                stringform = stringform + ",{\"answer\":\"\(self.list[i].jawaban)\",\"id\":\"\(self.list[i].id)\",\"question\":\"\(self.list[i].question)\"}"
-                            }
-                            
-                        }
-                    }
-                    
-                }
-                
-                var params : Parameters!
-                if stringform != "" {
-                     params  = [
-                        "answers": stringform,
-                        "medical_facility_id" : facilityid!,
-                        "specialist_slug" : id,
-                        "complaint" : "",
-                        "email_doctor": detaildokter.email,
-                        "email_patient" : UserDefaults.standard.string(forKey: AppSettings.email) ?? "",
-                        "payment_id" : 2,
-                        "payment_name": "Escrow",
-                        "rates": detaildokter.rates,
-                        "uuid_doctor" : detaildokter.uuid,
-                        "uuid_patient" : UserDefaults.standard.string(forKey: AppSettings.uuid) ?? "",
-                        "voucher" : "",
-                        "voucher_amount" : 0
-                    ]
-                }else{
-                     params  = [
-                        
-                        "medical_facility_id" : facilityid!,
-                        "specialist_slug" : id,
-                        "complaint" : "",
-                        "email_doctor": detaildokter.email,
-                        "email_patient" : UserDefaults.standard.string(forKey: AppSettings.email) ?? "",
-                        "payment_id" : 2,
-                        "payment_name": "Escrow",
-                        "rates": detaildokter.rates,
-                        "uuid_doctor" : detaildokter.uuid,
-                        "uuid_patient" : UserDefaults.standard.string(forKey: AppSettings.uuid) ?? "",
-                        "voucher" : "",
-                        "voucher_amount" : 0
-                    ]
-                }
-                // print("param>>")
-                // print(params)
-                
-                chatacc.newstartkonsultasi(param: params) { (data,merchant_id,url) in
-                    
-                        DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
-                        
-                        if data != nil {
-                            
-                            
-                            // print("kosong")
-                            let vc = UIStoryboard(name: "Chat", bundle: AppSettings.bundleframeworks()).instantiateViewController(withIdentifier: "WaitingConsulVC") as? WaitingConsulVC
-                            
-                            vc?.modalPresentationStyle = .fullScreen
-                            vc?.modalTransitionStyle = .flipHorizontal
-                            vc?.uuid_patient = UserDefaults.standard.string(forKey: AppSettings.uuid) ?? ""
-                            vc?.uuid_doctor = self.detaildokter!.uuid
-                            vc?.email_patient = UserDefaults.standard.string(forKey: AppSettings.email) ?? ""
-                            vc?.email_doctor = self.detaildokter!.email
-                            vc?.rates = Int(self.detaildokter!.rates)!
-                            vc?.currentConsultation = data!
-
-                            
-                            
-                            let encoder = JSONEncoder()
-                            if let encoded = try? encoder.encode(data!) {
-                                UserDefaults.standard.set(encoded, forKey: AppSettings.KEY_CURRENT_CONSULTATION)
-                            }
-                            
-                            //
-                            weak var pvc = self.presentingViewController
-                            
-                            self.dismiss(animated: false) {
-                                pvc?.present(vc!, animated: true, completion: nil)
-                                
-                            }
-                        }
-                        else {
-                            Toast.show(message: "Gagal memulai sesi konsultasi", controller: self)
-                        }
-                        
-                    }
-                }
-                
-                
-                
-                
-                
-//                if pin == "" {
-//                    // print("not pin")
-//                    // print(email)
-//                    let param : Parameters = [
-//                        "CHAINMERCHANT":"NA",
-//                        "CURRENCY":"360",
-//                        "PURCHASECURRENCY":360,
-//                        "AMOUNT":"\(harga).00",
-//                        "PURCHASEAMOUNT":"\(total).00",
-//                        "EMAIL": email,
-//                        "NAME": nama,
-//                        "BASKET": "\(dokter),\(harga).00,1,\(total).00",
-//                        "MOBILEPHONE": tlp
+//    func chataction(pin : String){
+//            if UserDefaults.standard.bool(forKey: AppSettings.pin){
+//                let chatacc = Chat()
+//                var stringform = ""
+//                if self.list.count == 1{
 //
-//
-//                    ]
-//
-//                    self.chatacc.confirmConsultclinic(token: UserDefaults.standard.string(forKey: AppSettings.Tokentransmedik)!, uuid_patient: UserDefaults.standard.string(forKey: AppSettings.uuid)!, uuid_doctor:  self.detaildokter!.uuid, email_patient: UserDefaults.standard.string(forKey: AppSettings.email)!, email_doctor: self.detaildokter!.email, rates: Int(self.detaildokter!.rates)!, jawab: stringform, medical_facility_id: self.facilityid!, voucher_amount: "\(self.getdiskon().0)", voucher: self.getdiskon().1, pin: pin, payment_id: self.pembayaran!.payment_id, payment_name: self.pembayaran!.payment_name, param: param, trans_merchant_id: "") { (data,merchant_id,url) in
-//                        DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
-//
-//                        self.delegate.loading(load: false)
-//
-//                        if data != nil {
-//
-//                            self.currentConsultationId = data!.consultation_id!
-//                            self.consultationPostModel = data!
-//                            // print("ini // print")
-//                            // print(url)
-//                            if url == nil {
-//                                // print("kosong")
-//                                let vc  = ConsultWaitViewController()
-//                                vc.modalPresentationStyle = .fullScreen
-//                                vc.modalTransitionStyle = .flipHorizontal
-//                                vc.uuid_patient = UserDefaults.standard.string(forKey: AppSettings.uuid)!
-//                                vc.uuid_doctor = self.detaildokter!.uuid
-//                                vc.email_patient = UserDefaults.standard.string(forKey: AppSettings.email)!
-//                                vc.email_doctor = self.detaildokter!.email
-//                                vc.rates = Int(self.detaildokter!.rates)!
-//                                vc.currentConsultation = data!
-//
-//
-//                                let encoder = JSONEncoder()
-//                                if let encoded = try? encoder.encode(data!) {
-//                                    UserDefaults.standard.set(encoded, forKey: AppSettings.KEY_CURRENT_CONSULTATION)
-//                                }
-//
-//                                //
-//                                weak var pvc = self.presentingViewController
-//
-//                                self.dismiss(animated: false) {
-//                                    pvc?.present(vc, animated: true, completion: nil)
-//
-//                                }
+//                    stringform = "[{\"answer\":\"\(self.list[0].jawaban)\",\"id\":\"\(self.list[0].id)\",\"question\":\"\(self.list[0].question)\"}]"
+//                }else{
+//                    for i in 0..<self.list.count{
+//                        if stringform == "" {
+//                            stringform = "[{\"answer\":\"\(self.list[i].jawaban)\",\"id\":\"\(self.list[i].id)\",\"question\":\"\(self.list[i].question)\"}"
+//                        }else{
+//                            if i == self.list.count - 1{
+//                                stringform = stringform + ",{\"answer\":\"\(self.list[i].jawaban)\",\"id\":\"\(self.list[i].id)\",\"question\":\"\(self.list[i].question)\"}]"
 //                            }else{
-//                                // print("ayaan")
-//                                let vc = UIStoryboard(name: "PMR", bundle: AppSettings.bundleframework).instantiateViewController(withIdentifier: "OpenpdfViewController") as? OpenpdfViewController
-//                                vc?.headers = "DOKU pembayaran"
-//                                vc?.delegate = self
-//                                vc?.urlstring = url!
-//                                vc?.merchant_id = merchant_id!
-//                                self.present(vc!, animated: true, completion: nil)
+//                                stringform = stringform + ",{\"answer\":\"\(self.list[i].jawaban)\",\"id\":\"\(self.list[i].id)\",\"question\":\"\(self.list[i].question)\"}"
 //                            }
 //
 //                        }
-//                        else {
-//                            Toast.show(message: "Gagal memulai sesi konsultasi", controller: self)
-//                        }
-//                        }
-//
 //                    }
+//
+//                }
+//
+//                var params : Parameters!
+//                if stringform != "" {
+//                     params  = [
+//                        "answers": stringform,
+//                        "medical_facility_id" : facilityid!,
+//                        "specialist_slug" : id,
+//                        "complaint" : "",
+//                        "email_doctor": detaildokter.email,
+//                        "email_patient" : UserDefaults.standard.string(forKey: AppSettings.email) ?? "",
+//                        "payment_id" : 2,
+//                        "payment_name": "Escrow",
+//                        "rates": detaildokter.rates,
+//                        "uuid_doctor" : detaildokter.uuid,
+//                        "uuid_patient" : UserDefaults.standard.string(forKey: AppSettings.uuid) ?? "",
+//                        "voucher" : "",
+//                        "voucher_amount" : 0
+//                    ]
 //                }else{
+//                     params  = [
 //
+//                        "medical_facility_id" : facilityid!,
+//                        "specialist_slug" : id,
+//                        "complaint" : "",
+//                        "email_doctor": detaildokter.email,
+//                        "email_patient" : UserDefaults.standard.string(forKey: AppSettings.email) ?? "",
+//                        "payment_id" : 2,
+//                        "payment_name": "Escrow",
+//                        "rates": detaildokter.rates,
+//                        "uuid_doctor" : detaildokter.uuid,
+//                        "uuid_patient" : UserDefaults.standard.string(forKey: AppSettings.uuid) ?? "",
+//                        "voucher" : "",
+//                        "voucher_amount" : 0
+//                    ]
+//                }
+//                // print("param>>")
+//                // print(params)
 //
-//                    // print("jol bayar cash")
-//                    self.chatacc.confirmConsultclinic(token: UserDefaults.standard.string(forKey: AppSettings.Tokentransmedik)!, uuid_patient: UserDefaults.standard.string(forKey: AppSettings.uuid)!, uuid_doctor:  self.detaildokter!.uuid, email_patient: UserDefaults.standard.string(forKey: AppSettings.email)!, email_doctor: self.detaildokter!.email, rates: Int(self.detaildokter!.rates)!, jawab: stringform, medical_facility_id: self.facilityid!, voucher_amount: "\(self.getdiskon().0)", voucher: self.getdiskon().1, pin: pin, payment_id: "2", payment_name: "Escrow", param: nil, trans_merchant_id: "") { (data,merchant_id,url) in
+//                chatacc.newstartkonsultasi(param: params) { (data,merchant_id,url) in
+//
 //                        DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
-//
-//                        self.delegate.loading(load: false)
 //
 //                        if data != nil {
 //
-//                            self.currentConsultationId = data!.consultation_id!
 //
-//                            let vc  = ConsultWaitViewController()
-//                            vc.modalPresentationStyle = .fullScreen
-//                            vc.modalTransitionStyle = .flipHorizontal
-//                            //vc.data = self.data
-//                            vc.uuid_patient = UserDefaults.standard.string(forKey: AppSettings.uuid)!
-//                            vc.uuid_doctor = self.detaildokter!.uuid
-//                            vc.email_patient = UserDefaults.standard.string(forKey: AppSettings.email)!
-//                            vc.email_doctor = self.detaildokter!.email
-//                            vc.rates = Int(self.detaildokter!.rates)!
-//                            vc.currentConsultation = data!
+//                            // print("kosong")
+//                            let vc = UIStoryboard(name: "Chat", bundle: AppSettings.bundleframeworks()).instantiateViewController(withIdentifier: "WaitingConsulVC") as? WaitingConsulVC
+//
+//                            vc?.modalPresentationStyle = .fullScreen
+//                            vc?.modalTransitionStyle = .flipHorizontal
+//                            vc?.uuid_patient = UserDefaults.standard.string(forKey: AppSettings.uuid) ?? ""
+//                            vc?.uuid_doctor = self.detaildokter!.uuid
+//                            vc?.email_patient = UserDefaults.standard.string(forKey: AppSettings.email) ?? ""
+//                            vc?.email_doctor = self.detaildokter!.email
+//                            vc?.rates = Int(self.detaildokter!.rates)!
+//                            vc?.currentConsultation = data!
+//
 //
 //
 //                            let encoder = JSONEncoder()
@@ -543,12 +544,10 @@ class NewCheckConsulVC: UIViewController,UITextViewDelegate {
 //                            //
 //                            weak var pvc = self.presentingViewController
 //
-//
 //                            self.dismiss(animated: false) {
-//                                pvc?.present(vc, animated: true, completion: nil)
+//                                pvc?.present(vc!, animated: true, completion: nil)
 //
 //                            }
-//
 //                        }
 //                        else {
 //                            Toast.show(message: "Gagal memulai sesi konsultasi", controller: self)
@@ -556,18 +555,17 @@ class NewCheckConsulVC: UIViewController,UITextViewDelegate {
 //
 //                    }
 //                }
-//                }
-                
-                
-            }
-        
-    }
+//
+//
+//            }
+//
+//    }
 }
 
 
 extension NewCheckConsulVC : edit_and_add_phrViewControllerdelegate,formsViewControllerdelegate,insertpinViewControllerdelegate{
     func lanjutpesanan(pin: String) {
-        chataction(pin: pin)
+//        chataction(pin: pin)
     }
     
     

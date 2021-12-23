@@ -60,7 +60,7 @@ class HomeViewController: UIViewController {
         
         self.query.findObjectsInBackground(block: { (results, error) in
             if error == nil {
-                self.closeloading(self)
+//                self.closeloading(self)
 
                 if let chat = results as? [ConsultationModel] {
                     
@@ -108,10 +108,11 @@ extension HomeViewController: UICollectionViewDataSource,UICollectionViewDelegat
                 // print("case 00")
                 if let token = UserDefaults.standard.string(forKey: AppSettings.Tokentransmedik) {
                     let chat = Chat()
-                    Loading.show()
+//                    Loading.show()
                     chat.checkkonsul(token: token) { (data) in
-                        Loading.dismiss()
+//                        Loading.dismiss()
                         if data != nil {
+                            
                             self.getdata(id: Int(data!.consultation_id!), data: data!, uuid: UserDefaults.standard.string(forKey: AppSettings.uuid)!, email: UserDefaults.standard.string(forKey: AppSettings.email) ?? "")
       
                         }

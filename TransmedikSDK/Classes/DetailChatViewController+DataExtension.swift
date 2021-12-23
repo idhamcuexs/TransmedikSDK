@@ -365,7 +365,8 @@ extension DetailChatViewController {
         let params = [
             "message_id" : message_id,
             "consultation_id" : consultation_id,
-            "status" : status
+            "status" : status,
+            "apps" : "transmedika"
         ]
         PFCloud.callFunction(inBackground: "updateConsultation", withParameters: params)
     }

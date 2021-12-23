@@ -579,22 +579,36 @@ class DetailChatViewController: MessagesViewController, MessagesDataSource {
 //        messageInputBar.backgroundView.backgroundColor = AppColor.shared.instance(traitCollection).messageBarBackgroundColor
         messageInputBar.backgroundView.backgroundColor = UIColor(hexString: "#5CB44E")
 //        messageInputBar.sendButton.imageView?.backgroundColor = AppColor.shared.instance(traitCollection).messageBarBackgroundColor
-        messageInputBar.sendButton.imageView?.backgroundColor = .white
-        messageInputBar.sendButton.imageView?.tintColor = UIColor(hexString: "#5CB44E")
+        messageInputBar.sendButton.imageView?.backgroundColor = .lightGray
+        messageInputBar.sendButton.imageView?.layer.cornerRadius = 15
+//
+//        messageInputBar.sendButton.imageView?.layer.cornerRadius =  messageInputBar.sendButton.imageView?.frame.height ?? 0 / 2
+
+//        messageInputBar.sendButton.imageView?.tintColor = UIColor(hexString: "#5CB44E")
+        messageInputBar.sendButton.imageView?.tintColor = .lightGray
 //        messageInputBar.sendButton.imageView?.color
 //        messageInputBar.sendButton.tintColor = AppColor.shared.instance(traitCollection).buttonTextColor
-        messageInputBar.sendButton.tintColor = UIColor(hexString: "#5CB44E")
-        
+        messageInputBar.sendButton.tintColor = .lightGray
         messageInputBar.sendButton
             .onEnabled { item in
-                item.tintColor = UIColor(hexString: "#5CB44E")
+                item.tintColor = .lightGray
             }.onDisabled { item in
-                item.tintColor = UIColor(hexString: "#5CB44E")
+                item.tintColor = .lightGray
             }.onSelected { item in
-                item.tintColor = UIColor(hexString: "#5CB44E")
+                item.tintColor = .lightGray
             }.onDeselected { item in
-                item.tintColor = UIColor(hexString: "#5CB44E")
+                item.tintColor = .lightGray
             }
+//        messageInputBar.sendButton
+//            .onEnabled { item in
+//                item.tintColor = UIColor(hexString: "#5CB44E")
+//            }.onDisabled { item in
+//                item.tintColor = UIColor(hexString: "#5CB44E")
+//            }.onSelected { item in
+//                item.tintColor = UIColor(hexString: "#5CB44E")
+//            }.onDeselected { item in
+//                item.tintColor = UIColor(hexString: "#5CB44E")
+//            }
         messageInputBar.topStackView.backgroundColor = AppColor.shared.instance(traitCollection).messageBarBackgroundColor
         
         attachmentManager.attachmentView.backgroundColor = AppColor.shared.instance(traitCollection).messageBarBackgroundColor
@@ -722,20 +736,21 @@ extension DetailChatViewController {
     }
     
     @objc func inputTextViewDidEndEditing()  {
-        //messageInputBar.leftStackView.isHidden = true
+        messageInputBar.leftStackView.isHidden = false
         //messageInputBar.middleContentViewPadding.left = -25
         
-        if !messageInputBar.leftStackView.isHidden {
-            self.messageInputBar.middleContentViewPadding.left -= 37
-            UIView.animate(withDuration: 0.3, animations: {
-                self.messageInputBar.leftStackView.isHidden = true
-                self.messageInputBar.leftStackView.alpha = 0
-                self.messageInputBar.layoutIfNeeded()
-            }, completion: nil)
-//            print("did end editing")
-            
-            self.updateTyping(status: nil)
-        }
+        
+//        if !messageInputBar.leftStackView.isHidden {
+//            self.messageInputBar.middleContentViewPadding.left -= 37
+//            UIView.animate(withDuration: 0.3, animations: {
+//                self.messageInputBar.leftStackView.isHidden = true
+//                self.messageInputBar.leftStackView.alpha = 0
+//                self.messageInputBar.layoutIfNeeded()
+//            }, completion: nil)
+////            print("did end editing")
+//            
+//            self.updateTyping(status: nil)
+//        }
     }
     
     @objc func inputTextViewDidChange() {

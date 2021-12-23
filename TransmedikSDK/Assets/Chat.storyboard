@@ -1047,7 +1047,7 @@
                                                                         <subviews>
                                                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tb4-P0-xRe">
                                                                                 <rect key="frame" x="10" y="55" width="150.5" height="30"/>
-                                                                                <color key="backgroundColor" systemColor="systemBlueColor"/>
+                                                                                <color key="backgroundColor" red="0.94117647058823528" green="0.54117647058823526" blue="0.13725490196078433" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                                                 <constraints>
                                                                                     <constraint firstAttribute="height" constant="30" id="Noh-pl-3yy"/>
                                                                                 </constraints>
@@ -1188,7 +1188,7 @@
                                                         </subviews>
                                                     </stackView>
                                                 </subviews>
-                                                <color key="backgroundColor" systemColor="systemBlueColor"/>
+                                                <color key="backgroundColor" red="0.94117647058823528" green="0.54117647058823526" blue="0.13725490196078433" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <constraints>
                                                     <constraint firstItem="LYC-CK-fHk" firstAttribute="centerX" secondItem="wDJ-ka-9IJ" secondAttribute="centerX" id="9lE-Xr-86M"/>
                                                     <constraint firstItem="LYC-CK-fHk" firstAttribute="top" secondItem="wDJ-ka-9IJ" secondAttribute="top" constant="10" id="XO0-Op-rwK"/>
@@ -1237,6 +1237,7 @@
                         <outlet property="akhirichat" destination="wDJ-ka-9IJ" id="aSx-q0-dxt"/>
                         <outlet property="back" destination="Lnv-Q0-RuF" id="3Eb-bI-eMo"/>
                         <outlet property="header" destination="UMU-b4-EMQ" id="DUX-VH-V4c"/>
+                        <outlet property="jawaban" destination="fqp-ba-QzW" id="wE6-5v-hou"/>
                         <outlet property="lihatjawaban" destination="tb4-P0-xRe" id="icg-6Q-GDc"/>
                         <outlet property="txtbb" destination="LPO-3u-IuG" id="uxN-hg-mxC"/>
                         <outlet property="txtclinic" destination="xya-IP-6Hm" id="wau-Ul-buN"/>

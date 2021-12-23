@@ -19,6 +19,7 @@ class extensionchatdetailViewController: UIViewController {
     @IBOutlet weak var vcbutt: UIView!
     @IBOutlet weak var akhirichat: UIView!
     @IBOutlet weak var txtrm: UILabel!
+    @IBOutlet weak var jawaban: UIView!
     
     @IBOutlet weak var header: UILabel!
     @IBOutlet weak var txtdate: UILabel!
@@ -47,6 +48,7 @@ class extensionchatdetailViewController: UIViewController {
         super.viewDidLoad()
         vcbutt.layer.cornerRadius = 10
         akhirichat.layer.cornerRadius = 10
+        jawaban.isHidden = true
         back.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(kembali)))
         header.text = "Informasi Pasien"
         txtdate.text = date
@@ -57,7 +59,7 @@ class extensionchatdetailViewController: UIViewController {
         lihatjawaban.layer.cornerRadius = 6
         txtclinic.text = self.faskes
         vcbutt.isHidden = true
-        lihatjawaban.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(jawaban)))
+        lihatjawaban.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(jawabans)))
         vcbutt.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(vcall)))
         akhirichat.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(endchat)))
     }
@@ -66,7 +68,7 @@ class extensionchatdetailViewController: UIViewController {
         dismiss(animated: true, completion: nil)
     }
     
-    @objc func jawaban(){
+    @objc func jawabans(){
         let vc =  UIStoryboard(name: "Form", bundle: AppSettings.bundleframeworks()).instantiateViewController(withIdentifier: "FormjawabViewController") as? FormjawabViewController
         vc?.id = String(currentConsultation?.consultation_id ?? 0)
         present(vc!, animated: true, completion: nil)

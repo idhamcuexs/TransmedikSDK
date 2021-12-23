@@ -75,7 +75,7 @@ class Chat: NSObject {
                    parameters: param,
                    encoding: JSONEncoding.default, headers: headers)
             .responseJSON { respon in
-//                // print(respon)
+                 print(respon)
                 switch respon.result {
                 case let .success(value):
                     let json = JSON(value)
@@ -181,8 +181,8 @@ class Chat: NSObject {
         Alamofire.request(url, method: .get,
                    encoding: JSONEncoding.default, headers: headers)
             .responseJSON { respon in
-//                // print(url)
-//                // print(respon)
+                // print(url)
+//                 print(respon)
                 switch respon.result {
                 case let .success(value):
                     let json = JSON(value)

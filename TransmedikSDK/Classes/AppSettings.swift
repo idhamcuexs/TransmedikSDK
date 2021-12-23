@@ -13,12 +13,22 @@ struct AppSettings {
     static let APPS_NAME: String = "Transmedika"
     static let FCM_TOKEN: String = "TRANSMEDIKA_FCM_TOKEN"
     static let NAVIGATIONBAR_HEIGHT : CGFloat = 70
+    
+    // Dev
     static let PARSE_APPID: String = "parse-dev-app"
     static let PARSE_SERVER: String = "https://parse-dev.transmedika.co.id/parse/"
     static let PARSE_CLIENTKEY: String = "widicaem"
-    static let WAIT_COUNTER: Int = 60
     static let Url: String = "https://api-dev.transmedika.co.id/api/sdk-v1/"
     
+    //production
+//    static let PARSE_APPID: String = "parse-dev-app"
+//    static let PARSE_SERVER: String = "https://parse.transmedika.co.id/parse/"
+//    static let PARSE_CLIENTKEY: String = "client_key"
+//    static let Url: String = "https://api.transmedika.co.id/api/sdk-v1/"
+    
+    
+    
+    static let WAIT_COUNTER: Int = 60
     static let Tokentransmedik: String = "transmedikToken"
     static let tokenparse: String = "transmediktokenparse"
     static let email: String = "transmedikemail"
