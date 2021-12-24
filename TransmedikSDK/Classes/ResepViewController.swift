@@ -12,8 +12,8 @@ import CDAlertView
 
 
 
-class ResepViewController: UIViewController,UITextViewDelegate {
-
+class ResepViewController: UIViewController {
+    
     
     @IBOutlet weak var navi: UIView!
     @IBOutlet weak var header: UILabel!
@@ -39,8 +39,8 @@ class ResepViewController: UIViewController,UITextViewDelegate {
     @IBOutlet weak var view3: UIView!
     
     @IBOutlet weak var viewAlamat: UIView!
-    @IBOutlet weak var alamat: UITextView!
-    @IBOutlet weak var note: UITextView!
+    @IBOutlet weak var alamat: UILabel!
+    @IBOutlet weak var note: UILabel!
     
     
     @IBOutlet weak var beli: UIView!
@@ -52,7 +52,7 @@ class ResepViewController: UIViewController,UITextViewDelegate {
     var resep = [Resepobat]()
     var prescription_id = ""
     var data : Resepdigital?
-
+    
     var long,lat : Double?
     
     
@@ -63,23 +63,23 @@ class ResepViewController: UIViewController,UITextViewDelegate {
         self.view.backgroundColor = Colors.backgroundmaster
         pasienPhoto.layer.cornerRadius = 25
         doctorPhoto.layer.cornerRadius = 30
-        alamat.delegate = self
         registerTableView()
         tables.dataSource = self
         tables.delegate = self
         navi.dropShadow(shadowColor: UIColor.lightGray, fillColor: UIColor.white, opacity: 0.5, offset: CGSize(width: 2, height: 2), radius: 4)
         viewAlamat.layer.cornerRadius = 10
+        viewAlamat.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(getalamat)))
         viewAlamat.dropShadow(shadowColor: UIColor.lightGray, fillColor: UIColor.white, opacity: 0.5, offset: CGSize(width: 2, height: 2), radius: 4)
         view1.layer.cornerRadius = 10
         view1.dropShadow(shadowColor: UIColor.lightGray, fillColor: UIColor.white, opacity: 0.5, offset: CGSize(width: 2, height: 2), radius: 4)
-
+        
         view2.layer.cornerRadius = 10
         view2.dropShadow(shadowColor: UIColor.lightGray, fillColor: UIColor.white, opacity: 0.5, offset: CGSize(width: 2, height: 2), radius: 4)
-
+        
         
         view3.layer.cornerRadius = 10
         view3.dropShadow(shadowColor: UIColor.lightGray, fillColor: UIColor.white, opacity: 0.5, offset: CGSize(width: 2, height: 2), radius: 4)
-
+        
         
         tinggiTable.constant = tables.contentSize.height
         beli.layer.cornerRadius = 10
@@ -87,7 +87,7 @@ class ResepViewController: UIViewController,UITextViewDelegate {
         beli.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(buy)))
         if let token = UserDefaults.standard.string(forKey: AppSettings.Tokentransmedik){
             api.getresep(token: token, id: String(consultation!.consultation_id!)) { data in
-               
+                
                 do {
                     let decoder = JSONDecoder()
                     let respon = try decoder.decode(responresep.self, from: data!)
@@ -107,27 +107,30 @@ class ResepViewController: UIViewController,UITextViewDelegate {
                         self.tables.layoutIfNeeded()
                         self.tinggiTable.constant = self.tables.contentSize.height
                     }
-
-                  
-
                     
-              
+                    
+                    
+                    
+                    
                 } catch {
                     // print("eror")
                 }
             }
-
+            
         }
         
     }
     
-    func textViewDidBeginEditing(_ textView: UITextView) {
-        if textView == alamat{
-            let vc = UIStoryboard(name: "Alamat", bundle: AppSettings.bundleframework).instantiateViewController(withIdentifier: "SetMapingViewController") as? SetMapingViewController
-            vc?.delegate = self
-            
-            present(vc!, animated: true, completion: nil)
-        }
+//    func textViewDidBeginEditing(_ textView: UITextView) {
+//        if textView == alamat{
+//
+//        }
+//    }
+    @objc func getalamat(){
+        let vc = UIStoryboard(name: "Alamat", bundle: AppSettings.bundleframework).instantiateViewController(withIdentifier: "SetMapingViewController") as? SetMapingViewController
+        vc?.delegate = self
+        
+        present(vc!, animated: true, completion: nil)
     }
     
     private func registerTableView() {
@@ -139,32 +142,43 @@ class ResepViewController: UIViewController,UITextViewDelegate {
     }
     
     @objc func buy(){
+        print("buy")
         //        Toast.show(message: "Beli Obat", controller: self)//
-
-                // print("beliButtonDidTap")
-                let alert = CDAlertView(title: "Pembelian Obat", message: "Apakah ingin memperbaharui keranjang belanja?", type: .warning)
-
-                let yesAction = CDAlertViewAction(title: LocalizationHelper.getInstance().yes) { (CDAlertViewAction) -> Bool in
-
-                    let vc = UIStoryboard(name: "Orderobat", bundle: AppSettings.bundleframework).instantiateViewController(withIdentifier: "OrderobatViewController") as? OrderobatViewController
-                    vc?.id = String(self.consultation!.consultation_id!)
-                    vc?.prescription_id = self.prescription_id
-                    self.present(vc!, animated: true, completion: nil)
-
-                    return true
-                }
-                let noAction = CDAlertViewAction(title: LocalizationHelper.getInstance().no) { (CDAlertViewAction) -> Bool in
-                    return true
-                }
-
-                alert.add(action: noAction)
-                alert.add(action: yesAction)
-                alert.show()
-
-            }
- 
+        
+        // print("beliButtonDidTap")
+        long = 106.847336
+        lat = -6.252300
+//        guard long != nil else {
+//            return Toast.show(message: "Anda belum mengisi alamat pengiriman", controller: self)
+//        }
+        let vc = UIStoryboard(name: "Orderobat", bundle: AppSettings.bundleframework).instantiateViewController(withIdentifier: "OrderobatViewController") as? OrderobatViewController
+        vc?.id = String(self.consultation!.consultation_id!)
+        vc?.prescription_id = self.prescription_id
+        self.present(vc!, animated: true, completion: nil)
+        
+//        let alert = CDAlertView(title: "Pembelian Obat", message: "Apakah ingin memperbaharui keranjang belanja?", type: .warning)
+//
+//        let yesAction = CDAlertViewAction(title: LocalizationHelper.getInstance().yes) { (CDAlertViewAction) -> Bool in
+//
+//            let vc = UIStoryboard(name: "Orderobat", bundle: AppSettings.bundleframework).instantiateViewController(withIdentifier: "OrderobatViewController") as? OrderobatViewController
+//            vc?.id = String(self.consultation!.consultation_id!)
+//            vc?.prescription_id = self.prescription_id
+//            self.present(vc!, animated: true, completion: nil)
+//
+//            return true
+//        }
+//        let noAction = CDAlertViewAction(title: LocalizationHelper.getInstance().no) { (CDAlertViewAction) -> Bool in
+//            return true
+//        }
+//
+//        alert.add(action: noAction)
+//        alert.add(action: yesAction)
+//        alert.show()
+        
+    }
     
-
+    
+    
 }
 
 extension ResepViewController: UITableViewDelegate,UITableViewDataSource{
@@ -180,11 +194,11 @@ extension ResepViewController: UITableViewDelegate,UITableViewDataSource{
         return cell
     }
     
-//    func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
-//        // print("willDisplay")
-//
-//
-//    }
+    //    func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
+    //        // print("willDisplay")
+    //
+    //
+    //    }
     
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
         // print("scrollViewDidScroll")
@@ -192,29 +206,29 @@ extension ResepViewController: UITableViewDelegate,UITableViewDataSource{
         self.tinggiTable.constant = tables.contentSize.height
     }
     
-   
-
+    
+    
     func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
         // print("willDisplay")
         tableView.layoutIfNeeded()
         self.tinggiTable.constant = tableView.contentSize.height
-      }
+    }
     
     public func tableView(tableView: UITableView, willDisplayCell cell: UITableViewCell, forRowAtIndexPath indexPath: NSIndexPath) {
         self.tableView(tableView: tableView, willDisplayMyCell: cell as! ResepObatTableViewCell, forRowAtIndexPath: indexPath)
     }
-
+    
     private func tableView(tableView: UITableView, willDisplayMyCell myCell: ResepObatTableViewCell, forRowAtIndexPath indexPath: NSIndexPath) {
         // print("willDisplay2")
-
+        
         tableView.layoutIfNeeded()
         self.tinggiTable.constant = tableView.contentSize.height    }
     
     func tableView(_ tableView: UITableView, estimatedHeightForRowAt indexPath: IndexPath) -> CGFloat {
         return UITableView.automaticDimension
         // print("estimatedHeightForRowAt")
-
-//        return  UITableViewAutomaticDimension
+        
+        //        return  UITableViewAutomaticDimension
     }
     
 }

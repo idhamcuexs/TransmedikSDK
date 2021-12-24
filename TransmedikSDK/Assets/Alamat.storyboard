@@ -96,10 +96,10 @@
                                                         <color key="backgroundColor" systemColor="systemGreenColor"/>
                                                     </view>
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ECs-uM-2lR">
-                                                        <rect key="frame" x="0.0" y="415" width="414" height="353"/>
+                                                        <rect key="frame" x="0.0" y="455" width="414" height="313"/>
                                                         <subviews>
                                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="oMo-1X-00u">
-                                                                <rect key="frame" x="0.0" y="268" width="414" height="60"/>
+                                                                <rect key="frame" x="0.0" y="228" width="414" height="60"/>
                                                                 <subviews>
                                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="A8e-KF-rl9">
                                                                         <rect key="frame" x="15" y="5" width="384" height="50"/>
@@ -125,9 +125,9 @@
                                                                 </constraints>
                                                             </view>
                                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="pi9-ch-EIl">
-                                                                <rect key="frame" x="15" y="96" width="384" height="122"/>
+                                                                <rect key="frame" x="15" y="56" width="384" height="122"/>
                                                                 <subviews>
-                                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6a3-8n-qIb">
+                                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text=" " textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6a3-8n-qIb">
                                                                         <rect key="frame" x="13" y="25" width="358" height="18"/>
                                                                         <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                                                         <nil key="textColor"/>
@@ -166,7 +166,7 @@
                                                                 </constraints>
                                                             </view>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Tambah Alamat" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="v5n-SO-D5c">
-                                                                <rect key="frame" x="15" y="50" width="118" height="21"/>
+                                                                <rect key="frame" x="15" y="20" width="118" height="21"/>
                                                                 <constraints>
                                                                     <constraint firstAttribute="height" constant="21" id="mfU-cO-yc7"/>
                                                                 </constraints>
@@ -181,10 +181,10 @@
                                                             <constraint firstItem="oMo-1X-00u" firstAttribute="leading" secondItem="ECs-uM-2lR" secondAttribute="leading" id="Bte-Wk-uzR"/>
                                                             <constraint firstItem="v5n-SO-D5c" firstAttribute="leading" secondItem="ECs-uM-2lR" secondAttribute="leading" constant="15" id="Dq9-0N-rLL"/>
                                                             <constraint firstAttribute="trailing" secondItem="pi9-ch-EIl" secondAttribute="trailing" constant="15" id="QBu-32-2x8"/>
-                                                            <constraint firstItem="pi9-ch-EIl" firstAttribute="top" secondItem="v5n-SO-D5c" secondAttribute="bottom" constant="25" id="SMg-eh-QMM"/>
+                                                            <constraint firstItem="pi9-ch-EIl" firstAttribute="top" secondItem="v5n-SO-D5c" secondAttribute="bottom" constant="15" id="SMg-eh-QMM"/>
                                                             <constraint firstItem="oMo-1X-00u" firstAttribute="top" secondItem="pi9-ch-EIl" secondAttribute="bottom" constant="50" id="XcC-33-ZuU"/>
                                                             <constraint firstAttribute="trailing" secondItem="oMo-1X-00u" secondAttribute="trailing" id="et7-8w-Gj6"/>
-                                                            <constraint firstItem="v5n-SO-D5c" firstAttribute="top" secondItem="ECs-uM-2lR" secondAttribute="top" constant="50" id="uMf-CQ-Tzd"/>
+                                                            <constraint firstItem="v5n-SO-D5c" firstAttribute="top" secondItem="ECs-uM-2lR" secondAttribute="top" constant="20" id="uMf-CQ-Tzd"/>
                                                             <constraint firstAttribute="bottom" secondItem="oMo-1X-00u" secondAttribute="bottom" constant="25" id="ukZ-Z3-nzA"/>
                                                         </constraints>
                                                     </view>
@@ -251,7 +251,7 @@
         </scene>
     </scenes>
     <resources>
-        <image name="Search" width="266.5" height="266.5"/>
+        <image name="Search" width="66.5" height="66.5"/>
         <image name="back" width="43.5" height="74.5"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>

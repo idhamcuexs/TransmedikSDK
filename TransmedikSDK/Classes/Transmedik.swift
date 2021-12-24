@@ -183,9 +183,8 @@ public class Transmedik {
     
     public static func Transmedik_Login( email : String , gender : String , device_id : String, identification : String, name: String,nik :String ,phone_number : String ,  complited: @escaping(Bool,String)->()){
         
-        let secret = "VHJhbnNtZWRpa2EtQXBwcy1JbnRlZ3JhdGlvbg=="
        
-        let stringtoken = email + "#" + phone_number + "#" + secret
+        let stringtoken = email + "#" + phone_number + "#" + AppSettings.SECRET
         
         
         
@@ -203,7 +202,7 @@ public class Transmedik {
             "name": name,
             "nik": nik,
             "phone_number": phone_number,
-            "secret" :secret
+            "secret" :AppSettings.SECRET
             
         ]
         

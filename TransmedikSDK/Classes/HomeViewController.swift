@@ -138,51 +138,7 @@ extension HomeViewController: UICollectionViewDataSource,UICollectionViewDelegat
                     // print("not token")
                 }
             
-            
-            
-                
-                
-//                if UserDefaults.standard.bool(forKey: AppSettings.ON_CHAT){
-//                    Loading.show()
-//                        if let token = UserDefaults.standard.string(forKey: AppSettings.Tokentransmedik) {
-//                            let chat = Chat()
-//                            // print("token on")
-//                            chat.checkkonsul(token: token) { (data) in
-//                                Loading.dismiss()
-//                                if data != nil {
-//                                    self.getdata(id: Int(data!.consultation_id!), data: data!, uuid: UserDefaults.standard.string(forKey: AppSettings.uuid)!, email: UserDefaults.standard.string(forKey: AppSettings.email) ?? "")
-//
-//                                }
-//                                else {
-//
-//
-//                                    UserDefaults.standard.removeObject(forKey: AppSettings.ON_CHAT)
-//                                    Toast.show(message: "Konsultasi sudah berakhir", controller: self)
-//                                    DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
-//
-//                                        let vc = UIStoryboard(name: "Fasilitaskesehatan", bundle: AppSettings.bundleframework).instantiateViewController(withIdentifier: "fasilitaskesehatanViewController" ) as? fasilitaskesehatanViewController
-//
-//                                        vc?.presentPage = self.presentPage
-//                                        self.openVC(vc!, self.presentPage)
-////                                        self.present(vc!, animated: false, completion: nil)
-//
-//                                    }
-//                                }
-//
-//                            }
-//
-//                        }
-//
-//
-//
-//                }else{
-////                    let vc = UIStoryboard(name: "Fasilitaskesehatan", bundle: AppSettings.bundleframework).instantiateViewController(withIdentifier: "fasilitaskesehatanViewController" ) as? fasilitaskesehatanViewController
-////                    vc?.presentPage = self.presentPage
-////                    openVC(vc!, self.presentPage)
-//
-////                    present(vc!, animated: false, completion: nil)
-//                    keluar(view: presentPage)
-//                }
+      
             
                 break
                 

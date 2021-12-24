@@ -68,8 +68,9 @@ public class fasilitaskesehatanViewController: UIViewController,UITextFieldDeleg
             self.api.order(token: token) { (data,nextpage) in
                 
                 if nextpage == "Unauthenticated."{
-                    UserDefaults.standard.set(true, forKey: "logout")
-                    self.dismiss(animated: false, completion: nil)
+//                    UserDefaults.standard.set(true, forKey: "logout")
+//                    self.dismiss(animated: false, completion: nil)
+                    Toast.show(message: "Tidak tersambung ke server", controller: self)
                 }
                 
                 if data != nil {

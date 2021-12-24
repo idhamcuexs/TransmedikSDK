@@ -8,7 +8,7 @@
 
 Pod::Spec.new do |s|
   s.name             = 'TransmedikSDK'
-  s.version          = '1.2.2'
+  s.version          = '1.2.3'
   s.summary          = 'TransmedikSDK for library WE+'
   
   s.description      = "TransmedikSDK for we plus"

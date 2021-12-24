@@ -56,7 +56,11 @@ class SetMapingViewController: MYUIViewController,CLLocationManagerDelegate,UITe
         note.returnKeyType = .done
         note.delegate = self
         viewsnotes.dropShadow(shadowColor: UIColor.lightGray, fillColor: UIColor.white, opacity: 0.5, offset: CGSize(width: 2, height: 2), radius: 4)
-        viewtexts.dropShadow(shadowColor: UIColor.lightGray, fillColor: UIColor.white, opacity: 0.5, offset: CGSize(width: 2, height: 2), radius: 4)
+//        viewtexts.dropShadow(shadowColor: UIColor.lightGray, fillColor: UIColor.white, opacity: 0.5, offset: CGSize(width: 2, height: 2), radius: 4)
+        viewtexts.layer.cornerRadius =  viewtexts.layer.frame.height / 2
+        viewtexts.layer.borderWidth = 1
+        viewtexts.layer.borderColor = UIColor.lightGray.cgColor
+        
     }
     
     @IBAction func chnge(_ sender: Any) {

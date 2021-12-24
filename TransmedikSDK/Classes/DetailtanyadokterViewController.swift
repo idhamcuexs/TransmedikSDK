@@ -80,20 +80,24 @@ class DetailtanyadokterViewController: UIViewController,UITextFieldDelegate {
         self.tables.backgroundColor = .clear
         tinggifiltercollection.constant = 0
         viewtool.isHidden.toggle()
-//        tinggiviewsearch.constant = CGFloat(65)
-        viewsearch.layer.cornerRadius = viewsearch.frame.height / 2
-        viewsearch.dropShadow(shadowColor: UIColor.lightGray, fillColor: UIColor.white, opacity: 0.5, offset: CGSize(width: 2, height: 2), radius: 4)
+////        tinggiviewsearch.constant = CGFloat(65)
+//        viewsearch.layer.cornerRadius = viewsearch.frame.height / 2
+//        viewsearch.dropShadow(shadowColor: UIColor.lightGray, fillColor: UIColor.white, opacity: 0.5, offset: CGSize(width: 2, height: 2), radius: 4)
+        
+        viewsearch.layer.cornerRadius =  viewsearch.layer.frame.height / 2
+        viewsearch.layer.borderWidth = 1
+        viewsearch.layer.borderColor = UIColor.lightGray.cgColor
         
         
 //        viewsearch.layer.borderWidth = 1
 //        viewsearch.layer.borderColor = UIColor.init(rgb: 0xdfdfdf).cgColor
         
-        viewsearch.layer.masksToBounds = false
-        viewsearch.layer.shadowColor = UIColor.black.cgColor
-        viewsearch.layer.shadowOpacity = 0.2
-        viewsearch.layer.shadowRadius = 3
-        viewsearch.layer.shadowOffset = CGSize(width: 0, height: 2)
-        
+//        viewsearch.layer.masksToBounds = false
+//        viewsearch.layer.shadowColor = UIColor.black.cgColor
+//        viewsearch.layer.shadowOpacity = 0.2
+//        viewsearch.layer.shadowRadius = 3
+//        viewsearch.layer.shadowOffset = CGSize(width: 0, height: 2)
+//        
         search.returnKeyType = UIReturnKeyType.done
         search.delegate = self
         
