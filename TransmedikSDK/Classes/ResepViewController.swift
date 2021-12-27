@@ -60,7 +60,7 @@ class ResepViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-//        beli.isUserInteractionEnabled = false
+        beli.isUserInteractionEnabled = false
         self.view.layoutIfNeeded()
         self.view.backgroundColor = Colors.backgroundmaster
         pasienPhoto.layer.cornerRadius = 25

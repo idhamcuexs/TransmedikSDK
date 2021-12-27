@@ -12,7 +12,7 @@ import SwiftyJSON
 class Obat: NSObject {
     
     
-    func getresep(token : String, id:String ,complited: @escaping(Bool,[Resepobat]?,String?)->()){
+    func getresep(token : String, param:Parameters ,complited: @escaping(Data?)->()){
         
         // print(token)
         let headers: HTTPHeaders = [
@@ -21,53 +21,25 @@ class Obat: NSObject {
             "Content-Type": "application/json"
         ]
         
-//        let url = "\(api.API())prescription/\(id)"
 
-        let url = "\(AppSettings.Url)prescription/\(id)"
-        // print(url)
-        // print(headers)
-    
+        let url = "\(AppSettings.Url)medicine-stock-pharmacy"
+
         
-        Alamofire.request(url, method: .get, encoding: JSONEncoding.default, headers: headers)
+        Alamofire.request(url, method: .post,parameters: param, encoding: JSONEncoding.default, headers: headers)
             .responseJSON { respon in
                  print(respon)
                 switch respon.result {
                 case let .success(value):
                     let json = JSON(value)
-                  
-                    if json["code"].stringValue == "200"{
-                  
-                        if json["success"].boolValue{
-                            // print(2)
-                            if json["data"]["recipes"].count > 0{
-                                var resep = [Resepobat]()
-                                json["data"]["recipes"].array?.forEach({ (datas) in
-                                  
-                                    resep.append(Resepobat(medicines_name: datas["medicines_name"].stringValue, medicine_code_partner: datas["medicine_code_partner"].stringValue, slug: datas["slug"].stringValue, rule: datas["rule"].stringValue, period: datas["period"].stringValue, unit: datas["unit"].stringValue, prescription_id: datas["prescription_id"].stringValue, qty: datas["qty"].intValue, status: datas["status"].boolValue))
-    //
-                                })
-                                // print("mausk sini")
-                                complited(true,resep,nil)
-                            }else{
-                                complited(true,nil,json["messages"].stringValue)
-                            }
-         
-
-                        }else{
-                            // print("mausk sini2")
-
-                            complited(true,nil,json["messages"].stringValue )
-
-                        }
-                     
-                        
-                        
-                    }else{
-                        complited(false,nil,json["messages"].stringValue )
-                        
+                    do{
+                        try  complited(json.rawData())
+                    }catch{
+                        complited(nil)
                     }
+                   
+                  
                 case let .failure(error):
-                    complited(false,nil,"Terjadi masalah pada jaringan")
+                    complited(nil)
                     
                 }
                 

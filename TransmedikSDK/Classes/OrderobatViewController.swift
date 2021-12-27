@@ -36,6 +36,7 @@ class OrderobatViewController: UIViewController,CLLocationManagerDelegate, lista
     
     
     var selectcour : Int?
+    var order : [[String : Any]]?
     var loading = false{
         didSet{
             if loading{
@@ -217,26 +218,15 @@ class OrderobatViewController: UIViewController,CLLocationManagerDelegate, lista
         if CheckInternet.Connection(){
             if  let token = UserDefaults.standard.string(forKey:  AppSettings.Tokentransmedik){
                 self.loading = true
-                api.getresep(token: token, id: id) { (status, dataresep,msg) in
-//                    DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
-//                        self.loading = false
-//
-//                    }
-
-                    if status {
-                        // print(1)
-                        if dataresep != nil{
-                            self.resepobat = dataresep!
-                            self.getprice()
-                          
-                        }else{
-                            self.labelNote.text = msg ?? ""
-                        }
+                
+//                let orders =
+                let param : [String : Any] = [
+                    "map_lat" : "",
+                    "map_lng" : "",
+                    "order" : order!
+                ]
+                api.getresep(token: token, param: param) { data in
                     
-                        
-                    }else{
-                        self.labelNote.text = msg ?? ""
-                    }
                 }
             }
         }else{
