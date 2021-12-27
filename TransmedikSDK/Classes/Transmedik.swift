@@ -217,6 +217,7 @@ public class Transmedik {
                 switch respon.result {
                 case let .success(value):
                     let json = JSON(value)
+                    print(respon)
                     if json["code"].stringValue == "200"{
                         UserDefaults.standard.removeObject(forKey: "logout")
                         let token = json["data"]["token"].stringValue

@@ -63,8 +63,8 @@ class DetailCatatanDiagnosaVC: UIViewController {
         var advice = spa["advice"].string
         advice = advice?.replacingOccurrences(of: "|", with: "\r\n")
         //        spa["icd"].arrayspa["icd"]
-        var icd = spa["icd"].string
-        icd = advice?.replacingOccurrences(of: "|", with: "\r\n")
+//        var icd = spa["icd"].string
+//        icd = advice?.replacingOccurrences(of: "|", with: "\r\n")
         waktu.text = date
         nk.text = spesialis
         nomorDokter.text = nomorString
@@ -79,16 +79,22 @@ class DetailCatatanDiagnosaVC: UIViewController {
      
         tableSymp.text = symptoms
         tablePD.text = possible_diagnosis
-        tableICD.text = icd
-        var icdString = ""
-        spa["icd"].array?.forEach({ (data) in
-            if icdString == ""{
-                icdString =  data["name"].stringValue
-            }else{
-                icdString += "\r\n " + data["name"].stringValue
-            }
-        })
-        tableICD.text = icdString
+//        tableICD.text = icd
+      
+        if  spa["icd"].array != nil{
+            var icdString = ""
+            spa["icd"].array?.forEach({ (data) in
+                if icdString == ""{
+                    icdString =  data["name"].stringValue
+                }else{
+                    icdString += "\r\n " + data["name"].stringValue
+                }
+            })
+            tableICD.text = icdString
+        }else{
+            self.viewMasterFour.isHidden.toggle()
+        }
+
     }
     
     

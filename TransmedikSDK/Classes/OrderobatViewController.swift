@@ -47,11 +47,7 @@ class OrderobatViewController: UIViewController,CLLocationManagerDelegate, lista
     }
     let locationManager = CLLocationManager()
     var api = Obat()
-    var location : NameMyLocation?{
-        didSet{
-            // print("location set")
-        }
-    }
+    var location : NameMyLocation?
     var id = ""
     var prescription_id = ""
     var data : GetPriceObat?
@@ -154,7 +150,10 @@ class OrderobatViewController: UIViewController,CLLocationManagerDelegate, lista
                 
                 // print(addressString)
                 self.alamat.text = addressString
-                self.location = NameMyLocation(location: tmplocation, address: addressString, note: "")
+                if self.location != nil {
+                    self.location = NameMyLocation(location: tmplocation, address: addressString, note: "")
+                }
+               
                 //                // print(addressString)
             }
             

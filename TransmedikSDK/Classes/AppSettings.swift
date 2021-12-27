@@ -15,18 +15,18 @@ struct AppSettings {
     static let NAVIGATIONBAR_HEIGHT : CGFloat = 70
     
     // Dev
-//    static let PARSE_APPID: String = "parse-dev-app"
-//    static let PARSE_SERVER: String = "https://parse-dev.transmedika.co.id/parse/"
-//    static let PARSE_CLIENTKEY: String = "widicaem"
-//    static let Url: String = "https://api-dev.transmedika.co.id/api/sdk-v1/"
-//    static let SECRET = "VHJhbnNtZWRpa2EtQXBwcy1JbnRlZ3JhdGlvbg=="
+    static let PARSE_APPID: String = "parse-dev-app"
+    static let PARSE_SERVER: String = "https://parse-dev.transmedika.co.id/parse/"
+    static let PARSE_CLIENTKEY: String = "widicaem"
+    static let Url: String = "https://api-dev.transmedika.co.id/api/sdk-v1/"
+    static let SECRET = "VHJhbnNtZWRpa2EtQXBwcy1JbnRlZ3JhdGlvbg=="
 
     //production
-    static let PARSE_APPID: String = "parse-dev-app"
-    static let PARSE_SERVER: String = "https://parse.transmedika.co.id/parse/"
-    static let PARSE_CLIENTKEY: String = "client_key"
-    static let Url: String = "https://api.transmedika.co.id/api/sdk-v1/"
-    static let SECRET = "JGNKUlhzRmN4Uk1TUnpiMUk0cTh6NHFkbUU1YU1zUkY="
+//    static let PARSE_APPID: String = "parse-dev-app"
+//    static let PARSE_SERVER: String = "https://parse.transmedika.co.id/parse/"
+//    static let PARSE_CLIENTKEY: String = "client_key"
+//    static let Url: String = "https://api.transmedika.co.id/api/sdk-v1/"
+//    static let SECRET = "JGNKUlhzRmN4Uk1TUnpiMUk0cTh6NHFkbUU1YU1zUkY="
 
     
     

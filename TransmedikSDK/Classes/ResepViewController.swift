@@ -9,6 +9,8 @@ import UIKit
 import SwiftyJSON
 import Alamofire
 import CDAlertView
+import CoreLocation
+
 
 
 
@@ -58,7 +60,7 @@ class ResepViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        beli.isUserInteractionEnabled = false
+//        beli.isUserInteractionEnabled = false
         self.view.layoutIfNeeded()
         self.view.backgroundColor = Colors.backgroundmaster
         pasienPhoto.layer.cornerRadius = 25
@@ -121,11 +123,11 @@ class ResepViewController: UIViewController {
         
     }
     
-//    func textViewDidBeginEditing(_ textView: UITextView) {
-//        if textView == alamat{
-//
-//        }
-//    }
+    //    func textViewDidBeginEditing(_ textView: UITextView) {
+    //        if textView == alamat{
+    //
+    //        }
+    //    }
     @objc func getalamat(){
         let vc = UIStoryboard(name: "Alamat", bundle: AppSettings.bundleframework).instantiateViewController(withIdentifier: "SetMapingViewController") as? SetMapingViewController
         vc?.delegate = self
@@ -148,32 +150,33 @@ class ResepViewController: UIViewController {
         // print("beliButtonDidTap")
         long = 106.847336
         lat = -6.252300
-//        guard long != nil else {
-//            return Toast.show(message: "Anda belum mengisi alamat pengiriman", controller: self)
-//        }
+        //        guard long != nil else {
+        //            return Toast.show(message: "Anda belum mengisi alamat pengiriman", controller: self)
+        //        }
         let vc = UIStoryboard(name: "Orderobat", bundle: AppSettings.bundleframework).instantiateViewController(withIdentifier: "OrderobatViewController") as? OrderobatViewController
         vc?.id = String(self.consultation!.consultation_id!)
+        vc?.location = NameMyLocation(location: CLLocationCoordinate2D(latitude: lat!, longitude: long!), address: alamat.text ?? "" , note: note.text ?? "")
         vc?.prescription_id = self.prescription_id
         self.present(vc!, animated: true, completion: nil)
         
-//        let alert = CDAlertView(title: "Pembelian Obat", message: "Apakah ingin memperbaharui keranjang belanja?", type: .warning)
-//
-//        let yesAction = CDAlertViewAction(title: LocalizationHelper.getInstance().yes) { (CDAlertViewAction) -> Bool in
-//
-//            let vc = UIStoryboard(name: "Orderobat", bundle: AppSettings.bundleframework).instantiateViewController(withIdentifier: "OrderobatViewController") as? OrderobatViewController
-//            vc?.id = String(self.consultation!.consultation_id!)
-//            vc?.prescription_id = self.prescription_id
-//            self.present(vc!, animated: true, completion: nil)
-//
-//            return true
-//        }
-//        let noAction = CDAlertViewAction(title: LocalizationHelper.getInstance().no) { (CDAlertViewAction) -> Bool in
-//            return true
-//        }
-//
-//        alert.add(action: noAction)
-//        alert.add(action: yesAction)
-//        alert.show()
+        //        let alert = CDAlertView(title: "Pembelian Obat", message: "Apakah ingin memperbaharui keranjang belanja?", type: .warning)
+        //
+        //        let yesAction = CDAlertViewAction(title: LocalizationHelper.getInstance().yes) { (CDAlertViewAction) -> Bool in
+        //
+        //            let vc = UIStoryboard(name: "Orderobat", bundle: AppSettings.bundleframework).instantiateViewController(withIdentifier: "OrderobatViewController") as? OrderobatViewController
+        //            vc?.id = String(self.consultation!.consultation_id!)
+        //            vc?.prescription_id = self.prescription_id
+        //            self.present(vc!, animated: true, completion: nil)
+        //
+        //            return true
+        //        }
+        //        let noAction = CDAlertViewAction(title: LocalizationHelper.getInstance().no) { (CDAlertViewAction) -> Bool in
+        //            return true
+        //        }
+        //
+        //        alert.add(action: noAction)
+        //        alert.add(action: yesAction)
+        //        alert.show()
         
     }
     

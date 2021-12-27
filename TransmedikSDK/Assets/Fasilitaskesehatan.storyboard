@@ -200,10 +200,68 @@
                         <outlet property="header" destination="fk4-QD-nNz" id="sPo-YW-w0K"/>
                         <outlet property="search" destination="6z2-Lp-9Nz" id="foQ-7e-x1p"/>
                         <outlet property="top" destination="Gzc-ab-Qqs" id="ryj-ur-ojh"/>
+                        <outlet property="viewDataNotFound" destination="D5L-Yg-WdO" id="N5b-HU-BEF"/>
+                        <outlet property="viewNotConnection" destination="TCd-xf-rjN" id="reN-zQ-5XU"/>
                         <outlet property="viewfield" destination="24u-0B-qxd" id="LiB-3P-pnn"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="tFQ-xZ-hFx" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                <view contentMode="scaleToFill" id="TCd-xf-rjN">
+                    <rect key="frame" x="0.0" y="0.0" width="373" height="540"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <subviews>
+                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="notif not connection" translatesAutoresizingMaskIntoConstraints="NO" id="sbz-KN-0dk">
+                            <rect key="frame" x="60" y="84" width="253" height="299"/>
+                            <constraints>
+                                <constraint firstAttribute="width" secondItem="sbz-KN-0dk" secondAttribute="height" multiplier="293:346" id="VVC-Bg-I5n"/>
+                            </constraints>
+                        </imageView>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Opps! koneksi terputus periksa jaringan koneksi anda" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NlM-lk-gxE">
+                            <rect key="frame" x="60" y="433" width="253" height="36"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                            <nil key="textColor"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                    </subviews>
+                    <viewLayoutGuide key="safeArea" id="ygj-HN-gkK"/>
+                    <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    <constraints>
+                        <constraint firstItem="sbz-KN-0dk" firstAttribute="top" secondItem="ygj-HN-gkK" secondAttribute="top" constant="40" id="3Kp-KK-T3W"/>
+                        <constraint firstItem="NlM-lk-gxE" firstAttribute="leading" secondItem="sbz-KN-0dk" secondAttribute="leading" id="Frw-qk-oVT"/>
+                        <constraint firstItem="sbz-KN-0dk" firstAttribute="leading" secondItem="ygj-HN-gkK" secondAttribute="leading" constant="60" id="X3U-hj-1dn"/>
+                        <constraint firstItem="ygj-HN-gkK" firstAttribute="trailing" secondItem="sbz-KN-0dk" secondAttribute="trailing" constant="60" id="bgc-XR-9cy"/>
+                        <constraint firstItem="NlM-lk-gxE" firstAttribute="trailing" secondItem="sbz-KN-0dk" secondAttribute="trailing" id="ff8-Dr-752"/>
+                        <constraint firstItem="NlM-lk-gxE" firstAttribute="top" secondItem="sbz-KN-0dk" secondAttribute="bottom" constant="50" id="sFo-aU-faT"/>
+                        <constraint firstItem="NlM-lk-gxE" firstAttribute="centerX" secondItem="sbz-KN-0dk" secondAttribute="centerX" id="xJg-l3-aBB"/>
+                    </constraints>
+                </view>
+                <view contentMode="scaleToFill" id="D5L-Yg-WdO">
+                    <rect key="frame" x="0.0" y="0.0" width="373" height="540"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <subviews>
+                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="notif data not found" translatesAutoresizingMaskIntoConstraints="NO" id="78v-aG-jsH">
+                            <rect key="frame" x="60" y="84" width="253" height="299"/>
+                            <constraints>
+                                <constraint firstAttribute="width" secondItem="78v-aG-jsH" secondAttribute="height" multiplier="293:346" id="Des-pW-q5A"/>
+                            </constraints>
+                        </imageView>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Oops!  Data tidak ditemukan" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4fI-zB-7K6">
+                            <rect key="frame" x="89.5" y="433" width="194" height="18"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                            <nil key="textColor"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                    </subviews>
+                    <viewLayoutGuide key="safeArea" id="Rly-Vr-tKH"/>
+                    <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    <constraints>
+                        <constraint firstItem="78v-aG-jsH" firstAttribute="top" secondItem="Rly-Vr-tKH" secondAttribute="top" constant="40" id="6Pa-m0-JkB"/>
+                        <constraint firstItem="4fI-zB-7K6" firstAttribute="centerX" secondItem="78v-aG-jsH" secondAttribute="centerX" id="KWH-Xy-Rkt"/>
+                        <constraint firstItem="78v-aG-jsH" firstAttribute="leading" secondItem="Rly-Vr-tKH" secondAttribute="leading" constant="60" id="Zna-sR-p9D"/>
+                        <constraint firstItem="Rly-Vr-tKH" firstAttribute="trailing" secondItem="78v-aG-jsH" secondAttribute="trailing" constant="60" id="pEO-Db-b4H"/>
+                        <constraint firstItem="4fI-zB-7K6" firstAttribute="top" secondItem="78v-aG-jsH" secondAttribute="bottom" constant="50" id="pH1-tw-fIF"/>
+                    </constraints>
+                </view>
             </objects>
             <point key="canvasLocation" x="1114.4927536231885" y="-45.535714285714285"/>
         </scene>
@@ -443,6 +501,8 @@
     </scenes>
     <resources>
         <image name="back" width="43.5" height="74.5"/>
+        <image name="notif data not found" width="285" height="363"/>
+        <image name="notif not connection" width="416.5" height="353"/>
         <image name="person.circle.fill" catalog="system" width="128" height="121"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>

@@ -74,7 +74,7 @@ class DetailChatViewController: MessagesViewController, MessagesDataSource {
         didSet{
             if consultationEnded{
                 self.messageInputBar.isHidden = true
-                self.navigationController?.dismiss(animated: true, completion: nil)
+//                self.navigationController?.dismiss(animated: true, completion: nil)
             }
            
             guard consultationEnded != oldValue else {
@@ -543,6 +543,7 @@ class DetailChatViewController: MessagesViewController, MessagesDataSource {
                             //ALLoadingView.manager.hideLoadingView()
                             self.consultationEnded = true
                             self.messageInputBar.isHidden = true
+                            self.navigationController?.dismiss(animated: true, completion: nil)
                         }
 
                     }
@@ -905,6 +906,7 @@ extension DetailChatViewController: ResepDokterViewControllerDelegate,extensionc
                     //ALLoadingView.manager.hideLoadingView()
                     self.consultationEnded = true
                     self.messageInputBar.isHidden = true
+                    self.navigationController?.dismiss(animated: true, completion: nil)
                 }
             }
            

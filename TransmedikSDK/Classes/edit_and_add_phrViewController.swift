@@ -55,7 +55,9 @@ class edit_and_add_phrViewController: UIViewController {
     }
     
     @objc func backacc(){
-        keluar(view: presentPage)
+//        keluar(view: presentPage)
+        dismiss(animated: true, completion: nil)
+        
     }
     
     @objc func sendacc(){
@@ -118,7 +120,7 @@ extension edit_and_add_phrViewController: UITableViewDataSource{
         child.layer.shadowOffset = CGSize.zero
         child.layer.shadowRadius = 3
         child.layer.shadowOpacity = 0.3
-        send.backgroundColor = Colors.basicvalue
+        send.backgroundColor = Colors.buttonActive
         send.layer.cornerRadius = 10
         
         viewmaster.layer.cornerRadius = 10

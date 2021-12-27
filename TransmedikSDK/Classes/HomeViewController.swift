@@ -17,7 +17,7 @@ struct modelmenuinhome {
 }
 
 class HomeViewController: UIViewController {
-
+    
     @IBOutlet weak var closeVC: UIView!
     @IBOutlet weak var collmenu: UICollectionView!
     @IBOutlet weak var back: UIView!
@@ -28,8 +28,8 @@ class HomeViewController: UIViewController {
         modelmenuinhome(background: "klinikbackground", icon: "ic_klinik", text: "Klinik"),
         modelmenuinhome(background: "phrbackground", icon: "ic_riwayat_konsultasi", text: "Riwayat Konsultasi"),
         modelmenuinhome(background: "beliobatbackground", icon: "ic_riwayat_obat", text: "Riwayat Obat"),
-      ]
-
+    ]
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -44,9 +44,9 @@ class HomeViewController: UIViewController {
     }
     @objc func kembali(){
         // print("ucoing")
-       keluar(view: presentPage)
+        keluar(view: presentPage)
     }
-
+    
     @IBAction func balik(_ sender: Any) {
         // print("ucing")
         keluar(view: presentPage)
@@ -60,8 +60,8 @@ class HomeViewController: UIViewController {
         
         self.query.findObjectsInBackground(block: { (results, error) in
             if error == nil {
-//                self.closeloading(self)
-
+                //                self.closeloading(self)
+//                self.dismisslodaing()
                 if let chat = results as? [ConsultationModel] {
                     
                     let vc = DetailChatViewController()
@@ -83,7 +83,7 @@ class HomeViewController: UIViewController {
             }
         })
     }
-
+    
 }
 
 
@@ -91,8 +91,8 @@ extension HomeViewController: UICollectionViewDataSource,UICollectionViewDelegat
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         let sets =  CGFloat((self.view.frame.width - (15 * 5)) / 3)
-         return CGSize(width:  sets , height:  (( sets / 5 ) * 6.5 ))
-       
+        return CGSize(width:  sets , height:  (( sets / 5 ) * 6.5 ))
+        
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
@@ -103,76 +103,74 @@ extension HomeViewController: UICollectionViewDataSource,UICollectionViewDelegat
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         
-            switch indexPath.row {
-            case 0:
-                // print("case 00")
-                if let token = UserDefaults.standard.string(forKey: AppSettings.Tokentransmedik) {
-                    let chat = Chat()
-//                    Loading.show()
-                    chat.checkkonsul(token: token) { (data) in
-//                        Loading.dismiss()
-                        if data != nil {
-                            
-                            self.getdata(id: Int(data!.consultation_id!), data: data!, uuid: UserDefaults.standard.string(forKey: AppSettings.uuid)!, email: UserDefaults.standard.string(forKey: AppSettings.email) ?? "")
-      
-                        }
-                        else {
-                           
-
-                            UserDefaults.standard.removeObject(forKey: AppSettings.ON_CHAT)
-//                            Toast.show(message: "Konsultasi sudah berakhir", controller: self)
-                            DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
-
-                                let vc = UIStoryboard(name: "Fasilitaskesehatan", bundle: AppSettings.bundleframeworks()).instantiateViewController(withIdentifier: "fasilitaskesehatanViewController" ) as? fasilitaskesehatanViewController
-                            
-                                vc?.presentPage = self.presentPage
-                                self.openVC(vc!, self.presentPage)
-//                                        self.present(vc!, animated: false, completion: nil)
-                                
-                            }
-                        }
+        switch indexPath.row {
+        case 0:
+            // print("case 00")
+            if let token = UserDefaults.standard.string(forKey: AppSettings.Tokentransmedik) {
+                let chat = Chat()
+                self.view.showBlurLoader()
+                chat.checkkonsul(token: token) { (data) in
+                    self.view.removeBluerLoader()
+                    if data != nil {
+                        
+                        self.getdata(id: Int(data!.consultation_id!), data: data!, uuid: UserDefaults.standard.string(forKey: AppSettings.uuid)!, email: UserDefaults.standard.string(forKey: AppSettings.email) ?? "")
                         
                     }
-
-                }else{
-                    // print("not token")
+                    else {
+                       
+                        UserDefaults.standard.removeObject(forKey: AppSettings.ON_CHAT)
+                        DispatchQueue.main.asyncAfter(deadline: .now() ) {
+                            
+                            let vc = UIStoryboard(name: "Fasilitaskesehatan", bundle: AppSettings.bundleframeworks()).instantiateViewController(withIdentifier: "fasilitaskesehatanViewController" ) as? fasilitaskesehatanViewController
+                            
+                            vc?.presentPage = self.presentPage
+                            self.openVC(vc!, self.presentPage)
+                            //
+                            
+                        }
+                    }
+                    
                 }
-            
-      
-            
-                break
                 
-           
-            case 1:
-                let vc = UIStoryboard(name: "History", bundle: AppSettings.bundleframeworks()).instantiateViewController(withIdentifier: "NewHistoryViewController" ) as? NewHistoryViewController
-                vc?.selected = 2
-                vc?.presentPage = self.presentPage
-                openVC(vc!, self.presentPage)
-//                present(vc!, animated: false, completion: nil)
-                break
-                
-                
-            case 2:
-                let vc = UIStoryboard(name: "History", bundle: AppSettings.bundleframeworks()).instantiateViewController(withIdentifier: "NewHistoryViewController" ) as? NewHistoryViewController
-                vc?.selected = 1
-                vc?.presentPage = self.presentPage
-                openVC(vc!, self.presentPage)
-
-//                present(vc!, animated: false, completion: nil)
-                break
-          
-            default:
-                fatalError()
+            }else{
+                // print("not token")
             }
-
+            
+            
+            
+            break
+            
+            
+        case 1:
+            let vc = UIStoryboard(name: "History", bundle: AppSettings.bundleframeworks()).instantiateViewController(withIdentifier: "NewHistoryViewController" ) as? NewHistoryViewController
+            vc?.selected = 2
+            vc?.presentPage = self.presentPage
+            openVC(vc!, self.presentPage)
+            //                present(vc!, animated: false, completion: nil)
+            break
+            
+            
+        case 2:
+            let vc = UIStoryboard(name: "History", bundle: AppSettings.bundleframeworks()).instantiateViewController(withIdentifier: "NewHistoryViewController" ) as? NewHistoryViewController
+            vc?.selected = 1
+            vc?.presentPage = self.presentPage
+            openVC(vc!, self.presentPage)
+            
+            //                present(vc!, animated: false, completion: nil)
+            break
+            
+        default:
+            fatalError()
+        }
+        
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cell", for: indexPath) as! cellmenuinhomeCollectionViewCell
-
+        
         cell.layer.cornerRadius = 10
         cell.icon.image = UIImage(named: menuhome[indexPath.row].icon, in: Bundle.init(identifier: AppSettings.frameworkBundleID), compatibleWith: nil)!
-
+        
         cell.background.backgroundColor = UIColor.red
         cell.text.text = menuhome[indexPath.row].text
         return cell

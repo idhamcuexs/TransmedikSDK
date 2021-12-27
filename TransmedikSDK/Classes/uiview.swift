@@ -30,6 +30,22 @@ extension UIViewController  {
         present(vc!, animated: false, completion: nil)
         
     }
+    func newLoading(){
+        let alert = UIAlertController(title: nil, message: "Tunggu sebentar...", preferredStyle: .alert)
+
+        let loadingIndicator = UIActivityIndicatorView(frame: CGRect(x: 10, y: 5, width: 50, height: 50))
+        loadingIndicator.hidesWhenStopped = true
+        loadingIndicator.style = UIActivityIndicatorView.Style.gray
+        loadingIndicator.startAnimating();
+
+        alert.view.addSubview(loadingIndicator)
+        
+        self.present(alert, animated: true, completion: nil)
+    }
+    
+    func dismisslodaing(){
+        self.dismiss(animated: false, completion: nil)
+    }
     
     func closeloading(_ UIViewController : UIViewController){
         dismiss(animated: false, completion: nil)
@@ -38,6 +54,7 @@ extension UIViewController  {
   
 
 }
+
 
 
 open class Loading: UIView {
@@ -49,36 +66,37 @@ open class Loading: UIView {
     
     open class func show() {
         
-        if let vc = UIApplication.topViewController() {
-            /// Create UIView for loading
-            view = UIView(frame: CGRect(x: 50, y: 50, width: 80, height: 80))
-            view.center = vc.view.center
-            view.backgroundColor = UIColor.clear
-            view.alpha = 0.9
-            view.layer.cornerRadius = 10
-            
-            /// Set view to full screen, aspectFill
-//            let animationView = LOTAnimationView(name: "loading_rainbow")
-            let animationView = LOTAnimationView(name: "loading_rainbow", bundle: AppSettings.bundleframeworks()!)
-            animationView.autoresizingMask = [.flexibleHeight, .flexibleWidth]
-            animationView.contentMode = .scaleAspectFill
-            animationView.frame = CGRect(x: 15, y: 15, width: 50, height: 50)
-            animationView.loopAnimation = true
-            animationView.play{ (finished) in }
-            view.translatesAutoresizingMaskIntoConstraints = false
-            view.addSubview(animationView)
-            
-//            lblProgress = UILabel(frame: CGRect(x: 0, y: 0, width: 80, height: 80))
-            //lblProgress.text = "0%"
-//            lblProgress.font = UIFont(name: "Helvetica-Regular", size: 16)
-//            lblProgress.textAlignment = .center
-//            lblProgress.textColor = #colorLiteral(red: 0.2543821383, green: 0.2543821383, blue: 0.2543821383, alpha: 1)
-//            view.addSubview(lblProgress)
-//            lblProgress.isHidden = true
-            vc.view.addSubview(view)
-            UIApplication.shared.keyWindow!.isUserInteractionEnabled = false
-            
-        }
+//        if let vc = UIApplication.topViewController() {
+//            /// Create UIView for loading
+//            view = UIView(frame: CGRect(x: 50, y: 50, width: 80, height: 80))
+//            view.center = vc.view.center
+//            view.backgroundColor = UIColor.clear
+//            view.alpha = 0.9
+//            view.layer.cornerRadius = 10
+//
+//            /// Set view to full screen, aspectFill
+////            let animationView = LOTAnimationView(name: "loading_rainbow")
+//            let animationView = LOTAnimationView(name: "loading_rainbow", bundle: AppSettings.bundleframeworks()!)
+//            animationView.autoresizingMask = [.flexibleHeight, .flexibleWidth]
+//            animationView.contentMode = .scaleAspectFill
+//            animationView.frame = CGRect(x: 15, y: 15, width: 50, height: 50)
+//            animationView.loopAnimation = true
+//            animationView.play{ (finished) in }
+//            view.translatesAutoresizingMaskIntoConstraints = false
+//            view.addSubview(animationView)
+//
+////            lblProgress = UILabel(frame: CGRect(x: 0, y: 0, width: 80, height: 80))
+//            //lblProgress.text = "0%"
+////            lblProgress.font = UIFont(name: "Helvetica-Regular", size: 16)
+////            lblProgress.textAlignment = .center
+////            lblProgress.textColor = #colorLiteral(red: 0.2543821383, green: 0.2543821383, blue: 0.2543821383, alpha: 1)
+////            view.addSubview(lblProgress)
+////            lblProgress.isHidden = true
+//            vc.view.addSubview(view)
+//            UIApplication.shared.keyWindow!.isUserInteractionEnabled = false
+//
+//        }
+        
     }
     
     open class func setValue(progress:Int){
@@ -318,5 +336,49 @@ extension UIView {
             mask.path = path.cgPath
             self.layer.mask = mask
         }
+    }
+}
+
+
+extension UIView {
+    func showBlurLoader() {
+        let blurLoader = BlurLoader(frame: frame)
+        self.addSubview(blurLoader)
+    }
+
+    func removeBluerLoader() {
+        if let blurLoader = subviews.first(where: { $0 is BlurLoader }) {
+            blurLoader.removeFromSuperview()
+        }
+    }
+}
+
+
+class BlurLoader: UIView {
+
+    var blurEffectView: UIVisualEffectView?
+
+    override init(frame: CGRect) {
+        let blurEffect = UIBlurEffect(style: .dark)
+        let blurEffectView = UIVisualEffectView(effect: blurEffect)
+        blurEffectView.frame = frame
+        blurEffectView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
+        self.blurEffectView = blurEffectView
+        super.init(frame: frame)
+        addSubview(blurEffectView)
+        addLoader()
+    }
+
+    required init?(coder aDecoder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+
+    private func addLoader() {
+        guard let blurEffectView = blurEffectView else { return }
+        let activityIndicator = UIActivityIndicatorView(style: .whiteLarge)
+        activityIndicator.frame = CGRect(x: 0, y: 0, width: 50, height: 50)
+        blurEffectView.contentView.addSubview(activityIndicator)
+        activityIndicator.center = blurEffectView.contentView.center
+        activityIndicator.startAnimating()
     }
 }

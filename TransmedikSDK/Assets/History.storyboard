@@ -461,6 +461,9 @@
                                         </userDefinedRuntimeAttributes>
                                     </tableViewCell>
                                 </prototypes>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="boolean" keyPath="isSkeletonable" value="YES"/>
+                                </userDefinedRuntimeAttributes>
                                 <connections>
                                     <outlet property="dataSource" destination="qh4-5h-mGG" id="R3R-1c-JsK"/>
                                     <outlet property="delegate" destination="qh4-5h-mGG" id="Mfx-Xs-bdI"/>

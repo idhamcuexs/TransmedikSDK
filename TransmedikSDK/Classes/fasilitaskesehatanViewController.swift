@@ -13,11 +13,13 @@ public class fasilitaskesehatanViewController: UIViewController,UITextFieldDeleg
     
     
     
+    @IBOutlet var viewNotConnection: UIView!
+    @IBOutlet var viewDataNotFound: UIView!
     @IBOutlet weak var collection: UICollectionView!
     var api = Fasilitaskesehatan()
     var selected = ""
     var mylok = false
-    var data :[Fasilitaskesehatanmodel] = []
+    var data :[Fasilitaskesehatanmodel]?
     var funcspesial = Specialist()
     var nexts = ""
     @IBOutlet weak var viewfield: UIView!
@@ -46,7 +48,7 @@ public class fasilitaskesehatanViewController: UIViewController,UITextFieldDeleg
         header.text = "Klinik"
         back.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(kembali)))
         search.delegate = self
-        search.returnKeyType = .done
+        search.returnKeyType = .search
         shadownavigation.shadownav(view: top)
     }
     
@@ -58,55 +60,91 @@ public class fasilitaskesehatanViewController: UIViewController,UITextFieldDeleg
         }else{
             refresh()
         }
+        print("cari")
+
         self.view.endEditing(true)
         
         return true
     }
     
+   
+    
     func refresh(){
-        if let token = UserDefaults.standard.string(forKey: AppSettings.Tokentransmedik){
-            self.api.order(token: token) { (data,nextpage) in
-                
-                if nextpage == "Unauthenticated."{
-//                    UserDefaults.standard.set(true, forKey: "logout")
-//                    self.dismiss(animated: false, completion: nil)
-                    Toast.show(message: "Tidak tersambung ke server", controller: self)
-                }
-                
-                if data != nil {
-                    // print("bres")
-                    self.data = data!
+        if CheckInternet.Connection(){
+            
+            if let token = UserDefaults.standard.string(forKey: AppSettings.Tokentransmedik){
+                self.api.order(token: token) { (data,nextpage) in
+                    self.data = nil
+                    self.collection.backgroundView = nil
+                    if nextpage == "Unauthenticated."{
+    //                    UserDefaults.standard.set(true, forKey: "logout")
+    //                    self.dismiss(animated: false, completion: nil)
+                        Toast.show(message: "Tidak tersambung ke server", controller: self)
+                    }
+                    
+                    if data != nil {
+                        // print("bres")
+                        self.data = data!
+                      
+                    }
+                    if nextpage == nil {
+                        self.nexts = ""
+                        self.collection.backgroundView = self.viewDataNotFound
+                    }else{
+                        self.nexts = nextpage!
+                    }
+                    
                     self.collection.reloadData()
+                    
                 }
-                if nextpage == nil {
-                    self.nexts = ""
-                }else{
-                    self.nexts = nextpage!
-                }
-                
             }
+        }else{
+            self.collection.reloadData()
+            self.collection.backgroundView = self.viewNotConnection
+         
         }
     }
     
     
     
     @objc func searchacc(){
-        if let token = UserDefaults.standard.string(forKey: AppSettings.Tokentransmedik){
-            let cari = self.search.text!.replacingOccurrences(of: " ", with: "%20")
-            self.api.ordersearch(token: token ,search : cari ) { (data,nextpage) in
-                if data != nil {
+        if CheckInternet.Connection(){
+            
+            if let token = UserDefaults.standard.string(forKey: AppSettings.Tokentransmedik){
+                
+                let cari = self.search.text!.replacingOccurrences(of: " ", with: "%20")
+                self.api.ordersearch(token: token ,search : cari ) { (data,nextpage) in
                     
-                    self.data = data!
+                    self.data = nil
+                    self.collection.backgroundView = nil
+                    if nextpage == "Unauthenticated."{
+    //                    UserDefaults.standard.set(true, forKey: "logout")
+    //                    self.dismiss(animated: false, completion: nil)
+                        Toast.show(message: "Tidak tersambung ke server", controller: self)
+                    }
+                    
+                    if data != nil {
+                         print(" hente kosong")
+                        self.data = data!
+                      
+                    }else{
+                        print("kosong")
+
+                    }
+                    if nextpage == nil {
+                        self.nexts = ""
+                        self.collection.backgroundView = self.viewDataNotFound
+                    }else{
+                        self.nexts = nextpage!
+                    }
+                    
                     self.collection.reloadData()
                     
                 }
-                if nextpage == nil {
-                    self.nexts = ""
-                }else{
-                    self.nexts = nextpage!
-                }
-                
             }
+        }else{
+            self.collection.reloadData()
+            self.collection.backgroundView = self.viewNotConnection
         }
         
     }
@@ -117,7 +155,7 @@ public class fasilitaskesehatanViewController: UIViewController,UITextFieldDeleg
                 if data != nil {
                     
                     for i in 0..<data!.count{
-                        self.data.append(data![i])
+                        self.data!.append(data![i])
                         if i == data!.count - 1{
                             self.collection.reloadData()
                         }
@@ -174,14 +212,14 @@ extension fasilitaskesehatanViewController : UIScrollViewDelegate{
 
 extension fasilitaskesehatanViewController:UICollectionViewDelegate , UICollectionViewDataSource,UICollectionViewDelegateFlowLayout{
     public func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return data.count
+        return data?.count ?? 0
     }
     
     public func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "FaskessCollectionViewCell", for: indexPath) as! FaskessCollectionViewCell
-        let url = URL(string: data[indexPath.row].image)
+        let url = URL(string: data![indexPath.row].image)
         cell.images.kf.setImage(with: url)
-        cell.label.text = data[indexPath.row].name
+        cell.label.text = data![indexPath.row].name
         cell.layer.cornerRadius = 10
         cell.backgroundColor = .clear
         
@@ -194,7 +232,7 @@ extension fasilitaskesehatanViewController:UICollectionViewDelegate , UICollecti
         if CheckInternet.Connection(){
             //            loading()
             if let token = UserDefaults.standard.string(forKey: AppSettings.Tokentransmedik) {
-                self.funcspesial.getspesialisklinik(token: token ,id: self.data[indexPath.row].id) { (datadokter,msg) in
+                self.funcspesial.getspesialisklinik(token: token ,id: self.data![indexPath.row].id) { (datadokter,msg) in
                     if msg == "Unauthenticated."{
                         let vc = UIStoryboard(name: "Notification", bundle: AppSettings.bundleframeworks()).instantiateViewController(withIdentifier: "loadingsuccessViewController") as? loadingsuccessViewController
                         UserDefaults.standard.set(true, forKey: "logout")
@@ -208,11 +246,11 @@ extension fasilitaskesehatanViewController:UICollectionViewDelegate , UICollecti
                         if datadokter!.count > 0{
                             let vc = UIStoryboard(name: "Fasilitaskesehatan", bundle: AppSettings.bundleframeworks()).instantiateViewController(withIdentifier: "detailklinikViewController") as? detailklinikViewController
                             vc?.tanyadokter = datadokter!
-                            vc?.alamat = self.data[indexPath.row].address
-                            vc?.name = self.data[indexPath.row].name
-                            vc?.imageurl = self.data[indexPath.row].image
-                            vc?.id = self.data[indexPath.row].id
-                            vc?.isform = self.data[indexPath.row].medical_form
+                            vc?.alamat = self.data![indexPath.row].address
+                            vc?.name = self.data![indexPath.row].name
+                            vc?.imageurl = self.data![indexPath.row].image
+                            vc?.id = self.data![indexPath.row].id
+                            vc?.isform = self.data![indexPath.row].medical_form
                             vc?.presentPage = self.presentPage
                             self.openVC(vc!, self.presentPage)
 
@@ -222,7 +260,7 @@ extension fasilitaskesehatanViewController:UICollectionViewDelegate , UICollecti
                             var list : [listformmodel] = []
                             var valueform : [valuesonform] = []
                             let apifacility = FormObject()
-                            apifacility.getform(token: token, id: self.data[indexPath.row].id , spesialist: "") { (data,msg) in
+                            apifacility.getform(token: token, id: self.data![indexPath.row].id , spesialist: "") { (data,msg) in
                                 if msg == "Unauthenticated."{
                                     let vc = UIStoryboard(name: "Notification", bundle: AppSettings.bundleframeworks()).instantiateViewController(withIdentifier: "loadingsuccessViewController") as? loadingsuccessViewController
                                     UserDefaults.standard.set(true, forKey: "logout")
@@ -242,9 +280,9 @@ extension fasilitaskesehatanViewController:UICollectionViewDelegate , UICollecti
                                     
                                     let vc = UIStoryboard(name: "Tanyadokter", bundle: AppSettings.bundleframeworks()).instantiateViewController(withIdentifier: "DetailtanyadokterViewController") as? DetailtanyadokterViewController
                                     vc?.id = ""
-                                    vc?.isform = self.data[indexPath.row].medical_form
-                                    vc?.header = self.data[indexPath.row].name
-                                    vc?.facilityid = self.data[indexPath.row].id
+                                    vc?.isform = self.data![indexPath.row].medical_form
+                                    vc?.header = self.data![indexPath.row].name
+                                    vc?.facilityid = self.data![indexPath.row].id
                                     vc?.list = list
                                     vc?.presentPage = self.presentPage
                                     self.openVC(vc!, self.presentPage)

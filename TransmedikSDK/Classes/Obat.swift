@@ -30,16 +30,13 @@ class Obat: NSObject {
         
         Alamofire.request(url, method: .get, encoding: JSONEncoding.default, headers: headers)
             .responseJSON { respon in
-                // print(respon)
+                 print(respon)
                 switch respon.result {
                 case let .success(value):
                     let json = JSON(value)
-                    // print("uuuu")
-                    // print(json["code"].stringValue)
+                  
                     if json["code"].stringValue == "200"{
-                        // print(1)
-                        // print(json["success"].intValue)
-                        // print(json["success"].boolValue)
+                  
                         if json["success"].boolValue{
                             // print(2)
                             if json["data"]["recipes"].count > 0{

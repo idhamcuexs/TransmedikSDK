@@ -23,7 +23,7 @@ Pod::Spec.new do |s|
   s.source_files = 'TransmedikSDK/Classes/*.swift'
   
   s.resource_bundles = {
-    'TransmedikSDK' => ['TransmedikSDK/Assets/*.{storyboard,xcassets,xib,png,jpg,ttf}']
+    'TransmedikSDK' => ['TransmedikSDK/Assets/*.{storyboard,xcassets,xib,png,jpg,ttf,json}']
   }
   
   

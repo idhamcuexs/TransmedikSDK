@@ -8,6 +8,7 @@
 import UIKit
 import DropDown
 import Parse
+import SkeletonView
 
 
 
@@ -27,7 +28,7 @@ class NewHistoryViewController: UIViewController {
         didSet{
             if mdata.count > 0{
                 self.user.setTitle(mdata[rowuser].full_name, for: .normal)
-                getData()
+                getDatas()
             }
         }
     }
@@ -63,7 +64,7 @@ class NewHistoryViewController: UIViewController {
     
     func set(){
         if success && loadingint == 2 {
-            closeloading(self)
+//            closeloading(self)
             setuser()
             if mdata.count > 0{
                 rowuser = 0
@@ -91,11 +92,12 @@ class NewHistoryViewController: UIViewController {
         self.tabBarController?.tabBar.isHidden = true
       
         setupSpinner()
+        table.register(cellHistoryTableViewCell.nib(), forCellReuseIdentifier: cellHistoryTableViewCell.identifier)
         
         
     }
     override func viewDidAppear(_ animated: Bool) {
-        self.loading(self)
+//        self.loading(self)
         koneksi()
     }
     
@@ -114,14 +116,20 @@ class NewHistoryViewController: UIViewController {
         self.table.tableFooterView = spinner
     }
     
-    func getData(){
+    func getDatas(){
         if CheckInternet.Connection(){
             self.getdatahistory = true
             table.backgroundView = nil
             if let token = UserDefaults.standard.string(forKey: AppSettings.Tokentransmedik) {
+                self.table.showAnimatedSkeleton()
+                self.dataObat = nil
+                self.dataKonsultasi = nil
+//                print("masuk")
                 self.api.NewGetHistories(token: token, uuid: mdata[rowuser].uuid, selected: selected, page: 1) { obat, konsultasi in
-                    
+                 
                     if obat == nil && konsultasi == nil {
+                        self.table.hideSkeleton()
+                        self.table.stopSkeletonAnimation()
                         self.table.backgroundView = self.notfound
                         // print("close1")
                     }
@@ -131,33 +139,41 @@ class NewHistoryViewController: UIViewController {
                         if obat?.data?.data?.count ?? 0 == 0{
                             self.table.backgroundView = self.notfound
                             // print("close2")
-
+                            self.table.hideSkeleton()
+                            self.table.stopSkeletonAnimation()
                         }else{
-
+                            self.table.hideSkeleton()
+                            self.table.stopSkeletonAnimation()
                             self.table.backgroundView = nil
                         }
                     }else{
                         self.dataKonsultasi = konsultasi
                         if  konsultasi?.data?.data?.count ?? 0 == 0 {
                             // print("close2")
-
+                            self.table.hideSkeleton()
+                            self.table.stopSkeletonAnimation()
                             self.table.backgroundView = self.notfound
                         }else{
                             // print("close3")
-
+                            self.table.hideSkeleton()
+                            self.table.stopSkeletonAnimation()
                             self.table.backgroundView = nil
                         }
                     }
                     
                     self.getdatahistory = false
                     DispatchQueue.main.asyncAfter(deadline: .now() + 0.4) {
+                        
                         self.table.reloadData()
+                        self.table.hideSkeleton()
+                        self.table.stopSkeletonAnimation()
                     }
                 }
                 
             }
             
         }else{
+            self.table.hideSkeleton()
             self.table.reloadData()
             self.getdatahistory = false
             table.backgroundView = notconnection
@@ -315,13 +331,26 @@ class NewHistoryViewController: UIViewController {
 
 
 
-extension NewHistoryViewController : UITableViewDelegate,UITableViewDataSource{
+extension NewHistoryViewController : UITableViewDelegate,UITableViewDataSource,SkeletonTableViewDelegate,SkeletonTableViewDataSource{
+    
+    func collectionSkeletonView(_ skeletonView: UITableView, cellIdentifierForRowAt indexPath: IndexPath) -> ReusableCellIdentifier {
+        return cellHistoryTableViewCell.identifier
+    }
+    
+    func collectionSkeletonView(_ skeletonView: UITableView, numberOfRowsInSection section: Int) -> Int {
+       return 4
+    }
+    
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         //    historiescellobatTableViewCell
         
         if selected == 1{
+//            print(dataObat?.data?.data?.count)
             return dataObat?.data?.data?.count ?? 0
         }else{
+//            print(dataKonsultasi?.data?.data?.count)
+
             return dataKonsultasi?.data?.data?.count ?? 0
             
         }
@@ -330,22 +359,28 @@ extension NewHistoryViewController : UITableViewDelegate,UITableViewDataSource{
     
     func adddata(){
         if CheckInternet.Connection(){
+            var page = 0
             if selected == 1 {
                 guard dataObat != nil && (dataObat!.data!.current_page! < dataObat!.data!.last_page!) else {
                     return
                 }
+                page = dataObat!.data!.current_page!
                 
             }else{
                 guard dataKonsultasi != nil && (dataKonsultasi!.data!.current_page! < dataKonsultasi!.data!.last_page!) else {
                     return
                 }
+                page = dataKonsultasi!.data!.current_page!
             }
             
+            
+            guard !getdatahistory else {
+                return
+            }
+            getdatahistory = true
             self.spinner.startAnimating()
             if let token = UserDefaults.standard.string(forKey: AppSettings.Tokentransmedik) {
-                self.api.NewGetHistories(token: token, uuid: mdata[rowuser].uuid, selected: selected, page: dataKonsultasi!.data!.current_page! + 1) { obat, konsultasi in
-                    
-                  
+                self.api.NewGetHistories(token: token, uuid: mdata[rowuser].uuid, selected: selected, page: page + 1) { obat, konsultasi in
                     
                     if self.selected == 1{
                         for index in   obat!.data!.data!{
@@ -353,13 +388,12 @@ extension NewHistoryViewController : UITableViewDelegate,UITableViewDataSource{
                         }
                         self.dataObat!.data!.current_page = obat!.data!.current_page!
                     }else{
-                        for index in   konsultasi!.data!.data!{
+                        for index  in   konsultasi!.data!.data!{
                             self.dataKonsultasi?.data?.data?.append(index)
                         }
                         self.dataKonsultasi!.data!.current_page = konsultasi!.data!.current_page!
                     }
                     self.spinner.stopAnimating()
-                    
                     self.getdatahistory = false
                     DispatchQueue.main.asyncAfter(deadline: .now() + 0.4) {
                         self.table.reloadData()
@@ -536,14 +570,14 @@ extension NewHistoryViewController : UITableViewDelegate,UITableViewDataSource{
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if selected! == 2 {
-            let cell = tableView.dequeueReusableCell(withIdentifier: "konsultasi", for: indexPath) as! historiescellkonsulTableViewCell
+            let cell = tableView.dequeueReusableCell(withIdentifier: cellHistoryTableViewCell.identifier, for: indexPath) as! cellHistoryTableViewCell
             cell.row = indexPath.row
             cell.delegate = self
             cell.historyTwo(data: dataKonsultasi!.data!.data![indexPath.row])
             
             return cell
         }else{
-            let cell = tableView.dequeueReusableCell(withIdentifier: "konsultasi", for: indexPath) as! historiescellkonsulTableViewCell
+            let cell = tableView.dequeueReusableCell(withIdentifier: cellHistoryTableViewCell.identifier, for: indexPath) as! cellHistoryTableViewCell
             cell.row = indexPath.row
             cell.delegate = self
             cell.historyOne(data: dataObat!.data!.data![indexPath.row])
@@ -560,9 +594,9 @@ extension NewHistoryViewController : UITableViewDelegate,UITableViewDataSource{
 }
 
 
-extension NewHistoryViewController: historiescellkonsulTableViewCelldelegate,ratingViewControllerdelegate{
+extension NewHistoryViewController: cellHistoryTableViewCellDelegate,ratingViewControllerdelegate{
     func kembalirating() {
-        getData()
+        getDatas()
     }
     
     func chatulang(row: Int) {

@@ -283,6 +283,7 @@ class NewCheckConsulVC: UIViewController,UITextViewDelegate {
         konfirmasiButton.backgroundColor = Colors.buttonnonActive
         konfirmasiButton.layer.cornerRadius = 10
         viewForm.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(form)))
+        editProfileButton.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(edit)))
         viewInformasi.layer.cornerRadius = 10
         viewForm.layer.cornerRadius = 10
         viewStatus.layer.cornerRadius = 8
@@ -437,8 +438,9 @@ class NewCheckConsulVC: UIViewController,UITextViewDelegate {
 
     }
     
-    func edit() {
+    @objc func edit() {
   
+        
         let vc = UIStoryboard(name: "Edituser", bundle: AppSettings.bundleframeworks()).instantiateViewController(withIdentifier: "edit_and_add_phrViewController") as? edit_and_add_phrViewController
         vc?.delegate = self
         
@@ -448,7 +450,8 @@ class NewCheckConsulVC: UIViewController,UITextViewDelegate {
         vc?.presentPage = self.presentPage
         
         vc?.datauser = mdata[row]
-        openVC(vc!, presentPage)
+        self.present(vc!, animated: true, completion: nil)
+//        openVC(vc!, presentPage)
 //        vc?.header.text = header
 
         
