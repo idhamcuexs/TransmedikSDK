@@ -155,7 +155,12 @@ class NewTrackingViewController: UIViewController {
                         if data!.couriers?.tracking_url == nil || data!.couriers?.tracking_url == "" {
                             self.lacakDriver.isHidden = true
                         }else{
-                            self.lacakDriver.isHidden = false
+                            if data!.order_status ?? "" == "Delivered"{
+                                self.lacakDriver.isHidden = true
+                            }else{
+                                self.lacakDriver.isHidden = false
+                            }
+                           
                         }
                         self.diskon.text = "Rp.\(diskons.formattedWithSeparator)"
                         self.total.text = data!.total
@@ -325,5 +330,17 @@ extension NewTrackingViewController : UITableViewDelegate,UITableViewDataSource{
         // print("waehs")
         return  UITableView.automaticDimension
     }
+    
+    /*
+     
+     let vc = UIStoryboard(name: "Webviews", bundle: AppSettings.bundleframeworks()).instantiateViewController(withIdentifier: "OpenpdfViewController") as? OpenpdfViewController
+     vc?.headers = "Pembayaran"
+     vc?.delegate = self
+     vc?.urlstring = url!
+     vc?.merchant_id = trans_merchant_id!
+     // print("trans_merchant_id >>> " + trans_merchant_id!)
+     self.present(vc!, animated: true, completion: nil)
+     
+     */
     
 }

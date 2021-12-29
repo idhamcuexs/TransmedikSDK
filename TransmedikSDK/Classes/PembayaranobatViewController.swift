@@ -210,9 +210,9 @@ extension PembayaranobatViewController {
     @objc func konfirmasiaction(){
         
         if dompet{
-            let vc = UIStoryboard(name: "pinandpassword", bundle: AppSettings.bundleframeworks()).instantiateViewController(withIdentifier: "insertpinViewController") as? insertpinViewController
-            vc?.delegate = self
-            self.present(vc!, animated: true, completion: nil)
+//            let vc = UIStoryboard(name: "pinandpassword", bundle: AppSettings.bundleframeworks()).instantiateViewController(withIdentifier: "insertpinViewController") as? insertpinViewController
+//            vc?.delegate = self
+//            self.present(vc!, animated: true, completion: nil)
         }else{
             
             if let token = UserDefaults.standard.string(forKey: AppSettings.Tokentransmedik){

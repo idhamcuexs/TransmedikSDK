@@ -7,7 +7,7 @@
 
 import FSPagerView
 import CoreLocation
-import BubbleShowCase
+//import BubbleShowCase
 import Kingfisher
 import Parse
 

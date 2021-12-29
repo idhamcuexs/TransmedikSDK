@@ -6,12 +6,12 @@
 //  Copyright © 2020 idham. All rights reserved.
 //
 
-import Foundation
-
-class adds {
-    var image:String
-    
-    init(image:String) {
-        self.image = image
-    }
-}
+//import Foundation
+//
+//class adds {
+//    var image:String
+//    
+//    init(image:String) {
+//        self.image = image
+//    }
+//}
