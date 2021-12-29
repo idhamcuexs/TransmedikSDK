@@ -13,8 +13,8 @@ import CoreLocation
 
 
 
-
-class ResepViewController: UIViewController {
+//
+class ResepViewController: UIViewController,CLLocationManagerDelegate {
     
     
     @IBOutlet weak var navi: UIView!
@@ -22,6 +22,7 @@ class ResepViewController: UIViewController {
     @IBOutlet weak var back: UIView!
     
     
+    @IBOutlet weak var stuckAlamat: UIStackView!
     @IBOutlet weak var date: UILabel!
     @IBOutlet weak var doctorPhoto: UIImageView!
     @IBOutlet weak var doctorName: UILabel!
@@ -47,20 +48,22 @@ class ResepViewController: UIViewController {
     
     @IBOutlet weak var beli: UIView!
     
-    
+    let locationManager = CLLocationManager()
     var consultation: ConsultationPostModel?
     var json: JSON?
     var api = resepdigitalobject()
-    var resep = [Resepobat]()
+//    var resep = [Resepobat]()
     var prescription_id = ""
     var data : Resepdigital?
-    
-    var long,lat : Double?
+    var location : NameMyLocation?
+
+   
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        beli.isUserInteractionEnabled = false
+//        beli.isUserInteractionEnabled = false
+        stuckAlamat.isHidden.toggle()
         self.view.layoutIfNeeded()
         self.view.backgroundColor = Colors.backgroundmaster
         pasienPhoto.layer.cornerRadius = 25
@@ -82,6 +85,12 @@ class ResepViewController: UIViewController {
         view3.layer.cornerRadius = 10
         view3.dropShadow(shadowColor: UIColor.lightGray, fillColor: UIColor.white, opacity: 0.5, offset: CGSize(width: 2, height: 2), radius: 4)
         
+        if (CLLocationManager.locationServicesEnabled()) {
+            locationManager.delegate = self
+            locationManager.desiredAccuracy = kCLLocationAccuracyBest
+            locationManager.requestWhenInUseAuthorization()
+            locationManager.startUpdatingLocation()
+        }
         
         tinggiTable.constant = tables.contentSize.height
         beli.layer.cornerRadius = 10
@@ -123,11 +132,6 @@ class ResepViewController: UIViewController {
         
     }
     
-    //    func textViewDidBeginEditing(_ textView: UITextView) {
-    //        if textView == alamat{
-    //
-    //        }
-    //    }
     @objc func getalamat(){
         let vc = UIStoryboard(name: "Alamat", bundle: AppSettings.bundleframework).instantiateViewController(withIdentifier: "SetMapingViewController") as? SetMapingViewController
         vc?.delegate = self
@@ -144,39 +148,23 @@ class ResepViewController: UIViewController {
     }
     
     @objc func buy(){
-        print("buy")
-        //        Toast.show(message: "Beli Obat", controller: self)//
-        
-        // print("beliButtonDidTap")
-        long = 106.847336
-        lat = -6.252300
-        //        guard long != nil else {
-        //            return Toast.show(message: "Anda belum mengisi alamat pengiriman", controller: self)
-        //        }
         let vc = UIStoryboard(name: "Orderobat", bundle: AppSettings.bundleframework).instantiateViewController(withIdentifier: "OrderobatViewController") as? OrderobatViewController
         vc?.id = String(self.consultation!.consultation_id!)
-        vc?.location = NameMyLocation(location: CLLocationCoordinate2D(latitude: lat!, longitude: long!), address: alamat.text ?? "" , note: note.text ?? "")
+        vc?.location = self.location
+        var param = [Parameters]()
+        for index in  self.data!.recipes!{
+            param.append([  "medicine": index.slug!,
+                            "medicine_code_partner": index.medicine_code_partner!,
+                            "prescription_id": index.prescription_id!,
+                            "qty": index.qty!
+            ])
+        }
+        vc?.order = param
+        
         vc?.prescription_id = self.prescription_id
         self.present(vc!, animated: true, completion: nil)
         
-        //        let alert = CDAlertView(title: "Pembelian Obat", message: "Apakah ingin memperbaharui keranjang belanja?", type: .warning)
-        //
-        //        let yesAction = CDAlertViewAction(title: LocalizationHelper.getInstance().yes) { (CDAlertViewAction) -> Bool in
-        //
-        //            let vc = UIStoryboard(name: "Orderobat", bundle: AppSettings.bundleframework).instantiateViewController(withIdentifier: "OrderobatViewController") as? OrderobatViewController
-        //            vc?.id = String(self.consultation!.consultation_id!)
-        //            vc?.prescription_id = self.prescription_id
-        //            self.present(vc!, animated: true, completion: nil)
-        //
-        //            return true
-        //        }
-        //        let noAction = CDAlertViewAction(title: LocalizationHelper.getInstance().no) { (CDAlertViewAction) -> Bool in
-        //            return true
-        //        }
-        //
-        //        alert.add(action: noAction)
-        //        alert.add(action: yesAction)
-        //        alert.show()
+   
         
     }
     
@@ -239,11 +227,57 @@ extension ResepViewController: UITableViewDelegate,UITableViewDataSource{
 
 extension ResepViewController : SetMapingViewControllerDelegate{
     func setLocation(long: Double, lat: Double, alamat: String, note: String) {
-        self.long = long
-        self.lat = lat
-        self.alamat.text = alamat
-        self.note.text = note
-        beli.isUserInteractionEnabled = true
+        location = NameMyLocation(location: CLLocationCoordinate2D(latitude: lat, longitude: long), address: alamat, note: note)
+    }
+    
+    
+    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+        let location = locations[0]
+        
+        let tmplocation = CLLocationCoordinate2D(latitude: location.coordinate.latitude, longitude: location.coordinate.longitude)
+        let loc = CLLocation(latitude: location.coordinate.latitude, longitude: location.coordinate.longitude)
+//         print("get my location")
+//         print(tmplocation)
+        let geocoder = CLGeocoder()
+        geocoder.reverseGeocodeLocation(loc) { (locstring, err) in
+            if let _ = err {
+                return // print("error cuy")
+            }
+            let pm = locstring! as [CLPlacemark]
+            
+            if pm.count > 0 {
+                let pm = locstring![0]
+                var addressString : String = ""
+                if pm.subLocality != nil {
+                    addressString = addressString + pm.subLocality! + ", "
+                }
+                if pm.thoroughfare != nil {
+                    addressString = addressString + pm.thoroughfare! + ", "
+                }
+                if pm.locality != nil {
+                    addressString = addressString + pm.locality! + ", "
+                }
+                if pm.country != nil {
+                    addressString = addressString + pm.country! + ", "
+                }
+                if pm.postalCode != nil {
+                    addressString = addressString + pm.postalCode! + " "
+                }
+                
+                 print(addressString)
+                self.alamat.text = addressString
+                if self.location == nil {
+                    self.location = NameMyLocation(location: tmplocation, address: addressString, note: "")
+                }
+               
+                //                // print(addressString)
+            }
+            
+            
+        }
+        
+        locationManager.stopUpdatingLocation()
+        
     }
     
     

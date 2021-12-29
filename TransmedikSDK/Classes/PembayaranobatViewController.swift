@@ -14,6 +14,8 @@ import Alamofire
 
 class PembayaranobatViewController: UIViewController {
     
+    @IBOutlet weak var viewcod: UIView!
+    @IBOutlet weak var viewDompet: UIView!
     
     @IBOutlet weak var back: UIView!
     @IBOutlet weak var viewtables: UIView!
@@ -23,11 +25,11 @@ class PembayaranobatViewController: UIViewController {
     
     //diskon
     @IBOutlet weak var viewkode: UIView!
-    @IBOutlet weak var notediskon: UILabel!
     @IBOutlet weak var biayabarang: UILabel!
     @IBOutlet weak var totalpotongan: UILabel!
     @IBOutlet weak var detailpotongan: UILabel!
     @IBOutlet weak var totalpembayaran: UILabel!
+    @IBOutlet weak var biayaMandiri: UILabel!
     
     //cour
     
@@ -44,38 +46,14 @@ class PembayaranobatViewController: UIViewController {
     @IBOutlet weak var metodePay: UILabel!
     @IBOutlet weak var otherPayButton: UIButton!
     
+    @IBOutlet weak var navi: UIView!
     
 
     @IBOutlet weak var konfirmasi: UIView!
     var Voucher = Voucherobject()
     var getmoney = balanceobject()
     var mymoney : Mbalance?
-    var datavoucher : ModelVoucer?{
-        didSet{
-            if datavoucher != nil {
-                if notediskon.isHidden {
-                    notediskon.isHidden.toggle()
-                }
-                self.view.layoutIfNeeded()
-                if datavoucher!.type == "2"{
-                    self.detailpotongan.text = "Potongan " + String(datavoucher!.nominal) + "%"
-                }else{
-                    self.detailpotongan.text = "Potongan " + String(datavoucher!.nominal)
-                }
-                
-                self.notediskon.text = "Kode promo berhasil dipakai. Anda menghemat \(setmoney(harga: getdiskon()))"
-                biayabarang.text = setmoney(harga: totalbarang())
-                totalpotongan.text = setmoney(harga: getdiskon())
-                totalpembayaran.text = "Rp \(finaltotal().formattedWithSeparator)"
 
-                
-            }else{
-      
-                self.view.layoutIfNeeded()
-            }
-        }
-    }
-    
     var detailpayment  : detailpayment?
     var selectCour : Int?
     @IBOutlet weak var viewpromos: UIView!
@@ -93,11 +71,10 @@ class PembayaranobatViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         getmymoney()
-        
-        
+        viewDompet.isHidden.toggle()
+        viewcod.isHidden.toggle()
         back.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(kembali)))
         self.view.backgroundColor = Colors.backgroundmaster
-        notediskon.isHidden.toggle()
         viewpromos.layer.cornerRadius = 8
         nameCour.text = data!.data!.couriers![selectCour!].name!
         priceCour.text = "Rp \(Int(data!.data!.couriers![selectCour!].price!)!.formattedWithSeparator)"
@@ -119,6 +96,17 @@ class PembayaranobatViewController: UIViewController {
         bottomViewPay.isHidden.toggle()
         self.view.layoutIfNeeded()
         viewPembayaranLainnya.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(getotherpay)))
+        biayabarang.text = "Rp \(totalbarang().formattedWithSeparator)"
+        totalpotongan.text =  "Rp \(getdiskon().formattedWithSeparator)"
+        totalpembayaran.text = "Rp \(finaltotal().formattedWithSeparator)"
+        biayaMandiri.text  = "Rp \((totalbarang() - getdiskon()).formattedWithSeparator)"
+
+
+        navi.dropShadow(shadowColor: UIColor.lightGray, fillColor: UIColor.white, opacity: 0.5, offset: CGSize(width: 2, height: 2), radius: 4)
+        viewtables.dropShadow(shadowColor: UIColor.lightGray, fillColor: UIColor.white, opacity: 0.5, offset: CGSize(width: 2, height: 2), radius: 4)
+        viewkode.dropShadow(shadowColor: UIColor.lightGray, fillColor: UIColor.white, opacity: 0.5, offset: CGSize(width: 2, height: 2), radius: 4)
+        viewPembayaranLainnya.dropShadow(shadowColor: UIColor.lightGray, fillColor: UIColor.white, opacity: 0.5, offset: CGSize(width: 2, height: 2), radius: 4)
+        
         
         
     }
@@ -207,28 +195,13 @@ class PembayaranobatViewController: UIViewController {
     
     
     func getdiskon() -> Int{
-        var _voucher = 0
-        if datavoucher != nil {
-            if datavoucher!.type == "2"{
-                _voucher = (datavoucher!.nominal * totalbarang()) / 100
-            }else{
-                _voucher = datavoucher!.nominal
-            }
-            
-        }
-        return _voucher
+        return totalbarang() >= self.data!.data!.limit_leftover! ? self.data!.data!.limit_leftover! : totalbarang()
     }
     
     func finaltotal()->Int{
         
-        var  _tmptotal = totalbarang()
-        if datavoucher != nil {
-            _tmptotal -= getdiskon()
-        }
+        return (totalbarang() - getdiskon()) + Int(self.data!.data!.couriers![selectCour!].price!)!
         
-        _tmptotal += Int(data!.data!.couriers![selectCour!].price!)!
-        
-        return _tmptotal
     }
 }
 
@@ -253,8 +226,8 @@ extension PembayaranobatViewController {
                     }
                    
                 }
-                let _tmpvoucher = self.datavoucher == nil ?  "null" : self.datavoucher!.slug
-                let voceramount = self.datavoucher == nil ? 0 : getdiskon()
+                let _tmpvoucher = "null"
+                let voceramount = 0
                 
                 
                 let paramer = "{\"address\": \"\(mylocation.address)\",\"id\": \(indexs.id!),\"courier\": {\"id\": \(indexs.couriers![selectCour!].id!),\"note\": \"\",\"price\": \(indexs.couriers![selectCour!].price!),\"type\": \"\(indexs.couriers![selectCour!].type!)\"}, \"map_lat\": \"\(mylocation.location.latitude)\", \"map_lng\": \"\(mylocation.location.longitude)\",\"note\": \"\(mylocation.note)\",\"medicines\": [\(medicines)],\"payment_id\": \(detailpayment!.payment_id),\"payment_name\": \"\(detailpayment!.account_name)\",\"pharmacy_address\": \"\(data!.data!.address!)\",\"pharmacy_custNumber\": \"\(data!.data!.pharmacy_custNumber!)\",\"pharmacy_shiptoNumber\": \"\(data!.data!.pharmacy_shiptoNumber!)\",\"pin\": \"null\",\"subtotal\": \(totalbarang()),\"total\": \(finaltotal()), \"voucher\": \(_tmpvoucher),\"voucher_amount\": \(voceramount)}"
@@ -353,8 +326,8 @@ extension PembayaranobatViewController :pembayaranrincianobatViewControllerdeleg
                 }
                
             }
-            let _tmpvoucher = self.datavoucher == nil ?  "null" : self.datavoucher!.slug
-            let voceramount = self.datavoucher == nil ? 0 : getdiskon()
+            let _tmpvoucher = "null"
+            let voceramount = 0
             
             
             let paramer = "{\"address\": \"\(mylocation.address)\",\"id\": \(indexs.id!),\"courier\": {\"id\": \(indexs.couriers![selectCour!].id!),\"note\": \"\",\"price\": \(indexs.couriers![selectCour!].price!),\"type\": \"\(indexs.couriers![selectCour!].type!)\"}, \"map_lat\": \"\(mylocation.location.latitude)\", \"map_lng\": \"\(mylocation.location.longitude)\",\"note\": \"\(mylocation.note)\",\"medicines\": [\(medicines)],\"payment_id\": 2,\"payment_name\": \"Escrow\",\"pharmacy_address\": \"\(data!.data!.address!)\",\"pharmacy_custNumber\": \"\(data!.data!.pharmacy_custNumber!)\",\"pharmacy_shiptoNumber\": \"\(data!.data!.pharmacy_shiptoNumber!)\",\"pin\": \"\(pin)\",\"subtotal\": \(totalbarang()),\"total\": \(finaltotal()), \"voucher\": \(_tmpvoucher),\"voucher_amount\": \(voceramount)}"
@@ -411,14 +384,7 @@ extension PembayaranobatViewController :pembayaranrincianobatViewControllerdeleg
                             self.present(vc!, animated: false, completion: nil)
                         }
                         
-                        if status{
-                            self.datavoucher = datatmp
-                            
-                        }
-                        else{
-                            self.datavoucher = nil
-                            Toast.show(message: msg, controller: self)
-                        }
+                  
                     }
                 }
             

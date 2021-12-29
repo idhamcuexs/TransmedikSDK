@@ -187,6 +187,16 @@ public class Transmedik {
         let stringtoken = email + "#" + phone_number + "#" + AppSettings.SECRET
         
         
+        UserDefaults.standard.removeObject(forKey: AppSettings.Tokentransmedik)
+        UserDefaults.standard.removeObject(forKey: AppSettings.uuid)
+        UserDefaults.standard.removeObject(forKey: AppSettings.email)
+        UserDefaults.standard.removeObject(forKey: AppSettings.name)
+        UserDefaults.standard.removeObject(forKey: AppSettings.profile_picture)
+        UserDefaults.standard.removeObject(forKey: AppSettings.nik)
+        UserDefaults.standard.removeObject(forKey: AppSettings.tokenparse)
+        UserDefaults.standard.removeObject(forKey: AppSettings.pin)
+        UserDefaults.standard.removeObject(forKey: AppSettings.phone)
+        
         
         let headers: HTTPHeaders = [
             "Accept": "application/json",
@@ -252,6 +262,7 @@ public class Transmedik {
                         complited(true,"")
                         
                     }else{
+                        
                         complited(false,json["messages"].stringValue)
                         
                     }

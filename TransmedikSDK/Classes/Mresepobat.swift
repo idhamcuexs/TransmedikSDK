@@ -34,7 +34,7 @@ struct  Dokter  : Codable {
 }
 
 struct Resepobats  : Codable {
-    var medicines_name,slug,rule,period,unit : String?
+    var medicines_name,medicine_code_partner,slug,rule,period,unit : String?
     var qty,prescription_id : Int?
     var status : Bool?
 }

@@ -14,7 +14,6 @@ class Obat: NSObject {
     
     func getresep(token : String, param:Parameters ,complited: @escaping(Data?)->()){
         
-        // print(token)
         let headers: HTTPHeaders = [
             "Authorization": "Bearer \(token)",
             "Accept": "application/json",
@@ -22,9 +21,9 @@ class Obat: NSObject {
         ]
         
 
-        let url = "\(AppSettings.Url)medicine-stock-pharmacy"
-
-        
+        let url = "\(AppSettings.Url)medicine-stocks-pharmacy"
+   
+            
         Alamofire.request(url, method: .post,parameters: param, encoding: JSONEncoding.default, headers: headers)
             .responseJSON { respon in
                  print(respon)

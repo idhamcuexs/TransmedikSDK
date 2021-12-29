@@ -8,6 +8,8 @@
 import UIKit
 import CoreLocation
 import Kingfisher
+import SwiftyJSON
+import Alamofire
 
 struct NameMyLocation {
     var location : CLLocationCoordinate2D
@@ -15,6 +17,10 @@ struct NameMyLocation {
 }
 class OrderobatViewController: UIViewController,CLLocationManagerDelegate, listalamatViewControllerdelegate {
     
+    @IBOutlet weak var view1: UIView!
+    @IBOutlet weak var view2: UIView!
+    @IBOutlet weak var view3: UIView!
+    @IBOutlet weak var navi: UIView!
     
     @IBOutlet weak var back: UIView!
     @IBOutlet weak var header: UILabel!
@@ -36,7 +42,7 @@ class OrderobatViewController: UIViewController,CLLocationManagerDelegate, lista
     
     
     var selectcour : Int?
-    var order : [[String : Any]]?
+    var order : [Parameters]?
     var loading = false{
         didSet{
             if loading{
@@ -59,28 +65,37 @@ class OrderobatViewController: UIViewController,CLLocationManagerDelegate, lista
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        tableResep.delegate = self
-        tableResep.dataSource = self
-        tableKurir.delegate = self
-        tableKurir.dataSource = self
-        self.hightable.constant = tableResep.contentSize.height
-        self.hightTableKurir.constant = tableKurir.contentSize.height
+        view2.layer.cornerRadius = 10
+        view1.layer.cornerRadius = 10
+        view3.layer.cornerRadius = 10
         
+        view1.dropShadow(shadowColor: UIColor.lightGray, fillColor: UIColor.white, opacity: 0.5, offset: CGSize(width: 2, height: 2), radius: 4)
+        view3.dropShadow(shadowColor: UIColor.lightGray, fillColor: UIColor.white, opacity: 0.5, offset: CGSize(width: 2, height: 2), radius: 4)
+        view2.dropShadow(shadowColor: UIColor.lightGray, fillColor: UIColor.white, opacity: 0.5, offset: CGSize(width: 2, height: 2), radius: 4)
+        navi.dropShadow(shadowColor: UIColor.lightGray, fillColor: UIColor.white, opacity: 0.5, offset: CGSize(width: 2, height: 2), radius: 4)
+        
+        
+        
+        viewNote.isHidden = true
+        saveButton.layer.cornerRadius = 10
+        saveButton.backgroundColor = Colors.buttonnonActive
+        edit.isHidden = true
+        edit.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(setalamat)))
+        back.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(kembali)))
+        
+        
+    }
+    override func viewDidAppear(_ animated: Bool) {
+        if location != nil{
+            getresep()
+        }
         if (CLLocationManager.locationServicesEnabled()) {
             locationManager.delegate = self
             locationManager.desiredAccuracy = kCLLocationAccuracyBest
             locationManager.requestWhenInUseAuthorization()
             locationManager.startUpdatingLocation()
         }
-        getresep()
-        saveButton.layer.cornerRadius = 10
-        
-        edit.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(setalamat)))
-        back.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(kembali)))
-        
-        
     }
-
     
     @objc func kembali(){
         dismiss(animated: true, completion: nil)
@@ -121,8 +136,8 @@ class OrderobatViewController: UIViewController,CLLocationManagerDelegate, lista
         
         let tmplocation = CLLocationCoordinate2D(latitude: location.coordinate.latitude, longitude: location.coordinate.longitude)
         let loc = CLLocation(latitude: location.coordinate.latitude, longitude: location.coordinate.longitude)
-        // print("get my location")
-        // print(tmplocation)
+         print("get my location")
+//         print(tmplocation)
         let geocoder = CLGeocoder()
         geocoder.reverseGeocodeLocation(loc) { (locstring, err) in
             if let _ = err {
@@ -149,10 +164,12 @@ class OrderobatViewController: UIViewController,CLLocationManagerDelegate, lista
                     addressString = addressString + pm.postalCode! + " "
                 }
                 
-                // print(addressString)
+                 print(addressString)
                 self.alamat.text = addressString
-                if self.location != nil {
+                if self.location == nil {
                     self.location = NameMyLocation(location: tmplocation, address: addressString, note: "")
+                    self.getresep()
+
                 }
                
                 //                // print(addressString)
@@ -221,15 +238,30 @@ class OrderobatViewController: UIViewController,CLLocationManagerDelegate, lista
                 
 //                let orders =
                 let param : [String : Any] = [
-                    "map_lat" : "",
-                    "map_lng" : "",
-                    "order" : order!
+                    "map_lat" : location?.location.latitude ?? 0.0,
+                    "map_lng" : location?.location.longitude ?? 0.0,
+                    "orders" : order!
                 ]
+                
                 api.getresep(token: token, param: param) { data in
-                    
+                    do{
+                        let result = try JSONDecoder().decode(GetPriceObat.self, from: data!)
+                        self.data = result
+                        self.loading = false
+
+                        self.tableResep.reloadData()
+                        self.tableKurir.reloadData()
+                        self.viewNote.isHidden = true
+                        
+                    }catch{
+                        self.viewNote.isHidden = false
+                        self.labelNote.text = "Terjadi masalah pada server"
+                    }
                 }
             }
         }else{
+            
+            viewNote.isHidden = false
             labelNote.text = "Internet tidak terhubung. Tolong cek kembali koneksi anda!"
         }
  
@@ -260,6 +292,7 @@ extension OrderobatViewController: UITableViewDelegate,UITableViewDataSource{
         switch tableView {
         case tableResep:
             if data != nil {
+                print("masuk y")
                 let index = data?.data?.medicines?[indexPath.row]
                 let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as! cartobatpriceTableViewCell
                 cell.namaobat.text = "\(index?.name ?? "") @Rp\(Int(index!.price ?? "0")!.formattedWithSeparator)"
@@ -312,6 +345,7 @@ extension OrderobatViewController: UITableViewDelegate,UITableViewDataSource{
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         if tableView == tableKurir{
+            saveButton.backgroundColor = Colors.buttonActive
             selectcour = indexPath.row
             tableKurir.reloadData()
             
