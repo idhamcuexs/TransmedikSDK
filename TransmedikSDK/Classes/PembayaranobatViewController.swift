@@ -97,7 +97,7 @@ class PembayaranobatViewController: UIViewController {
         self.view.layoutIfNeeded()
         viewPembayaranLainnya.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(getotherpay)))
         biayabarang.text = "Rp \(totalbarang().formattedWithSeparator)"
-        totalpotongan.text =  "Rp \(getdiskon().formattedWithSeparator)"
+        totalpotongan.text =  " - Rp \(getdiskon().formattedWithSeparator)"
         totalpembayaran.text = "Rp \(finaltotal().formattedWithSeparator)"
         biayaMandiri.text  = "Rp \((totalbarang() - getdiskon()).formattedWithSeparator)"
 
@@ -195,7 +195,8 @@ class PembayaranobatViewController: UIViewController {
     
     
     func getdiskon() -> Int{
-        return totalbarang() >= self.data!.data!.limit_leftover! ? self.data!.data!.limit_leftover! : totalbarang()
+        let potongan = self.data!.data!.limit_leftover! < 0 ? 0 : self.data!.data!.limit_leftover!
+        return totalbarang() >= potongan ? potongan : totalbarang()
     }
     
     func finaltotal()->Int{

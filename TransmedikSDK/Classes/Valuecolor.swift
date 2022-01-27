@@ -28,7 +28,7 @@ struct Colors {
     static let buttonActive: UIColor =  UIColor.init(rgb: 0xf08b23)
     static let buttonnonActive: UIColor =  UIColor.init(rgb: 0x959394)
 
-    
+    static let available : UIColor = .init(rgb: 0x02cc05)
     
 
 

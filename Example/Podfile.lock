@@ -35,7 +35,7 @@ PODS:
   - SteviaLayout (4.7.3)
   - SVPinView (1.0.11)
   - SwiftyJSON (5.0.0)
-  - TransmedikSDK (1.2.5):
+  - TransmedikSDK (1.2.7):
     - Alamofire (~> 4.7.3)
     - CDAlertView (~> 0.10.0)
     - DividerView (~> 3.0)
@@ -140,7 +140,7 @@ SPEC CHECKSUMS:
   SteviaLayout: c2ecdcff57d44e38fd2f65e54ad52aeae28ca0c4
   SVPinView: 9b538d0ba68cdb092afe4f0f67ec84cbed079466
   SwiftyJSON: 36413e04c44ee145039d332b4f4e2d3e8d6c4db7
-  TransmedikSDK: bc428de7fa5220ed54b13058b8d69d70d0862790
+  TransmedikSDK: 2909994792eb3a4741a70df7b6771bb7e1cb0a74
   URLEmbeddedView: 3fe17ae535d2b8d38c3b08ab8ba0aea5efe5d1cd
   YPImagePicker: 15aed8bcaa4dad976e11b6114126d731a2f9f3c9
 

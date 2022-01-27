@@ -349,11 +349,13 @@ class Orderobject: NSObject {
             multipartFormData.append(Data(param.data(using: .utf8)!), withName: "data")
 
                 }, usingThreshold: UInt64.init(), to: url ,method: .post, headers: headers){ result in
+            
                     switch result {
                         
                     case .success(let request, let streamingFromDisk, let streamFileURL):
                         // print("Upload Success : \(request), \(streamingFromDisk), \(String(describing: streamFileURL))")
                         request.responseJSON() { response in
+                            print(response)
                             switch response.result {
                             case let .success(value):
                                 let json = JSON(value)

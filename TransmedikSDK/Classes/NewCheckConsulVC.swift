@@ -55,6 +55,7 @@ class NewCheckConsulVC: UIViewController,UITextViewDelegate {
                 if mdata.count > 0 {
                     setupChooseDropDown()
                     hideskeleton()
+                    setUser(row: 0)
                 }
                 
             }else if (!success && loading == 3){
@@ -161,13 +162,33 @@ class NewCheckConsulVC: UIViewController,UITextViewDelegate {
         chooseDropDown.dataSource = temp
         
         chooseDropDown.selectionAction = { [weak self] (index, item) in
-            self?.selected = index
-            self?.myUser.setTitle(item, for: .normal)
+//            self?.selected = index
+//            self?.myUser.setTitle(item, for: .normal)
+            self?.setUser(row: index)
+            //
+//
         }
+    }
+    
+    func setUser(row : Int){
+        selected = row
+        let data =  mdata[row]
+//        print("photo =>>" + data.image)
+        if data.image != "" {
+                       let url = URL(string: data.image)
+                       myPhoto.kf.setImage(with: url)
+                   }
+        
+        BB.text = data.weight == "" ? "-" : data.weight + " KG"
+        TB.text = data.height == "" ? "-" : data.height + " cm"
+        myUser.setTitle(data.full_name, for: .normal)
+        
+       
     }
     func setDokter() {
         name.text = detaildokter.full_name
         spesialis.text = header
+        
         
         if detaildokter.profile_picture != "" {
             let url = URL(string: detaildokter.profile_picture)
@@ -227,6 +248,7 @@ class NewCheckConsulVC: UIViewController,UITextViewDelegate {
                         // print("my name = >\(data!.full_name)")
                         self.mdata.insert(data!, at: 0)
                         self.success = true
+                       
                     }else{
                         self.success = false
                         
@@ -279,6 +301,7 @@ class NewCheckConsulVC: UIViewController,UITextViewDelegate {
     }
     
     func setup(){
+        self.view.layoutIfNeeded()
 //        konfirmasiButton.isUserInteractionEnabled = false
         konfirmasiButton.backgroundColor = Colors.buttonnonActive
         konfirmasiButton.layer.cornerRadius = 10
@@ -293,6 +316,7 @@ class NewCheckConsulVC: UIViewController,UITextViewDelegate {
         if !isform {
             viewForm.isHidden.toggle()
         }
+        myPhoto.layer.cornerRadius = myPhoto.frame.height / 2
         back.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(kembali)))
 
 

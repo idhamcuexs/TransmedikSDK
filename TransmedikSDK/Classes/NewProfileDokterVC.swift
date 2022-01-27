@@ -99,7 +99,7 @@ class NewProfileDokterVC: UIViewController {
         
            if dataDokter!.status_docter! == "Online"{
                chatButton.backgroundColor = Colors.buttonActive
-               viewStatus.backgroundColor = Colors.buttonActive
+               viewStatus.backgroundColor = Colors.available
                status.text = "Available"
            }else{
                chatButton.backgroundColor = Colors.buttonnonActive

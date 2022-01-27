@@ -223,7 +223,7 @@ extension DetailChatViewController {
     }
     
     func initializeMessages() {
-        print("getdata")
+//        print("getdata")
 //        self.messageList.removeAll()
         //self.messagesCollectionView.reloadData()
         //self.messagesCollectionView.scrollToBottom()

@@ -264,7 +264,7 @@ extension ResepViewController : SetMapingViewControllerDelegate{
                     addressString = addressString + pm.postalCode! + " "
                 }
                 
-                 print(addressString)
+//                 print(addressString)
                 self.alamat.text = addressString
                 if self.location == nil {
                     self.location = NameMyLocation(location: tmplocation, address: addressString, note: "")

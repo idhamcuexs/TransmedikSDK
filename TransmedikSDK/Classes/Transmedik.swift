@@ -116,6 +116,7 @@ public class Transmedik {
     }
     
     public static func Loading(UIViewController : UIViewController){
+        
         let vc = UIStoryboard(name: "Loading", bundle: AppSettings.bundleframeworks()).instantiateViewController(withIdentifier: "lodingViewController") as? lodingViewController
         UIViewController.present(vc!, animated: false, completion: nil)
 
@@ -227,7 +228,7 @@ public class Transmedik {
                 switch respon.result {
                 case let .success(value):
                     let json = JSON(value)
-                    print(respon)
+//                    print(respon)
                     if json["code"].stringValue == "200"{
                         UserDefaults.standard.removeObject(forKey: "logout")
                         let token = json["data"]["token"].stringValue

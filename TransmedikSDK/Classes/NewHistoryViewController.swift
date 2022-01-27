@@ -475,13 +475,13 @@ extension NewHistoryViewController : UITableViewDelegate,UITableViewDataSource,S
             openVC(vc!, presentPage)
             
         }else{
-            print("coon")
-            print(self.dataKonsultasi!.data!.data![indexPath.row].detail_consultation!.consultation_id!)
+//            print("coon")
+//            print(self.dataKonsultasi!.data!.data![indexPath.row].detail_consultation!.consultation_id!)
             self.query = ConsultationModel.query()
             self.query = self.query.whereKey("consultation_id", equalTo: Int(self.dataKonsultasi!.data!.data![indexPath.row].detail_consultation!.consultation_id!)).whereKey("apps", equalTo: "transmedika")
             
             self.query.findObjectsInBackground(block: { (results, error) in
-                print(results?.count)
+//                print(results?.count)
                 if  let consultation = results as? [ConsultationModel] {
                     DispatchQueue.main.async {
                         let vc = DetailChatViewController()

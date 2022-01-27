@@ -10,6 +10,7 @@ import CoreLocation
 import Kingfisher
 import SwiftyJSON
 import Alamofire
+import SkeletonView
 
 struct NameMyLocation {
     var location : CLLocationCoordinate2D
@@ -41,17 +42,17 @@ class OrderobatViewController: UIViewController,CLLocationManagerDelegate, lista
     @IBOutlet weak var labelNote: UILabel!
     
     
+    //    label
+    @IBOutlet weak var namaLabel: UILabel!
+    @IBOutlet weak var jumlahLabel: UILabel!
+    @IBOutlet weak var lokasiLabel: UILabel!
+    @IBOutlet weak var kurirLabel: UILabel!
+    
+    
+    
     var selectcour : Int?
     var order : [Parameters]?
-    var loading = false{
-        didSet{
-            if loading{
-                self.loading(self)
-            }else{
-                self.closeloading(self)
-            }
-        }
-    }
+
     let locationManager = CLLocationManager()
     var api = Obat()
     var location : NameMyLocation?
@@ -74,17 +75,34 @@ class OrderobatViewController: UIViewController,CLLocationManagerDelegate, lista
         view2.dropShadow(shadowColor: UIColor.lightGray, fillColor: UIColor.white, opacity: 0.5, offset: CGSize(width: 2, height: 2), radius: 4)
         navi.dropShadow(shadowColor: UIColor.lightGray, fillColor: UIColor.white, opacity: 0.5, offset: CGSize(width: 2, height: 2), radius: 4)
         
+        if CLLocationManager.locationServicesEnabled() {
+             switch CLLocationManager.authorizationStatus() {
+                case .notDetermined, .restricted, .denied:
+//                    print("No access")
+                    viewNote.isHidden = false
+                    labelNote.text = "Cek kembali konfigurasi lokasi Anda"
+                case .authorizedAlways, .authorizedWhenInUse:
+                    viewNote.isHidden = true
+//                    print("Access")
+             }
+        } else {
+            viewNote.isHidden = false
+            labelNote.text = "Cek kembali konfigurasi lokasi Anda"
+//            print("Location services are not enabled")
+        }
         
-        
-        viewNote.isHidden = true
+//        viewNote.isHidden = true
         saveButton.layer.cornerRadius = 10
         saveButton.backgroundColor = Colors.buttonnonActive
         edit.isHidden = true
         edit.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(setalamat)))
         back.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(kembali)))
         
-        
+        skeleton()
     }
+    
+    
+    
     override func viewDidAppear(_ animated: Bool) {
         if location != nil{
             getresep()
@@ -101,6 +119,8 @@ class OrderobatViewController: UIViewController,CLLocationManagerDelegate, lista
         dismiss(animated: true, completion: nil)
     }
     
+    
+    
     func refreshlayout(){
         DispatchQueue.main.asyncAfter(deadline: .now() + 0.5){
             self.hightable.constant = self.tableResep.contentSize.height
@@ -114,7 +134,7 @@ class OrderobatViewController: UIViewController,CLLocationManagerDelegate, lista
             return Toast.show(message: "Anda belum memilih jasa pengiriman", controller: self)
         }
         
-       if self.location == nil {
+        if self.location == nil {
             return Toast.show(message: "Alamat pengiriman belum terisi.", controller: self)
         }
         
@@ -130,14 +150,44 @@ class OrderobatViewController: UIViewController,CLLocationManagerDelegate, lista
     }
     
     
+    func skeleton(){
+        catatan.placeholder = ""
+//        tableResep.showGradientSkeleton()
+//        tableKurir.showGradientSkeleton()
+        edit.showGradientSkeleton()
+        kurirLabel.showGradientSkeleton()
+        lokasiLabel.showGradientSkeleton()
+        jumlahLabel.showGradientSkeleton()
+        namaLabel.showGradientSkeleton()
+        alamat.showGradientSkeleton()
+        catatan.showGradientSkeleton()
+
+        
+        
+    }
+    
+    
+    func hideSkeleton(){
+//        tableResep.hideSkeleton()
+//        tableKurir.hideSkeleton()
+        edit.hideSkeleton()
+        kurirLabel.hideSkeleton()
+        lokasiLabel.hideSkeleton()
+        jumlahLabel.hideSkeleton()
+        namaLabel.hideSkeleton()
+        alamat.hideSkeleton()
+        catatan.hideSkeleton()
+        catatan.placeholder = "Catatan Alamat"
+    }
+    
     
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         let location = locations[0]
         
         let tmplocation = CLLocationCoordinate2D(latitude: location.coordinate.latitude, longitude: location.coordinate.longitude)
         let loc = CLLocation(latitude: location.coordinate.latitude, longitude: location.coordinate.longitude)
-         print("get my location")
-//         print(tmplocation)
+//        print("get my location")
+        //         print(tmplocation)
         let geocoder = CLGeocoder()
         geocoder.reverseGeocodeLocation(loc) { (locstring, err) in
             if let _ = err {
@@ -164,14 +214,14 @@ class OrderobatViewController: UIViewController,CLLocationManagerDelegate, lista
                     addressString = addressString + pm.postalCode! + " "
                 }
                 
-                 print(addressString)
+//                print(addressString)
                 self.alamat.text = addressString
                 if self.location == nil {
                     self.location = NameMyLocation(location: tmplocation, address: addressString, note: "")
                     self.getresep()
-
+                    
                 }
-               
+                
                 //                // print(addressString)
             }
             
@@ -188,7 +238,7 @@ class OrderobatViewController: UIViewController,CLLocationManagerDelegate, lista
     func ambilalamat(alamat: String, note: String, long: String, lat: String) {
         let tmplocation = CLLocationCoordinate2D(latitude: Double(lat)!, longitude: Double(long)!)
         self.location = NameMyLocation(location: tmplocation, address: alamat, note: note)
-
+        
         
         
         self.alamat.text = alamat
@@ -209,9 +259,9 @@ class OrderobatViewController: UIViewController,CLLocationManagerDelegate, lista
         if  let token = UserDefaults.standard.string(forKey:  AppSettings.Tokentransmedik){
             var model = [reqpriceobat]()
             for (i,index) in self.resepobat.enumerated(){
-       
+                
                 model.append(reqpriceobat(medicine: index.slug!, qty: index.qty!, prescription_id: index.prescription_id!, code: index.medicine_code_partner!))
-               
+                
             }
             self.api.getprice(token: token, long:
                                 "\(self.location?.location.longitude ?? 0.0)", lat: "\(self.location?.location.longitude ?? 0.0)", data: model) { (status,data,msg) in
@@ -223,7 +273,7 @@ class OrderobatViewController: UIViewController,CLLocationManagerDelegate, lista
                     self.tableKurir.reloadData()
                     self.refreshlayout()
                     self.viewNote.isHidden.toggle()
-                
+                    
                 }else{
                     self.labelNote.text = msg
                 }
@@ -232,11 +282,15 @@ class OrderobatViewController: UIViewController,CLLocationManagerDelegate, lista
     }
     
     func getresep(){
+        skeleton()
+        self.data = nil
+        tableKurir.reloadData()
+        tableResep.reloadData()
         if CheckInternet.Connection(){
             if  let token = UserDefaults.standard.string(forKey:  AppSettings.Tokentransmedik){
-                self.loading = true
+               
                 
-//                let orders =
+                //                let orders =
                 let param : [String : Any] = [
                     "map_lat" : location?.location.latitude ?? 0.0,
                     "map_lng" : location?.location.longitude ?? 0.0,
@@ -244,14 +298,27 @@ class OrderobatViewController: UIViewController,CLLocationManagerDelegate, lista
                 ]
                 
                 api.getresep(token: token, param: param) { data in
+                    self.hideSkeleton()
                     do{
                         let result = try JSONDecoder().decode(GetPriceObat.self, from: data!)
-                        self.data = result
-                        self.loading = false
-
-                        self.tableResep.reloadData()
-                        self.tableKurir.reloadData()
-                        self.viewNote.isHidden = true
+                        if result.code == 200{
+                            if result.data != nil{
+//                                print("1")
+                                self.data = result
+                                
+                                self.tableResep.reloadData()
+                                self.tableKurir.reloadData()
+                                self.viewNote.isHidden = true
+                            }else{
+//                                print("2")
+                                self.viewNote.isHidden = false
+                                self.labelNote.text = result.messages
+                            }
+                        }else{
+                            self.viewNote.isHidden = false
+                            self.labelNote.text = result.messages
+                        }
+                        
                         
                     }catch{
                         self.viewNote.isHidden = false
@@ -264,14 +331,33 @@ class OrderobatViewController: UIViewController,CLLocationManagerDelegate, lista
             viewNote.isHidden = false
             labelNote.text = "Internet tidak terhubung. Tolong cek kembali koneksi anda!"
         }
- 
+        
         
     }
 }
 
 
 
-extension OrderobatViewController: UITableViewDelegate,UITableViewDataSource{
+extension OrderobatViewController: UITableViewDelegate,UITableViewDataSource,SkeletonTableViewDelegate,SkeletonTableViewDataSource{
+    
+    func collectionSkeletonView(_ skeletonView: UITableView, cellIdentifierForRowAt indexPath: IndexPath) -> ReusableCellIdentifier {
+        if skeletonView == tableKurir {
+            return "cell"
+        }else {
+            return "cell"
+        }
+        
+    }
+    
+    func collectionSkeletonView(_ skeletonView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        if skeletonView == tableKurir {
+            return 1
+        }else {
+            return 1
+        }
+        
+    }
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // print("medicines")
         // print(data?.data?.medicines?.count ?? 0)
@@ -292,7 +378,7 @@ extension OrderobatViewController: UITableViewDelegate,UITableViewDataSource{
         switch tableView {
         case tableResep:
             if data != nil {
-                print("masuk y")
+//                print("masuk y")
                 let index = data?.data?.medicines?[indexPath.row]
                 let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as! cartobatpriceTableViewCell
                 cell.namaobat.text = "\(index?.name ?? "") @Rp\(Int(index!.price ?? "0")!.formattedWithSeparator)"
@@ -322,7 +408,7 @@ extension OrderobatViewController: UITableViewDelegate,UITableViewDataSource{
                         
                     }else{
                         cell.check.image =   UIImage(named: "Radio Button", in: Bundle.init(identifier: AppSettings.frameworkBundleID), compatibleWith: nil)
-                      
+                        
                         
                     }
                     
@@ -354,7 +440,7 @@ extension OrderobatViewController: UITableViewDelegate,UITableViewDataSource{
     
     func tableView(_ tableView: UITableView, estimatedHeightForRowAt indexPath: IndexPath) -> CGFloat {
         return UITableView.automaticDimension
-//        return  UITableViewAutomaticDimension
+        //        return  UITableViewAutomaticDimension
     }
     
     
