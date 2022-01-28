@@ -26,7 +26,7 @@ target 'TransmedikSDK_Example' do
   pod 'NVActivityIndicatorView', '~> 5.1.1'
   pod 'lottie-ios'
   pod 'SkeletonView', '~> 1.11.0'
-
+  pod 'Mapbox-iOS-SDK', '~> 4.11.2'
   #  pod 'BubbleShowCase', '~> 1.2.0 '
   #  pod 'SwipeCellKit', '~> 2.7.1'
   #  pod "ESTabBarController-swift", '~> 2.8.0 '

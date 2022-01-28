@@ -13,6 +13,7 @@ PODS:
     - Kingfisher/Core (= 5.15.8)
   - Kingfisher/Core (5.15.8)
   - lottie-ios (2.5.3)
+  - Mapbox-iOS-SDK (4.11.2)
   - MessageInputBar (0.4.1):
     - MessageInputBar/Core (= 0.4.1)
   - MessageInputBar/Core (0.4.1)
@@ -45,6 +46,7 @@ PODS:
     - IQKeyboardManagerSwift (~> 6.0.4)
     - Kingfisher (~> 5.15.8)
     - lottie-ios (~> 2.5.0)
+    - Mapbox-iOS-SDK (~> 4.11.2)
     - MessageInputBar (~> 0.4.0)
     - MessageKit (~> 3.0.0)
     - NVActivityIndicatorView (~> 5.1.1)
@@ -71,6 +73,7 @@ DEPENDENCIES:
   - IQKeyboardManagerSwift (~> 6.0.4)
   - Kingfisher (~> 5.15.8)
   - lottie-ios
+  - Mapbox-iOS-SDK (~> 4.11.2)
   - MessageInputBar (~> 0.4.0)
   - MessageKit (~> 3.0.0)
   - NVActivityIndicatorView (~> 5.1.1)
@@ -98,6 +101,7 @@ SPEC REPOS:
     - IQKeyboardManagerSwift
     - Kingfisher
     - lottie-ios
+    - Mapbox-iOS-SDK
     - MessageInputBar
     - MessageKit
     - NVActivityIndicatorView
@@ -129,6 +133,7 @@ SPEC CHECKSUMS:
   IQKeyboardManagerSwift: c14eca30f6001457d6ddf25e313f23fb6578c41c
   Kingfisher: a3c03d702433fa6cfedabb2bddbe076fb8f2e902
   lottie-ios: a50d5c0160425cd4b01b852bb9578963e6d92d31
+  Mapbox-iOS-SDK: be0dbe7470db13cbcbf2e69afad714b8e3f24399
   MessageInputBar: e81c7535347f1f7b923de7080409a535a004b6e4
   MessageKit: e892a9ca49ebe6d82684d3a93ad84021fa23e2c6
   NVActivityIndicatorView: 1f6c5687f1171810aa27a3296814dc2d7dec3667
@@ -140,10 +145,10 @@ SPEC CHECKSUMS:
   SteviaLayout: c2ecdcff57d44e38fd2f65e54ad52aeae28ca0c4
   SVPinView: 9b538d0ba68cdb092afe4f0f67ec84cbed079466
   SwiftyJSON: 36413e04c44ee145039d332b4f4e2d3e8d6c4db7
-  TransmedikSDK: 2909994792eb3a4741a70df7b6771bb7e1cb0a74
+  TransmedikSDK: ebfe202b0c4b9db8842f754c2ab51ae851818efb
   URLEmbeddedView: 3fe17ae535d2b8d38c3b08ab8ba0aea5efe5d1cd
   YPImagePicker: 15aed8bcaa4dad976e11b6114126d731a2f9f3c9
 
-PODFILE CHECKSUM: 50dd127326c8d62503b1f431937939908e2d7505
+PODFILE CHECKSUM: 613272f1380b272c5da2db328b59356c05590f57
 
 COCOAPODS: 1.10.0

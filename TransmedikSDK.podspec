@@ -41,6 +41,8 @@ Pod::Spec.new do |s|
   s.dependency 'Starscream', '~> 3.1.0'
   s.dependency 'ParseLiveQuery', '~> 2.7.0 '
 
+  s.dependency 'Mapbox-iOS-SDK', '~> 4.11.2'
+
 
   s.dependency 'SVPinView', '~> 1.0'
   s.dependency 'DividerView', '~>3.0'
