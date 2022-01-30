@@ -15,6 +15,12 @@ import SwiftyJSON
 public class Transmedik {
     
     
+//    public static  func getAlamat( _ Viewcontroller : UIViewController){
+//        let vc = UIStoryboard(name: "Alamat", bundle: AppSettings.bundleframeworks()).instantiateViewController(withIdentifier: "AlamatVC") as? AlamatVC
+//
+//        Viewcontroller.present(vc!, animated: false, completion: nil)
+//    }
+    
      public static func checkpin(token:String,pin : String,complited: @escaping(Bool , String)->()){
         
         let headers: HTTPHeaders = [
@@ -104,6 +110,7 @@ public class Transmedik {
     }
     
     
+   
     
     public static func SetSettingparseTransmedik(){
         let parseConfig = ParseClientConfiguration {
@@ -129,8 +136,14 @@ public class Transmedik {
     }
     
     public static func openmenu(_ view : UIViewController,present : PresentPage){
-        let vc = UIStoryboard(name: "Transmedik", bundle: AppSettings.bundleframeworks()).instantiateViewController(withIdentifier: "HomeViewController") as? HomeViewController
-        vc?.presentPage = present
+//        let vc = UIStoryboard(name: "Transmedik", bundle: AppSettings.bundleframeworks()).instantiateViewController(withIdentifier: "HomeViewController") as? HomeViewController
+//        vc?.presentPage = present
+
+        print("nasuk")
+        
+        let vc = UIStoryboard(name: "Alamat", bundle: AppSettings.bundleframeworks()).instantiateViewController(withIdentifier: "AlamatVC") as? AlamatVC
+        
+        
         if present == .navigation{
             
             view.navigationController?.pushViewController(vc!, animated: true)

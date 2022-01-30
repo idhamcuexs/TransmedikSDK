@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		19D45230A413F0FACB0F41CE /* Pods_TransmedikSDK_Tests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A47369CFCFCB06773F5F903A /* Pods_TransmedikSDK_Tests.framework */; };
+		302C308C27A54EFA00077843 /* MapViewVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 302C308B27A54EFA00077843 /* MapViewVC.swift */; };
 		30302DE927A2613E006FC1A7 /* Loading.xib in Resources */ = {isa = PBXBuildFile; fileRef = 30302DE827A2613E006FC1A7 /* Loading.xib */; };
 		30321D0F27A3ED2C003F0C91 /* list.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30321D0E27A3ED2C003F0C91 /* list.swift */; };
 		30321D1127A3ED97003F0C91 /* claass1.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30321D1027A3ED97003F0C91 /* claass1.swift */; };
@@ -33,6 +34,7 @@
 
 /* Begin PBXFileReference section */
 		2BBCB70686DBE71AF49678C9 /* TransmedikSDK.podspec */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = TransmedikSDK.podspec; path = ../TransmedikSDK.podspec; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
+		302C308B27A54EFA00077843 /* MapViewVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewVC.swift; sourceTree = "<group>"; };
 		30302DE827A2613E006FC1A7 /* Loading.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = Loading.xib; sourceTree = "<group>"; };
 		30321D0E27A3ED2C003F0C91 /* list.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = list.swift; sourceTree = "<group>"; };
 		30321D1027A3ED97003F0C91 /* claass1.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = claass1.swift; sourceTree = "<group>"; };
@@ -123,6 +125,7 @@
 				30302DE827A2613E006FC1A7 /* Loading.xib */,
 				30321D1027A3ED97003F0C91 /* claass1.swift */,
 				30321D1227A3EE03003F0C91 /* abstracViewController.swift */,
+				302C308B27A54EFA00077843 /* MapViewVC.swift */,
 			);
 			name = "Example for TransmedikSDK";
 			path = TransmedikSDK;
@@ -402,6 +405,7 @@
 				607FACD81AFB9204008FA782 /* ViewController.swift in Sources */,
 				30321D1327A3EE03003F0C91 /* abstracViewController.swift in Sources */,
 				607FACD61AFB9204008FA782 /* AppDelegate.swift in Sources */,
+				302C308C27A54EFA00077843 /* MapViewVC.swift in Sources */,
 				30321D0F27A3ED2C003F0C91 /* list.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

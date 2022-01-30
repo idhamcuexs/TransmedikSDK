@@ -8,21 +8,21 @@
 
 import UIKit
 
-class abstracViewController: UIViewController ,list{
-    
-    var classmap : UIViewController?
-    
-    var dou = 0.0
-    override func viewDidLoad() {
-        super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
-    }
-    
-
-    func data(view: UIViewController) {
-        classmap = view
-    }
-    
-   
-}
+//class abstracViewController: UIViewController ,list{
+//    
+//    var classmap : UIViewController?
+//    
+//    var dou = 0.0
+//    override func viewDidLoad() {
+//        super.viewDidLoad()
+//
+//        // Do any additional setup after loading the view.
+//    }
+//    
+//
+//    func data(view: UIViewController) {
+//        classmap = view
+//    }
+//    
+//   
+//}

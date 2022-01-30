@@ -7,6 +7,3 @@
 //
 
 import Foundation
-protocol list {
-    func data (view : UIViewController )
-}

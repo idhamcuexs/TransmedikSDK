@@ -74,8 +74,6 @@ class Address: NSObject {
             
         ]
         
-        
-        
         let url = "\(AppSettings.Url)patient-address"
         
         
