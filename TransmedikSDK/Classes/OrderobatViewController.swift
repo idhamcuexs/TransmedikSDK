@@ -94,7 +94,7 @@ class OrderobatViewController: UIViewController,CLLocationManagerDelegate, lista
 //        viewNote.isHidden = true
         saveButton.layer.cornerRadius = 10
         saveButton.backgroundColor = Colors.buttonnonActive
-        edit.isHidden = true
+//        edit.isHidden = true
         edit.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(setalamat)))
         back.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(kembali)))
         
@@ -184,6 +184,9 @@ class OrderobatViewController: UIViewController,CLLocationManagerDelegate, lista
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         let location = locations[0]
         
+        guard location != nil else{
+            return
+        }
         let tmplocation = CLLocationCoordinate2D(latitude: location.coordinate.latitude, longitude: location.coordinate.longitude)
         let loc = CLLocation(latitude: location.coordinate.latitude, longitude: location.coordinate.longitude)
 //        print("get my location")
@@ -249,9 +252,13 @@ class OrderobatViewController: UIViewController,CLLocationManagerDelegate, lista
     }
     
     @objc func setalamat(){
-        let vc = UIStoryboard(name: "Alamat", bundle: AppSettings.bundleframeworks()).instantiateViewController(withIdentifier: "listalamatViewController") as? listalamatViewController
+//        let vc = UIStoryboard(name: "Alamat", bundle: AppSettings.bundleframeworks()).instantiateViewController(withIdentifier: "listalamatViewController") as? listalamatViewController
+//        vc?.delegate = self
+//        vc?.tambahalamat = false
+//        present(vc!, animated: true, completion: nil)
+        let vc = UIStoryboard(name: "Alamat", bundle: AppSettings.bundleframework).instantiateViewController(withIdentifier: "AlamatVC") as? AlamatVC
         vc?.delegate = self
-        vc?.tambahalamat = false
+        
         present(vc!, animated: true, completion: nil)
     }
     
@@ -465,6 +472,16 @@ extension OrderobatViewController: UITableViewDelegate,UITableViewDataSource,Ske
         default:
             break
         }
+    }
+    
+    
+}
+
+extension OrderobatViewController :AlamatVCDelegate{
+    func getLocation(location: CLLocationCoordinate2D, address: String, note: String) {
+        self.location = NameMyLocation(location: location, address: address, note: note)
+        alamat.text = address
+        self.catatan.text = note
     }
     
     

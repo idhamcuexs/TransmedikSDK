@@ -63,7 +63,7 @@ class ResepViewController: UIViewController,CLLocationManagerDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
 //        beli.isUserInteractionEnabled = false
-        stuckAlamat.isHidden.toggle()
+//        stuckAlamat.isHidden.toggle()
         self.view.layoutIfNeeded()
         self.view.backgroundColor = Colors.backgroundmaster
         pasienPhoto.layer.cornerRadius = 25
@@ -71,6 +71,7 @@ class ResepViewController: UIViewController,CLLocationManagerDelegate {
         registerTableView()
         tables.dataSource = self
         tables.delegate = self
+        note.isEnabled  = false
         navi.dropShadow(shadowColor: UIColor.lightGray, fillColor: UIColor.white, opacity: 0.5, offset: CGSize(width: 2, height: 2), radius: 4)
         viewAlamat.layer.cornerRadius = 10
         viewAlamat.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(getalamat)))
@@ -83,8 +84,8 @@ class ResepViewController: UIViewController,CLLocationManagerDelegate {
         
         
         view3.layer.cornerRadius = 10
-        view3.dropShadow(shadowColor: UIColor.lightGray, fillColor: UIColor.white, opacity: 0.5, offset: CGSize(width: 2, height: 2), radius: 4)
-        
+//        view3.dropShadow(shadowColor: UIColor.lightGray, fillColor: UIColor.white, opacity: 0.5, offset: CGSize(width: 2, height: 2), radius: 4)
+//
         if (CLLocationManager.locationServicesEnabled()) {
             locationManager.delegate = self
             locationManager.desiredAccuracy = kCLLocationAccuracyBest
@@ -133,7 +134,7 @@ class ResepViewController: UIViewController,CLLocationManagerDelegate {
     }
     
     @objc func getalamat(){
-        let vc = UIStoryboard(name: "Alamat", bundle: AppSettings.bundleframework).instantiateViewController(withIdentifier: "SetMapingViewController") as? SetMapingViewController
+        let vc = UIStoryboard(name: "Alamat", bundle: AppSettings.bundleframework).instantiateViewController(withIdentifier: "AlamatVC") as? AlamatVC
         vc?.delegate = self
         
         present(vc!, animated: true, completion: nil)
@@ -167,6 +168,8 @@ class ResepViewController: UIViewController,CLLocationManagerDelegate {
    
         
     }
+    
+    
     
     
     
@@ -232,53 +235,99 @@ extension ResepViewController : SetMapingViewControllerDelegate{
     
     
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
-        let location = locations[0]
-        
-        let tmplocation = CLLocationCoordinate2D(latitude: location.coordinate.latitude, longitude: location.coordinate.longitude)
-        let loc = CLLocation(latitude: location.coordinate.latitude, longitude: location.coordinate.longitude)
-//         print("get my location")
-//         print(tmplocation)
-        let geocoder = CLGeocoder()
-        geocoder.reverseGeocodeLocation(loc) { (locstring, err) in
-            if let _ = err {
-                return // print("error cuy")
-            }
-            let pm = locstring! as [CLPlacemark]
-            
-            if pm.count > 0 {
-                let pm = locstring![0]
-                var addressString : String = ""
-                if pm.subLocality != nil {
-                    addressString = addressString + pm.subLocality! + ", "
-                }
-                if pm.thoroughfare != nil {
-                    addressString = addressString + pm.thoroughfare! + ", "
-                }
-                if pm.locality != nil {
-                    addressString = addressString + pm.locality! + ", "
-                }
-                if pm.country != nil {
-                    addressString = addressString + pm.country! + ", "
-                }
-                if pm.postalCode != nil {
-                    addressString = addressString + pm.postalCode! + " "
-                }
-                
-//                 print(addressString)
-                self.alamat.text = addressString
-                if self.location == nil {
-                    self.location = NameMyLocation(location: tmplocation, address: addressString, note: "")
-                }
-               
-                //                // print(addressString)
-            }
-            
-            
-        }
-        
+//        let location = locations[0]
+//
+//        let tmplocation = CLLocationCoordinate2D(latitude: location.coordinate.latitude, longitude: location.coordinate.longitude)
+//        let loc = CLLocation(latitude: location.coordinate.latitude, longitude: location.coordinate.longitude)
+////         print("get my location")
+////         print(tmplocation)
+//        let geocoder = CLGeocoder()
+//        geocoder.reverseGeocodeLocation(loc) { (locstring, err) in
+//            if let _ = err {
+//                return // print("error cuy")
+//            }
+//            let pm = locstring! as [CLPlacemark]
+//
+//            if pm.count > 0 {
+//                let pm = locstring![0]
+//                var addressString : String = ""
+//                if pm.subLocality != nil {
+//                    addressString = addressString + pm.subLocality! + ", "
+//                }
+//                if pm.thoroughfare != nil {
+//                    addressString = addressString + pm.thoroughfare! + ", "
+//                }
+//                if pm.locality != nil {
+//                    addressString = addressString + pm.locality! + ", "
+//                }
+//                if pm.country != nil {
+//                    addressString = addressString + pm.country! + ", "
+//                }
+//                if pm.postalCode != nil {
+//                    addressString = addressString + pm.postalCode! + " "
+//                }
+//
+////                 print(addressString)
+//                self.alamat.text = addressString
+//                if self.location == nil {
+//                    self.location = NameMyLocation(location: tmplocation, address: addressString, note: "")
+//                }
+//
+//                //                // print(addressString)
+//            }
+//
+//
+//        }
+//
         locationManager.stopUpdatingLocation()
         
     }
     
+    
+}
+
+
+extension ResepViewController :AlamatVCDelegate{
+    func getLocation(location: CLLocationCoordinate2D, address: String, note: String) {
+        
+        self.location = NameMyLocation(location: location, address: address, note: note)
+        alamat.text = address
+        self.note.text = note == "" ? "Catatan anda" : note
+    }
+    
+    
+    func getDetailLocation(){
+        guard location != nil else {
+            return
+        }
+        let url = "https://maps.googleapis.com/maps/api/geocode/json?latlng=\(self.location!.location.latitude),\(self.location!.location.longitude )&key=AIzaSyDYhPXYjgCmT7ZO8jZigFm8iPXY_e16C8M"
+        
+        Alamofire.request(url, method: .get, encoding: JSONEncoding.default)
+            .responseJSON { respon in
+                                 print(respon)
+                
+                switch respon.result {
+                case let .success(value):
+                    let json = JSON(value)
+                    do{
+                        let result = try JSONDecoder().decode(ResponsePlancesMod.self, from: json.rawData())
+
+                        self.alamat.text = result.results![0].formatted_address ?? ""
+                        self.note.text = ""
+                      
+
+                    }catch{
+                        print("error Model")
+                    }
+                    
+                //                    print(value)
+                case let .failure(error):
+                    
+                    break
+                }
+                
+                
+            }
+    }
     
 }

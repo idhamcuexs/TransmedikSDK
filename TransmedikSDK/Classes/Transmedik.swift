@@ -136,14 +136,14 @@ public class Transmedik {
     }
     
     public static func openmenu(_ view : UIViewController,present : PresentPage){
-//        let vc = UIStoryboard(name: "Transmedik", bundle: AppSettings.bundleframeworks()).instantiateViewController(withIdentifier: "HomeViewController") as? HomeViewController
-//        vc?.presentPage = present
+        let vc = UIStoryboard(name: "Transmedik", bundle: AppSettings.bundleframeworks()).instantiateViewController(withIdentifier: "HomeViewController") as? HomeViewController
+        vc?.presentPage = present
 
         print("nasuk")
         
-        let vc = UIStoryboard(name: "Alamat", bundle: AppSettings.bundleframeworks()).instantiateViewController(withIdentifier: "AlamatVC") as? AlamatVC
-        
-        
+//        let vc = UIStoryboard(name: "Alamat", bundle: AppSettings.bundleframeworks()).instantiateViewController(withIdentifier: "AlamatVC") as? AlamatVC
+//        
+//        
         if present == .navigation{
             
             view.navigationController?.pushViewController(vc!, animated: true)

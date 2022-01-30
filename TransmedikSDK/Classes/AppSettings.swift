@@ -27,7 +27,7 @@ struct AppSettings {
     static let PARSE_CLIENTKEY: String = "client_key"
     static let Url: String = "https://api.transmedika.co.id/api/sdk-v1/"
     static let SECRET = "JGNKUlhzRmN4Uk1TUnpiMUk0cTh6NHFkbUU1YU1zUkY="
-//
+////
 //
     
     static let WAIT_COUNTER: Int = 60

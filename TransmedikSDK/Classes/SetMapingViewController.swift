@@ -64,6 +64,9 @@ class SetMapingViewController: MYUIViewController,CLLocationManagerDelegate,UITe
         
     }
     
+    
+    
+    
     @IBAction func chnge(_ sender: Any) {
         autocompleteClicked()
     }
