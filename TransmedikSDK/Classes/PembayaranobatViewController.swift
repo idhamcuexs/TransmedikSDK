@@ -65,6 +65,7 @@ class PembayaranobatViewController: UIViewController {
     var id = ""
     var prescription_id = ""
     var dompet = true
+    var noteaddress = ""
     
     
     
@@ -231,7 +232,7 @@ extension PembayaranobatViewController {
                 let voceramount = 0
                 
                 
-                let paramer = "{\"address\": \"\(mylocation.address)\",\"id\": \(indexs.id!),\"courier\": {\"id\": \(indexs.couriers![selectCour!].id!),\"note\": \"\",\"price\": \(indexs.couriers![selectCour!].price!),\"type\": \"\(indexs.couriers![selectCour!].type!)\"}, \"map_lat\": \"\(mylocation.location.latitude)\", \"map_lng\": \"\(mylocation.location.longitude)\",\"note\": \"\(mylocation.note)\",\"medicines\": [\(medicines)],\"payment_id\": \(detailpayment!.payment_id),\"payment_name\": \"\(detailpayment!.account_name)\",\"pharmacy_address\": \"\(data!.data!.address!)\",\"pharmacy_custNumber\": \"\(data!.data!.pharmacy_custNumber!)\",\"pharmacy_shiptoNumber\": \"\(data!.data!.pharmacy_shiptoNumber!)\",\"pin\": \"null\",\"subtotal\": \(totalbarang()),\"total\": \(finaltotal()), \"voucher\": \(_tmpvoucher),\"voucher_amount\": \(voceramount)}"
+                let paramer = "{\"address\": \"\(mylocation.address)\",\"id\": \(indexs.id!),\"courier\": {\"id\": \(indexs.couriers![selectCour!].id!),\"note\": \"\(mylocation.note)\",\"price\": \(indexs.couriers![selectCour!].price!),\"type\": \"\(indexs.couriers![selectCour!].type!)\"}, \"map_lat\": \"\(mylocation.location.latitude)\", \"map_lng\": \"\(mylocation.location.longitude)\",\"note\": \"\(mylocation.note)\",\"medicines\": [\(medicines)],\"payment_id\": \(detailpayment!.payment_id),\"payment_name\": \"\(detailpayment!.account_name)\",\"pharmacy_address\": \"\(data!.data!.address!)\",\"pharmacy_custNumber\": \"\(data!.data!.pharmacy_custNumber!)\",\"pharmacy_shiptoNumber\": \"\(data!.data!.pharmacy_shiptoNumber!)\",\"pin\": \"null\",\"subtotal\": \(totalbarang()),\"total\": \(finaltotal()), \"voucher\": \(_tmpvoucher),\"voucher_amount\": \(voceramount)}"
                 
                 // print("paramer =>>> " + paramer)
                 
@@ -331,7 +332,7 @@ extension PembayaranobatViewController :pembayaranrincianobatViewControllerdeleg
             let voceramount = 0
             
             
-            let paramer = "{\"address\": \"\(mylocation.address)\",\"id\": \(indexs.id!),\"courier\": {\"id\": \(indexs.couriers![selectCour!].id!),\"note\": \"\",\"price\": \(indexs.couriers![selectCour!].price!),\"type\": \"\(indexs.couriers![selectCour!].type!)\"}, \"map_lat\": \"\(mylocation.location.latitude)\", \"map_lng\": \"\(mylocation.location.longitude)\",\"note\": \"\(mylocation.note)\",\"medicines\": [\(medicines)],\"payment_id\": 2,\"payment_name\": \"Escrow\",\"pharmacy_address\": \"\(data!.data!.address!)\",\"pharmacy_custNumber\": \"\(data!.data!.pharmacy_custNumber!)\",\"pharmacy_shiptoNumber\": \"\(data!.data!.pharmacy_shiptoNumber!)\",\"pin\": \"\(pin)\",\"subtotal\": \(totalbarang()),\"total\": \(finaltotal()), \"voucher\": \(_tmpvoucher),\"voucher_amount\": \(voceramount)}"
+            let paramer = "{\"address\": \"\(mylocation.address)\",\"id\": \(indexs.id!),\"courier\": {\"id\": \(indexs.couriers![selectCour!].id!),\"note\": \"\(mylocation.note)\",\"price\": \(indexs.couriers![selectCour!].price!),\"type\": \"\(indexs.couriers![selectCour!].type!)\"}, \"map_lat\": \"\(mylocation.location.latitude)\", \"map_lng\": \"\(mylocation.location.longitude)\",\"note\": \"\(mylocation.note)\",\"medicines\": [\(medicines)],\"payment_id\": 2,\"payment_name\": \"Escrow\",\"pharmacy_address\": \"\(data!.data!.address!)\",\"pharmacy_custNumber\": \"\(data!.data!.pharmacy_custNumber!)\",\"pharmacy_shiptoNumber\": \"\(data!.data!.pharmacy_shiptoNumber!)\",\"pin\": \"\(pin)\",\"subtotal\": \(totalbarang()),\"total\": \(finaltotal()), \"voucher\": \(_tmpvoucher),\"voucher_amount\": \(voceramount)}"
             // print("paramer =>>> " + paramer)
             
             self.order.neworder(token: token, param: paramer) { (msg, trans_merchant_id, url) in

@@ -139,7 +139,7 @@ class OrderobatViewController: UIViewController,CLLocationManagerDelegate, lista
         }
         
         let vc = UIStoryboard(name: "Orderobat", bundle: AppSettings.bundleframeworks()).instantiateViewController(withIdentifier: "PembayaranobatViewController") as? PembayaranobatViewController
-        vc?.data = self.data
+        vc?.data = self.data        
         vc?.selectCour = self.selectcour
         vc?.mylocation = self.location
         vc?.prescription_id = prescription_id
