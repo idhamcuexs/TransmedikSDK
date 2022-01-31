@@ -99,11 +99,7 @@
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="H5R-3o-L5S">
                                                 <rect key="frame" x="0.0" y="0.0" width="414" height="768"/>
                                                 <subviews>
-                                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="NSZ-1s-7md" customClass="GMSMapView">
-                                                        <rect key="frame" x="0.0" y="0.0" width="414" height="768"/>
-                                                        <color key="backgroundColor" systemColor="systemGreenColor"/>
-                                                    </view>
-                                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ECs-uM-2lR">
+                                                    <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ECs-uM-2lR">
                                                         <rect key="frame" x="0.0" y="455" width="414" height="313"/>
                                                         <subviews>
                                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="oMo-1X-00u">
@@ -200,12 +196,7 @@
                                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                                 <constraints>
                                                     <constraint firstItem="ECs-uM-2lR" firstAttribute="leading" secondItem="H5R-3o-L5S" secondAttribute="leading" id="6mP-zd-6QM"/>
-                                                    <constraint firstAttribute="trailing" secondItem="NSZ-1s-7md" secondAttribute="trailing" id="9Ng-kH-YMR"/>
-                                                    <constraint firstItem="NSZ-1s-7md" firstAttribute="top" secondItem="H5R-3o-L5S" secondAttribute="top" id="JHH-cP-vLb"/>
                                                     <constraint firstAttribute="trailing" secondItem="ECs-uM-2lR" secondAttribute="trailing" id="L8S-2D-Mx9"/>
-                                                    <constraint firstAttribute="bottom" secondItem="NSZ-1s-7md" secondAttribute="bottom" id="NAg-d6-K54"/>
-                                                    <constraint firstItem="NSZ-1s-7md" firstAttribute="leading" secondItem="H5R-3o-L5S" secondAttribute="leading" id="Syx-dR-kbb"/>
-                                                    <constraint firstItem="ECs-uM-2lR" firstAttribute="bottom" secondItem="NSZ-1s-7md" secondAttribute="bottom" id="XaT-f1-Pcd"/>
                                                 </constraints>
                                             </view>
                                         </subviews>
@@ -273,7 +264,18 @@
                                         <subviews>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="kO0-kj-33H" customClass="MGLMapView">
                                                 <rect key="frame" x="0.0" y="0.0" width="414" height="468"/>
+                                                <subviews>
+                                                    <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="tPC-5Z-VA3">
+                                                        <rect key="frame" x="0.0" y="0.0" width="414" height="468"/>
+                                                    </mapView>
+                                                </subviews>
                                                 <color key="backgroundColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <constraints>
+                                                    <constraint firstItem="tPC-5Z-VA3" firstAttribute="leading" secondItem="kO0-kj-33H" secondAttribute="leading" id="EM5-wh-xgU"/>
+                                                    <constraint firstAttribute="trailing" secondItem="tPC-5Z-VA3" secondAttribute="trailing" id="XCC-eh-iN2"/>
+                                                    <constraint firstItem="tPC-5Z-VA3" firstAttribute="top" secondItem="kO0-kj-33H" secondAttribute="top" id="ZL2-R7-6j7"/>
+                                                    <constraint firstAttribute="bottom" secondItem="tPC-5Z-VA3" secondAttribute="bottom" id="uod-uF-EjL"/>
+                                                </constraints>
                                             </view>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="F3X-Yy-oes">
                                                 <rect key="frame" x="0.0" y="468" width="414" height="300"/>
@@ -436,7 +438,7 @@
                     <connections>
                         <outlet property="address" destination="cHf-yX-AsN" id="Ax6-RS-RAG"/>
                         <outlet property="back" destination="sQY-cq-f4f" id="AXP-yb-Xkn"/>
-                        <outlet property="mapview" destination="kO0-kj-33H" id="KSv-ZJ-G7j"/>
+                        <outlet property="map" destination="tPC-5Z-VA3" id="tFA-FQ-uFs"/>
                         <outlet property="navBackground" destination="D9r-Jd-LHE" id="tjM-tb-Lez"/>
                         <outlet property="note" destination="ibN-MF-7IB" id="lPn-AZ-9BK"/>
                         <outlet property="saveButton" destination="gHq-Kr-nPd" id="G5L-FZ-bR2"/>
@@ -453,13 +455,10 @@
     </scenes>
     <resources>
         <image name="Markerred" width="111" height="180"/>
-        <image name="Search" width="66.5" height="66.5"/>
+        <image name="Search" width="266.5" height="266.5"/>
         <image name="back" width="43.5" height="74.5"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-        </systemColor>
-        <systemColor name="systemGreenColor">
-            <color red="0.20392156862745098" green="0.7803921568627451" blue="0.34901960784313724" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
         <systemColor name="systemOrangeColor">
             <color red="1" green="0.58431372549019611" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>

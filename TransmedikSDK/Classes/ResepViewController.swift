@@ -134,10 +134,10 @@ class ResepViewController: UIViewController,CLLocationManagerDelegate {
     }
     
     @objc func getalamat(){
-//        let vc = UIStoryboard(name: "Alamat", bundle: AppSettings.bundleframework).instantiateViewController(withIdentifier: "AlamatVC") as? AlamatVC
-//        vc?.delegate = self
-//        
-//        present(vc!, animated: true, completion: nil)
+        let vc = UIStoryboard(name: "Alamat", bundle: AppSettings.bundleframework).instantiateViewController(withIdentifier: "AlamatVC") as? AlamatVC
+        vc?.delegate = self
+        
+        present(vc!, animated: true, completion: nil)
     }
     
     private func registerTableView() {
@@ -287,13 +287,13 @@ extension ResepViewController : SetMapingViewControllerDelegate{
 }
 
 
-extension ResepViewController {
-//    func getLocation(location: CLLocationCoordinate2D, address: String, note: String) {
-//
-//        self.location = NameMyLocation(location: location, address: address, note: note)
-//        alamat.text = address
-//        self.note.text = note == "" ? "Catatan anda" : note
-//    }
+extension ResepViewController : AlamatVCDelegate {
+    func getLocation(location: CLLocationCoordinate2D, address: String, note: String) {
+
+        self.location = NameMyLocation(location: location, address: address, note: note)
+        alamat.text = address
+        self.note.text = note == "" ? "Catatan anda" : note
+    }
     
     
 //    func getDetailLocation(){
