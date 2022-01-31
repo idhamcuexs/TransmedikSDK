@@ -256,10 +256,12 @@ class OrderobatViewController: UIViewController,CLLocationManagerDelegate, lista
 //        vc?.delegate = self
 //        vc?.tambahalamat = false
 //        present(vc!, animated: true, completion: nil)
-        let vc = UIStoryboard(name: "Alamat", bundle: AppSettings.bundleframework).instantiateViewController(withIdentifier: "AlamatVC") as? AlamatVC
-        vc?.delegate = self
         
-        present(vc!, animated: true, completion: nil)
+        
+//        let vc = UIStoryboard(name: "Alamat", bundle: AppSettings.bundleframework).instantiateViewController(withIdentifier: "AlamatVC") as? AlamatVC
+//        vc?.delegate = self
+//        
+//        present(vc!, animated: true, completion: nil)
     }
     
     func getprice(){
@@ -477,12 +479,12 @@ extension OrderobatViewController: UITableViewDelegate,UITableViewDataSource,Ske
     
 }
 
-extension OrderobatViewController :AlamatVCDelegate{
-    func getLocation(location: CLLocationCoordinate2D, address: String, note: String) {
-        self.location = NameMyLocation(location: location, address: address, note: note)
-        alamat.text = address
-        self.catatan.text = note
-    }
+extension OrderobatViewController {
+//    func getLocation(location: CLLocationCoordinate2D, address: String, note: String) {
+//        self.location = NameMyLocation(location: location, address: address, note: note)
+//        alamat.text = address
+//        self.catatan.text = note
+//    }
     
     
 }

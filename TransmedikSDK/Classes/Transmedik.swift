@@ -12,6 +12,7 @@ import Alamofire
 import SwiftyJSON
 
 
+
 public class Transmedik {
     
     

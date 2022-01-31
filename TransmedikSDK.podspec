@@ -8,7 +8,7 @@
 
 Pod::Spec.new do |s|
   s.name             = 'TransmedikSDK'
-  s.version          = '1.2.10'
+  s.version          = '1.2.11'
   s.summary          = 'TransmedikSDK for library WE+'
   
   s.description      = "TransmedikSDK for we plus"
@@ -41,7 +41,9 @@ Pod::Spec.new do |s|
   s.dependency 'Starscream', '~> 3.1.0'
   s.dependency 'ParseLiveQuery', '~> 2.7.0 '
 
-  s.dependency 'Mapbox-iOS-SDK', '~> 4.11.2'
+#  s.dependency 'Mapbox-iOS-SDK', '~> 4.11.2'
+#  s.dependency 'Mapbox-iOS-SDK', '~> 5.3.1'
+
 
 
   s.dependency 'SVPinView', '~> 1.0'
