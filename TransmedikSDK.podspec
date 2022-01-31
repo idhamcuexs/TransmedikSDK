@@ -18,7 +18,7 @@ Pod::Spec.new do |s|
   s.author           = { 'idham290593@gmail.com' => 'idham290593@gmail.com' }
   s.source           = { :git => 'https://github.com/idhamcuexs/TransmedikSDK.git', :tag => s.version.to_s }
   
-  s.ios.deployment_target = '13.0'
+  s.ios.deployment_target = '10.0'
   s.swift_versions = "4.2 "
   s.source_files = 'TransmedikSDK/Classes/*.swift'
   
