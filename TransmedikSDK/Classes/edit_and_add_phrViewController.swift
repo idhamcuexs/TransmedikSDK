@@ -62,7 +62,6 @@ class edit_and_add_phrViewController: UIViewController {
     
     @objc func sendacc(){
         if let token = UserDefaults.standard.string(forKey: AppSettings.Tokentransmedik){
-
                  if self.uuid == UserDefaults.standard.string(forKey: AppSettings.uuid) ?? ""{
                      self.profil.updateprofile(data: self.datauser, token: token) { (msg) in
                         if msg.contains("Unauthenticated"){
@@ -72,7 +71,9 @@ class edit_and_add_phrViewController: UIViewController {
                         }
                          if msg == "success"{
                             self.delegate.ubahtinggi(tinggi: Int(self.datauser.height) ?? 0, berat: Int(self.datauser.weight) ?? 0, row: self.row)
-                            self.keluar(view: self.presentPage)
+//                            self.keluar(view: self.presentPage)
+                            self.dismiss(animated: false, completion: nil)
+
                          }else{
                              Toast.show(message: msg, controller: self)
                          }
@@ -87,7 +88,9 @@ class edit_and_add_phrViewController: UIViewController {
                         }
                          if msg == "success"{
                             self.delegate.ubahtinggi(tinggi: Int(self.datauser.height) ?? 0, berat: Int(self.datauser.weight) ?? 0, row: self.row)
-                            self.keluar(view: self.presentPage)
+//                            self.keluar(view: self.presentPage)
+                            self.dismiss(animated: false, completion: nil)
+
                          }else{
                              Toast.show(message: msg, controller: self)
                          }

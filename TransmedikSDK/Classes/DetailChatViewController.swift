@@ -105,7 +105,7 @@ class DetailChatViewController: MessagesViewController, MessagesDataSource {
     var isconnection = true{
         didSet{
             if isconnection{
-                print("mantap")
+//                print("mantap")
 //                appDelegate.setupParse()
 //                initializeMessages()
             }else{
@@ -794,7 +794,7 @@ extension DetailChatViewController {
     }
     
     @objc func willEnterForeground() {
-        print("detail enter foreground")
+//        print("detail enter foreground")
         loadFirstMessages()
         //checkcall
         let userInfo:[String: String] =

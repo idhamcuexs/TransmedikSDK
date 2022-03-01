@@ -102,9 +102,12 @@ class NewCheckConsulVC: UIViewController,UITextViewDelegate {
     
     override func viewDidLoad() {
      
-        koneksi()
+       
         skeleton()
         setup()
+    }
+    override func viewWillAppear(_ animated: Bool) {
+        koneksi()
     }
     
     func skeleton(){
@@ -181,6 +184,8 @@ class NewCheckConsulVC: UIViewController,UITextViewDelegate {
         
         BB.text = data.weight == "" ? "-" : data.weight + " KG"
         TB.text = data.height == "" ? "-" : data.height + " cm"
+        let  age = Count()
+        self.umur.text = "\(age.calculateAge(dob: data.dob, format: "yyyy-MM-dd").year) Tahun"
         myUser.setTitle(data.full_name, for: .normal)
         
        
@@ -247,6 +252,7 @@ class NewCheckConsulVC: UIViewController,UITextViewDelegate {
                     if data != nil {
                         // print("my name = >\(data!.full_name)")
                         self.mdata.insert(data!, at: 0)
+               
                         self.success = true
                        
                     }else{
@@ -611,7 +617,9 @@ extension NewCheckConsulVC : edit_and_add_phrViewControllerdelegate,formsViewCon
     func ubahtinggi(tinggi: Int, berat: Int, row: Int) {
         mdata[row].height = String(tinggi)
         mdata[row].weight = String(berat)
-       
+        
+        BB.text = String(berat) == "" ? "-" : String(berat) + " Kg"
+        TB.text = String(tinggi) == "" ? "-" : String(tinggi) + " Cm"
     }
     
     

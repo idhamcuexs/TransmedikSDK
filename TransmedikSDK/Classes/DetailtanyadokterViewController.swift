@@ -352,6 +352,8 @@ extension DetailtanyadokterViewController : UITableViewDelegate,UITableViewDataS
 //            openVC(vc!, presentPage)
 
         }
+        
+        
     }
     
     func detail(cell: UITableViewCell) {

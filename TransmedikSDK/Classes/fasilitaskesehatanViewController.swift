@@ -124,11 +124,11 @@ public class fasilitaskesehatanViewController: UIViewController,UITextFieldDeleg
                     }
                     
                     if data != nil {
-                         print(" hente kosong")
+//                         print(" hente kosong")
                         self.data = data!
                       
                     }else{
-                        print("kosong")
+//                        print("kosong")
 
                     }
                     if nextpage == nil {

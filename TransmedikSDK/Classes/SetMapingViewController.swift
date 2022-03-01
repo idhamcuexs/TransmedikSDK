@@ -73,7 +73,7 @@ class SetMapingViewController: MYUIViewController,CLLocationManagerDelegate,UITe
     
     func textViewDidChange(_ textView: UITextView) {
         textView.layoutIfNeeded()
-        print(textView.contentSize.height)
+//        print(textView.contentSize.height)
         tinggiNote.constant = textView.contentSize.height 
         
        

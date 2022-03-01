@@ -140,8 +140,8 @@ public class Transmedik {
         let vc = UIStoryboard(name: "Transmedik", bundle: AppSettings.bundleframeworks()).instantiateViewController(withIdentifier: "HomeViewController") as? HomeViewController
         vc?.presentPage = present
 
-        print("nasuk")
-        
+//        print("nasuk")
+//        
 //        let vc = UIStoryboard(name: "Alamat", bundle: AppSettings.bundleframeworks()).instantiateViewController(withIdentifier: "AlamatVC") as? AlamatVC
 //        
 //        
@@ -196,6 +196,7 @@ public class Transmedik {
         })
     }
     
+    
     public static func Transmedik_Login( email : String , gender : String , device_id : String, identification : String, name: String,nik :String ,phone_number : String ,  complited: @escaping(Bool,String)->()){
         
        
@@ -232,13 +233,14 @@ public class Transmedik {
         ]
         
         let url = "\(AppSettings.Url)auth/login"
-        
-        // print(headers)
+//
+//         print(headers)
+//        print(params)
 
         Alamofire.request(url, method: .post,parameters: params,  encoding: JSONEncoding.default, headers: headers)
             .responseJSON { respon in
                 // print(params)
-                // print("respon login \(respon)" )
+                 print("respon login \(respon)" )
                 switch respon.result {
                 case let .success(value):
                     let json = JSON(value)

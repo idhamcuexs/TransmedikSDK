@@ -2190,7 +2190,7 @@
                                             <constraint firstAttribute="height" constant="50" id="7MT-2p-qnN"/>
                                         </constraints>
                                         <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="15"/>
-                                        <state key="normal" title="Konformasi">
+                                        <state key="normal" title="Konfirmasi">
                                             <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         </state>
                                         <connections>

@@ -355,7 +355,7 @@ class Orderobject: NSObject {
                     case .success(let request, let streamingFromDisk, let streamFileURL):
                         // print("Upload Success : \(request), \(streamingFromDisk), \(String(describing: streamFileURL))")
                         request.responseJSON() { response in
-                            print(response)
+//                            print(response)
                             switch response.result {
                             case let .success(value):
                                 let json = JSON(value)

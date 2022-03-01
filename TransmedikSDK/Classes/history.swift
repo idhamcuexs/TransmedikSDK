@@ -304,8 +304,8 @@ class historiesobject: NSObject {
             .responseJSON { respon in
                 
                 
-                 print("ini respon history")
-                 print(respon)
+//                 print("ini respon history")
+//                 print(respon)
                 switch respon.result {
                 case let .success(value):
                     let json = JSON(value)
